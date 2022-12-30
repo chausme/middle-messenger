@@ -29,7 +29,8 @@ export default class Router {
     load(path, updatePath = false) {
         const template = this.getTemplate(path);
         const root = document.getElementById('root');
-        root.innerHTML = template;
+        root.innerHTML = template.data;
+        this.updateBgColor(template);
         if (updatePath) {
             window.history.pushState({}, '', `${this.#baseUrl}/${path}`);
         }
@@ -41,12 +42,22 @@ export default class Router {
         if (!template) {
             template = 'home';
         }
-        return !this.routesData[template] ? this.routesData['404'] : this.routesData[template];
+        return !this.routesData[template]
+            ? { name: 404, data: this.routesData['404'] }
+            : { name: template, data: this.routesData[template] };
     }
 
     // Little helper to get path from provided location.href
     getPath(href) {
         const url = new URL(href);
         return url.pathname.slice(1);
+    }
+
+    // Little helper to update body background
+    updateBgColor(template) {
+        console.log('update background');
+        if (template.name === 'home') {
+            // @todo
+        }
     }
 }

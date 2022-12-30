@@ -13,8 +13,12 @@
             "options": { "parser": "json" }
         },
         {
-            "files": "*/*.scss",
+            "files": "*.scss",
             "options": { "parser": "scss" }
+        },
+        {
+            "files": "*.css",
+            "options": { "parser": "css" }
         },
         {
             "files": "*.html",
