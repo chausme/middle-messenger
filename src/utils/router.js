@@ -18,6 +18,11 @@ export default class Router {
                 this.load(path, true);
             });
         });
+
+        // @todo add support for browser history changes
+        // window.onpopstate = history.onpushstate = function (e) {
+        //     console.log(e);
+        // };
     }
 
     // Output respective template on page and optionally update path
@@ -26,7 +31,7 @@ export default class Router {
         const root = document.getElementById('root');
         root.innerHTML = template;
         if (updatePath) {
-            window.history.replaceState({}, '', `${this.#baseUrl}/${path}`);
+            window.history.pushState({}, '', `${this.#baseUrl}/${path}`);
         }
     }
 

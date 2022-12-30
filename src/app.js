@@ -5,7 +5,7 @@ import Router from './utils/router.js';
 
 const router = new Router({
     home: pageHome,
-    chats: pageChats,
+    chats: pageChats(),
     404: page404,
 });
 router.init();

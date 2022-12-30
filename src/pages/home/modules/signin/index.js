@@ -1,1 +1,1 @@
-export default output = `<h1>Test output</h1>`;
+export default output = `<input type="text" value="sign in test" />`;
