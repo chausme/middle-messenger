@@ -1,0 +1,7 @@
+.window {
+    background: var(--color-orange);
+
+    input {
+        background-color: var(--color-green);
+    }
+}

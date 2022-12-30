@@ -3,6 +3,7 @@ import pageChats from './pages/chats';
 import page404 from './pages/404';
 import Router from './utils/router.js';
 import './reset.css';
+import './variables.css';
 import './index.css';
 
 const router = new Router({

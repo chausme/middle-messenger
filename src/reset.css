@@ -96,8 +96,3 @@ pre {
 :where([draggable='true']) {
     -webkit-user-drag: element;
 }
-
-/* Revert Modal native behavior */
-:where(dialog:modal) {
-    all: revert;
-}
