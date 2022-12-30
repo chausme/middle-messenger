@@ -9,6 +9,10 @@
     "arrowParens": "avoid",
     "overrides": [
         {
+            "files": "*.*rc",
+            "options": { "parser": "json" }
+        },
+        {
             "files": "*.json",
             "options": { "parser": "json" }
         },
@@ -27,6 +31,10 @@
         {
             "files": "*.md",
             "options": { "parser": "markdown" }
+        },
+        {
+            "files": "*.hbs",
+            "options": { "parser": "glimmer" }
         }
     ]
 }

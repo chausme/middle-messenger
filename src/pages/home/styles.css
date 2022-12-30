@@ -1,0 +1,9 @@
+.window {
+    background: var(--color-green);
+    width: 200px;
+    height: 50px;
+
+    input {
+        background-color: var(--color-green);
+    }
+}

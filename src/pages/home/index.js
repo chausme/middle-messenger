@@ -1,3 +1,7 @@
-import formSignIn from './modules/signin';
+import button from '/src/components/button';
+import template from './index.hbs';
+import './styles.css';
 
-export default output = `${formSignIn}`;
+export default (props = {}) => {
+    return template(props);
+};

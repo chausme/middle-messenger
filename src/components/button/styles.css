@@ -1,0 +1,13 @@
+button {
+    background-color: var(--color-purple);
+    border: 4px black solid;
+    cursor: pointer;
+
+    &:hover {
+        background-color: var(--color-orange);
+    }
+
+    &:active {
+        border: 3px black solid;
+    }
+}

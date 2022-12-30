@@ -1,4 +1,4 @@
-import './signin.css';
+import './styles.css';
 
 export default output = `
     <div class="window bg-orange">
