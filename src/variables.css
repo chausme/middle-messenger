@@ -1,7 +1,19 @@
 /* Variables */
 
 :root {
-    --color-orange: #fec006;
-    --color-purple: #746beb;
-    --color-green: #54e851;
+    --c-gray-light: #f7f8f9;
+    --c-gray: #e8ebee;
+    --c-orange: #fec006;
+    --c-orange-light: #fef2cc;
+    --c-purple: #746beb;
+    --c-purple-light: #d9d7f3;
+    --c-red: #ee5454;
+    --c-red-light: #f9d6d9;
+    --c-green: #54e851;
+    --c-green-light: #d2e6dc;
+    --c-violet: #a17fbc;
+    --c-violet-light: #e0d2e6;
+    --c-cyan: #3bb3bd;
+    --c-cyan-light: #b0f5fb;
+    --c-pink: #e551e8;
 }

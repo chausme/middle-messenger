@@ -18,11 +18,11 @@
         },
         {
             "files": "*.scss",
-            "options": { "parser": "scss" }
+            "options": { "parser": "scss", "singleQuote": false }
         },
         {
             "files": "*.css",
-            "options": { "parser": "css" }
+            "options": { "parser": "css", "singleQuote": false }
         },
         {
             "files": "*.html",
@@ -34,7 +34,7 @@
         },
         {
             "files": "*.hbs",
-            "options": { "parser": "glimmer" }
+            "options": { "parser": "glimmer", "singleQuote": false }
         }
     ]
 }
