@@ -8,7 +8,7 @@ import './variables.css';
 import './index.css';
 
 const router = new Router({
-    home: pageHome({ heading: 'Hello Template', button: button('Button name') }),
+    home: pageHome({ heading: 'Sign In', button: button('Button name') }),
     chats: pageChats(),
     404: page404,
 });
