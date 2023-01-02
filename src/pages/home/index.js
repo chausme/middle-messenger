@@ -1,7 +1,5 @@
-import button from '/src/components/button';
-import template from './index.hbs';
-import './styles.css';
+import signIn from './modules/signin';
 
 export default (props = {}) => {
-    return template(props);
+    return signIn();
 };
