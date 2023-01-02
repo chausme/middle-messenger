@@ -17,10 +17,18 @@ export default (
                 id: 'password',
             }),
         },
-        button: button({
-            name: 'Sign In',
-            id: 'signin',
-        }),
+        buttons: {
+            signin: button({
+                name: 'Sign In',
+                id: 'signin',
+                styles: 'mb-2',
+            }),
+            signup: button({
+                name: 'Sign Up',
+                id: 'signup',
+                styles: 'bg-orange',
+            }),
+        },
     }
 ) => {
     return template(props);

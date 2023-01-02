@@ -1,7 +1,6 @@
 .window {
-    background: var(--color-orange);
-
-    input {
-        background-color: var(--color-green);
+    &.signin {
+        padding-left: 125px;
+        padding-right: 125px;
     }
 }
