@@ -1,4 +1,4 @@
-import input from '/src/components/input';
+import inputWLabel from '/src/components/input-w-label';
 import button from '/src/components/button';
 import template from './signin.hbs';
 import './signin.css';
@@ -6,12 +6,12 @@ import './signin.css';
 export default (
     props = {
         inputs: {
-            login: input({
+            login: inputWLabel({
                 type: 'text',
                 name: 'Login',
                 id: 'login',
             }),
-            password: input({
+            password: inputWLabel({
                 type: 'password',
                 name: 'Password',
                 id: 'password',
