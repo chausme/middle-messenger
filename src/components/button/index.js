@@ -1,6 +1,3 @@
-import template from './index.hbs';
-import './styles.css';
+import button from './button';
 
-export default (name, id, styles = null) => {
-    return template(name, id, styles);
-};
+export default button;

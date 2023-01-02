@@ -6,7 +6,7 @@ export default class Router {
     #baseUrl = new URL(window.location.href).origin;
 
     init() {
-        const path = this.getPath(window.location.href);
+        let path = this.getPath(window.location.href);
         this.load(path);
 
         // @todo remove later - reloadless test
@@ -14,7 +14,7 @@ export default class Router {
         menuLinks.forEach(el => {
             el.addEventListener('click', e => {
                 e.preventDefault();
-                const path = this.getPath(e.target.href);
+                path = this.getPath(e.target.href);
                 this.load(path, true);
             });
         });

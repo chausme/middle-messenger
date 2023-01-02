@@ -1,8 +1,7 @@
-import button from './components/button';
 import pageHome from './pages/home';
 import pageChats from './pages/chats';
 import page404 from './pages/404';
-import Router from './utils/router.js';
+import Router from './utils/router';
 import './reset.css';
 import './variables.css';
 import './styles.css';
