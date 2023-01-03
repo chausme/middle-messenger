@@ -6,16 +6,16 @@ export default class Router {
     #baseUrl = new URL(window.location.href).origin;
 
     init() {
-        let path = this.getPath(window.location.href);
+        const path = this.getPath(window.location.href);
         this.load(path);
 
-        // @todo remove later - reloadless test
-        const menuLinks = document.querySelectorAll('#menu a');
-        menuLinks.forEach(el => {
+        // @todo rafactor as needed
+        const buttonLinks = document.querySelectorAll('.link');
+        buttonLinks.forEach(el => {
             el.addEventListener('click', e => {
                 e.preventDefault();
-                path = this.getPath(e.target.href);
-                this.load(path, true);
+                const linkPath = e.target.dataset?.path ?? '';
+                this.load(linkPath, true);
             });
         });
 
@@ -50,7 +50,7 @@ export default class Router {
     // Little helper to get path from provided location.href
     getPath(href) {
         const url = new URL(href);
-        return url.pathname.slice(1);
+        return url.pathname.replace('/', '');
     }
 
     // Little helper to update body background
