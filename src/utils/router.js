@@ -8,18 +8,6 @@ export default class Router {
     init() {
         const path = this.getPath(window.location.href);
         this.load(path);
-
-        // @todo rafactor as needed
-        const buttonLinks = document.querySelectorAll('.link');
-        buttonLinks.forEach(el => {
-            el.addEventListener('click', e => {
-                e.preventDefault();
-                const linkPath = e.target.dataset?.path ?? '';
-                this.load(linkPath, true);
-            });
-        });
-
-        // @todo add support for browser history changes with window.onpopstate
     }
 
     // Output respective template on page and optionally update path
@@ -31,6 +19,7 @@ export default class Router {
         if (updatePath) {
             window.history.pushState({}, '', `${this.#baseUrl}/${path}`);
         }
+        this.addLinksClickListener();
     }
 
     // Get template data
@@ -45,6 +34,23 @@ export default class Router {
         return !this.routesData[template]
             ? { name: 404, data: this.routesData['404'] }
             : { name: template, data: this.routesData[template] };
+    }
+
+    // Add link click event listeners on component load
+    addLinksClickListener() {
+        // @todo rafactor as needed
+        // @todo add support for browser history changes with window.onpopstate
+        const buttonLinks = document.querySelectorAll('.link');
+        buttonLinks.forEach(el => {
+            el.addEventListener('click', e => {
+                e.preventDefault();
+                const linkPath =
+                    !e.currentTarget.dataset.path || e.currentTarget.dataset.path === '/'
+                        ? ''
+                        : e.currentTarget.dataset.path;
+                this.load(linkPath, true);
+            });
+        });
     }
 
     // Little helper to get path from provided location.href
