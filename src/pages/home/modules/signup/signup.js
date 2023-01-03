@@ -4,12 +4,6 @@ import template from './signup.hbs';
 import './signup.css';
 
 // @todo add sign up logic
-// document.addEventListener('DOMContentLoaded', function () {
-//     const buttonSignIn = document.querySelector('#signup');
-//     buttonSignIn?.addEventListener('click', () => {
-//         console.log('signing up...');
-//     });
-// });
 
 export default (
     props = {

@@ -4,12 +4,6 @@ import template from './signin.hbs';
 import './signin.css';
 
 // @todo add sign in logic
-// document.addEventListener('DOMContentLoaded', function () {
-//     const buttonSignIn = document.querySelector('#signin');
-//     buttonSignIn?.addEventListener('click', () => {
-//         console.log('signing in...');
-//     });
-// });
 
 export default (
     props = {
@@ -34,7 +28,7 @@ export default (
             }),
             signup: button({
                 title: 'Sign Up',
-                id: 'signup',
+                id: 'test',
                 styles: 'bg-orange',
                 link: '#signup',
             }),
