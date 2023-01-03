@@ -6,7 +6,7 @@ export default class Router {
     #baseUrl = new URL(window.location.href).origin;
 
     init() {
-        const path = this.getPath(window.location);
+        const path = this.getPath(window.location.href);
         this.load(path);
 
         // @todo rafactor as needed
@@ -19,10 +19,7 @@ export default class Router {
             });
         });
 
-        // @todo add support for browser history changes
-        // window.onpopstate = history.onpushstate = function (e) {
-        //     console.log(e);
-        // };
+        // @todo add support for browser history changes with window.onpopstate
     }
 
     // Output respective template on page and optionally update path
@@ -53,7 +50,7 @@ export default class Router {
     // Little helper to get path from provided location.href
     getPath(href) {
         const url = new URL(href);
-        return url.pathname.replace('/', '');
+        return `${url.pathname ? url.pathname.replace('/', '') : ''}${url.hash ?? ''}`;
     }
 
     // Little helper to get naked path and hash from provided full path

@@ -29,7 +29,7 @@
 
     &:hover {
         &::before {
-            filter: brightness(125%);
+            filter: brightness(115%);
         }
     }
 
