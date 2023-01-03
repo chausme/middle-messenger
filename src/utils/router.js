@@ -6,7 +6,7 @@ export default class Router {
     #baseUrl = new URL(window.location.href).origin;
 
     init() {
-        const path = this.getPath(window.location.href);
+        const path = this.getPath(window.location);
         this.load(path);
 
         // @todo rafactor as needed
@@ -38,9 +38,12 @@ export default class Router {
 
     // Get template data
     getTemplate(path = null) {
-        let template = path;
-        if (!template) {
-            template = 'home';
+        const pathData = this.getPathData(path);
+        let template = pathData.path;
+        if (!template && !pathData.hash) {
+            template = 'signIn';
+        } else if (!template && pathData.hash && pathData.hash === 'signup') {
+            template = 'signUp';
         }
         return !this.routesData[template]
             ? { name: 404, data: this.routesData['404'] }
@@ -53,9 +56,17 @@ export default class Router {
         return url.pathname.replace('/', '');
     }
 
+    // Little helper to get naked path and hash from provided full path
+    getPathData(path) {
+        const url = new URL(`${this.#baseUrl}/${path}`);
+        return {
+            path: url.pathname.replace('/', ''),
+            hash: url.hash.replace('#', ''),
+        };
+    }
+
     // Little helper to update body background
     updateBgColor(template) {
-        console.log('update background');
         if (template.name === 'home') {
             // @todo
         }

@@ -22,11 +22,13 @@ export default (
                 title: 'Sign In',
                 id: 'signin',
                 styles: 'mb-2',
+                link: '',
             }),
             signup: button({
                 title: 'Sign Up',
                 id: 'signup',
                 styles: 'bg-orange',
+                link: '#signup',
             }),
         },
     }

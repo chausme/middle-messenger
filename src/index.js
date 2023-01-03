@@ -7,7 +7,8 @@ import './variables.css';
 import './styles.css';
 
 const router = new Router({
-    home: pageHome(),
+    signIn: pageHome(),
+    signUp: pageHome('signUp'),
     chats: pageChats(),
     404: page404,
 });
