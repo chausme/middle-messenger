@@ -1,20 +1,20 @@
 <div class="window sm pad chat bg-cyan-light mb-2">
     <div class="inner d-flex flex-wrap flex-column h-100">
         <div class="avatar">
-            <img src="{{{avatar}}}" alt="" />
+            <img src="{{{props.avatar}}}" alt="" />
         </div>
         <div class="details">
-            <p class="title font-600">{{{title}}}</p>
+            <p class="title font-600">{{{props.title}}}</p>
             <div class="message">
-                {{{lastMessage}}}
+                {{{props.lastMessage}}}
             </div>
         </div>
         <div class="meta">
             <div class="datetime">
-                {{{datetime}}}
+                {{{props.datetime}}}
             </div>
-            {{#if unread}}
-                {{{unread}}}
+            {{#if props.unread}}
+                {{{props.unread}}}
             {{/if}}
         </div>
     </div>

@@ -9,4 +9,4 @@ export default (
         chats: chats(),
         singleChat: singleChat(),
     }
-) => template(props);
+) => template({ props });

@@ -1,11 +1,11 @@
 <div class="window lg chats bg-pink d-flex h-100">
     <div class="inner">
         <header class="d-flex mb-2">
-            <div>[button]</div>
-            {{{searchInput}}}
+            {{{props.buttonIcon}}}
+            {{{props.searchInput}}}
         </header>
         <div class="list">
-            {{#each chats}}
+            {{#each props.chats}}
                 {{{this}}}
             {{/each}}
         </div>

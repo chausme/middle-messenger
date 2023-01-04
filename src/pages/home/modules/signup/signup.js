@@ -1,7 +1,6 @@
 import inputWLabel from '~/src/components/input-w-label';
 import button from '~/src/components/button';
 import template from './signup.hbs';
-import './signup.css';
 
 // @todo add sign up logic
 
@@ -34,4 +33,4 @@ export default (
             }),
         },
     }
-) => template(props);
+) => template({ props });
