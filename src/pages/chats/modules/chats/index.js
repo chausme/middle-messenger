@@ -1,1 +1,3 @@
-export default () => `[chats]`;
+import chats from './chats';
+
+export default chats;

@@ -1,6 +1,3 @@
-import chats from './modules/chats';
-import singleChat from './modules/single-chat';
+import chats from './chats';
 
-export default () => {
-    return chats() + singleChat();
-};
+export default chats;

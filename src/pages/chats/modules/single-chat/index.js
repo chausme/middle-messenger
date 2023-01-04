@@ -1,1 +1,3 @@
-export default () => `[single-chat]`;
+import singleChat from './single-chat';
+
+export default singleChat;
