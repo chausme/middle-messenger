@@ -46,8 +46,8 @@ h2 {
     }
 
     &::after {
-        top: 5px;
-        left: 5px;
+        top: 6px;
+        left: 6px;
         z-index: -1;
         background-color: var(--c-black);
     }
@@ -65,8 +65,50 @@ h2 {
         padding: 5px;
 
         &::after {
-            top: 3px;
-            left: 3px;
+            top: 4px;
+            left: 4px;
+        }
+    }
+
+    &.pad {
+        &:active {
+            &::before {
+                top: 6px;
+                left: 6px;
+            }
+
+            .inner {
+                top: 6px;
+                left: 6px;
+            }
+        }
+
+        &.sm {
+            &:active {
+                &::before {
+                    top: 4px;
+                    left: 4px;
+                }
+
+                .inner {
+                    top: 4px;
+                    left: 4px;
+                }
+            }
+        }
+
+        &.lg {
+            &:active {
+                &::before {
+                    top: 8px;
+                    left: 8px;
+                }
+
+                .inner {
+                    top: 8px;
+                    left: 8px;
+                }
+            }
         }
     }
 
@@ -117,6 +159,10 @@ h2 {
     height: 100%;
 }
 
+.mb-1\/5 {
+    margin-bottom: 10px;
+}
+
 .mb-2 {
     margin-bottom: 16px;
 }
@@ -159,4 +205,8 @@ h2 {
 
 .text-center {
     text-align: center;
+}
+
+.font-600 {
+    font-weight: 600;
 }

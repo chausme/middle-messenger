@@ -1,5 +1,21 @@
-<div class="window chat bg-cyan-light">
-    <div class="inner d-flex flex-column h-100">
-        [chat output]
+<div class="window sm pad chat bg-cyan-light mb-2">
+    <div class="inner d-flex flex-wrap flex-column h-100">
+        <div class="avatar">
+            <img src="{{{avatar}}}" alt="" />
+        </div>
+        <div class="details">
+            <p class="title font-600">{{{title}}}</p>
+            <div class="message">
+                {{{lastMessage}}}
+            </div>
+        </div>
+        <div class="meta">
+            <div class="datetime">
+                {{{datetime}}}
+            </div>
+            {{#if unread}}
+                {{{unread}}}
+            {{/if}}
+        </div>
     </div>
 </div>

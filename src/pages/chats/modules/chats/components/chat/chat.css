@@ -1,7 +1,32 @@
 .window {
     &.chat {
         width: 410px;
-        height: 94px;
-        padding: 15px;
+        height: 90px;
+        cursor: pointer;
+
+        &:hover {
+            &::before {
+                filter: brightness(115%);
+            }
+        }
+
+        &:active,
+        &.active {
+            &::before {
+                background-color: var(--c-cyan-light-alt);
+            }
+        }
+
+        .avatar {
+            flex: 0 0 60px;
+        }
+
+        .details {
+            flex: 0 0 70%;
+        }
+
+        .meta {
+            flex: 0 0 20%;
+        }
     }
 }

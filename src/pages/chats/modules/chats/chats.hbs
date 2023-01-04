@@ -1,8 +1,13 @@
 <div class="window lg chats bg-pink d-flex h-100">
     <div class="inner">
-        <header class="d-flex">
+        <header class="d-flex mb-2">
             <div>[button]</div>
             <div>[search input]</div>
         </header>
+        <div class="list">
+            {{#each chats}}
+                {{{this}}}
+            {{/each}}
+        </div>
     </div>
 </div>
