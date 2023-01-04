@@ -1,10 +1,11 @@
 <button
     type="button"
     title="{{{props.title}}}"
-    class="button button-icon window sm pad text-center {{{props.styles}}}"
+    class="button button-icon window sm pad d-flex align-items-center text-center
+        {{{props.styles}}}"
     id="{{{props.id}}}"
 >
-    <div class="inner">
+    <div class="inner d-flex">
         <img src="{{{icon}}}" alt="{{{props.title}}}" />
     </div>
 </button>

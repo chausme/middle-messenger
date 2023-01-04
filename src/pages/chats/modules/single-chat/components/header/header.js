@@ -8,6 +8,6 @@ export default (props = {}) =>
             title: 'Account',
             id: 'account',
             icon: 'hamburger',
-            styles: 'mr-1/5 bg-green',
+            styles: 'bg-green',
         }),
     });
