@@ -6,7 +6,6 @@ body {
 /** @todo remove later **/
 header {
     background-color: var(--c-green);
-    height: 80px;
     width: 100%;
     position: fixed;
     padding: 20px;
