@@ -1,6 +1,9 @@
-<label for="{{{id}}}" class="input-label">{{{title}}}</label>
+<label for="{{{props.id}}}" class="{{{classes.input-label}}}">{{{props.title}}}</label>
 <div class="input-wrap window sm bg-gray-light">
-    <div class="input-wrap">
-        <input type="{{{type}}}" class="input" id="{{{id}}}" placeholder="{{{title}}}" />
-    </div>
+    <input
+        type="{{{props.type}}}"
+        class="input"
+        id="{{{props.id}}}"
+        placeholder="{{{props.title}}}"
+    />
 </div>

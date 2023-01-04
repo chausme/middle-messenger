@@ -22,14 +22,14 @@ export default (
         buttons: {
             signin: button({
                 title: 'Sign In',
-                styles: 'mb-2',
+                styles: 'mb-2 bg-green',
                 id: 'signin',
                 link: '/',
             }),
             signup: button({
                 title: 'Sign Up',
                 id: 'signup',
-                styles: 'bg-orange',
+                styles: 'bg-pink',
                 link: '',
             }),
         },

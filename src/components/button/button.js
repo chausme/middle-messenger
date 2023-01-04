@@ -1,4 +1,4 @@
 import template from './button.hbs';
-import './button.css';
+import * as classes from './button.module.css';
 
-export default (title, id, styles = null, link = false) => template(title, id, styles, link);
+export default (props = {}) => template({ props, classes: classes });

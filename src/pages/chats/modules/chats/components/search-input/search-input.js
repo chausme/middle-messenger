@@ -1,4 +1,8 @@
 import template from './search-input.hbs';
-import './search-input.css';
+import * as classes from './search-input.module.css';
 
-export default (props = {}) => template(props);
+export default (
+    props = {
+        classes: classes,
+    }
+) => template(props);

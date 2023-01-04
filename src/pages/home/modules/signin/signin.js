@@ -23,7 +23,7 @@ export default (
             signin: button({
                 title: 'Sign In',
                 id: 'signin',
-                styles: 'mb-2',
+                styles: 'mb-2 bg-green',
                 link: '',
             }),
             signup: button({
