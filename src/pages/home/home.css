@@ -2,8 +2,7 @@
     &.auth {
         width: 600px;
         height: 500px;
-        padding: 60px 50px 20px;
-        padding-left: 125px;
-        padding-right: 125px;
+        padding: 60px 125px 20px;
+        margin: 0 auto;
     }
 }

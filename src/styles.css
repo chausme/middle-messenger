@@ -35,6 +35,7 @@ button {
     outline: none;
     font-family: inherit;
     font-size: inherit;
+    background-color: inherit;
 }
 
 body {
@@ -67,7 +68,6 @@ h2 {
 
 .window {
     position: relative;
-    margin: 0 auto;
     padding: 10px;
 
     &::before,
@@ -185,6 +185,12 @@ h2 {
     &.bg-green {
         &::before {
             background-color: var(--c-green);
+        }
+    }
+
+    &.bg-gray-light {
+        &::before {
+            background-color: var(--c-gray-light);
         }
     }
 

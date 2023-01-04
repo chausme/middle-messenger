@@ -1,9 +1,11 @@
 import chat from './components/chat';
+import searchInput from './components/search-input';
 import template from './chats.hbs';
 import './chats.css';
 
 export default (
     props = {
+        searchInput: searchInput(),
         chats: [
             chat({
                 avatar: 'https://via.placeholder.com/60',
