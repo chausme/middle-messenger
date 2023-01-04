@@ -3,7 +3,6 @@ import pageChats from './pages/chats';
 import pageAccount from './pages/account';
 import page404 from './pages/404';
 import Router from './utils/router';
-import './reset.css';
 import './variables.css';
 import './styles.css';
 
