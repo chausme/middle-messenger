@@ -1,21 +1,21 @@
 body {
     font-family: "Fira Sans Extra Condensed", sans-serif;
     background-color: var(--c-purple);
-}
 
-/** @todo remove later **/
-header {
-    background-color: var(--c-green);
-    width: 100%;
-    position: fixed;
-    padding: 20px;
+    /** @todo remove later **/
+
+    & > header {
+        background-color: var(--c-green);
+        width: 100%;
+        position: fixed;
+        padding: 20px;
+    }
 }
 
 main {
-    padding: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    padding: 150px 20px 40px;
+    max-width: 1440px;
+    margin: 0 auto;
     height: 100vh;
 }
 
@@ -63,6 +63,12 @@ h2 {
     &.bg-orange {
         &::before {
             background-color: var(--c-orange);
+        }
+    }
+
+    &.bg-orange-light {
+        &::before {
+            background-color: var(--c-orange-light);
         }
     }
 

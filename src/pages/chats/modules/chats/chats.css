@@ -1,0 +1,5 @@
+.window {
+    &.chats {
+        flex: 0 0 30%;
+    }
+}
