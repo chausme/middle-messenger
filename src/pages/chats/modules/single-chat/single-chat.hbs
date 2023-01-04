@@ -1,20 +1,9 @@
 <div class="window lg single-chat bg-orange-light d-flex h-100">
     <div class="inner">
-        <header class="window bg-purple-light mb-3">
-            <div class="inner d-flex justify-content-between">
-                <div>[avatar] + [name]</div>
-                <div>[button]</div>
-            </div>
-        </header>
+        {{{props.header}}}
         <div class="messages mb-3">
-            [messages]
+            {{{props.empty}}}
         </div>
-        <footer class="window bg-green">
-            <div class="inner d-flex">
-                <div>[button attach]</div>
-                <div>[message input]</div>
-                <div>[button send]</div>
-            </div>
-        </footer>
+        {{{props.footer}}}
     </div>
 </div>

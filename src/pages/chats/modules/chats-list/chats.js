@@ -12,7 +12,7 @@ export default (
             icon: 'hamburger',
             styles: 'mr-1/5 bg-green',
         }),
-        searchInput: searchInput(),
+        searchInput,
         chats: [
             chat({
                 avatar: 'https://via.placeholder.com/60',

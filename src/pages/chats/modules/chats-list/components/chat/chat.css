@@ -3,6 +3,7 @@
         width: 410px;
         height: 90px;
         cursor: pointer;
+        overflow: hidden;
 
         &:hover {
             &::before {
@@ -22,7 +23,7 @@
         }
 
         .details {
-            flex: 0 0 70%;
+            flex: 0 0 60%;
         }
 
         .meta {

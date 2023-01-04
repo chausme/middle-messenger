@@ -1,4 +1,4 @@
-import chats from './modules/chats';
+import chatsList from './modules/chats-list';
 import singleChat from './modules/single-chat';
 import template from './chats.hbs';
 
@@ -6,7 +6,7 @@ import template from './chats.hbs';
 
 export default (
     props = {
-        chats: chats(),
-        singleChat: singleChat(),
+        chatsList,
+        singleChat,
     }
 ) => template({ props });
