@@ -252,6 +252,10 @@ h2 {
         width: 100%;
         position: relative;
         z-index: 1;
+
+        &-auto {
+            width: auto;
+        }
     }
 }
 
@@ -345,6 +349,26 @@ h2 {
 .mx-3 {
     margin-left: 32px;
     margin-right: 32px;
+}
+
+.mw-100 {
+    max-width: 100%;
+}
+
+.mw-50 {
+    max-width: 50%;
+}
+
+.mw-fit {
+    max-width: fit-content;
+}
+
+.w-fit {
+    width: fit-content;
+}
+
+.p-0 {
+    padding: 0;
 }
 
 .p-2 {
