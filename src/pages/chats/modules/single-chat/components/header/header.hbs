@@ -1,6 +1,11 @@
 <header class="window bg-purple-light mb-3">
     <div class="inner d-flex justify-content-between">
-        <div>[avatar] + [name]</div>
+        <div class="title d-flex align-items-center">
+            <div class="avatar sm">
+                <img src="{{{props.avatar}}}" alt="" />
+            </div>
+            <p class="font-600 mb-0 ml-2">{{{props.title}}}</p>
+        </div>
         {{{buttonIcon}}}
     </div>
 </header>
