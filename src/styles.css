@@ -52,16 +52,22 @@ body {
     & > header {
         background-color: var(--c-green);
         width: 100%;
+        height: 70px;
         position: fixed;
         padding: 20px;
+        border-bottom: 10px var(--c-black) solid;
+        top: 0;
+        z-index: 100;
     }
 }
 
 main {
-    padding: 150px 20px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     max-width: 1440px;
-    margin: 0 auto;
-    height: 100vh;
+    margin: 100px auto 0;
+    height: calc(100vh - 70px - 100px);
 }
 
 h2 {
@@ -273,12 +279,12 @@ h2 {
     cursor: pointer;
 }
 
-.text-gray {
-    color: var(--c-gray);
+.text-black {
+    color: var(--c-black);
 }
 
-.text-gray-dark {
-    color: var(--c-gray-dark);
+.text-gray {
+    color: var(--c-gray);
 }
 
 .text-gray-dark {
@@ -331,6 +337,11 @@ h2 {
     margin-bottom: 6px;
 }
 
+.my-1 {
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
 .mb-1 {
     margin-bottom: 8px;
 }
@@ -353,6 +364,10 @@ h2 {
 
 .mb-4 {
     margin-bottom: 40px;
+}
+
+.mt-0\/5 {
+    margin-top: 4px;
 }
 
 .mt-3 {
@@ -430,6 +445,10 @@ h2 {
     padding-bottom: 40px;
 }
 
+.pb-4\/5 {
+    padding-bottom: 48px;
+}
+
 .p-3 {
     padding: 32px;
 }
@@ -491,7 +510,7 @@ h2 {
 }
 
 .text-sm {
-    font-size: 0.85rem;
+    font-size: 0.875rem;
 }
 
 /*** specific styles ***/

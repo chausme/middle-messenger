@@ -23,7 +23,6 @@ export default (
                 unread: 2,
             }),
             chat({
-                avatar: 'https://via.placeholder.com/60',
                 title: 'Kate',
                 lastMessage: 'Curabitur posuere ipsum nec orc!',
                 own: true,
@@ -32,7 +31,8 @@ export default (
             }),
             chat({
                 title: 'English Club',
-                listMessageSticker: true,
+                avatar: 'https://via.placeholder.com/60',
+                lastMessageSticker: true,
                 datetime: 'Sun',
             }),
             chat({
@@ -43,12 +43,12 @@ export default (
             }),
             chat({
                 title: "Designer's Club",
-                listMessageImage: true,
+                lastMessageImage: true,
                 datetime: 'Wed',
             }),
             chat({
                 title: 'Mary',
-                listMessageSticker: true,
+                lastMessageSticker: true,
                 own: true,
                 datetime: 'Mon',
             }),
@@ -59,7 +59,7 @@ export default (
             }),
             chat({
                 title: 'Mike',
-                listMessageImage: true,
+                lastMessageImage: true,
                 datetime: 'Dec 2021',
                 own: true,
             }),

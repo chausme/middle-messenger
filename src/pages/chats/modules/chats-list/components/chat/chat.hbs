@@ -1,14 +1,23 @@
 <div class="window pad sm p-0/5 chat bg-cyan-light mb-2 p-2">
-    <div class="inner d-flex h-100 pb-1/5">
+    <div class="inner d-flex h-100 overflow-hidden">
         <div class="window sm avatar p-0 shrink-0 bg-purple">
             <div class="inner">
                 <img src="{{{props.avatar}}}" alt="" />
             </div>
         </div>
         <div class="details ml-2">
-            <p class="title font-600 mb-0/75">{{{props.title}}}</p>
-            <div class="message text-gray-darker">
-                {{{props.lastMessage}}}
+            <p class="title font-600 mt-0/5 mb-1">{{{props.title}}}</p>
+            <div class="message text-gray-darker text-sm">
+                {{#if props.own}}
+                    <span class="text-black">You:</span>
+                {{/if}}
+                {{#if props.lastMessageSticker}}
+                    Sticker
+                {{else if props.lastMessageImage}}
+                    Image
+                {{else}}
+                    {{{props.lastMessage}}}
+                {{/if}}
             </div>
         </div>
         <div class="meta">
