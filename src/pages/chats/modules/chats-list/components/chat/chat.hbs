@@ -1,22 +1,24 @@
 <div class="window pad sm p-0/5 chat bg-cyan-light mb-2 p-2">
-    <div class="inner d-flex flex-wrap h-100 pb-1/5">
+    <div class="inner d-flex h-100 pb-1/5">
         <div class="window sm avatar p-0 shrink-0 bg-purple">
             <div class="inner">
                 <img src="{{{props.avatar}}}" alt="" />
             </div>
         </div>
-        <div class="details">
-            <p class="title font-600">{{{props.title}}}</p>
-            <div class="message">
+        <div class="details ml-2">
+            <p class="title font-600 mb-0/75">{{{props.title}}}</p>
+            <div class="message text-gray-darker">
                 {{{props.lastMessage}}}
             </div>
         </div>
         <div class="meta">
-            <div class="datetime">
+            <div class="datetime text-sm font-500 text-right mb-1/5 pt-1">
                 {{{props.datetime}}}
             </div>
             {{#if props.unread}}
-                {{{props.unread}}}
+                <div class="unread text-sm">
+                    {{{props.unread}}}
+                </div>
             {{/if}}
         </div>
     </div>

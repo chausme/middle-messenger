@@ -21,11 +21,25 @@
         }
 
         .details {
-            flex: 0 0 60%;
+            flex: 0 0 calc(80% - 40px - 16px - 4px);
         }
 
         .meta {
-            flex: 0 0 20%;
+            flex: 0 0 15%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+        }
+
+        .unread {
+            background-color: var(--c-purple);
+            width: 25px;
+            height: 25px;
+            color: var(--c-white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
         }
     }
 }

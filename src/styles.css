@@ -327,6 +327,14 @@ h2 {
     margin-right: 32px;
 }
 
+.mb-0\/75 {
+    margin-bottom: 6px;
+}
+
+.mb-1 {
+    margin-bottom: 8px;
+}
+
 .mb-1\/5 {
     margin-bottom: 10px;
 }
@@ -397,6 +405,10 @@ h2 {
     padding: 20px;
 }
 
+.pt-1 {
+    padding-top: 8px;
+}
+
 .py-2 {
     padding-top: 16px;
     padding-bottom: 16px;
@@ -456,6 +468,14 @@ h2 {
 
 .text-center {
     text-align: center;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.font-500 {
+    font-weight: 500;
 }
 
 .font-600 {
