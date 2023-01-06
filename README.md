@@ -8,4 +8,7 @@ Messenger app built on top of existing API as per Figma mockups
 
 ## Sprint 1
 
+### Pull request - TBC
+
 -   Currently there is no own messages sent/read output
+-   Currently there are no pop-ups implemented

@@ -20,7 +20,7 @@ export default (
             title: data.title,
         }),
         date: date({
-            date: 'Jan 20',
+            date: 'Jun 20',
         }),
         messages: [
             {

@@ -97,8 +97,6 @@ h2 {
     }
 
     &.lg {
-        padding: 20px;
-
         &::after {
             top: 10px;
             left: 10px;
@@ -106,8 +104,6 @@ h2 {
     }
 
     &.sm {
-        padding: 5px;
-
         &::after {
             top: 4px;
             left: 4px;
@@ -115,8 +111,6 @@ h2 {
     }
 
     &.xs {
-        padding: 3px;
-
         &::after {
             top: 2px;
             left: 2px;
@@ -124,13 +118,14 @@ h2 {
     }
 
     &.pad {
+        cursor: pointer;
         &:active {
             &::before {
                 top: 6px;
                 left: 6px;
             }
 
-            .inner {
+            & > .inner {
                 top: 6px;
                 left: 6px;
             }
@@ -143,7 +138,7 @@ h2 {
                     left: 4px;
                 }
 
-                .inner {
+                & > .inner {
                     top: 4px;
                     left: 4px;
                 }
@@ -157,7 +152,7 @@ h2 {
                     left: 10px;
                 }
 
-                .inner {
+                & > .inner {
                     top: 10px;
                     left: 10px;
                 }
@@ -184,7 +179,6 @@ h2 {
     }
 
     &.button {
-        cursor: pointer;
         width: 200px;
         padding: 10px;
     }
@@ -192,6 +186,10 @@ h2 {
     &.button-icon {
         width: 40px;
         height: 40px;
+    }
+
+    &.avatar {
+        padding: 0;
     }
 
     &.bg-pink {
@@ -265,6 +263,10 @@ h2 {
     padding: 5px 10px 3px;
     position: relative;
     z-index: 1;
+
+    &.md {
+        height: 50px;
+    }
 }
 
 .button {
@@ -277,6 +279,14 @@ h2 {
 
 .text-gray-dark {
     color: var(--c-gray-dark);
+}
+
+.text-gray-dark {
+    color: var(--c-gray-dark);
+}
+
+.text-gray-darker {
+    color: var(--c-gray-darker);
 }
 
 .text-white {
@@ -371,12 +381,32 @@ h2 {
     padding: 0;
 }
 
+.p-0\/33 {
+    padding: 3px;
+}
+
+.p-0\/5 {
+    padding: 5px;
+}
+
 .p-2 {
     padding: 16px;
 }
 
+.p-2\/5 {
+    padding: 20px;
+}
+
 .py-2 {
     padding-top: 16px;
+    padding-bottom: 16px;
+}
+
+.pb-1\/5 {
+    padding-bottom: 10px;
+}
+
+.pb-2 {
     padding-bottom: 16px;
 }
 
@@ -443,7 +473,9 @@ h2 {
 /*** specific styles ***/
 
 .avatar {
-    &.sm {
+    height: 60px;
+    width: 60px;
+    &-sm {
         width: 40px;
         height: 40px;
     }

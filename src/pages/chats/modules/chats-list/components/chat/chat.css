@@ -1,9 +1,7 @@
 .window {
     &.chat {
         width: 410px;
-        height: 90px;
-        cursor: pointer;
-        overflow: hidden;
+        height: 96px;
 
         &:hover {
             &::before {
@@ -18,8 +16,8 @@
             }
         }
 
-        .avatar {
-            flex: 0 0 60px;
+        & > .inner {
+            overflow: hidden;
         }
 
         .details {
