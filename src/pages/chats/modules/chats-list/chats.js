@@ -19,8 +19,6 @@ export default (
                 title: 'Jake',
                 lastMessage:
                     'Lorem ipsum dolor sit amet, consectetur adipiscingelit. Nam mollis efficitur commodo. Cras venenatis...',
-                lastMessageType: 'text',
-                lastMessageOwner: 'them',
                 datetime: '2:14pm',
                 unread: 2,
             }),
@@ -28,10 +26,42 @@ export default (
                 avatar: 'https://via.placeholder.com/60',
                 title: 'Kate',
                 lastMessage: 'Curabitur posuere ipsum nec orc!',
-                lastMessageType: 'text',
-                lastMessageOwner: 'you',
+                own: true,
                 datetime: '10:10am',
                 unread: 1,
+            }),
+            chat({
+                title: 'English Club',
+                listMessageSticker: true,
+                datetime: 'Sun',
+            }),
+            chat({
+                title: 'Jerry',
+                lastMessage:
+                    'Donec porta massa vel scelerisque vulputate. Aenean lectus orci, cursus ut ornare sit amet, aliquam non u',
+                datetime: 'Fri',
+            }),
+            chat({
+                title: "Designer's Club",
+                listMessageImage: true,
+                datetime: 'Wed',
+            }),
+            chat({
+                title: 'Mary',
+                listMessageSticker: true,
+                own: true,
+                datetime: 'Mon',
+            }),
+            chat({
+                title: 'Friends Group',
+                lastMessage: 'Etiam tincidunt ex ut eros fringilla, ut laoreet quis!',
+                datetime: '9 Sep',
+            }),
+            chat({
+                title: 'Mike',
+                listMessageImage: true,
+                datetime: 'Dec 2021',
+                own: true,
             }),
         ],
     }

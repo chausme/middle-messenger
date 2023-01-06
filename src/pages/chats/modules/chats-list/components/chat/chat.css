@@ -2,6 +2,7 @@
     &.chat {
         width: 410px;
         height: 96px;
+        user-select: none;
 
         &:hover {
             &::before {
