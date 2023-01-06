@@ -1,0 +1,16 @@
+.datetime {
+    position: absolute;
+    bottom: -42px;
+    right: 10px;
+}
+
+.window {
+    &::before,
+    &::after {
+        display: none;
+    }
+}
+
+.message-own {
+    align-self: flex-end;
+}

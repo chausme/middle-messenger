@@ -2,6 +2,7 @@ import header from './components/header';
 import empty from './components/empty';
 import message from './components/message';
 import messageImage from './components/message-image';
+import messageSticker from './components/message-sticker';
 import date from './components/date';
 import footer from './components/footer';
 import template from './single-chat.hbs';
@@ -38,7 +39,21 @@ export default (
             {
                 message: message({
                     content: 'Cool!',
-                    datetime: '2:22pm',
+                    datetime: '2:20pm',
+                    own: true,
+                }),
+            },
+            {
+                message: messageSticker({
+                    sticker: 'smile',
+                    datetime: '2:21pm',
+                    own: true,
+                }),
+            },
+            {
+                message: messageImage({
+                    image: 'https://via.placeholder.com/300x200',
+                    datetime: '2:30pm',
                     own: true,
                 }),
             },

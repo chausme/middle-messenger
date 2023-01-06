@@ -18,3 +18,7 @@
 .image {
     border: 1px var(--c-black) solid;
 }
+
+.message-own {
+    align-self: flex-end;
+}
