@@ -1,1 +1,3 @@
-export default `<h1>404. <small>That's not what you are looking for</small></h1>`;
+import page404 from './page-404';
+
+export default page404();
