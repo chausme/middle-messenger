@@ -1,4 +1,4 @@
-<div class="window message w-50 mb-2/5 d-flex p-2 pb-4 {{{props.styles}}}">
+<div class="window message mw-fit w-50 mb-2/5 d-flex p-2 pb-4 {{#if props.own}}{{{classes.message-own}}} bg-cyan-light{{else}}bg-green-light{{/if}}">
     <div class="inner">
         <div class="content">
             {{{props.content}}}

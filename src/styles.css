@@ -392,6 +392,10 @@ h2 {
     padding: 32px;
 }
 
+.pr-2 {
+    padding-right: 16px;
+}
+
 .d-flex {
     display: flex;
 }

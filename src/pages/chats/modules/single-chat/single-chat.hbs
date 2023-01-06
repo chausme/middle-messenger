@@ -1,7 +1,7 @@
 <div class="window lg single-chat bg-orange-light d-flex h-100 {{{classes.window}}}">
     <div class="inner d-flex flex-column">
         {{{props.header}}}
-        <div class="messages overflow-scroll-y h-100 mb-3">
+        <div class="messages d-flex flex-column overflow-scroll-y h-100 mb-3 pr-2">
             {{{props.date}}}
             {{#each props.messages}}
                 {{{this.message}}}
