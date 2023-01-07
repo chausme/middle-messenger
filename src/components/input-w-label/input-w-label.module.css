@@ -1,3 +1,5 @@
 .input-label {
+    display: block;
     font-size: 12px;
+    margin-bottom: 6px;
 }

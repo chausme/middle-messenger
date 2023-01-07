@@ -32,7 +32,7 @@ export default class Router {
             template = 'signUp';
         }
         return !this.routesData[template]
-            ? { name: 404, data: this.routesData['404'] }
+            ? { name: 'page404', data: this.routesData['page404'] }
             : { name: template, data: this.routesData[template] };
     }
 

@@ -3,17 +3,13 @@
         <h2 class="text-center mb-3">Sign Up</h2>
         <form class="h-100 d-flex flex-column justify-content-between" action="#">
             <div class="fields">
-                <div class="mb-2">
-                    {{{props.inputs.login}}}
-                </div>
-                <div class="mb-2">
-                    {{{props.inputs.password}}}
-                </div>
-                <div class="mb-2">
-                    [extra fields]
-                </div>
+                {{#each props.inputs}}
+                    <div class="mb-2">
+                        {{{this}}}
+                    </div>
+                {{/each}}
             </div>
-            <div class="actions d-flex flex-wrap flex-column align-items-center mb-3">
+            <div class="actions d-flex flex-wrap flex-column align-items-center my-3">
                 {{{props.buttons.signin}}}
                 {{{props.buttons.signup}}}
             </div>

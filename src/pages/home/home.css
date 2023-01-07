@@ -1,6 +1,5 @@
 .window {
     &.auth {
-        height: 500px;
         padding: 60px 125px 20px;
     }
 }
