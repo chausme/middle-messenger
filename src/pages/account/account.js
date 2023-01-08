@@ -74,7 +74,7 @@ export default (
                 title: 'Log Out',
                 id: 'logout',
                 styles: 'bg-cyan',
-                link: '',
+                link: '/',
             }),
         },
     }
