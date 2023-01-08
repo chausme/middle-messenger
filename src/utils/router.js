@@ -8,6 +8,7 @@ export default class Router {
     init() {
         const path = this.getPath(window.location.href);
         this.load(path);
+        this.addLinksClickListener();
     }
 
     // Output respective template on page and optionally update path
@@ -19,7 +20,6 @@ export default class Router {
         if (updatePath) {
             window.history.pushState({}, '', `${this.#baseUrl}/${path}`);
         }
-        this.addLinksClickListener();
     }
 
     // Get template data
