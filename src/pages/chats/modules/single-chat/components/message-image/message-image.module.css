@@ -17,6 +17,8 @@
 
 .image {
     border: 1px var(--c-black) solid;
+    position: relative;
+    z-index: -1;
 }
 
 .message-own {
