@@ -15,7 +15,7 @@ Messenger app built on top of existing API as per [Figma mockups](https://www.fi
 ### Pull request - TBC
 
 -   Currently there is no own messages sent/read output
--   Currently there are no pop-ups implemented
+-   Currently there are no pop-ups implemented including Account password update functionality
 
 ## Credits
 
