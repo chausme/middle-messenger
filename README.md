@@ -16,3 +16,8 @@ Messenger app built on top of existing API as per [Figma mockups](https://www.fi
 
 -   Currently there is no own messages sent/read output
 -   Currently there are no pop-ups implemented
+
+## Credits
+
+-   Icons by [Gene](https://cogentgene1.gumroad.com/) from [256 Brutalist Element Mega Pack](https://cogentgene1.gumroad.com/l/brutalist)
+-   Sticker placeholder image by [@louishansel](https://unsplash.com/@louishansel)
