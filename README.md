@@ -1,6 +1,6 @@
 # Middle Messenger
 
-Messenger app built on top of existing API as per Figma mockups
+Messenger app built on top of existing API as per (Figma mockups)[https://www.figma.com/file/sBhmIq6yUZIqBLoANYJkTh/Middle-Front-end-Chat-App]
 
 -   `npm run dev` - start Parcel dev server at `http://localhost:1234`
 -   `npm build` - create Parcel build at `./dist`
