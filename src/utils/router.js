@@ -32,7 +32,7 @@ export default class Router {
             template = 'signUp';
         }
         return !this.routesData[template]
-            ? { name: 'page404', data: this.routesData['page404'] }
+            ? { name: 'page404', data: this.routesData.page404 }
             : { name: template, data: this.routesData[template] };
     }
 
@@ -70,7 +70,7 @@ export default class Router {
 
     // Little helper to update body background
     updateBgColor(templateName) {
-        const body = document.body;
+        const { body } = document;
         let color = 'purple';
         if (templateName === 'signUp') {
             color = 'cyan';
