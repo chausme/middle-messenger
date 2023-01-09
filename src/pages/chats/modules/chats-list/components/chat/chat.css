@@ -1,0 +1,46 @@
+.window {
+    &.chat {
+        width: 410px;
+        height: 96px;
+        user-select: none;
+
+        &:hover {
+            &::before {
+                filter: brightness(115%);
+            }
+        }
+
+        &:active,
+        &.active {
+            &::before {
+                background-color: var(--c-cyan-light-alt);
+            }
+        }
+
+        & > .inner {
+            overflow: hidden;
+        }
+
+        .details {
+            flex: 0 0 calc(80% - 40px - 16px - 4px);
+        }
+
+        .meta {
+            flex: 0 0 15%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+        }
+
+        .unread {
+            background-color: var(--c-purple);
+            width: 25px;
+            height: 25px;
+            color: var(--c-white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+    }
+}

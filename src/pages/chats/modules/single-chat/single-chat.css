@@ -1,0 +1,5 @@
+.window {
+    &.single-chat {
+        flex: 0 0 65%;
+    }
+}

@@ -1,0 +1,26 @@
+.datetime {
+    position: absolute;
+    bottom: 12px;
+    right: 10px;
+}
+
+.window {
+    &::before {
+        border: 1px var(--c-black) solid;
+    }
+
+    &::before,
+    &::after {
+        height: calc(100% - 4px);
+    }
+}
+
+.image {
+    border: 1px var(--c-black) solid;
+    position: relative;
+    z-index: -1;
+}
+
+.message-own {
+    align-self: flex-end;
+}
