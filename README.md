@@ -10,6 +10,12 @@
 -   `npm build` - create Parcel build at `./dist`
 -   `npm run start` - create Parcel build and start Express server at `http://localhost:3000`
 
+## Sprint 2
+
+### Pull request - TBC
+
+TBC
+
 ## Sprint 1
 
 ### Pull request - https://github.com/chau5/middle.messenger.praktikum.yandex/pull/6
