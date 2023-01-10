@@ -1,6 +1,6 @@
 {
     "name": "middle-messenger",
-    "version": "1.0.1",
+    "version": "0.1.0-alpha.0",
     "description": "Messenger app based on existing API",
     "source": "src/index.html",
     "scripts": {
