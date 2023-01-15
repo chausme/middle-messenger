@@ -3,6 +3,7 @@
     "version": "0.1.0-alpha.0",
     "description": "Messenger app based on existing API",
     "source": "src/index.html",
+    "types": "dist/index.d.ts",
     "scripts": {
         "dev": "parcel",
         "build": "parcel build",

@@ -1,5 +1,8 @@
+// @ts-ignore
 import inputWLabel from '~/src/components/input-w-label';
+// @ts-ignore
 import button from '~/src/components/button';
+// @ts-ignore
 import template from './signin.hbs';
 
 // @todo add sign in logic

@@ -1,3 +1,4 @@
-import template from './date.hbs';
+// @ts-ignore
+import template from './button.hbs';
 
 export default (props = {}) => template({ props });

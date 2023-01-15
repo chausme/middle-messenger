@@ -1,7 +1,11 @@
 import chat from './components/chat';
+// @ts-ignore
 import avatar from '~/src/components/avatar';
+// @ts-ignore
 import searchInput from './components/search-input';
+// @ts-ignore
 import buttonIcon from '~/src/components/button-icon';
+// @ts-ignore
 import template from './chats.hbs';
 import './chats.css';
 

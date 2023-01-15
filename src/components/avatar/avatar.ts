@@ -1,3 +1,4 @@
+// @ts-ignore
 import template from './avatar.hbs';
 
 const windowSizes = {

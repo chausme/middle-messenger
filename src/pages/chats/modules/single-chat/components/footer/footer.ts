@@ -1,5 +1,7 @@
+// @ts-ignore
 import buttonIcon from '~/src/components/button-icon';
 import inputMessage from '../input-message';
+// @ts-ignore
 import template from './footer.hbs';
 
 export default (props = {}) =>
