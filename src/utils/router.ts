@@ -1,4 +1,4 @@
-type RoutesData = Record<string, () => void>;
+type RoutesData = Record<string, string>;
 
 export default class Router {
     routesData: RoutesData;
@@ -16,9 +16,9 @@ export default class Router {
     }
 
     // Output respective template on page and optionally update path
-    load(path: string, updatePath = false) {
+    load(path: string | '', updatePath = false) {
         const template = this.getTemplate(path);
-        const root = document.getElementById('root');
+        const root = document.getElementById('root') as HTMLElement;
         root.innerHTML = template.data;
         this.updateBgColor(template.name);
         if (updatePath) {
@@ -48,10 +48,17 @@ export default class Router {
         buttonLinks.forEach(el => {
             el.addEventListener('click', e => {
                 e.preventDefault();
+
+                if (!(e.currentTarget instanceof HTMLElement)) {
+                    return;
+                }
+
+                const isHome =
+                    !e.currentTarget.dataset.path || e.currentTarget.dataset.path === '/';
+
                 const linkPath =
-                    !e.currentTarget.dataset.path || e.currentTarget.dataset.path === '/'
-                        ? ''
-                        : e.currentTarget.dataset.path;
+                    isHome || !e.currentTarget.dataset.path ? '' : e.currentTarget.dataset.path;
+
                 this.load(linkPath, true);
             });
         });
