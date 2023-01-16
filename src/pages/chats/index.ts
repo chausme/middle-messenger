@@ -1,3 +1,3 @@
-import chats from './chats';
+import pageChats from './chats';
 
-export default chats;
+export { pageChats };

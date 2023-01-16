@@ -1,3 +1,3 @@
 import singleChat from './single-chat';
 
-export default singleChat;
+export { singleChat };

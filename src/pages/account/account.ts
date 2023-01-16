@@ -1,11 +1,11 @@
 // @ts-ignore
-import avatar from '~/src/components/avatar';
+import { avatar } from '~/src/components/avatar';
 // @ts-ignore
-import buttonIcon from '~/src/components/button-icon';
+import { buttonIcon } from '~/src/components/button-icon';
 // @ts-ignore
-import button from '~/src/components/button';
+import { button } from '~/src/components/button';
 // @ts-ignore
-import inputWLabel from '~/src/components/input-w-label';
+import { inputWLabel } from '~/src/components/input-w-label';
 // @ts-ignore
 import template from './account.hbs';
 // @ts-ignore

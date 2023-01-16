@@ -1,11 +1,11 @@
 // @ts-ignore
-import avatar from '~/src/components/avatar';
-import header from './components/header';
-import message from './components/message';
-import messageImage from './components/message-image';
-import messageSticker from './components/message-sticker';
-import date from './components/date';
-import footer from './components/footer';
+import { avatar } from '~/src/components/avatar';
+import { header } from './components/header';
+import { message } from './components/message';
+import { messageImage } from './components/message-image';
+import { messageSticker } from './components/message-sticker';
+import { date } from './components/date';
+import { footer } from './components/footer';
 // @ts-ignore
 import template from './single-chat.hbs';
 import './single-chat.css';

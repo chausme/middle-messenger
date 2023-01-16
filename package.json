@@ -7,8 +7,9 @@
         "dev": "parcel",
         "build": "parcel build",
         "start": "npm run build && node server.js",
-        "eslint": "npx eslint src/",
-        "typelint": "tsc src/*.ts",
+        "tscheck": "tsc --noEmit",
+        "tswatch": "tsc --watch",
+        "eslint": "npx eslint src/*.ts",
         "stylelint": "npx stylelint \"src/**/*.css\" \"!src/reset.css\"",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
@@ -20,6 +21,8 @@
     "type": "module",
     "license": "MIT",
     "devDependencies": {
+        "@typescript-eslint/eslint-plugin": "^5.48.1",
+        "@typescript-eslint/parser": "^5.48.1",
         "eslint": "8.30.0",
         "eslint-config-airbnb-base": "15.0.0",
         "eslint-config-prettier": "8.5.0",
@@ -35,7 +38,8 @@
         "process": "0.11.10",
         "stylelint": "14.16.1",
         "stylelint-config-prettier": "9.0.4",
-        "stylelint-config-standard": "29.0.0"
+        "stylelint-config-standard": "29.0.0",
+        "typescript": "^4.9.4"
     },
     "dependencies": {
         "handlebars": "^4.7.7"

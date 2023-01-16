@@ -1,3 +1,3 @@
 import chat from './chat';
 
-export default chat;
+export { chat };

@@ -1,3 +1,3 @@
-import account from './account';
+import pageAccount from './account';
 
-export default account;
+export { pageAccount };

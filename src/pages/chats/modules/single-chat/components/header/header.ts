@@ -1,5 +1,5 @@
 // @ts-ignore
-import buttonIcon from '~/src/components/button-icon';
+import { buttonIcon } from '~/src/components/button-icon';
 // @ts-ignore
 import template from './header.hbs';
 

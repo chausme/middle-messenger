@@ -1,3 +1,3 @@
 import empty from './empty';
 
-export default empty;
+export { empty };
