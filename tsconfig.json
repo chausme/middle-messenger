@@ -3,12 +3,12 @@
         "outDir": "dist",
         "target": "es2016",
         "module": "commonjs",
-        "esModuleInterop": true,
         "declaration": false,
         "sourceMap": true,
-        "noImplicitAny": false,
-        "noUnusedLocals": false,
-        "noUnusedParameters": false,
-        "strictNullChecks": false
+        "strictNullChecks": true,
+        "noImplicitAny": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "esModuleInterop": true
     }
 }

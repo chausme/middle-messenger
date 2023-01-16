@@ -1,5 +1,9 @@
+type RoutesData = Record<string, () => void>;
+
 export default class Router {
-    constructor(routesData) {
+    routesData: RoutesData;
+
+    constructor(routesData: RoutesData) {
         this.routesData = routesData;
     }
 
@@ -12,7 +16,7 @@ export default class Router {
     }
 
     // Output respective template on page and optionally update path
-    load(path, updatePath = false) {
+    load(path: string, updatePath = false) {
         const template = this.getTemplate(path);
         const root = document.getElementById('root');
         root.innerHTML = template.data;
@@ -23,7 +27,7 @@ export default class Router {
     }
 
     // Get template data
-    getTemplate(path = null) {
+    getTemplate(path: string | null) {
         const pathData = this.getPathData(path);
         let template = pathData.path;
         if (!template && !pathData.hash) {
@@ -54,13 +58,13 @@ export default class Router {
     }
 
     // Little helper to get path from provided location.href
-    getPath(href) {
+    getPath(href: string) {
         const url = new URL(href);
         return `${url.pathname ? url.pathname.replace('/', '') : ''}${url.hash ?? ''}`;
     }
 
     // Little helper to get naked path and hash from provided full path
-    getPathData(path) {
+    getPathData(path: string | null) {
         const url = new URL(`${this.#baseUrl}/${path}`);
         return {
             path: url.pathname.replace('/', ''),
@@ -69,7 +73,7 @@ export default class Router {
     }
 
     // Little helper to update body background
-    updateBgColor(templateName) {
+    updateBgColor(templateName: string) {
         const { body } = document;
         let color = 'purple';
         if (templateName === 'signUp') {
