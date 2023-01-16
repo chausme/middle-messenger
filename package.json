@@ -8,6 +8,7 @@
         "build": "parcel build",
         "start": "npm run build && node server.js",
         "eslint": "npx eslint src/",
+        "typelint": "tsc src/*.ts",
         "stylelint": "npx stylelint \"src/**/*.css\" \"!src/reset.css\"",
         "test": "echo \"Error: no test specified\" && exit 1"
     },

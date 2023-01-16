@@ -5,8 +5,13 @@ import * as classes from './message-sticker.module.css';
 // @ts-ignore
 import smile from '~/static/stickers/smile.png';
 
-const stickers = {
+type Stickers = {
+    [key: string]: string | boolean;
+};
+
+const stickers: Stickers = {
     smile,
 };
 
-export default (props = {}) => template({ props, classes, sticker: stickers[props.sticker] });
+export default (props = { sticker: '', datetime: '', own: false }) =>
+    template({ props, classes, sticker: stickers[props.sticker] });

@@ -1,10 +1,14 @@
 // @ts-ignore
 import template from './avatar.hbs';
 
-const windowSizes = {
+type WindowSizes = {
+    [key: string]: string;
+};
+
+const windowSizes: WindowSizes = {
     sm: 'sm',
     md: 'sm',
     lg: 'md',
 };
 
-export default (props = {}) => template({ props, windowSize: windowSizes[props.size] });
+export default (props = { size: '' }) => template({ props, windowSize: windowSizes[props.size] });
