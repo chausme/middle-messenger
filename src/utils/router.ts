@@ -1,6 +1,6 @@
 type RoutesData = Record<string, string>;
 
-export default class Router {
+export class Router {
     routesData: RoutesData;
 
     constructor(routesData: RoutesData) {

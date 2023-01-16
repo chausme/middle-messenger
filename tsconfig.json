@@ -5,6 +5,7 @@
         "module": "commonjs",
         "declaration": false,
         "sourceMap": true,
+        "strict": true,
         "strictNullChecks": true,
         "noImplicitAny": true,
         "noUnusedLocals": true,
