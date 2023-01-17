@@ -1,4 +1,3 @@
-// @ts-ignore
 import template from './avatar.hbs';
 
 type WindowSizes = {

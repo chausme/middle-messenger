@@ -1,4 +1,3 @@
-// @ts-ignore
 import template from './search-input.hbs';
 // @ts-ignore
 import * as classes from './search-input.module.css';

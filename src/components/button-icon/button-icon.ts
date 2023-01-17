@@ -1,4 +1,3 @@
-// @ts-ignore
 import template from './button-icon.hbs';
 // @ts-ignore
 import hamburger from '~/static/icons/hamburger.svg';

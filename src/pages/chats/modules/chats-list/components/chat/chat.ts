@@ -1,4 +1,3 @@
-// @ts-ignore
 import template from './chat.hbs';
 import './chat.css';
 

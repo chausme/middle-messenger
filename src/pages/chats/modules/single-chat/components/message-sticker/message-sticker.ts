@@ -1,4 +1,3 @@
-// @ts-ignore
 import template from './message-sticker.hbs';
 // @ts-ignore
 import * as classes from './message-sticker.module.css';

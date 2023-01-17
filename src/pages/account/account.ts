@@ -6,7 +6,6 @@ import { buttonIcon } from '~/src/components/button-icon';
 import { button } from '~/src/components/button';
 // @ts-ignore
 import { inputWLabel } from '~/src/components/input-w-label';
-// @ts-ignore
 import template from './account.hbs';
 // @ts-ignore
 import * as classes from './account.module.css';

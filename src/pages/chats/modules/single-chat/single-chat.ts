@@ -6,7 +6,6 @@ import { messageImage } from './components/message-image';
 import { messageSticker } from './components/message-sticker';
 import { date } from './components/date';
 import { footer } from './components/footer';
-// @ts-ignore
 import template from './single-chat.hbs';
 import './single-chat.css';
 
