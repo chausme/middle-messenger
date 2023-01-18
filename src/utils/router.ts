@@ -11,15 +11,17 @@ export class Router {
 
     init() {
         const path = this.getPath(window.location.href);
-        this.load(path);
-        this.addLinksClickListener();
+        // this.load(path);
+        // this.addLinksClickListener();
     }
 
     // Output respective template on page and optionally update path
     load(path: string | '', updatePath = false) {
         const template = this.getTemplate(path);
         const root = document.getElementById('root') as HTMLElement;
-        root.innerHTML = template.data;
+        console.log(template);
+        const page = template.component;
+        console.log(page);
         this.updateBgColor(template.name);
         if (updatePath) {
             window.history.pushState({}, '', `${this.#baseUrl}/${path}`);
@@ -36,8 +38,8 @@ export class Router {
             template = 'signUp';
         }
         return !this.routesData[template]
-            ? { name: 'page404', data: this.routesData.page404 }
-            : { name: template, data: this.routesData[template] };
+            ? { name: 'page404', component: this.routesData.page404 }
+            : { name: template, component: this.routesData[template] };
     }
 
     // Add link click event listeners on component load

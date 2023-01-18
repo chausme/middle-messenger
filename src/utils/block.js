@@ -18,7 +18,6 @@ export class Block {
      * @returns {void}
      */
     constructor(tagName = 'div', props = {}) {
-        console.log('new button here?2');
         // Create a new event bus
         const eventBus = new EventBus();
 
@@ -112,16 +111,35 @@ export class Block {
     // Could be overriden externally with render()
     _render() {
         const block = this.render();
-        console.log('render here');
+        console.log(block);
         // Этот небезопасный метод для упрощения логики
         // Используйте шаблонизатор из npm или напишите свой безопасный
         // Нужно не в строку компилировать (или делать это правильно),
         // либо сразу в DOM-элементы возвращать из compile DOM-ноду
+
         this._element.innerHTML = block;
+
+        // Remove events here
+
+        // Add events here
+
+        this._addEvents();
     }
 
     // Может переопределять пользователь, необязательно трогать
     render() {}
+
+    _removeEvents() {
+        console.log('remove events beforehand');
+    }
+
+    _addEvents() {
+        const { events = {} } = this.props;
+
+        Object.keys(events).forEach(eventName => {
+            this._element.addEventListener(eventName, events[eventName]);
+        });
+    }
 
     // Helper to get element content for output
     getContent() {
@@ -173,6 +191,7 @@ export class Block {
     // Create a single element based on provided tagName
     _createDocumentElement(tagName) {
         // Можно сделать метод, который через фрагменты в цикле создаёт сразу несколько блоков
+        console.log(tagName);
         return document.createElement(tagName);
     }
 

@@ -21,12 +21,23 @@ import * as classes from './account.module.css';
 //     return root;
 // }
 
-const buttonNew = new ButtonNew({
-    title: 'New button',
-    link: '123',
-    id: 'update_details',
-    styles: ['bg-green'],
-});
+// const buttonNew = new ButtonNew({
+//     title: 'New button',
+//     link: '123',
+//     id: 'update_details',
+//     styles: ['bg-green'],
+//     events: {
+//         click: event => {
+//             console.log(event);
+//         },
+//     },
+// });
+
+// setTimeout(() => {
+//     buttonNew.setProps({
+//         title: 'Click me, please',
+//     });
+// }, 1000);
 
 export default (
     props = {
@@ -42,7 +53,7 @@ export default (
             icon: 'back',
             styles: 'bg-orange',
         }),
-        buttonNew: buttonNew.getContent()?.outerHTML,
+        // buttonNew: buttonNew.getContent()?.outerHTML,
         inputs: {
             email: inputWLabel({
                 title: 'Email',
