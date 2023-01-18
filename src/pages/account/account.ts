@@ -13,23 +13,20 @@ import template from './account.hbs';
 // @ts-ignore
 import * as classes from './account.module.css';
 
-function render(query, block) {
-    const root = document.querySelector(query);
-    root.appendChild(block.getContent());
-    // Dispatch i.e. emit "componentDidMount" event
-    block.dispatchComponentDidMount();
-    return root;
-}
+// function render(query, block) {
+//     const root = document.querySelector(query);
+//     root.appendChild(block.getContent());
+//     // Dispatch i.e. emit "componentDidMount" event
+//     block.dispatchComponentDidMount();
+//     return root;
+// }
 
 const buttonNew = new ButtonNew({
     title: 'New button',
-    link: '',
-    styles: ['bg-green', 'text-white'],
+    link: '123',
+    id: 'update_details',
+    styles: ['bg-green'],
 });
-
-setTimeout(() => {
-    render('.avatar-lg', buttonNew);
-}, 3000);
 
 export default (
     props = {
@@ -45,12 +42,7 @@ export default (
             icon: 'back',
             styles: 'bg-orange',
         }),
-        // buttonNew: buttonNew({
-        //     title: 'New button',
-        //     id: 'update_details',
-        //     styles: 'bg-green',
-        //     link: '',
-        // }),
+        buttonNew: buttonNew.getContent()?.outerHTML,
         inputs: {
             email: inputWLabel({
                 title: 'Email',

@@ -7,6 +7,8 @@ export default class ButtonNew extends Block {
         // add default classes
         this.element.classList.add('button', 'window', 'sm', 'p-0/5', 'pad', 'text-center');
 
+        this.element.id = props.id;
+
         // check for provided styles and add if any
         if (props.styles) {
             props.styles.forEach(style => {
@@ -18,6 +20,7 @@ export default class ButtonNew extends Block {
         // add optional linl class
         if (props.link) {
             this.element.classList.add('link');
+            this.element.dataset.path = props.link;
         }
     }
 
