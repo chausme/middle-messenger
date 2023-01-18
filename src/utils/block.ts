@@ -111,7 +111,6 @@ export class Block {
     // Could be overriden externally with render()
     _render() {
         const block = this.render();
-        console.log(block);
         // Этот небезопасный метод для упрощения логики
         // Используйте шаблонизатор из npm или напишите свой безопасный
         // Нужно не в строку компилировать (или делать это правильно),
@@ -170,17 +169,11 @@ export class Block {
             },
 
             set(target, prop, value) {
-                console.log('using proxy @set');
-                if (self._isPrivate(prop)) {
-                    throw new Error('Access error');
-                }
-                // Don't update anything if prop value is the same
-                if (target[prop] === value) {
-                    // Return "true" with non-updated property
-                    return true;
-                }
                 target[prop] = value;
-                self._eventBus().emit(Block.EVENTS.FLOW_CDU, 'emit cdu');
+
+                // Запускаем обновление компоненты
+                // Плохой cloneDeep, в следующей итерации нужно заставлять добавлять cloneDeep им самим
+                self.eventBus().emit(Block.EVENTS.FLOW_CDU, { ...target }, target);
                 return true;
             },
         });
@@ -191,14 +184,13 @@ export class Block {
     // Create a single element based on provided tagName
     _createDocumentElement(tagName) {
         // Можно сделать метод, который через фрагменты в цикле создаёт сразу несколько блоков
-        console.log(tagName);
         return document.createElement(tagName);
     }
 
     // Show block with simple CSS
     show() {
-        console.log('show internal');
         this._element.style.display = 'block';
+        console.log('show internal');
     }
 
     // Hide block with simple CSS

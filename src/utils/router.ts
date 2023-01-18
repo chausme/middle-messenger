@@ -11,17 +11,14 @@ export class Router {
 
     init() {
         const path = this.getPath(window.location.href);
-        // this.load(path);
-        // this.addLinksClickListener();
+        this.load(path);
     }
 
     // Output respective template on page and optionally update path
     load(path: string | '', updatePath = false) {
         const template = this.getTemplate(path);
         const root = document.getElementById('root') as HTMLElement;
-        console.log(template);
-        const page = template.component;
-        console.log(page);
+        root?.append(template.component?.getContent());
         this.updateBgColor(template.name);
         if (updatePath) {
             window.history.pushState({}, '', `${this.#baseUrl}/${path}`);

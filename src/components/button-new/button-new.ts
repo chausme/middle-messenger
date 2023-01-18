@@ -1,8 +1,4 @@
-// import { ButtonNew } from './button-new';
-
-// export { ButtonNew };
-
-import { Block } from '~/src/utils/block.js';
+import { Block } from '~/src/utils/block';
 import template from './button-new.hbs';
 export class ButtonNew extends Block {
     constructor(props) {
