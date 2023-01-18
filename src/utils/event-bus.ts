@@ -1,18 +1,8 @@
 type Listeners = Record<string, Function[]>;
-
 export class EventBus {
     listeners: Listeners;
-
     constructor() {
         this.listeners = {};
-        // @ts-ignore
-        if (EventBus.__instance) {
-            // @ts-ignore
-            return EventBus.__instance;
-        }
-
-        // @ts-ignore
-        EventBus.__instance = this;
     }
 
     on(event: string, callback: Function) {
