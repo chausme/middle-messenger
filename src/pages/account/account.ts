@@ -22,7 +22,9 @@ function render(query, block) {
 }
 
 const buttonNew = new ButtonNew({
-    title: 'Click me',
+    title: 'New button',
+    link: '',
+    styles: ['bg-green', 'text-white'],
 });
 
 setTimeout(() => {
