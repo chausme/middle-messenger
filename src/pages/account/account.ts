@@ -4,11 +4,42 @@ import { avatar } from '~/src/components/avatar';
 import { buttonIcon } from '~/src/components/button-icon';
 // @ts-ignore
 import { button } from '~/src/components/button';
+
+// import { buttonNew } from '~/src/components/button-new';
+import { Block } from '~/src/utils/block.js';
+class ButtonNew extends Block {
+    constructor(props) {
+        // Создаём враппер дом-элемент button
+        super('button', props);
+    }
+
+    render() {
+        // В проекте должен быть ваш собственный шаблонизатор
+        return `<div>${this.props.text}</div>`;
+    }
+}
+
 // @ts-ignore
 import { inputWLabel } from '~/src/components/input-w-label';
 import template from './account.hbs';
 // @ts-ignore
 import * as classes from './account.module.css';
+
+function render(query, block) {
+    const root = document.querySelector(query);
+    root.appendChild(block.getContent());
+    // Dispatch i.e. emit "componentDidMount" event
+    block.dispatchComponentDidMount();
+    return root;
+}
+
+const buttonNew = new ButtonNew({
+    text: 'Click me',
+});
+
+setTimeout(() => {
+    render('.avatar-lg', buttonNew);
+}, 3000);
 
 export default (
     props = {
@@ -24,6 +55,12 @@ export default (
             icon: 'back',
             styles: 'bg-orange',
         }),
+        // buttonNew: buttonNew({
+        //     title: 'New button',
+        //     id: 'update_details',
+        //     styles: 'bg-green',
+        //     link: '',
+        // }),
         inputs: {
             email: inputWLabel({
                 title: 'Email',
