@@ -2,7 +2,7 @@ import { signIn } from './modules/signin';
 import { signUp } from './modules/signup';
 import { Block } from '~/src/utils/block';
 import template from './home.hbs';
-import { ButtonNew } from '../../components/button-new';
+import { Button } from '../../components/button';
 import './home.css';
 
 export class PageHome extends Block {
@@ -11,7 +11,7 @@ export class PageHome extends Block {
     }
 
     render() {
-        const btn = new ButtonNew({
+        const btn = new Button({
             title: 'New button',
             link: '123',
             id: 'update_details',
@@ -24,13 +24,7 @@ export class PageHome extends Block {
         });
         return template({
             form: this.props.type === 'signUp' ? signUp : signIn,
+            button: btn.getContent()?.outerHTML,
         });
     }
 }
-
-// const pageHome = (type: string) => {
-//     if (type && type === 'signUp') {
-//         return signUp();
-//     }
-//     return signIn();
-// };

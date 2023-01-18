@@ -3,41 +3,13 @@ import { avatar } from '~/src/components/avatar';
 // @ts-ignore
 import { buttonIcon } from '~/src/components/button-icon';
 // @ts-ignore
-import { button } from '~/src/components/button';
-
-import { ButtonNew } from '~/src/components/button-new';
+import { Button } from '~/src/components/button';
 
 // @ts-ignore
 import { inputWLabel } from '~/src/components/input-w-label';
 import template from './account.hbs';
 // @ts-ignore
 import * as classes from './account.module.css';
-
-// function render(query, block) {
-//     const root = document.querySelector(query);
-//     root.appendChild(block.getContent());
-//     // Dispatch i.e. emit "componentDidMount" event
-//     block.dispatchComponentDidMount();
-//     return root;
-// }
-
-// const buttonNew = new ButtonNew({
-//     title: 'New button',
-//     link: '123',
-//     id: 'update_details',
-//     styles: ['bg-green'],
-//     events: {
-//         click: event => {
-//             console.log(event);
-//         },
-//     },
-// });
-
-// setTimeout(() => {
-//     buttonNew.setProps({
-//         title: 'Click me, please',
-//     });
-// }, 1000);
 
 export default (
     props = {
@@ -53,7 +25,6 @@ export default (
             icon: 'back',
             styles: 'bg-orange',
         }),
-        // buttonNew: buttonNew.getContent()?.outerHTML,
         inputs: {
             email: inputWLabel({
                 title: 'Email',
