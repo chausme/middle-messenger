@@ -18,17 +18,18 @@ import './styles.css';
 // });
 // router.init();
 window.addEventListener('DOMContentLoaded', () => {
-    const buttonNew = new ButtonNew({
-        title: 'New button',
-        link: '123',
-        id: 'update_details',
-        styles: ['bg-green'],
-        events: {
-            click: event => {
-                console.log(event);
-            },
-        },
-    });
-    const root = document.querySelector('#root');
-    root?.append(buttonNew.getContent());
+    // const buttonNew = new ButtonNew({
+    //     title: 'New button',
+    //     link: '123',
+    //     id: 'update_details',
+    //     styles: ['bg-green'],
+    //     events: {
+    //         click: event => {
+    //             console.log(event);
+    //         },
+    //     },
+    // });
+    // const root = document.querySelector('#root');
+    const pageHome = new PageHome();
+    root?.append(pageHome.getContent());
 });
