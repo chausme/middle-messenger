@@ -5,19 +5,7 @@ import { buttonIcon } from '~/src/components/button-icon';
 // @ts-ignore
 import { button } from '~/src/components/button';
 
-// import { buttonNew } from '~/src/components/button-new';
-import { Block } from '~/src/utils/block.js';
-class ButtonNew extends Block {
-    constructor(props) {
-        // Создаём враппер дом-элемент button
-        super('button', props);
-    }
-
-    render() {
-        // В проекте должен быть ваш собственный шаблонизатор
-        return `<div>${this.props.text}</div>`;
-    }
-}
+import { ButtonNew } from '~/src/components/button-new';
 
 // @ts-ignore
 import { inputWLabel } from '~/src/components/input-w-label';
