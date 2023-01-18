@@ -22,7 +22,7 @@ function render(query, block) {
 }
 
 const buttonNew = new ButtonNew({
-    text: 'Click me',
+    title: 'Click me',
 });
 
 setTimeout(() => {
