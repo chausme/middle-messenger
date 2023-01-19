@@ -70,7 +70,7 @@ export class Block {
 
     // EVENT: "init" function
     init() {
-        console.log('init here');
+        console.log('EVENT: INIT', this);
         // Create resources, currently a single element, see _createDocumentElement()
         this._createResources();
         // Emit "render" event
@@ -79,8 +79,12 @@ export class Block {
 
     // EVENT: "componentDidMount" function
     _componentDidMount() {
-        console.log('cdm here');
+        console.log('EVENT: CDM', this);
         this.componentDidMount();
+
+        Object.values(this.children).forEach((component: Block | any) => {
+            component.dispatchComponentDidMount();
+        });
     }
 
     // Может переопределять пользователь, необязательно трогать
@@ -93,7 +97,7 @@ export class Block {
 
     // EVENT: "componentDidUpdate" function
     _componentDidUpdate(oldProps, newProps) {
-        console.log('cdu here');
+        console.log('EVENT: CDU', this);
         const response = this.componentDidUpdate(oldProps, newProps);
         if (response) {
             this._eventBus().emit(Block.EVENTS.FLOW_RENDER, 'emit render');
@@ -123,23 +127,26 @@ export class Block {
     // Heads up - renders not the entire element i.e. not the tagName
     // Could be overriden externally with render()
     _render() {
+        console.log('EVENT: RENDER', this);
         const block = this.render();
-        // Этот небезопасный метод для упрощения логики
-        // Используйте шаблонизатор из npm или напишите свой безопасный
-        // Нужно не в строку компилировать (или делать это правильно),
-        // либо сразу в DOM-элементы возвращать из compile DOM-ноду
 
-        this._element.innerHTML = block;
+        // Remove events
+        this._removeEvents();
 
-        // Remove events here
+        // Clear element contents
+        this._element.innerHTML = '';
+
+        // Add element contents
+        this._element.append(block);
 
         // Add events here
-
         this._addEvents();
     }
 
-    // Может переопределять пользователь, необязательно трогать
-    render() {}
+    // Could be redeclared by user
+    render(): DocumentFragment {
+        return new DocumentFragment();
+    }
 
     _removeEvents() {
         console.log('remove events beforehand');
@@ -166,18 +173,13 @@ export class Block {
 
         // @todo avoid re-assignment
         props = new Proxy(props, {
-            get(target, prop) {
-                if (self._isPrivate(prop)) {
-                    throw new Error('Access error');
-                }
-
+            get(target, prop: string) {
                 const value = target[prop];
                 return typeof value === 'function' ? value.bind(target) : value;
             },
 
             // Prevent props removal
             deleteProperty(target, prop) {
-                console.log('using proxy @deleteProperty');
                 throw new Error('Access error');
             },
 
@@ -224,11 +226,23 @@ export class Block {
     compile(template: TemplateDelegate, context) {
         const propsAndStubs = { ...context };
 
-        Object.entries(this.children).forEach(([key, component]: [string, Block]) => {
+        Object.entries(this.children).forEach(([key, component]: [string, Block | any]) => {
             propsAndStubs[key] = `<div data-id="${component._id}" />`;
         });
 
-        return template(propsAndStubs);
+        const html = template(propsAndStubs);
+        const fragment = this._createDocumentElement('template');
+        fragment.innerHTML = html;
+
+        Object.values(this.children).forEach((component: Block | any) => {
+            const stub = fragment.content.querySelector(`[data-id="${component._id}"]`);
+            if (!stub) {
+                return;
+            }
+            stub.replaceWith(component.getContent());
+        });
+
+        return fragment.content;
     }
 
     // Show block with simple CSS

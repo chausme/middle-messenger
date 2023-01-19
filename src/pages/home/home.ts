@@ -15,6 +15,7 @@ export class PageHome extends Block {
     }
 
     render() {
+        this.dispatchComponentDidMount();
         return this.compile(template, {
             form: this.props.type === 'signUp' ? signUp : signIn,
             button: this.props.button,

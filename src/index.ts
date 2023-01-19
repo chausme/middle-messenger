@@ -23,7 +23,7 @@ const button = new Button({
 
 const router = new Router({
     signIn: new PageHome({ button }),
-    signUp: new PageHome({ type: 'signUp' }),
+    // signUp: new PageHome({ type: 'signUp' }),
     // chats: pageChats(),
     // account: pageAccount(),
     // page404: page404(),
