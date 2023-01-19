@@ -1,14 +1,8 @@
-// @ts-ignore
-import { avatar } from '~/src/components/avatar';
-// @ts-ignore
-import { buttonIcon } from '~/src/components/button-icon';
-// @ts-ignore
-import { Button } from '~/src/components/button';
-
-// @ts-ignore
-import { inputWLabel } from '~/src/components/input-w-label';
+import { avatar } from '~/components/avatar';
+import { buttonIcon } from '~/components/button-icon';
+import { Button } from '~/components/button';
+import { inputWLabel } from '~/components/input-w-label';
 import template from './account.hbs';
-// @ts-ignore
 import * as classes from './account.module.css';
 
 export default (

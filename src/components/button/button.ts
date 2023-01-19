@@ -1,4 +1,4 @@
-import { Block } from '~/src/utils/block';
+import { Block } from '~/utils/block';
 import template from './button.hbs';
 export class Button extends Block {
     constructor(props) {

@@ -1,5 +1,4 @@
-// @ts-ignore
-import { avatar } from '~/src/components/avatar';
+import { avatar } from '~/components/avatar';
 import { header } from './components/header';
 import { message } from './components/message';
 import { messageImage } from './components/message-image';

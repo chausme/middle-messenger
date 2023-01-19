@@ -1,5 +1,4 @@
-// @ts-ignore
-import { buttonIcon } from '~/src/components/button-icon';
+import { buttonIcon } from '~/components/button-icon';
 import { inputMessage } from '../input-message';
 import template from './footer.hbs';
 
