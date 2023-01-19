@@ -1,6 +1,6 @@
 import template from './message-sticker.hbs';
 import * as classes from './message-sticker.module.css';
-import smile from '~/static/stickers/smile.png';
+import smile from '~/src/static/stickers/smile.png';
 
 type Stickers = {
     [key: string]: string | boolean;

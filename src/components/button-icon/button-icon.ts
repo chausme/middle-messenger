@@ -1,8 +1,8 @@
 import template from './button-icon.hbs';
-import hamburger from '~/static/icons/hamburger.svg';
-import attachment from '~/static/icons/attachment.svg';
-import arrow from '~/static/icons/arrow.svg';
-import back from '~/static/icons/back.svg';
+import hamburger from '~/src/static/icons/hamburger.svg';
+import attachment from '~/src/static/icons/attachment.svg';
+import arrow from '~/src/static/icons/arrow.svg';
+import back from '~/src/static/icons/back.svg';
 
 type Icons = {
     [key: string]: string;

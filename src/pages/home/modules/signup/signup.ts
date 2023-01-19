@@ -1,5 +1,5 @@
-import { inputWLabel } from '~/components/input-w-label';
-import { Button } from '~/components/button';
+import { inputWLabel } from '~/src/components/input-w-label';
+import { Button } from '~/src/components/button';
 import template from './signup.hbs';
 
 // @todo add sign up logic

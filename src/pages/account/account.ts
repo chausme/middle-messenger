@@ -1,7 +1,7 @@
-import { avatar } from '~/components/avatar';
-import { buttonIcon } from '~/components/button-icon';
-import { Button } from '~/components/button';
-import { inputWLabel } from '~/components/input-w-label';
+import { avatar } from '~/src/components/avatar';
+import { buttonIcon } from '~/src/components/button-icon';
+import { Button } from '~/src/components/button';
+import { inputWLabel } from '~/src/components/input-w-label';
 import template from './account.hbs';
 import * as classes from './account.module.css';
 
