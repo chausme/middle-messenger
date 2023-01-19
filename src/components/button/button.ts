@@ -24,6 +24,6 @@ export class Button extends Block {
     }
 
     render() {
-        return template({ props: this.props });
+        return this.compile(template, { context: this.props });
     }
 }

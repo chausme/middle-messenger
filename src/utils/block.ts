@@ -1,3 +1,4 @@
+import { TemplateDelegate } from 'handlebars';
 import { EventBus } from './event-bus';
 import { v4 as makeUUID } from 'uuid';
 
@@ -19,9 +20,14 @@ export class Block {
      *
      * @returns {void}
      */
-    constructor(tagName = 'div', props = {}) {
+    constructor(tagName = 'div', propsAndChildren = {}) {
         // Create a new event bus
         const eventBus = new EventBus();
+
+        const { children, props } = this._getChildren(propsAndChildren);
+
+        // Save children
+        this.children = children;
 
         // Save provided tagName and props
         this._meta = {
@@ -196,6 +202,33 @@ export class Block {
             element.setAttribute('data-id', this._id);
         }
         return element;
+    }
+
+    // Filter props and children
+    _getChildren(propsAndChildren) {
+        const children = {};
+        const props = {};
+
+        Object.entries(propsAndChildren).forEach(([key, value]) => {
+            if (value instanceof Block) {
+                children[key] = value;
+            } else {
+                props[key] = value;
+            }
+        });
+
+        return { children, props };
+    }
+
+    // Return compiled template
+    compile(template: TemplateDelegate, context) {
+        const propsAndStubs = { ...context };
+
+        Object.entries(this.children).forEach(([key, component]: [string, Block]) => {
+            propsAndStubs[key] = `<div data-id="${component._id}" />`;
+        });
+
+        return template(propsAndStubs);
     }
 
     // Show block with simple CSS

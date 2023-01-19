@@ -5,27 +5,19 @@ import template from './home.hbs';
 import { Button } from '~/src/components/button';
 import './home.css';
 
+interface PageHomeProps {
+    button: Button;
+}
+
 export class PageHome extends Block {
-    constructor(props: false | {}) {
+    constructor(props: PageHomeProps) {
         super('div', props);
     }
 
     render() {
-        const btn = new Button({
-            title: 'New button',
-            link: '123',
-            id: 'update_details',
-            styles: ['bg-green'],
-            events: {
-                click: event => {
-                    console.log(event);
-                },
-            },
-            settings: { withInternalID: true },
-        });
-        return template({
+        return this.compile(template, {
             form: this.props.type === 'signUp' ? signUp : signIn,
-            button: btn.getContent()?.outerHTML,
+            button: this.props.button,
         });
     }
 }
