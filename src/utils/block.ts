@@ -14,6 +14,8 @@ export class Block {
     _meta = null;
     _id = null;
 
+    _logging = false;
+
     /** JSDoc
      * @param {string} tagName
      * @param {Object} props
@@ -55,7 +57,7 @@ export class Block {
 
     // Register required events
     _registerEvents(eventBus) {
-        eventBus.on(Block.EVENTS.INIT, this.init.bind(this));
+        eventBus.on(Block.EVENTS.INIT, this._init.bind(this));
         eventBus.on(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this));
         eventBus.on(Block.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this));
         eventBus.on(Block.EVENTS.FLOW_RENDER, this._render.bind(this));
@@ -69,17 +71,25 @@ export class Block {
     }
 
     // EVENT: "init" function
-    init() {
-        console.log('EVENT: INIT', this);
+    _init() {
+        if (this._logging) {
+            console.log('EVENT: INIT', this);
+        }
+        this.init();
+
         // Create resources, currently a single element, see _createDocumentElement()
         this._createResources();
         // Emit "render" event
         this._eventBus().emit(Block.EVENTS.FLOW_RENDER, 'emit render');
     }
 
+    init() {}
+
     // EVENT: "componentDidMount" function
     _componentDidMount() {
-        console.log('EVENT: CDM', this);
+        if (this._logging) {
+            console.log('EVENT: CDM', this);
+        }
         this.componentDidMount();
 
         Object.values(this.children).forEach((component: Block | any) => {
@@ -87,7 +97,7 @@ export class Block {
         });
     }
 
-    // Может переопределять пользователь, необязательно трогать
+    // Could be redeclared by user
     componentDidMount(oldProps) {}
 
     // Dispatch i.e. emit "componentDidMount" event
@@ -97,14 +107,16 @@ export class Block {
 
     // EVENT: "componentDidUpdate" function
     _componentDidUpdate(oldProps, newProps) {
-        console.log('EVENT: CDU', this);
+        if (this._logging) {
+            console.log('EVENT: CDU', this);
+        }
         const response = this.componentDidUpdate(oldProps, newProps);
         if (response) {
             this._eventBus().emit(Block.EVENTS.FLOW_RENDER, 'emit render');
         }
     }
 
-    // Может переопределять пользователь, необязательно трогать
+    // Could be redeclared by user
     componentDidUpdate(oldProps, newProps) {
         return true;
     }
@@ -127,7 +139,9 @@ export class Block {
     // Heads up - renders not the entire element i.e. not the tagName
     // Could be overriden externally with render()
     _render() {
-        console.log('EVENT: RENDER', this);
+        if (this._logging) {
+            console.log('EVENT: RENDER', this);
+        }
         const block = this.render();
 
         // Remove events
