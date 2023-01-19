@@ -2,7 +2,7 @@ import { signIn } from './modules/signin';
 import { signUp } from './modules/signup';
 import { Block } from '~/src/utils/block';
 import template from './home.hbs';
-import { Button } from '../../components/button';
+import { Button } from '~/src/components/button';
 import './home.css';
 
 export class PageHome extends Block {
@@ -21,6 +21,7 @@ export class PageHome extends Block {
                     console.log(event);
                 },
             },
+            settings: { withInternalID: true },
         });
         return template({
             form: this.props.type === 'signUp' ? signUp : signIn,

@@ -1,4 +1,5 @@
 import { EventBus } from './event-bus';
+import { v4 as makeUUID } from 'uuid';
 
 export class Block {
     static EVENTS = {
@@ -10,6 +11,7 @@ export class Block {
 
     _element = null;
     _meta = null;
+    _id = null;
 
     /** JSDoc
      * @param {string} tagName
@@ -27,8 +29,13 @@ export class Block {
             props,
         };
 
+        if (props?.settings?.withInternalID) {
+            // Generate unique ID
+            this._id = makeUUID();
+        }
+
         // Create proxy
-        this.props = this._makePropsProxy(props);
+        this.props = this._makePropsProxy({ ...props, __id: this._id });
 
         // Set link to the new event bus
         this._eventBus = () => eventBus;
@@ -184,7 +191,11 @@ export class Block {
     // Create a single element based on provided tagName
     _createDocumentElement(tagName) {
         // Можно сделать метод, который через фрагменты в цикле создаёт сразу несколько блоков
-        return document.createElement(tagName);
+        const element = document.createElement(tagName);
+        if (this._id) {
+            element.setAttribute('data-id', this._id);
+        }
+        return element;
     }
 
     // Show block with simple CSS
