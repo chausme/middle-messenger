@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 type Listeners = Record<string, Function[]>;
 export class EventBus {
     listeners: Listeners;

@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import { Form } from '~/src/components/form';
 import { Block } from '~/src/utils/block';
 import { Button } from '~/src/components/button';

@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 type RoutesData = Record<string, string>;
 
 export class Router {

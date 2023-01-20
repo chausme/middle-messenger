@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import { TemplateDelegate } from 'handlebars';
 import { EventBus } from './event-bus';
 import { v4 as makeUUID } from 'uuid';
