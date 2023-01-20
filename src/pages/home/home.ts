@@ -1,7 +1,7 @@
 // @ts-nocheck
 
-import { Form } from '~/src/components/form';
 import { Block } from '~/src/utils/block';
+import { Form } from '~/src/components/form';
 import { Button } from '~/src/components/button';
 import template from './home.hbs';
 import './home.css';
@@ -14,7 +14,7 @@ export class PageHome extends Block {
     constructor(props: PageHomeProps) {
         super('div', props);
 
-        this._element.classList.add('window', 'lg', 'p-2/5', 'auth', 'w-fixed');
+        this.element.classList.add('window', 'lg', 'p-2/5', 'auth', 'w-fixed');
 
         if (this.props.type === 'signIn') {
             this.props.title = 'Sign In';
@@ -39,7 +39,12 @@ export class PageHome extends Block {
             settings: { withInternalID: true },
         });
 
-        this.children.form = new Form();
+        if (this.props.type === 'signIn') {
+            this.children.form = new Form({
+                id: 'sign-in',
+            });
+        } else if (this.props.type === 'signUp') {
+        }
 
         setTimeout(() => {
             // Update button title

@@ -10,6 +10,10 @@ export class Form extends Block {
         if (!this.element) {
             return;
         }
+
+        this.element.classList.add('h-100', 'd-flex', 'flex-column', 'justify-content-between');
+        this.element.setAttribute('id', props.id);
+        this.element.setAttribute('action', '#');
     }
 
     render() {
