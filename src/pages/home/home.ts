@@ -43,11 +43,13 @@ export class PageHome extends Block {
         if (this.props.type === 'signIn') {
             this.children.form = new Form({
                 id: 'sign-in',
-            });
-            this.children.inputTest = new InputWLabel({
-                title: 'Login',
-                id: 'login',
-                type: 'text',
+                inputs: [
+                    new InputWLabel({
+                        title: 'Login',
+                        id: 'login',
+                        type: 'text',
+                    }),
+                ],
             });
         }
         // else if (this.props.type === 'signUp') {

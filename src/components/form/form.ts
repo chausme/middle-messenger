@@ -16,6 +16,13 @@ export class Form extends Block {
         this.element.setAttribute('action', '#');
     }
 
+    init() {
+        this.props.inputs.forEach(input => {
+            this.children[input.props.id] = input;
+            console.log(this.children);
+        });
+    }
+
     render() {
         return this.compile(template, { ...this.props });
     }
