@@ -1,12 +1,13 @@
-<label for="{{{props.id}}}" class="{{{classes.input-label}}}">{{{props.title}}}</label>
+<label for="{{id}}" class="{{classes.input-label}}">{{title}}</label>
 <div class="input-wrap window sm p-0/5 bg-gray-light">
     <input
-        type="{{{props.type}}}"
+        type="{{type}}"
         class="input"
-        name="{{{props.id}}}"
-        id="{{{props.id}}}"
-        value="{{{props.value}}}"
-        placeholder="{{{props.title}}}"
-        {{#if props.disabled}} disabled="disabled"{{/if}}
+        name="{{name}}"
+        id="{{id}}"
+        value="{{value}}"
+        placeholder="{{title}}"
+        {{#if disabled}} disabled="disabled"{{/if}}
     />
 </div>
+

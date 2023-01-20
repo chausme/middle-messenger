@@ -2,7 +2,7 @@
 
 import { Block } from '~/src/utils/block';
 import { Form } from '~/src/components/form';
-import { Input } from '~/src/components/input';
+import { InputWLabel } from '~/src/components/input-w-label';
 import { Button } from '~/src/components/button';
 import template from './home.hbs';
 import './home.css';
@@ -44,7 +44,7 @@ export class PageHome extends Block {
             this.children.form = new Form({
                 id: 'sign-in',
             });
-            this.children.inputTest = new Input({
+            this.children.inputTest = new InputWLabel({
                 title: 'Login',
                 id: 'login',
                 type: 'text',
