@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import { PageHome } from './pages/home';
 // import { pageChats } from './pages/chats';
 // import { pageAccount } from './pages/account';
