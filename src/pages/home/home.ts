@@ -2,6 +2,7 @@
 
 import { Block } from '~/src/utils/block';
 import { Form } from '~/src/components/form';
+import { Input } from '~/src/components/input';
 import { Button } from '~/src/components/button';
 import template from './home.hbs';
 import './home.css';
@@ -42,6 +43,9 @@ export class PageHome extends Block {
         if (this.props.type === 'signIn') {
             this.children.form = new Form({
                 id: 'sign-in',
+            });
+            this.children.inputTest = new Input({
+                id: 'message',
             });
         } else if (this.props.type === 'signUp') {
         }

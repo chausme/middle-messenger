@@ -1,3 +1,3 @@
-import input from './input';
+import { Input } from './input';
 
-export { input };
+export { Input };

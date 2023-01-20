@@ -255,6 +255,8 @@ export class Block {
 
     // Return compiled template
     compile(template: TemplateDelegate, context: Record<string, string>) {
+        console.error('check where is input');
+
         const propsAndStubs = { ...context };
 
         Object.entries(this.children).forEach(([key, component]: [string, Block | any]) => {
