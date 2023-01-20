@@ -255,12 +255,10 @@ export class Block {
 
     // Return compiled template
     compile(template: TemplateDelegate, context: Record<string, string>) {
-        console.error('check where is input');
-
         const propsAndStubs = { ...context };
 
         Object.entries(this.children).forEach(([key, component]: [string, Block | any]) => {
-            propsAndStubs[key] = `<div data-id="${component._id}" />`;
+            propsAndStubs[key] = `<div data-id="${component._id}"></div>`;
         });
 
         const html = template(propsAndStubs);

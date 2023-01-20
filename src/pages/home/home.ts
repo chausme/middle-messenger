@@ -45,10 +45,13 @@ export class PageHome extends Block {
                 id: 'sign-in',
             });
             this.children.inputTest = new Input({
-                id: 'message',
+                title: 'Login',
+                id: 'login',
+                type: 'text',
             });
-        } else if (this.props.type === 'signUp') {
         }
+        // else if (this.props.type === 'signUp') {
+        // }
 
         setTimeout(() => {
             // Update button title
