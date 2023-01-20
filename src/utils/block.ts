@@ -202,7 +202,7 @@ export class Block {
 
                 // Запускаем обновление компоненты
                 // Плохой cloneDeep, в следующей итерации нужно заставлять добавлять cloneDeep им самим
-                self.eventBus().emit(Block.EVENTS.FLOW_CDU, { ...target }, target);
+                self._eventBus().emit(Block.EVENTS.FLOW_CDU, { ...target }, target);
                 return true;
             },
         });
