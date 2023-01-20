@@ -34,7 +34,7 @@ export class PageHome extends Block {
         }, 3000);
     }
 
-    componentDidUpdate(oldProps, newProps) {
+    componentDidUpdate(oldProps: { title: string }, newProps: { title: string }) {
         if (oldProps.title !== newProps.title) {
             this.children.button.setProps({ title: newProps.title });
         }
