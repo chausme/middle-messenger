@@ -1,5 +1,4 @@
-import { signIn } from './modules/signin';
-import { signUp } from './modules/signup';
+import { Form } from '~/src/components/form';
 import { Block } from '~/src/utils/block';
 import { Button } from '~/src/components/button';
 import template from './home.hbs';
@@ -12,6 +11,16 @@ interface PageHomeProps {
 export class PageHome extends Block {
     constructor(props: PageHomeProps) {
         super('div', props);
+
+        this._element.classList.add('window', 'lg', 'p-2/5', 'auth', 'w-fixed');
+
+        if (this.props.type === 'signIn') {
+            this.props.title = 'Sign In';
+            this._element.classList.add('signin', 'bg-orange');
+        } else if (this.props.type === 'signUp') {
+            this.props.title = 'Sign Up';
+            this._element.classList.add('signup', 'bg-pink');
+        }
     }
 
     init() {
@@ -27,6 +36,8 @@ export class PageHome extends Block {
             },
             settings: { withInternalID: true },
         });
+
+        this.children.form = new Form();
 
         setTimeout(() => {
             // Update button title
@@ -46,7 +57,6 @@ export class PageHome extends Block {
         this.dispatchComponentDidMount();
 
         return this.compile(template, {
-            form: this.props.type === 'signUp' ? signUp : signIn,
             title: this.props.title,
         });
     }
