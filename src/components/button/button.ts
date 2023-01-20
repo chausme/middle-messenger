@@ -1,18 +1,32 @@
 import { Block } from '~/src/utils/block';
 import template from './button.hbs';
+
+type ButtonProps = {
+    title: string;
+    id: string;
+    styles: string[];
+    link: string;
+    settings: { withInternalID: boolean };
+};
+
 export class Button extends Block {
-    constructor(props) {
+    constructor(props: ButtonProps) {
         super('button', props);
+
+        if (!this.element) {
+            return;
+        }
 
         // add default classes
         this.element.classList.add('button', 'window', 'sm', 'p-0/5', 'pad', 'text-center');
-
         this.element.setAttribute('id', props.id);
 
         // check for provided styles and add if any
         if (props.styles) {
             props.styles.forEach(style => {
-                this.element.classList.add(style);
+                if (this.element) {
+                    this.element.classList.add(style);
+                }
             });
         }
 

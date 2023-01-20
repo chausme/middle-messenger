@@ -10,9 +10,11 @@ export class Block {
         FLOW_RENDER: 'flow:render',
     };
 
-    _element = null;
-    _meta = null;
-    _id = null;
+    _element: HTMLElement | null = null;
+    _meta: { tagName: string; props: {} } | null = null;
+    _id: string | null = null;
+    props: {};
+    children = {};
 
     _logging = false;
 
@@ -270,6 +272,4 @@ export class Block {
         this._element.style.display = 'none';
         console.log('hide internal');
     }
-
-    _isPrivate = prop => prop.startsWith('_');
 }
