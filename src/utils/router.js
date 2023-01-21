@@ -1,11 +1,6 @@
-// @ts-nocheck
-
-type RoutesData = Record<string, string>;
-
 export class Router {
-    routesData: RoutesData;
 
-    constructor(routesData: RoutesData) {
+    constructor(routesData) {
         this.routesData = routesData;
     }
 
@@ -17,9 +12,9 @@ export class Router {
     }
 
     // Output respective template on page and optionally update path
-    load(path: string | '', updatePath = false) {
+    load(path, updatePath = false) {
         const template = this.getTemplate(path);
-        const root = document.getElementById('root') as HTMLElement;
+        const root = document.getElementById('root');
         root?.append(template.component?.getContent());
         this.updateBgColor(template.name);
         if (updatePath) {
@@ -28,7 +23,7 @@ export class Router {
     }
 
     // Get template data
-    getTemplate(path: string | null) {
+    getTemplate(path) {
         const pathData = this.getPathData(path);
         let template = pathData.path;
         if (!template && !pathData.hash) {
@@ -66,13 +61,13 @@ export class Router {
     }
 
     // Little helper to get path from provided location.href
-    getPath(href: string) {
+    getPath(href) {
         const url = new URL(href);
         return `${url.pathname ? url.pathname.replace('/', '') : ''}${url.hash ?? ''}`;
     }
 
     // Little helper to get naked path and hash from provided full path
-    getPathData(path: string | null) {
+    getPathData(path) {
         const url = new URL(`${this.#baseUrl}/${path}`);
         return {
             path: url.pathname.replace('/', ''),
@@ -81,7 +76,7 @@ export class Router {
     }
 
     // Little helper to update body background
-    updateBgColor(templateName: string) {
+    updateBgColor(templateName) {
         const { body } = document;
         let color = 'purple';
         if (templateName === 'signUp') {
