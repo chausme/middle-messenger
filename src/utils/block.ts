@@ -191,7 +191,7 @@ export default class Block {
     }
 
     // Create proxy
-    _makePropsProxy(props: {}) {
+    _makePropsProxy(props: PropsType) {
         // Можно и так передать this
         // Такой способ больше не применяется с приходом ES6+
         const self = this;

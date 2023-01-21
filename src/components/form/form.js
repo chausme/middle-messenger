@@ -1,9 +1,7 @@
-// @ts-nocheck
-
-import { Block } from '~/src/utils/block';
+import Block from '~/src/utils/block';
 import template from './form.hbs';
 
-export class Form extends Block {
+export default class Form extends Block {
     constructor(props) {
         super('form', props);
 

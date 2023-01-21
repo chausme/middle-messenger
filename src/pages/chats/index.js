@@ -1,3 +1,3 @@
 import pageChats from './chats';
 
-export { pageChats };
+export default pageChats;

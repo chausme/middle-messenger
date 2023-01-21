@@ -1,9 +1,7 @@
-// @ts-nocheck
-
-import { Block } from '~/src/utils/block';
+import Block from '~/src/utils/block';
 import template from './input.hbs';
 
-export class Input extends Block {
+export default class Input extends Block {
     constructor(props) {
         super('div', props);
 

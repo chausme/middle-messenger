@@ -3,6 +3,7 @@ type ListenersType = Record<string, CallbackType[]>;
 
 export class EventBus {
     listeners: ListenersType;
+
     constructor() {
         this.listeners = {};
     }

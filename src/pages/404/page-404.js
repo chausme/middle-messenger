@@ -1,3 +1,3 @@
 import template from './page-404.hbs';
 
-export default () => template();
+export default page404 = () => template();

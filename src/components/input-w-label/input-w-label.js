@@ -1,10 +1,10 @@
 // @ts-nocheck
 
-import { Block } from '~/src/utils/block';
+import Block from '~/src/utils/block';
 import template from './input-w-label.hbs';
 import * as classes from './input-w-label.module.css';
 
-export class InputWLabel extends Block {
+export default class InputWLabel extends Block {
     constructor(props) {
         super('div', props);
 

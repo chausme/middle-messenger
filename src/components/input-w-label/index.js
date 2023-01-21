@@ -1,3 +1,3 @@
-import { InputWLabel } from './input-w-label';
+import InputWLabel from './input-w-label';
 
-export { InputWLabel };
+export default InputWLabel;
