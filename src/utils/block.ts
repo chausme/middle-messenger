@@ -1,14 +1,14 @@
-// @ts-nocheck
-
 import { TemplateDelegate } from 'handlebars';
 import { EventBus } from './event-bus';
 import { v4 as makeUUID } from 'uuid';
 
-interface EventBusType {
-    on: (event: string, callback: Function) => {};
-    off: (event: string, callback: Function) => {};
-    emit: (event: string, ...args: string[] | number[]) => {};
-}
+// interface EventBusType {
+//     on: (event: string, callback: Function) => {};
+//     off: (event: string, callback: Function) => {};
+//     emit: (event: string, ...args: string[] | number[]) => {};
+// }
+
+type PropsType = Record<string, any>;
 
 export class Block {
     static EVENTS = {
@@ -18,21 +18,16 @@ export class Block {
         FLOW_RENDER: 'flow:render',
     };
 
-    _element: HTMLElement | null = null;
-    _meta: { tagName: string; props: {} } | null = null;
-    _id: string | null = null;
-    _eventBus: () => {};
-    props: {
-        events: {};
-        settings: {
-            withInternalID: boolean;
-        };
-    };
-    children: Record<string, Block | Block[]> = {};
+    _element!: HTMLElement;
+    _meta: PropsType = {};
+    _id!: string;
+    _eventBus: () => EventBus;
+    props: PropsType;
+    children: Record<string, Block> = {};
 
     _logging = false;
 
-    constructor(tagName: string = 'div', propsAndChildren: object = {}) {
+    constructor(tagName = 'div', propsAndChildren: PropsType) {
         // Create a new event bus
         const eventBus = new EventBus();
 
@@ -66,7 +61,7 @@ export class Block {
     }
 
     // Register required events
-    _registerEvents(eventBus: EventBusType) {
+    _registerEvents(eventBus: EventBus) {
         eventBus.on(Block.EVENTS.INIT, this._init.bind(this));
         eventBus.on(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this));
         eventBus.on(Block.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this));
@@ -102,13 +97,13 @@ export class Block {
         }
         this.componentDidMount(this.props);
 
-        Object.values(this.children).forEach((component: Block | any) => {
+        Object.values(this.children).forEach(component => {
             component.dispatchComponentDidMount();
         });
     }
 
     // Could be redeclared by user
-    componentDidMount(oldProps: {}) {}
+    componentDidMount(oldProps: PropsType) {}
 
     // Dispatch i.e. emit "componentDidMount" event
     dispatchComponentDidMount() {
@@ -116,7 +111,7 @@ export class Block {
     }
 
     // EVENT: "componentDidUpdate" function
-    _componentDidUpdate(oldProps: {}, newProps: {}) {
+    _componentDidUpdate(oldProps: PropsType, newProps: PropsType) {
         if (this._logging) {
             console.log('EVENT: CDU', this);
         }
@@ -127,12 +122,12 @@ export class Block {
     }
 
     // Could be redeclared by user
-    componentDidUpdate(oldProps: {}, newProps: {}) {
+    componentDidUpdate(oldProps: PropsType, newProps: PropsType) {
         return true;
     }
 
     // Set block props
-    setProps = nextProps => {
+    setProps = (nextProps: PropsType) => {
         if (!nextProps) {
             return;
         }
@@ -204,7 +199,7 @@ export class Block {
 
         // @todo avoid re-assignment
         props = new Proxy(props, {
-            get(target, prop: string) {
+            get(target, prop) {
                 const value = target[prop];
                 return typeof value === 'function' ? value.bind(target) : value;
             },
@@ -228,7 +223,7 @@ export class Block {
     }
 
     // Create a single element based on provided tagName
-    _createDocumentElement(tagName: string) {
+    _createDocumentElement(tagName: string): HTMLElement {
         // Можно сделать метод, который через фрагменты в цикле создаёт сразу несколько блоков
         const element = document.createElement(tagName);
         if (this._id) {
@@ -238,9 +233,9 @@ export class Block {
     }
 
     // Filter props and children
-    _getChildren(propsAndChildren: {}) {
-        const children = {};
-        const props = {};
+    _getChildren(propsAndChildren: PropsType) {
+        const children: PropsType = {};
+        const props: PropsType = {};
 
         Object.entries(propsAndChildren).forEach(([key, value]) => {
             if (value instanceof Block) {
@@ -254,7 +249,7 @@ export class Block {
     }
 
     // Return compiled template
-    compile(template: TemplateDelegate, context: Record<string, string>) {
+    compile(template: TemplateDelegate, context: PropsType) {
         const propsAndStubs = { ...context };
 
         Object.entries(this.children).forEach(([key, component]: [string, Block | any]) => {
@@ -262,10 +257,10 @@ export class Block {
         });
 
         const html = template(propsAndStubs);
-        const fragment = this._createDocumentElement('template');
+        const fragment = document.createElement('template');
         fragment.innerHTML = html;
 
-        Object.values(this.children).forEach((component: Block | any) => {
+        Object.values(this.children).forEach((component: Block) => {
             const stub = fragment.content.querySelector(`[data-id="${component._id}"]`);
             if (!stub) {
                 return;

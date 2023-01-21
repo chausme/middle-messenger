@@ -1,5 +1,3 @@
-// @ts-nocheck
-
 import { Block } from '~/src/utils/block';
 import template from './button.hbs';
 

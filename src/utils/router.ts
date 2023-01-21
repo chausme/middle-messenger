@@ -1,5 +1,6 @@
-export class Router {
+// @ts-nocheck
 
+export default class Router {
     constructor(routesData) {
         this.routesData = routesData;
     }

@@ -9,7 +9,8 @@
         "start": "npm run build && node server.js",
         "tscheck": "tsc --noEmit",
         "tswatch": "tsc --watch",
-        "eslint": "npx eslint src/*.ts",
+        "eslint": "npx eslint src/ --ext .js",
+        "tslint": "npx eslint src/ --ext .ts",
         "stylelint": "npx stylelint \"src/**/*.css\" \"!src/reset.css\"",
         "test": "echo \"Error: no test specified\" && exit 1"
     },

@@ -1,17 +1,16 @@
-// @ts-nocheck
-
 import { Block } from '~/src/utils/block';
-import { Form } from '~/src/components/form';
-import { InputWLabel } from '~/src/components/input-w-label';
 import { Button } from '~/src/components/button';
+// import { Form } from '~/src/components/form';
+// import { InputWLabel } from '~/src/components/input-w-label';
 import template from './home.hbs';
 import './home.css';
 
-interface PageHomeProps {
-    title: string;
-}
+type PageHomeProps = {
+    title?: string;
+    type: string;
+};
 
-export class PageHome extends Block {
+export default class PageHome extends Block {
     constructor(props: PageHomeProps) {
         super('div', props);
 
@@ -19,10 +18,10 @@ export class PageHome extends Block {
 
         if (this.props.type === 'signIn') {
             this.props.title = 'Sign In';
-            this._element.classList.add('signin', 'bg-orange');
+            this.element.classList.add('signin', 'bg-orange');
         } else if (this.props.type === 'signUp') {
             this.props.title = 'Sign Up';
-            this._element.classList.add('signup', 'bg-pink');
+            this.element.classList.add('signup', 'bg-pink');
         }
     }
 
@@ -40,18 +39,18 @@ export class PageHome extends Block {
             settings: { withInternalID: true },
         });
 
-        if (this.props.type === 'signIn') {
-            this.children.form = new Form({
-                id: 'sign-in',
-                inputs: [
-                    new InputWLabel({
-                        title: 'Login',
-                        id: 'login',
-                        type: 'text',
-                    }),
-                ],
-            });
-        }
+        // if (this.props.type === 'signIn') {
+        //     this.children.form = new Form({
+        //         id: 'sign-in',
+        //         inputs: [
+        //             new InputWLabel({
+        //                 title: 'Login',
+        //                 id: 'login',
+        //                 type: 'text',
+        //             }),
+        //         ],
+        //     });
+        // }
         // else if (this.props.type === 'signUp') {
         // }
 

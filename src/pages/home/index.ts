@@ -1,3 +1,3 @@
-import { PageHome } from './home';
+import PageHome from './home';
 
-export { PageHome };
+export default PageHome;
