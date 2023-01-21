@@ -1,4 +1,4 @@
-import { Block } from '~/src/utils/block';
+import Block from '~/src/utils/block';
 import template from './button.hbs';
 
 type ButtonProps = {

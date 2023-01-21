@@ -1,6 +1,6 @@
 import { TemplateDelegate } from 'handlebars';
-import { EventBus } from './event-bus';
 import { v4 as makeUUID } from 'uuid';
+import { EventBus } from './event-bus';
 
 // interface EventBusType {
 //     on: (event: string, callback: Function) => {};
@@ -10,7 +10,7 @@ import { v4 as makeUUID } from 'uuid';
 
 type PropsType = Record<string, any>;
 
-export class Block {
+export default class Block {
     static EVENTS = {
         INIT: 'init',
         FLOW_CDM: 'flow:component-did-mount',
@@ -19,11 +19,16 @@ export class Block {
     };
 
     _element!: HTMLElement;
+
     _meta: PropsType = {};
+
     _id!: string;
+
     _eventBus: () => EventBus;
+
     props: PropsType;
-    children: Record<string, Block> = {};
+
+    children: Record<string, this> = {};
 
     _logging = false;
 
@@ -199,17 +204,17 @@ export class Block {
 
         // @todo avoid re-assignment
         props = new Proxy(props, {
-            get(target, prop) {
+            get(target: PropsType, prop: string) {
                 const value = target[prop];
                 return typeof value === 'function' ? value.bind(target) : value;
             },
 
             // Prevent props removal
-            deleteProperty(target, prop) {
-                throw new Error('Access error: ', target, prop);
+            deleteProperty(target: PropsType, prop: string) {
+                throw new Error('Access error');
             },
 
-            set(target, prop, value) {
+            set(target: PropsType, prop: string, value: string | number) {
                 target[prop] = value;
 
                 // Запускаем обновление компоненты

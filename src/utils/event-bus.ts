@@ -1,11 +1,13 @@
-type Listeners = Record<string, Function[]>;
+type CallbackType = (...args: string[] | number[]) => any;
+type ListenersType = Record<string, CallbackType[]>;
+
 export class EventBus {
-    listeners: Listeners;
+    listeners: ListenersType;
     constructor() {
         this.listeners = {};
     }
 
-    on(event: string, callback: Function) {
+    on(event: string, callback: CallbackType) {
         if (!this.listeners[event]) {
             this.listeners[event] = [];
         }
@@ -13,7 +15,7 @@ export class EventBus {
         this.listeners[event].push(callback);
     }
 
-    off(event: string, callback: Function) {
+    off(event: string, callback: CallbackType) {
         if (!this.listeners[event]) {
             throw new Error(`There is no event: ${event}`);
         }
