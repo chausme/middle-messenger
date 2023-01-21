@@ -1,4 +1,4 @@
-type CallbackType = (...args: string[] | number[]) => any;
+export type CallbackType = (...args: any) => any;
 type ListenersType = Record<string, CallbackType[]>;
 
 export class EventBus {
@@ -23,7 +23,7 @@ export class EventBus {
         this.listeners[event] = this.listeners[event].filter(listener => listener !== callback);
     }
 
-    emit(event: string, ...args: string[] | number[]) {
+    emit(event: string, ...args: any) {
         if (!this.listeners[event]) {
             throw new Event(`There is no event: ${event}`);
         }

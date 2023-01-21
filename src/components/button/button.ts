@@ -1,4 +1,5 @@
 import Block from '~/src/utils/block';
+import { CallbackType } from '~src/utils/event-bus';
 import template from './button.hbs';
 
 type ButtonProps = {
@@ -6,10 +7,11 @@ type ButtonProps = {
     id: string;
     styles: string[];
     link: string;
-    settings: { withInternalID: boolean };
+    settings?: { withInternalID?: boolean };
+    events: Record<string, CallbackType>;
 };
 
-export class Button extends Block {
+export default class Button extends Block {
     constructor(props: ButtonProps) {
         super('button', props);
 

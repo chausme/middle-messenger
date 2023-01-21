@@ -2,12 +2,6 @@ import { TemplateDelegate } from 'handlebars';
 import { v4 as makeUUID } from 'uuid';
 import { EventBus } from './event-bus';
 
-// interface EventBusType {
-//     on: (event: string, callback: Function) => {};
-//     off: (event: string, callback: Function) => {};
-//     emit: (event: string, ...args: string[] | number[]) => {};
-// }
-
 type PropsType = Record<string, any>;
 
 export default class Block {
@@ -28,7 +22,7 @@ export default class Block {
 
     props: PropsType;
 
-    children: Record<string, this> = {};
+    children: Record<string, any> = {};
 
     _logging = false;
 
@@ -100,7 +94,7 @@ export default class Block {
         if (this._logging) {
             console.log('EVENT: CDM', this);
         }
-        this.componentDidMount(this.props);
+        this.componentDidMount();
 
         Object.values(this.children).forEach(component => {
             component.dispatchComponentDidMount();
@@ -108,7 +102,7 @@ export default class Block {
     }
 
     // Could be redeclared by user
-    componentDidMount(oldProps: PropsType) {}
+    componentDidMount() {}
 
     // Dispatch i.e. emit "componentDidMount" event
     dispatchComponentDidMount() {
@@ -128,7 +122,7 @@ export default class Block {
 
     // Could be redeclared by user
     componentDidUpdate(oldProps: PropsType, newProps: PropsType) {
-        return true;
+        return JSON.stringify(oldProps) === JSON.stringify(newProps);
     }
 
     // Set block props
@@ -210,7 +204,7 @@ export default class Block {
             },
 
             // Prevent props removal
-            deleteProperty(target: PropsType, prop: string) {
+            deleteProperty() {
                 throw new Error('Access error');
             },
 

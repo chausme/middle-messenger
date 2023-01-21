@@ -1,5 +1,5 @@
 import Block from '~/src/utils/block';
-import { Button } from '~/src/components/button';
+import Button from '~/src/components/button';
 // import { Form } from '~/src/components/form';
 // import { InputWLabel } from '~/src/components/input-w-label';
 import template from './home.hbs';
