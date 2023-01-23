@@ -14,7 +14,7 @@ export default class Block {
 
     #element!: HTMLElement;
 
-    // Simple "element" getter to avoid private "_element" access
+    // Simple "element" getter to avoid private "element" access
     get element() {
         return this.#element;
     }
@@ -67,9 +67,9 @@ export default class Block {
     // Register required events
     private registerEvents(eventBus: EventBus) {
         eventBus.on(Block.EVENTS.INIT, this.#init.bind(this));
-        eventBus.on(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this));
-        eventBus.on(Block.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this));
-        eventBus.on(Block.EVENTS.FLOW_RENDER, this._render.bind(this));
+        eventBus.on(Block.EVENTS.FLOW_CDM, this.#componentDidMount.bind(this));
+        eventBus.on(Block.EVENTS.FLOW_CDU, this.#componentDidUpdate.bind(this));
+        eventBus.on(Block.EVENTS.FLOW_RENDER, this.#render.bind(this));
     }
 
     // Create resources, currently a single element, see createDocumentElement()
@@ -95,7 +95,7 @@ export default class Block {
     init() {}
 
     // EVENT: "componentDidMount" function
-    _componentDidMount() {
+    #componentDidMount() {
         if (this.logging) {
             console.log('EVENT: CDM', this);
         }
@@ -115,7 +115,7 @@ export default class Block {
     }
 
     // EVENT: "componentDidUpdate" function
-    _componentDidUpdate(oldProps: PropsType, newProps: PropsType) {
+    #componentDidUpdate(oldProps: PropsType, newProps: PropsType) {
         if (this.logging) {
             console.log('EVENT: CDU', this);
         }
@@ -142,7 +142,7 @@ export default class Block {
     // EVENT: "render" function
     // Heads up - renders not the entire element i.e. not the tagName
     // Could be overriden externally with render()
-    _render() {
+    #render() {
         if (this.logging) {
             console.log('EVENT: RENDER', this);
         }
@@ -192,8 +192,7 @@ export default class Block {
 
     // Create proxy
     private makePropsProxy(props: PropsType) {
-        // Можно и так передать this
-        // Такой способ больше не применяется с приходом ES6+
+        // @todo Need to replace with a proper ES6 way
         const self = this;
 
         // @todo avoid re-assignment
