@@ -1,7 +1,7 @@
-// @ts-nocheck
-
+import Block from '~/src/utils/block';
 export default class Router {
-    constructor(routesData) {
+    routesData;
+    constructor(routesData: Record<string, Block>) {
         this.routesData = routesData;
     }
 
@@ -13,11 +13,13 @@ export default class Router {
     }
 
     // Output respective template on page and optionally update path
-    load(path, updatePath = false) {
+    load(path: string, updatePath = false) {
         const template = this.getTemplate(path);
         const root = document.getElementById('root');
-        root.innerHTML = '';
-        root?.append(template.component?.getContent());
+        if (root) {
+            root.innerHTML = '';
+            root.append(template.component?.getContent());
+        }
         this.updateBgColor(template.name);
         if (updatePath) {
             window.history.pushState({}, '', `${this.#baseUrl}/${path}`);
@@ -25,7 +27,7 @@ export default class Router {
     }
 
     // Get template data
-    getTemplate(path) {
+    getTemplate(path: string) {
         const pathData = this.getPathData(path);
         let template = pathData.path;
         if (!template && !pathData.hash) {
@@ -63,13 +65,13 @@ export default class Router {
     }
 
     // Little helper to get path from provided location.href
-    getPath(href) {
+    getPath(href: string) {
         const url = new URL(href);
         return `${url.pathname ? url.pathname.replace('/', '') : ''}${url.hash ?? ''}`;
     }
 
     // Little helper to get naked path and hash from provided full path
-    getPathData(path) {
+    getPathData(path: string) {
         const url = new URL(`${this.#baseUrl}/${path}`);
         return {
             path: url.pathname.replace('/', ''),
@@ -78,7 +80,7 @@ export default class Router {
     }
 
     // Little helper to update body background
-    updateBgColor(templateName) {
+    updateBgColor(templateName: string) {
         const { body } = document;
         let color = 'purple';
         if (templateName === 'signUp') {
