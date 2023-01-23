@@ -29,9 +29,23 @@ export type ButtonProps = {
     events?: Record<string, CallbackType>;
 };
 
+export type ButtonIconProps = ButtonProps & {
+    icon: string;
+};
+
+export type AvatarProps = {
+    size: string;
+    url?: string;
+    styles?: string[];
+};
+
 export type ChatProps = {
     title: string;
-    avatar?: string;
+    avatar: {
+        size: string;
+        url?: string;
+        styles?: string[];
+    };
     lastMessage?: string;
     datetime: string;
     unread?: number;
@@ -39,8 +53,6 @@ export type ChatProps = {
     own?: boolean;
 };
 
-export type AvatarProps = {
-    url: string;
-    size?: 'sm' | 'md' | 'lg';
-    styles?: string[];
+export type IconProps = {
+    [key: string]: string;
 };

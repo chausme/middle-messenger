@@ -3,7 +3,7 @@ import { AvatarProps } from '~/src/utils/prop-types';
 import template from './avatar.hbs';
 
 export default class Avatar extends Block {
-    #windowSizes = {
+    #windowSizes: Record<string, string> = {
         sm: 'sm',
         md: 'sm',
         lg: 'md',
