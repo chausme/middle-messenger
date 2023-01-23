@@ -28,19 +28,6 @@ export default class PageHome extends Block {
     }
 
     init() {
-        this.children.button = new Button({
-            title: 'New button',
-            link: '123',
-            id: 'update_details',
-            styles: ['bg-green'],
-            events: {
-                click(event) {
-                    console.log(event);
-                },
-            },
-            settings: { withInternalID: true },
-        });
-
         if (this.props.type === 'signIn') {
             this.children.form = new FormSignIn({
                 id: 'sign-in',
@@ -149,19 +136,6 @@ export default class PageHome extends Block {
                 }),
             });
         }
-
-        setTimeout(() => {
-            // Update button title
-            this.children.button.setProps({ title: 'Updated text on button' });
-        }, 3000);
-    }
-
-    componentDidUpdate(oldProps: { title: string }, newProps: { title: string }) {
-        if (oldProps.title !== newProps.title) {
-            this.children.button.setProps({ title: newProps.title });
-        }
-
-        return true;
     }
 
     render() {
