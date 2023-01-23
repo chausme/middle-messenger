@@ -12,7 +12,7 @@ type PageHomeProps = {
 
 export default class PageHome extends Block {
     constructor(props: PageHomeProps) {
-        super('div', props);
+        super(props, 'div');
 
         this.element.classList.add('window', 'lg', 'p-2/5', 'auth', 'w-fixed');
 

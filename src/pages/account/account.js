@@ -64,19 +64,19 @@ export default (
             }),
         },
         buttons: {
-            updateDetails: button({
+            updateDetails: Button({
                 title: 'Update details',
                 id: 'update_details',
                 styles: 'bg-green',
                 link: '',
             }),
-            changePassword: button({
+            changePassword: Button({
                 title: 'Change Password',
                 id: 'change_password',
                 styles: 'bg-pink',
                 link: '',
             }),
-            logOut: button({
+            logOut: Button({
                 title: 'Log Out',
                 id: 'logout',
                 styles: 'bg-cyan',

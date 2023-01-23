@@ -3,7 +3,7 @@ import template from './form.hbs';
 
 export default class Form extends Block {
     constructor(props) {
-        super('form', props);
+        super(props, 'form');
 
         if (!this.element) {
             return;

@@ -26,7 +26,7 @@ export default class Block {
 
     _logging = false;
 
-    constructor(tagName = 'div', propsAndChildren: PropsType) {
+    constructor(propsAndChildren: PropsType, tagName = 'div') {
         // Create a new event bus
         const eventBus = new EventBus();
 

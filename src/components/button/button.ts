@@ -13,7 +13,7 @@ type ButtonProps = {
 
 export default class Button extends Block {
     constructor(props: ButtonProps) {
-        super('button', props);
+        super(props, 'button');
 
         if (!this.element) {
             return;
