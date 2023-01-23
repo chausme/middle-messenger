@@ -5,6 +5,7 @@ import PageHome from './pages/home';
 // import page500 from './pages/500';
 import Router from './utils/router';
 import './variables.css';
+import './reset.css';
 import './styles.css';
 
 const router = new Router({
