@@ -103,6 +103,31 @@ export default class PageHome extends Block {
                     id: 'login',
                     type: 'text',
                 }),
+                input_first_name: new InputWLabel({
+                    title: 'First Name',
+                    id: 'first_name',
+                    type: 'text',
+                }),
+                input_last_name: new InputWLabel({
+                    title: 'Last Name',
+                    id: 'second_name',
+                    type: 'text',
+                }),
+                input_phone: new InputWLabel({
+                    title: 'Phone',
+                    id: 'phone',
+                    type: 'tel',
+                }),
+                input_password: new InputWLabel({
+                    title: 'Password',
+                    id: 'password',
+                    type: 'password',
+                }),
+                input_password_2: new InputWLabel({
+                    title: 'Confirm password',
+                    id: 'password_2',
+                    type: 'password',
+                }),
                 button_sign_in: new Button({
                     title: 'Sign In',
                     id: 'sign_in',
