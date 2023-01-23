@@ -1,3 +1,3 @@
-import messageSticker from './message-sticker';
+import MessageSticker from './message-sticker';
 
-export { messageSticker };
+export default MessageSticker;

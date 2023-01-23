@@ -1,3 +1,3 @@
-import messageImage from './message-image';
+import MessageImage from './message-image';
 
-export { messageImage };
+export default MessageImage;

@@ -1,23 +1,23 @@
-import { chat } from './components/chat';
-import { avatar } from '~/src/components/avatar';
-import { searchInput } from './components/search-input';
-import { buttonIcon } from '~/src/components/button-icon';
+import Chat from './components/chat';
+import Avatar from '~/src/components/avatar';
+import SearchInput from './components/search-input';
+import ButtonIcon from '~/src/components/button-icon';
 import template from './chats.hbs';
 import './chats.css';
 
 export default (
     props = {
-        buttonIcon: buttonIcon({
+        buttonIcon: ButtonIcon({
             title: 'Account',
             id: 'account',
             icon: 'hamburger',
             styles: 'mr-1/5 bg-green',
         }),
-        searchInput,
+        SearchInput,
         chats: [
-            chat({
+            Chat({
                 title: 'Jake',
-                avatar: avatar({
+                Avatar: Avatar({
                     url: 'https://via.placeholder.com/60',
                     size: 'md',
                 }),
@@ -26,9 +26,9 @@ export default (
                 datetime: '2:14pm',
                 unread: 2,
             }),
-            chat({
+            Chat({
                 title: 'Kate',
-                avatar: avatar({
+                Avatar: Avatar({
                     size: 'md',
                 }),
                 lastMessage: 'Curabitur posuere ipsum nec orc!',
@@ -36,52 +36,52 @@ export default (
                 datetime: '10:10am',
                 unread: 1,
             }),
-            chat({
+            Chat({
                 title: 'English Club',
-                avatar: avatar({
+                Avatar: Avatar({
                     url: 'https://via.placeholder.com/60',
                     size: 'md',
                 }),
                 lastMessageSticker: true,
                 datetime: 'Sun',
             }),
-            chat({
+            Chat({
                 title: 'Jerry',
-                avatar: avatar({
+                Avatar: Avatar({
                     size: 'md',
                 }),
                 lastMessage:
                     'Donec porta massa vel scelerisque vulputate. Aenean lectus orci, cursus ut ornare sit amet, aliquam non u',
                 datetime: 'Fri',
             }),
-            chat({
+            Chat({
                 title: "Designer's Club",
-                avatar: avatar({
+                Avatar: Avatar({
                     size: 'md',
                 }),
                 lastMessageImage: true,
                 datetime: 'Wed',
             }),
-            chat({
+            Chat({
                 title: 'Mary',
-                avatar: avatar({
+                Avatar: Avatar({
                     size: 'md',
                 }),
                 lastMessageSticker: true,
                 own: true,
                 datetime: 'Mon',
             }),
-            chat({
+            Chat({
                 title: 'Friends Group',
-                avatar: avatar({
+                Avatar: Avatar({
                     size: 'md',
                 }),
                 lastMessage: 'Etiam tincidunt ex ut eros fringilla, ut laoreet quis!',
                 datetime: '9 Sep',
             }),
-            chat({
+            Chat({
                 title: 'Mike',
-                avatar: avatar({
+                Avatar: Avatar({
                     size: 'md',
                 }),
                 lastMessageImage: true,

@@ -1,18 +1,18 @@
-import { buttonIcon } from '~/src/components/button-icon';
-import { inputMessage } from '../input-message';
+import ButtonIcon from '~/src/components/button-icon';
+import InputMessage from '../input-message';
 import template from './footer.hbs';
 
 export default (props = {}) =>
     template({
         props,
-        inputMessage,
-        buttonAttach: buttonIcon({
+        InputMessage,
+        buttonAttach: ButtonIcon({
             title: 'Attach',
             id: 'attach',
             icon: 'attachment',
             styles: 'mr-1/5 bg-orange',
         }),
-        buttonSend: buttonIcon({
+        buttonSend: ButtonIcon({
             title: 'Send',
             id: 'send',
             icon: 'arrow',

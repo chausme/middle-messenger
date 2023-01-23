@@ -1,3 +1,3 @@
-import inputMessage from './input-message';
+import InputMessage from './input-message';
 
-export { inputMessage };
+export default InputMessage;
