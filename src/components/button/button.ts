@@ -2,13 +2,13 @@ import Block from '~/src/utils/block';
 import { CallbackType } from '~src/utils/event-bus';
 import template from './button.hbs';
 
-type ButtonProps = {
+export type ButtonProps = {
     title: string;
     id: string;
-    styles: string[];
-    link: string;
+    styles?: string[];
+    link?: string;
     settings?: { withInternalID?: boolean };
-    events: Record<string, CallbackType>;
+    events?: Record<string, CallbackType>;
 };
 
 export default class Button extends Block {

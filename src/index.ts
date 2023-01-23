@@ -9,7 +9,7 @@ import './styles.css';
 
 const router = new Router({
     signIn: new PageHome({ type: 'signIn' }),
-    // signUp: new PageHome({ type: 'signUp' }),
+    signUp: new PageHome({ type: 'signUp' }),
     // chats: pageChats(),
     // account: pageAccount(),
     // page404: page404(),

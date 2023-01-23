@@ -1,7 +1,8 @@
 import Block from '~/src/utils/block';
 import Button from '~/src/components/button';
-// import { Form } from '~/src/components/form';
-// import { InputWLabel } from '~/src/components/input-w-label';
+import FormSignIn from './modules/form-sign-in';
+import FormSignUp from './modules/form-sign-up';
+import InputWLabel from '~/src/components/input-w-label';
 import template from './home.hbs';
 import './home.css';
 
@@ -39,20 +40,65 @@ export default class PageHome extends Block {
             settings: { withInternalID: true },
         });
 
-        // if (this.props.type === 'signIn') {
-        //     this.children.form = new Form({
-        //         id: 'sign-in',
-        //         inputs: [
-        //             new InputWLabel({
-        //                 title: 'Login',
-        //                 id: 'login',
-        //                 type: 'text',
-        //             }),
-        //         ],
-        //     });
-        // }
-        // else if (this.props.type === 'signUp') {
-        // }
+        if (this.props.type === 'signIn') {
+            this.children.form = new FormSignIn({
+                id: 'sign-in',
+                input_login: new InputWLabel({
+                    title: 'Login',
+                    id: 'login',
+                    type: 'text',
+                    inputName: 'login',
+                }),
+                input_password: new InputWLabel({
+                    title: 'Password',
+                    id: 'password',
+                    type: 'password',
+                    inputName: 'password',
+                }),
+                button_sign_in: new Button({
+                    title: 'Sign In',
+                    id: 'sign_in',
+                    styles: ['bg-green'],
+                    settings: { withInternalID: true },
+                }),
+                button_sign_up: new Button({
+                    title: 'Sign Up',
+                    id: 'sign_up',
+                    styles: ['bg-orange'],
+                    settings: { withInternalID: true },
+                    link: 'sign-up',
+                }),
+            });
+        } else if (this.props.type === 'signUp') {
+            this.children.form = new FormSignUp({
+                id: 'sign-in',
+                input_login: new InputWLabel({
+                    title: 'Login',
+                    id: 'login',
+                    type: 'text',
+                    inputName: 'login',
+                }),
+                input_password: new InputWLabel({
+                    title: 'Password',
+                    id: 'password',
+                    type: 'password',
+                    inputName: 'password',
+                }),
+                button_sign_in: new Button({
+                    title: 'Sign In',
+                    id: 'sign_in',
+                    styles: ['bg-green'],
+                    settings: { withInternalID: true },
+                }),
+                button_sign_up: new Button({
+                    title: 'Sign Up',
+                    id: 'sign_up',
+                    styles: ['bg-orange'],
+                    settings: { withInternalID: true },
+                    link: 'sign-up',
+                }),
+            });
+        }
 
         setTimeout(() => {
             // Update button title

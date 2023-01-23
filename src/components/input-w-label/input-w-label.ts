@@ -1,9 +1,10 @@
 import Block from '~/src/utils/block';
+import { InputProps } from '~src/components/input/input';
 import template from './input-w-label.hbs';
 import * as classes from './input-w-label.module.css';
 
 export default class InputWLabel extends Block {
-    constructor(props) {
+    constructor(props: InputProps) {
         super(props, 'div');
 
         if (!this.element) {
