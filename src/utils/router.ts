@@ -1,6 +1,8 @@
 import Block from '~/src/utils/block';
+
 export default class Router {
     routesData;
+
     constructor(routesData: Record<string, Block>) {
         this.routesData = routesData;
     }

@@ -171,9 +171,7 @@ export default class Block {
         return new DocumentFragment();
     }
 
-    private removeEvents() {
-        console.log('remove events beforehand');
-    }
+    private removeEvents() {}
 
     private addEvents() {
         const { events = {} } = this.props;
@@ -249,8 +247,6 @@ export default class Block {
     // Return compiled template
     compile(template: TemplateDelegate, context: PropsType) {
         const propsAndStubs = { ...context };
-
-        console.log(this.children);
 
         Object.entries(this.children).forEach(([key, component]: [string, Block | any]) => {
             propsAndStubs[key] = `<div data-id="${component.id}"></div>`;

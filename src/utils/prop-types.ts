@@ -38,3 +38,9 @@ export type ChatProps = {
     lastMessageImage?: boolean;
     own?: boolean;
 };
+
+export type AvatarProps = {
+    url: string;
+    size?: 'sm' | 'md' | 'lg';
+    styles?: string[];
+};
