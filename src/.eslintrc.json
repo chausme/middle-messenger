@@ -14,6 +14,9 @@
     "rules": {
         "import/no-unresolved": "warn",
         "import/extensions": "warn",
-        "class-methods-use-this": "warn"
+        "class-methods-use-this": "warn",
+        "no-param-reassign": "warn",
+        "@typescript-eslint/no-this-alias": "warn",
+        "@typescript-eslint/no-empty-function": "warn"
     }
 }
