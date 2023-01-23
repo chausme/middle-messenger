@@ -250,6 +250,8 @@ export default class Block {
     compile(template: TemplateDelegate, context: PropsType) {
         const propsAndStubs = { ...context };
 
+        console.log(this.children);
+
         Object.entries(this.children).forEach(([key, component]: [string, Block | any]) => {
             propsAndStubs[key] = `<div data-id="${component.id}"></div>`;
         });
