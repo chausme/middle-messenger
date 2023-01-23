@@ -1,6 +1,6 @@
 import Block from '~/src/utils/block';
 import ChatList from './modules/chat-list';
-// import SingleChat from './modules/single-chat';
+import SingleChat from './modules/single-chat';
 import template from './chats.hbs';
 import * as classes from './chats.module.css';
 
@@ -13,6 +13,7 @@ export default class PageChats extends Block {
 
     init() {
         this.children.chatList = new ChatList();
+        this.children.singleChat = new SingleChat();
     }
 
     render() {
