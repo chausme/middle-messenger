@@ -3,6 +3,7 @@ import Button from '~/src/components/button';
 import FormSignIn from './modules/form-sign-in';
 import FormSignUp from './modules/form-sign-up';
 import InputWLabel from '~/src/components/input-w-label';
+import { router } from '~/src/index';
 import template from './home.hbs';
 import './home.css';
 
@@ -66,8 +67,20 @@ export default class PageHome extends Block {
                     id: 'sign_up',
                     styles: ['bg-orange'],
                     settings: { withInternalID: true },
-                    link: 'sign-up',
+                    link: 'signup',
+                    events: {
+                        click(e) {
+                            e.preventDefault();
+                            router.load('#signup', true);
+                        },
+                    },
                 }),
+                events: {
+                    submit(e) {
+                        e.preventDefault();
+                        console.log('form submit');
+                    },
+                },
             });
         } else if (this.props.type === 'signUp') {
             this.children.form = new FormSignUp({
@@ -89,6 +102,12 @@ export default class PageHome extends Block {
                     id: 'sign_in',
                     styles: ['bg-green'],
                     settings: { withInternalID: true },
+                    events: {
+                        click(e) {
+                            e.preventDefault();
+                            router.load('', true);
+                        },
+                    },
                 }),
                 button_sign_up: new Button({
                     title: 'Sign Up',

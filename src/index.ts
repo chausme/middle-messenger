@@ -8,7 +8,7 @@ import './variables.css';
 import './reset.css';
 import './styles.css';
 
-const router = new Router({
+export const router = new Router({
     signIn: new PageHome({ type: 'signIn' }),
     signUp: new PageHome({ type: 'signUp' }),
     // chats: pageChats(),

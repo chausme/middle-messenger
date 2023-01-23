@@ -1,17 +1,6 @@
 import Block from '~/src/utils/block';
-import { CallbackType } from '~/src/utils/event-bus';
-import InputWLabel from '~/src/components/input-w-label';
-import Button from '~/src/components/button';
+import { FormProps } from '~/src/utils/prop-types';
 import template from './form-sign-in.hbs';
-
-type FormProps = {
-    id: string;
-    [key: `input_${string}`]: InputWLabel;
-    [key: `button_${string}`]: Button;
-    styles?: string[];
-    settings?: { withInternalID?: boolean };
-    events?: Record<string, CallbackType>;
-};
 
 export default class FormSignIn extends Block {
     constructor(props: FormProps) {

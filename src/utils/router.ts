@@ -16,6 +16,7 @@ export default class Router {
     load(path, updatePath = false) {
         const template = this.getTemplate(path);
         const root = document.getElementById('root');
+        root.innerHTML = '';
         root?.append(template.component?.getContent());
         this.updateBgColor(template.name);
         if (updatePath) {

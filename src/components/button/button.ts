@@ -1,15 +1,6 @@
 import Block from '~/src/utils/block';
-import { CallbackType } from '~src/utils/event-bus';
+import { ButtonProps } from '~/src/utils/prop-types';
 import template from './button.hbs';
-
-export type ButtonProps = {
-    title: string;
-    id: string;
-    styles?: string[];
-    link?: string;
-    settings?: { withInternalID?: boolean };
-    events?: Record<string, CallbackType>;
-};
 
 export default class Button extends Block {
     constructor(props: ButtonProps) {
@@ -36,6 +27,7 @@ export default class Button extends Block {
         if (props.link) {
             this.element.classList.add('link');
             this.element.dataset.path = props.link;
+            this.element.setAttribute('type', 'button');
         }
     }
 

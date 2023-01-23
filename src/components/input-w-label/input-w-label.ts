@@ -1,5 +1,5 @@
 import Block from '~/src/utils/block';
-import { InputProps } from '~src/components/input/input';
+import { InputProps } from '~/src/utils/prop-types';
 import template from './input-w-label.hbs';
 import * as classes from './input-w-label.module.css';
 
