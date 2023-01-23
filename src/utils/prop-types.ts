@@ -28,3 +28,13 @@ export type ButtonProps = {
     settings?: { withInternalID?: boolean };
     events?: Record<string, CallbackType>;
 };
+
+export type ChatProps = {
+    title: string;
+    avatar?: string;
+    lastMessage?: string;
+    datetime: string;
+    unread?: number;
+    lastMessageImage?: boolean;
+    own?: boolean;
+};

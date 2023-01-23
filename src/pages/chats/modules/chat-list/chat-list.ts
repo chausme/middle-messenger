@@ -1,10 +1,9 @@
-// import Chat from './components/chat';
 // import Avatar from '~/src/components/avatar';
 // import SearchInput from './components/search-input';
 // import ButtonIcon from '~/src/components/button-icon';
 
 import Block from '~/src/utils/block';
-import Button from '~/src/components/button';
+import Chat from './components/chat';
 import template from './chat-list.hbs';
 import './chat-list.css';
 
@@ -16,11 +15,12 @@ export default class ChatList extends Block {
     }
 
     init() {
-        this.children.button = new Button({
-            title: 'Sign In',
-            id: 'sign_in',
-            styles: ['bg-green'],
-            settings: { withInternalID: true },
+        this.children.chat_1 = new Chat({
+            title: 'Jake',
+            lastMessage:
+                'Lorem ipsum dolor sit amet, consectetur adipiscingelit. Nam mollis efficitur commodo. Cras venenatis...',
+            datetime: '2:14pm',
+            unread: 2,
         });
     }
 
