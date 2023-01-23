@@ -3,7 +3,7 @@ import Button from '~/src/components/button';
 import FormSignIn from './modules/form-sign-in';
 import FormSignUp from './modules/form-sign-up';
 import InputWLabel from '~/src/components/input-w-label';
-import { router } from '~/src/index';
+import router from '~/src/index';
 import template from './home.hbs';
 import './home.css';
 
@@ -44,17 +44,23 @@ export default class PageHome extends Block {
         if (this.props.type === 'signIn') {
             this.children.form = new FormSignIn({
                 id: 'sign-in',
+                events: {
+                    submit(e) {
+                        e.preventDefault();
+                        const formData = new FormData(e.target);
+                        const formProps = Object.fromEntries(formData);
+                        console.log(formProps);
+                    },
+                },
                 input_login: new InputWLabel({
                     title: 'Login',
                     id: 'login',
                     type: 'text',
-                    inputName: 'login',
                 }),
                 input_password: new InputWLabel({
                     title: 'Password',
                     id: 'password',
                     type: 'password',
-                    inputName: 'password',
                 }),
                 button_sign_in: new Button({
                     title: 'Sign In',
@@ -75,33 +81,34 @@ export default class PageHome extends Block {
                         },
                     },
                 }),
-                events: {
-                    submit(e) {
-                        e.preventDefault();
-                        console.log('form submit');
-                    },
-                },
             });
         } else if (this.props.type === 'signUp') {
             this.children.form = new FormSignUp({
                 id: 'sign-in',
+                events: {
+                    submit(e) {
+                        e.preventDefault();
+                        const formData = new FormData(e.target);
+                        const formProps = Object.fromEntries(formData);
+                        console.log(formProps);
+                    },
+                },
+                input_email: new InputWLabel({
+                    title: 'Email',
+                    id: 'email',
+                    type: 'email',
+                }),
                 input_login: new InputWLabel({
                     title: 'Login',
                     id: 'login',
                     type: 'text',
-                    inputName: 'login',
-                }),
-                input_password: new InputWLabel({
-                    title: 'Password',
-                    id: 'password',
-                    type: 'password',
-                    inputName: 'password',
                 }),
                 button_sign_in: new Button({
                     title: 'Sign In',
                     id: 'sign_in',
                     styles: ['bg-green'],
                     settings: { withInternalID: true },
+                    link: '',
                     events: {
                         click(e) {
                             e.preventDefault();
@@ -114,7 +121,6 @@ export default class PageHome extends Block {
                     id: 'sign_up',
                     styles: ['bg-orange'],
                     settings: { withInternalID: true },
-                    link: 'sign-up',
                 }),
             });
         }

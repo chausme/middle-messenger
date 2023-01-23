@@ -15,7 +15,6 @@ export type InputProps = {
     title: string;
     type: string;
     id: string;
-    inputName: string;
     styles?: string[];
     settings?: { withInternalID?: boolean; disabled: boolean };
     events?: Record<string, CallbackType>;

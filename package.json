@@ -7,10 +7,8 @@
         "dev": "parcel",
         "build": "parcel build",
         "start": "npm run build && node server.js",
-        "tscheck": "tsc --noEmit",
         "tswatch": "tsc --watch",
-        "eslint": "npx eslint src/ --ext .js --quiet",
-        "tslint": "npx eslint src/ --ext .ts --quiet",
+        "eslint": "npx eslint src/ --ext .js --quiet --ext .ts --quiet",
         "stylelint": "npx stylelint \"src/**/*.css\" \"!src/reset.css\"",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
