@@ -5,6 +5,7 @@ import InputSearch from './components/input-search';
 import ButtonIcon from '~/src/components/button-icon';
 import router from '~/src/index';
 import template from './chat-list.hbs';
+import imageAvatar from '~/static/images/60.png';
 import './chat-list.css';
 
 export default class ChatList extends Block {
@@ -33,7 +34,7 @@ export default class ChatList extends Block {
         this.children.inputSearch = new InputSearch();
         this.children.chat_1 = new Chat({
             avatar: new Avatar({
-                url: 'https://via.placeholder.com/60',
+                url: imageAvatar,
                 size: 'md',
             }),
             title: 'Jake',
@@ -55,7 +56,7 @@ export default class ChatList extends Block {
         this.children.chat_3 = new Chat({
             title: 'English Club',
             avatar: new Avatar({
-                url: 'https://via.placeholder.com/60',
+                url: imageAvatar,
                 size: 'md',
             }),
             lastMessageSticker: true,

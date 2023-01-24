@@ -69,3 +69,8 @@ export type MessageProps = {
     datetime: string;
     own: boolean;
 };
+
+export type MessageImageProps = MessageProps & {
+    image: string;
+    styles: string[];
+};
