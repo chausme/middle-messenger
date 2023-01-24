@@ -3,14 +3,10 @@ import Button from '~/src/components/button';
 import FormSignIn from './modules/form-sign-in';
 import FormSignUp from './modules/form-sign-up';
 import InputWLabel from '~/src/components/input-w-label';
+import { PageHomeProps } from '~/src/utils/prop-types';
 import router from '~/src/index';
 import template from './home.hbs';
 import './home.css';
-
-type PageHomeProps = {
-    title?: string;
-    type: string;
-};
 
 export default class PageHome extends Block {
     constructor(props: PageHomeProps) {
@@ -142,6 +138,7 @@ export default class PageHome extends Block {
         this.dispatchComponentDidMount();
 
         return this.compile(template, {
+            ...this.props,
             title: this.props.title,
         });
     }

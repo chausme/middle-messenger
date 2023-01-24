@@ -1,6 +1,6 @@
 import PageHome from './pages/home';
 import PageChats from './pages/chats';
-// import pageAccount from './pages/account';
+import PageAccount from './pages/account';
 // import page404 from './pages/404';
 // import page500 from './pages/500';
 import Router from './utils/router';
@@ -12,7 +12,7 @@ const router = new Router({
     signIn: new PageHome({ type: 'signIn' }),
     signUp: new PageHome({ type: 'signUp' }),
     chats: new PageChats(),
-    // account: pageAccount(),
+    account: new PageAccount(),
     // page404: page404(),
     // page500: page500(),
 });

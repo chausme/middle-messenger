@@ -96,3 +96,8 @@ export type FooterProps = {
     buttonAttach: ButtonIcon;
     buttonSend: ButtonIcon;
 };
+
+export type PageHomeProps = {
+    title?: string;
+    type: string;
+};
