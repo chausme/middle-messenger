@@ -6,8 +6,6 @@ import arrow from '~/static/icons/arrow.svg';
 import back from '~/static/icons/back.svg';
 import template from './button-icon.hbs';
 
-console.log(hamburger);
-
 export default class ButtonIcon extends Block {
     #icons: IconProps = {
         hamburger,

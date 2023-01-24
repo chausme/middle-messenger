@@ -297,6 +297,10 @@ h2 {
     }
 }
 
+.absolute {
+    position: absolute;
+}
+
 .button {
     cursor: pointer;
 }

@@ -59,3 +59,13 @@ export type HeaderProps = {
     title: string;
     avatar?: Avatar;
 };
+
+export type DatetimeProps = {
+    date: string;
+};
+
+export type MessageProps = {
+    content: string;
+    datetime: string;
+    own: boolean;
+};
