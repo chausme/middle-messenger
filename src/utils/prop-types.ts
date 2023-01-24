@@ -14,6 +14,13 @@ export type FormProps = {
     events?: Record<string, CallbackType>;
 };
 
+export type FormAccountProps = FormProps & {
+    id: string;
+    displayName: string;
+    avatar: Avatar;
+    buttonBack: ButtonIcon;
+};
+
 export type InputProps = {
     title: string;
     type: string;
@@ -30,6 +37,7 @@ export type ButtonProps = {
     link?: string;
     settings?: { withInternalID?: boolean };
     events?: Record<string, CallbackType>;
+    action?: string;
 };
 
 export type ButtonIconProps = ButtonProps & {

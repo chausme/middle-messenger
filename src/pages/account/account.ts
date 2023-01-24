@@ -1,8 +1,10 @@
 import Block from '~/src/utils/block';
-// import Avatar from '~/src/components/avatar';
-// import ButtonIcon from '~/src/components/button-icon';
-// import Button from '~/src/components/button';
-// import InputWLabel from '~/src/components/input-w-label';
+import FormAccount from './modules/form-account';
+import Avatar from '~/src/components/avatar';
+import imageAvatarLarge from '~/static/images/120.png';
+import ButtonIcon from '~/src/components/button-icon';
+import Button from '~/src/components/button';
+import InputWLabel from '~/src/components/input-w-label';
 import template from './account.hbs';
 import * as classes from './account.module.css';
 
@@ -14,18 +16,52 @@ export default class PageAccount extends Block {
     }
 
     init() {
-        // displayName: 'Jack J',
-        // avatar: avatar({
-        //     url: 'https://via.placeholder.com/120',
-        //     size: 'lg',
-        //     styles: 'mb-2',
-        // }),
-        // buttonBack: buttonIcon({
-        //     title: 'Back to chats',
-        //     id: 'chats',
-        //     icon: 'back',
-        //     styles: 'bg-orange',
-        // }),
+        this.children.form = new FormAccount({
+            id: 'account',
+            events: {
+                submit(e) {
+                    e.preventDefault();
+                    const formData = new FormData(e.target);
+                    const formProps = Object.fromEntries(formData);
+                    console.log(formProps);
+                },
+            },
+            buttonBack: new ButtonIcon({
+                title: 'Back to chats',
+                id: 'chats',
+                icon: 'back',
+                styles: ['bg-orange'],
+            }),
+            displayName: 'Jack J',
+            avatar: new Avatar({
+                url: imageAvatarLarge,
+                size: 'lg',
+                styles: ['mb-2'],
+            }),
+            input_email: new InputWLabel({
+                title: 'Email',
+                id: 'email',
+                type: 'email',
+            }),
+            button_update_details: new Button({
+                title: 'Update details',
+                id: 'update_details',
+                styles: ['bg-green'],
+                action: 'update',
+            }),
+            button_change_password: new Button({
+                title: 'Change Password',
+                id: 'change_password',
+                styles: ['bg-pink'],
+                action: 'change-password',
+            }),
+            button_logout: new Button({
+                title: 'Log Out',
+                id: 'logout',
+                styles: ['bg-cyan'],
+                link: '/',
+            }),
+        });
         // inputs: {
         //     email: inputWLabel({
         //         title: 'Email',
@@ -71,24 +107,7 @@ export default class PageAccount extends Block {
         //     }),
         // },
         // buttons: {
-        //     updateDetails: Button({
-        //         title: 'Update details',
-        //         id: 'update_details',
-        //         styles: 'bg-green',
-        //         link: '',
-        //     }),
-        //     changePassword: Button({
-        //         title: 'Change Password',
-        //         id: 'change_password',
-        //         styles: 'bg-pink',
-        //         link: '',
-        //     }),
-        //     logOut: Button({
-        //         title: 'Log Out',
-        //         id: 'logout',
-        //         styles: 'bg-cyan',
-        //         link: '/',
-        //     }),
+
         // },
     }
 

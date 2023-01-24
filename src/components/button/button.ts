@@ -23,10 +23,14 @@ export default class Button extends Block {
             });
         }
 
-        // add optional link class
+        // add optional link class and path
         if (props.link) {
             this.element.classList.add('link');
             this.element.dataset.path = props.link;
+        }
+
+        // keep button as type="button" to avoid form submission
+        if (props.link || props.action) {
             this.element.setAttribute('type', 'button');
         }
     }
