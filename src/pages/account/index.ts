@@ -1,3 +1,3 @@
-import pageAccount from './account';
+import PageAccount from './account';
 
-export default pageAccount;
+export default PageAccount;
