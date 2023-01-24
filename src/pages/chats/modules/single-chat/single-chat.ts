@@ -3,7 +3,7 @@ import Header from './components/header';
 import Datetime from './components/datetime';
 import Message from './components/message';
 import MessageImage from './components/message-image';
-// import MessageSticker from './components/message-sticker';
+import MessageSticker from './components/message-sticker';
 // import Footer from './components/footer';
 import Block from '~/src/utils/block';
 import template from './single-chat.hbs';

@@ -20,7 +20,7 @@ export default class MessageImage extends Block {
             'mb-2/5',
             'd-flex',
             'p-0',
-            classes['window']
+            classes.window
         );
 
         // check for provided styles and add if any

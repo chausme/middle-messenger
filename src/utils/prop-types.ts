@@ -67,10 +67,24 @@ export type DatetimeProps = {
 export type MessageProps = {
     content: string;
     datetime: string;
-    own: boolean;
+    own?: boolean;
+    styles?: string[];
 };
 
-export type MessageImageProps = MessageProps & {
+export type MessageImageProps = {
+    datetime: string;
+    own?: boolean;
     image: string;
-    styles: string[];
+    styles?: string[];
+};
+
+export type MessageStickerProps = {
+    datetime: string;
+    own?: boolean;
+    sticker: string;
+    styles?: string[];
+};
+
+export type StickersProps = {
+    [key: string]: string;
 };
