@@ -1,6 +1,7 @@
 import { CallbackType } from '~/src/utils/event-bus';
 import InputWLabel from '~/src/components/input-w-label';
 import Button from '~/src/components/button';
+import Avatar from '~src/components/avatar';
 
 export type FormProps = {
     id: string;
@@ -41,15 +42,12 @@ export type AvatarProps = {
 
 export type ChatProps = {
     title: string;
-    avatar: {
-        size: string;
-        url?: string;
-        styles?: string[];
-    };
+    avatar?: Avatar;
     lastMessage?: string;
     datetime: string;
     unread?: number;
     lastMessageImage?: boolean;
+    lastMessageSticker?: boolean;
     own?: boolean;
 };
 

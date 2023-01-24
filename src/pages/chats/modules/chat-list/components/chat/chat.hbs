@@ -1,5 +1,9 @@
 <div class="inner d-flex h-100 overflow-hidden">
-    {{{avatar}}}
+    {{#if avatar}}
+        {{{avatar}}}
+    {{else}}
+        <div class="window avatar avatar-md p-0 shrink-0 sm"></div>
+    {{/if}}
     <div class="details ml-2">
         <p class="title font-600 mt-0/5 mb-1">{{{title}}}</p>
         <div class="message text-gray-darker text-sm">

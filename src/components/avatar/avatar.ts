@@ -10,7 +10,7 @@ export default class Avatar extends Block {
     };
 
     constructor(props: AvatarProps) {
-        super(props, 'button');
+        super(props, 'div');
 
         if (!this.element) {
             return;
