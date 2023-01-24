@@ -18,7 +18,6 @@ export type FormAccountProps = FormProps & {
     id: string;
     displayName: string;
     avatar: Avatar;
-    buttonBack: ButtonIcon;
 };
 
 export type InputProps = {
@@ -26,8 +25,9 @@ export type InputProps = {
     type: string;
     id: string;
     styles?: string[];
-    settings?: { withInternalID?: boolean; disabled: boolean };
+    settings?: { withInternalID?: boolean; disabled?: boolean };
     events?: Record<string, CallbackType>;
+    value?: string;
 };
 
 export type ButtonProps = {
