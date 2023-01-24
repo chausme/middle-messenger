@@ -1,6 +1,5 @@
 import Block from '~/src/utils/block';
-import { ButtonIconProps } from '~/src/utils/prop-types';
-import { IconProps } from '~/src/utils/prop-types';
+import { ButtonIconProps, IconProps } from '~/src/utils/prop-types';
 import hamburger from '~/static/icons/hamburger.svg';
 import attachment from '~/static/icons/attachment.svg';
 import arrow from '~/static/icons/arrow.svg';

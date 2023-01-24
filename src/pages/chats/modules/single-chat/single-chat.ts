@@ -1,13 +1,11 @@
-// import Avatar from '~/src/components/avatar';
-// import Header from './components/header';
+import Avatar from '~/src/components/avatar';
+import Header from './components/header';
 // import Message from './components/message';
 // import MessageImage from './components/message-image';
 // import MessageSticker from './components/message-sticker';
 // import Datetime from './components/datetime';
 // import Footer from './components/footer';
-
 import Block from '~/src/utils/block';
-import Button from '~/src/components/button';
 import template from './single-chat.hbs';
 import './single-chat.css';
 
@@ -27,11 +25,12 @@ export default class SingleChat extends Block {
     }
 
     init() {
-        this.children.button = new Button({
-            title: 'Sign In',
-            id: 'sign_in',
-            styles: ['bg-green'],
-            settings: { withInternalID: true },
+        this.children.header = new Header({
+            avatar: new Avatar({
+                url: 'https://via.placeholder.com/60',
+                size: 'sm',
+            }),
+            title: 'Jerry',
         });
     }
 

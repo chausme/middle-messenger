@@ -54,3 +54,8 @@ export type ChatProps = {
 export type IconProps = {
     [key: string]: string;
 };
+
+export type HeaderProps = {
+    title: string;
+    avatar?: Avatar;
+};
