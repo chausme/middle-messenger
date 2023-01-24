@@ -2,6 +2,8 @@ import { CallbackType } from '~/src/utils/event-bus';
 import InputWLabel from '~/src/components/input-w-label';
 import Button from '~/src/components/button';
 import Avatar from '~src/components/avatar';
+import ButtonIcon from '~/src/components/button-icon';
+import InputMessage from '~/src/pages/chats/modules/single-chat/components/input-message';
 
 export type FormProps = {
     id: string;
@@ -87,4 +89,10 @@ export type MessageStickerProps = {
 
 export type StickersProps = {
     [key: string]: string;
+};
+
+export type FooterProps = {
+    inputMessage: InputMessage;
+    buttonAttach: ButtonIcon;
+    buttonSend: ButtonIcon;
 };

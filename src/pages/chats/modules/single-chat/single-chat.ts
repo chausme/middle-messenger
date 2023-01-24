@@ -4,7 +4,7 @@ import Datetime from './components/datetime';
 import Message from './components/message';
 import MessageImage from './components/message-image';
 import MessageSticker from './components/message-sticker';
-// import Footer from './components/footer';
+import Footer from './components/footer';
 import Block from '~/src/utils/block';
 import template from './single-chat.hbs';
 import imageAvatar from '~/static/images/60.png';
@@ -61,7 +61,7 @@ export default class SingleChat extends Block {
             datetime: '2:30pm',
             own: true,
         });
-        // this.children.footer
+        this.children.footer = new Footer();
     }
 
     render() {

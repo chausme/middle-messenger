@@ -21,6 +21,12 @@ export default class Header extends Block {
             id: 'account',
             icon: 'hamburger',
             styles: ['bg-green'],
+            events: {
+                click(e) {
+                    e.preventDefault();
+                    console.log('chat actions');
+                },
+            },
         });
     }
 
