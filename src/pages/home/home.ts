@@ -5,6 +5,7 @@ import FormSignUp from './modules/form-sign-up';
 import InputWLabel from '~/src/components/input-w-label';
 import { PageHomeProps } from '~/src/utils/prop-types';
 import router from '~/src/index';
+import validator from '~/src/utils/validator';
 import template from './home.hbs';
 import './home.css';
 
@@ -30,10 +31,22 @@ export default class PageHome extends Block {
                 events: {
                     submit(e) {
                         e.preventDefault();
-                        const formData = new FormData(e.target);
-                        const formProps = Object.fromEntries(formData);
-                        console.log(formProps);
+                        const isValid = validator(e);
+                        if (isValid) {
+                            const formData = new FormData(e.target);
+                            const formProps = Object.fromEntries(formData);
+                            console.log('submitting form');
+                            console.log(formProps);
+                        }
                     },
+                    // blur(e) {
+                    //     console.log('blur event');
+                    //     // console.log(e);
+                    // },
+                    // focus(e) {
+                    //     console.log('focus event');
+                    //     // console.log(e);
+                    // },
                 },
                 input_login: new InputWLabel({
                     title: 'Login',
