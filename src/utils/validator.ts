@@ -16,25 +16,41 @@ const validateInput = (inputName: string, value, form: HTMLFormElement) => {
     let pattern;
     let message = 'Oops, something is wrong';
 
-    // remove validation output if exists
+    // remove validation output if exists and if it's not message field
 
-    if (inputWrap) {
+    if (inputWrap && inputName !== 'message') {
         const validationMessageEl = inputWrap.nextSibling;
         if (validationMessageEl) {
             validationMessageEl.remove();
         }
     }
 
-    /** @todo add better validation messages */
-    if (inputName === 'login') {
+    if (inputName === 'first_name' || inputName === 'second_name' || inputName === 'display_name') {
         pattern = /^hello/;
-        message = 'Oops, something is wrong with the login value';
     }
 
-    if (inputName === 'password') {
-        pattern = /^world/;
-        message = 'Oops, something is wrong with the login value';
+    if (inputName === 'login') {
+        pattern = /^hello/;
     }
+
+    if (inputName === 'email') {
+        pattern = /^hello/;
+    }
+
+    if (inputName === 'password' || inputName === 'password_2') {
+        pattern = /^hello/;
+    }
+
+    if (inputName === 'phone') {
+        pattern = /^hello/;
+    }
+
+    if (inputName === 'message') {
+        pattern = /^hello/;
+    }
+
+    /** @todo add better validation messages */
+    message = `Oops, something is wrong with the ${inputName.replace('_', ' ')} value`;
 
     if (!pattern || pattern.test(value)) {
         inputWrap?.classList.remove('error');
@@ -44,7 +60,12 @@ const validateInput = (inputName: string, value, form: HTMLFormElement) => {
     const validationMessage = getValidationMessage(message);
 
     inputWrap?.classList.add('error');
-    inputWrap?.after(validationMessage);
+
+    // Don't add validation output for message field
+    if (inputName !== 'message') {
+        inputWrap?.after(validationMessage);
+    }
+
     return false;
 };
 
