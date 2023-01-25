@@ -32,6 +32,8 @@ export default class Button extends Block {
         // keep button as type="button" to avoid form submission
         if (props.link || props.action) {
             this.element.setAttribute('type', 'button');
+        } else {
+            this.element.setAttribute('type', 'submit');
         }
     }
 

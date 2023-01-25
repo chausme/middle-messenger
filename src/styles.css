@@ -210,8 +210,14 @@ h2 {
         width: 100%;
         padding: 0;
 
-        input {
-            color: var(--c-red);
+        &.error {
+            &::before {
+                background-color: var(--c-red-light);
+            }
+
+            input {
+                color: var(--c-red);
+            }
         }
     }
 
