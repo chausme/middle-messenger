@@ -6,45 +6,44 @@ enum METHOD {
 }
 
 type RequestOptionsProps = {
-    method: METHOD;
-    data: Record<string, any>;
-    headers: Record<string, string>;
+    data?: Record<string, any>;
+    headers?: Record<string, string>;
+    timeout?: number;
+};
+
+type RequestMethodOptionsProps = RequestOptionsProps & {
+    method: string;
 };
 
 function queryStringify(data: Record<string, any>) {
     if (!data) {
         return false;
     }
-
-    return Object.keys(data)
-        .reduce((acc, key) => {
-            return acc.concat(`${key}=${data[key]}`);
-        }, [])
-        .join('&');
+    const keys = Object.keys(data);
+    return Object.keys(data).reduce(
+        (acc, key, index) => `${acc}${key}=${data[key]}${index < keys.length - 1 ? '&' : ''}`,
+        '?'
+    );
 }
 
 export default class HTTPTransport {
-    get = (url: string, options = {}) => {
-        return this.request(
-            options.data ? `${url}?${queryStringify(options.data)}` : url,
+    get = (url: string, options: RequestOptionsProps) =>
+        this.request(
+            options.data ? `${url}${queryStringify(options.data)}` : url,
             { ...options, data: {}, method: METHOD.GET },
             options.timeout
         );
-    };
 
-    put = (url: string, options = {}) => {
-        return this.request(url, { ...options, method: METHOD.PUT }, options.timeout);
-    };
+    post = (url: string, options: RequestOptionsProps) =>
+        this.request(url, { ...options, method: METHOD.POST }, options.timeout);
 
-    post = (url: string, options = {}) => {
-        return this.request(url, { ...options, method: METHOD.POST }, options.timeout);
-    };
+    put = (url: string, options: RequestOptionsProps) =>
+        this.request(url, { ...options, method: METHOD.PUT }, options.timeout);
 
-    delete = (url: string, options = {}) => {
-        return this.request(url, { ...options, method: METHOD.DELETE }, options.timeout);
-    };
+    delete = (url: string, options: RequestOptionsProps) =>
+        this.request(url, { ...options, method: METHOD.DELETE }, options.timeout);
 
-    request = (url: string, options: RequestOptionsProps, timeout = 5000) => {
+    request = (url: string, options: RequestMethodOptionsProps, timeout = 5000) => {
         const { method, data, headers } = options;
 
         return new Promise((resolve, reject) => {

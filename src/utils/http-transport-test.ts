@@ -8,7 +8,7 @@ const testHTTPTransport = () => {
     });
 
     requestGet
-        .then(res => {
+        .then((res: any) => {
             console.log('get');
             console.log(res);
             console.log(JSON.parse(res.response));
@@ -25,7 +25,7 @@ const testHTTPTransport = () => {
         data: { a: 1, b: 2, c: { d: 123 }, k: [1, 2, 3] },
     });
 
-    requestPost.then(res => {
+    requestPost.then((res: any) => {
         console.log('post');
         console.log(res);
         console.log(JSON.parse(res.response));
@@ -39,7 +39,7 @@ const testHTTPTransport = () => {
         data: { a: 1, b: 2, c: { d: 123 }, k: [1, 2, 3] },
     });
 
-    requestPut.then(res => {
+    requestPut.then((res: any) => {
         console.log('put');
         console.log(res);
         console.log(JSON.parse(res.response));
@@ -53,7 +53,7 @@ const testHTTPTransport = () => {
         data: { a: 1, b: 2, c: { d: 123 }, k: [1, 2, 3] },
     });
 
-    requestDelete.then(res => {
+    requestDelete.then((res: any) => {
         console.log('delete');
         console.log(res);
         console.log(JSON.parse(res.response));
