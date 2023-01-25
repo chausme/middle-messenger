@@ -6,6 +6,7 @@ import ButtonIcon from '~/src/components/button-icon';
 import Button from '~/src/components/button';
 import InputWLabel from '~/src/components/input-w-label';
 import router from '~/src/index';
+import testHTTPTransport from '~src/utils/http-transport-test';
 import template from './account.hbs';
 import * as classes from './account.module.css';
 
@@ -96,6 +97,7 @@ export default class PageAccount extends Block {
                     click(e) {
                         e.preventDefault();
                         console.log('change password');
+                        testHTTPTransport();
                     },
                 },
             }),

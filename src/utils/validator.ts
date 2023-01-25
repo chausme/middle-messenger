@@ -29,6 +29,7 @@ const validateInput = (inputName: string, value: string, form: HTMLFormElement) 
         pattern = /^([A-Z]){1}([A-Za-z-])+$/;
     }
 
+    /** @todo */
     if (inputName === 'login') {
         pattern = /^hello/;
     }
@@ -38,6 +39,7 @@ const validateInput = (inputName: string, value: string, form: HTMLFormElement) 
         pattern = /^([A-Za-z-_0-9])+@([A-Za-z-_0-9])+\.[A-Za-z-_0-9]+$/;
     }
 
+    /** @todo */
     if (inputName === 'password' || inputName === 'password_2') {
         pattern = /^hello/;
     }
@@ -71,7 +73,6 @@ const validateInput = (inputName: string, value: string, form: HTMLFormElement) 
 };
 
 const validator = (e: Event) => {
-    console.log('validating form...');
     if (!e.currentTarget) {
         return false;
     }
