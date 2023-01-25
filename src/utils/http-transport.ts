@@ -11,7 +11,7 @@ type RequestOptionsProps = {
     headers: Record<string, string>;
 };
 
-function queryStringify(data: {}) {
+function queryStringify(data: Record<string, any>) {
     if (!data) {
         return false;
     }
@@ -49,7 +49,7 @@ export default class HTTPTransport {
 
         return new Promise((resolve, reject) => {
             if (!method) {
-                reject('Oops, there is no method provided');
+                reject(new Error('Oops, there is no method provided'));
                 return;
             }
 

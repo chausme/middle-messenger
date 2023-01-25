@@ -17,6 +17,8 @@
         "class-methods-use-this": "warn",
         "no-param-reassign": "warn",
         "@typescript-eslint/no-this-alias": "warn",
-        "@typescript-eslint/no-empty-function": "warn"
+        "@typescript-eslint/no-empty-function": "warn",
+        "no-shadow": "off", // see https://stackoverflow.com/a/63961972
+        "@typescript-eslint/no-shadow": ["error"]
     }
 }

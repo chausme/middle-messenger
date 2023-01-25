@@ -5,7 +5,7 @@ const getValidationMessage = (message: string) => {
     return validationMessage;
 };
 
-const validateInput = (inputName: string, value: string, form: HTMLFormElement) => {
+const validateInput = (inputName: string, value: FormDataEntryValue, form: HTMLFormElement) => {
     const input = form.querySelector(`input[name="${inputName}"]`);
 
     if (!input) {
@@ -55,7 +55,7 @@ const validateInput = (inputName: string, value: string, form: HTMLFormElement) 
     /** @todo add better validation messages */
     message = `Oops, something is wrong with the ${inputName.replace('_', ' ')} value`;
 
-    if (!pattern || pattern.test(value)) {
+    if (typeof value === 'string' && (!pattern || pattern.test(value))) {
         inputWrap?.classList.remove('error');
         return true;
     }
