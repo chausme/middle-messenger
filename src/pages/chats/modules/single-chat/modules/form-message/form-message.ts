@@ -1,12 +1,12 @@
 import Block from '~/src/utils/block';
 import ButtonIcon from '~/src/components/button-icon';
-import InputMessage from '../input-message';
-// import { FooterProps } from '~/src/utils/prop-types';
-import template from './footer.hbs';
+import InputMessage from '../../components/input-message';
+import validator from '~/src/utils/validator';
+import template from './form-message.hbs';
 
-export default class Header extends Block {
+export default class FormMessage extends Block {
     constructor() {
-        super({}, 'footer');
+        super({}, 'form');
 
         if (!this.element) {
             return;
@@ -14,6 +14,12 @@ export default class Header extends Block {
 
         // add default classes
         this.element.classList.add('window', 'bg-green', 'py-2');
+
+        this.element.setAttribute('id', 'send-message');
+        this.element.setAttribute('action', '#');
+
+        this.element.addEventListener('blur', validator, true);
+        this.element.addEventListener('focus', validator, true);
     }
 
     init() {

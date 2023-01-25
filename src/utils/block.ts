@@ -178,12 +178,7 @@ export default class Block {
 
         Object.keys(events).forEach((eventName: string) => {
             if (this.#element) {
-                // Set "useCapture: true" for forms
-                this.#element.addEventListener(
-                    eventName,
-                    events[eventName],
-                    this.meta.tagName === 'form' ?? false
-                );
+                this.#element.addEventListener(eventName, events[eventName]);
             }
         });
     }

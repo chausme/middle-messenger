@@ -1,7 +1,7 @@
 const validator = (e: Event) => {
     console.log('validating form...');
     if (!e.currentTarget) {
-        return;
+        return false;
     }
     const form = e.currentTarget as HTMLFormElement;
     const formData = new FormData(form);
