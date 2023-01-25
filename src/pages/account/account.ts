@@ -36,9 +36,13 @@ export default class PageAccount extends Block {
             events: {
                 submit(e) {
                     e.preventDefault();
-                    const formData = new FormData(e.target);
-                    const formProps = Object.fromEntries(formData);
-                    console.log(formProps);
+                    const isValid = validator(e);
+                    if (isValid) {
+                        const formData = new FormData(e.target);
+                        const formProps = Object.fromEntries(formData);
+                        console.log('submitting form');
+                        console.log(formProps);
+                    }
                 },
                 blur(e) {
                     validator(e);

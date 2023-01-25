@@ -9,6 +9,7 @@ import Block from '~/src/utils/block';
 import template from './single-chat.hbs';
 import imageAvatar from '~/static/images/60.png';
 import imageMessage from '~/static/images/300x200.png';
+import validator from '~/src/utils/validator';
 import './single-chat.css';
 
 export default class SingleChat extends Block {
@@ -61,7 +62,27 @@ export default class SingleChat extends Block {
             datetime: '2:30pm',
             own: true,
         });
-        this.children.form = new FormMessage();
+        this.children.form = new FormMessage({
+            id: 'send-message',
+            events: {
+                submit(e) {
+                    e.preventDefault();
+                    const isValid = validator(e);
+                    if (isValid) {
+                        const formData = new FormData(e.target);
+                        const formProps = Object.fromEntries(formData);
+                        console.log('submitting form');
+                        console.log(formProps);
+                    }
+                },
+                blur(e) {
+                    validator(e);
+                },
+                focus(e) {
+                    validator(e);
+                },
+            },
+        });
     }
 
     render() {

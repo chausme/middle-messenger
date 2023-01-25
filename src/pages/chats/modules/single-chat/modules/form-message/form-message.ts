@@ -1,11 +1,12 @@
 import Block from '~/src/utils/block';
 import ButtonIcon from '~/src/components/button-icon';
 import InputMessage from '../../components/input-message';
+import { FormProps } from '~/src/utils/prop-types';
 import template from './form-message.hbs';
 
 export default class FormMessage extends Block {
-    constructor() {
-        super({}, 'form');
+    constructor(props: FormProps) {
+        super(props, 'form');
 
         if (!this.element) {
             return;
@@ -14,7 +15,7 @@ export default class FormMessage extends Block {
         // add default classes
         this.element.classList.add('window', 'bg-green', 'py-2');
 
-        this.element.setAttribute('id', 'send-message');
+        this.element.setAttribute('id', props.id);
         this.element.setAttribute('action', '#');
     }
 
@@ -37,14 +38,6 @@ export default class FormMessage extends Block {
             id: 'send',
             icon: 'arrow',
             styles: ['ml-1/5', 'bg-pink'],
-            events: {
-                click(e) {
-                    e.preventDefault();
-                    const messageEl = document.querySelector('#message') as HTMLInputElement;
-                    const message = messageEl.value;
-                    console.log({ message });
-                },
-            },
         });
     }
 
