@@ -31,6 +31,7 @@ const validateInput = (inputName: string, value: FormDataEntryValue, form: HTMLF
 
     /** @todo */
     if (inputName === 'login') {
+        // [0-9]*[A-Za-z-_]+[0-9]*
         pattern = /^hello/;
     }
 
@@ -39,9 +40,8 @@ const validateInput = (inputName: string, value: FormDataEntryValue, form: HTMLF
         pattern = /^([A-Za-z-_0-9])+@([A-Za-z-_0-9])+\.[A-Za-z-_0-9]+$/;
     }
 
-    /** @todo */
     if (inputName === 'password' || inputName === 'password_2') {
-        pattern = /^hello/;
+        pattern = /^(?=.*[0-9])(?=.*[A-Z])([.\S]{8,40})$/;
     }
 
     if (inputName === 'phone') {
