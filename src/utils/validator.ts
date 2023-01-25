@@ -1,3 +1,10 @@
+const getValidationMessage = (message: string) => {
+    const validationMessage = document.createElement('div');
+    validationMessage.classList.add('validation-message');
+    validationMessage.textContent = message;
+    return validationMessage;
+};
+
 const validateInput = (inputName: string, value, form: HTMLFormElement) => {
     const input = form.querySelector(`input[name="${inputName}"]`);
 
@@ -7,19 +14,37 @@ const validateInput = (inputName: string, value, form: HTMLFormElement) => {
 
     const inputWrap = input.parentElement;
     let pattern;
+    let message = 'Oops, something is wrong';
 
-    if (inputName === 'login') {
-        pattern = /^hello/;
+    // remove validation output if exists
+
+    if (inputWrap) {
+        const validationMessageEl = inputWrap.nextSibling;
+        if (validationMessageEl) {
+            validationMessageEl.remove();
+        }
     }
 
-    // <div class="validation-message">Oops, something went wrong</div>
+    /** @todo add better validation messages */
+    if (inputName === 'login') {
+        pattern = /^hello/;
+        message = 'Oops, something is wrong with the login value';
+    }
+
+    if (inputName === 'password') {
+        pattern = /^world/;
+        message = 'Oops, something is wrong with the login value';
+    }
 
     if (!pattern || pattern.test(value)) {
         inputWrap?.classList.remove('error');
         return true;
     }
 
+    const validationMessage = getValidationMessage(message);
+
     inputWrap?.classList.add('error');
+    inputWrap?.after(validationMessage);
     return false;
 };
 
