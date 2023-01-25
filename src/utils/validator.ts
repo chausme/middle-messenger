@@ -5,7 +5,7 @@ const getValidationMessage = (message: string) => {
     return validationMessage;
 };
 
-const validateInput = (inputName: string, value, form: HTMLFormElement) => {
+const validateInput = (inputName: string, value: string, form: HTMLFormElement) => {
     const input = form.querySelector(`input[name="${inputName}"]`);
 
     if (!input) {
@@ -33,8 +33,9 @@ const validateInput = (inputName: string, value, form: HTMLFormElement) => {
         pattern = /^hello/;
     }
 
+    /** @todo make domain name letters mandatory */
     if (inputName === 'email') {
-        pattern = /^hello/;
+        pattern = /^([A-Za-z-_0-9])+@([A-Za-z-_0-9])+\.[A-Za-z-_0-9]+/;
     }
 
     if (inputName === 'password' || inputName === 'password_2') {
@@ -42,11 +43,11 @@ const validateInput = (inputName: string, value, form: HTMLFormElement) => {
     }
 
     if (inputName === 'phone') {
-        pattern = /^hello/;
+        pattern = /^(\+)?(\d){10,15}/;
     }
 
     if (inputName === 'message') {
-        pattern = /^hello/;
+        pattern = /^.+/;
     }
 
     /** @todo add better validation messages */
