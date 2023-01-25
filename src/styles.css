@@ -209,6 +209,10 @@ h2 {
         position: relative;
         width: 100%;
         padding: 0;
+
+        input {
+            color: var(--c-red);
+        }
     }
 
     &.input-search {
@@ -227,6 +231,18 @@ h2 {
     &.bg-pink {
         &::before {
             background-color: var(--c-pink);
+        }
+    }
+
+    &.bg-red {
+        &::before {
+            background-color: var(--c-red);
+        }
+    }
+
+    &.bg-red-light {
+        &::before {
+            background-color: var(--c-red-light);
         }
     }
 
@@ -297,12 +313,25 @@ h2 {
     }
 }
 
+.validation-message {
+    font-size: 12px;
+    margin: 8px 0 0 4px;
+}
+
 .absolute {
     position: absolute;
 }
 
 .button {
     cursor: pointer;
+
+    &[disabled] {
+        cursor: default;
+        pointer-events: none;
+        &:before {
+            background-color: var(--c-gray);
+        }
+    }
 }
 
 .text-black {
