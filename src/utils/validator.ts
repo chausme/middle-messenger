@@ -29,10 +29,8 @@ const validateInput = (inputName: string, value: FormDataEntryValue, form: HTMLF
         pattern = /^([A-Z]){1}([A-Za-z-])+$/;
     }
 
-    /** @todo */
     if (inputName === 'login') {
-        // [0-9]*[A-Za-z-_]+[0-9]*
-        pattern = /^hello/;
+        pattern = /^(?=.*[A-Za-z])([A-Za-z0-9-_]{3,20})$/;
     }
 
     /** @todo make domain name letters mandatory */
