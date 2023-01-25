@@ -1,7 +1,6 @@
 import Block from '~/src/utils/block';
 import ButtonIcon from '~/src/components/button-icon';
 import InputMessage from '../../components/input-message';
-import validator from '~/src/utils/validator';
 import template from './form-message.hbs';
 
 export default class FormMessage extends Block {
@@ -17,9 +16,6 @@ export default class FormMessage extends Block {
 
         this.element.setAttribute('id', 'send-message');
         this.element.setAttribute('action', '#');
-
-        this.element.addEventListener('blur', validator, true);
-        this.element.addEventListener('focus', validator, true);
     }
 
     init() {

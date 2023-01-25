@@ -73,6 +73,12 @@ const validateInput = (inputName: string, value: FormDataEntryValue, form: HTMLF
 };
 
 const validator = (e: Event) => {
+    // Don't validate form on type="button" click
+
+    if (e.target && e.target.tagName === 'BUTTON' && e.target.getAttribute('type') === 'button') {
+        return false;
+    }
+
     if (!e.currentTarget) {
         return false;
     }

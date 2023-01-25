@@ -6,6 +6,7 @@ import ButtonIcon from '~/src/components/button-icon';
 import Button from '~/src/components/button';
 import InputWLabel from '~/src/components/input-w-label';
 import router from '~/src/index';
+import validator from '~/src/utils/validator';
 import template from './account.hbs';
 import * as classes from './account.module.css';
 
@@ -38,6 +39,12 @@ export default class PageAccount extends Block {
                     const formData = new FormData(e.target);
                     const formProps = Object.fromEntries(formData);
                     console.log(formProps);
+                },
+                blur(e) {
+                    validator(e);
+                },
+                focus(e) {
+                    validator(e);
                 },
             },
             displayName: 'Jack J',

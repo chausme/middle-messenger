@@ -178,7 +178,7 @@ export default class Block {
             return;
         }
         Object.entries(this.#events).forEach(([eventName, event]) => {
-            this.#element.removeEventListener(eventName, event);
+            this.#element.removeEventListener(eventName, event, this.meta.tagName === 'form');
         });
     }
 
@@ -187,8 +187,13 @@ export default class Block {
 
         Object.keys(events).forEach((eventName: string) => {
             this.#events[eventName] = events[eventName];
-            if (this.#element) {
-                this.#element.addEventListener(eventName, events[eventName]);
+            if (this.#element.tagName) {
+                // Add useCapture() for form elements
+                this.#element.addEventListener(
+                    eventName,
+                    events[eventName],
+                    this.meta.tagName === 'form'
+                );
             }
         });
     }

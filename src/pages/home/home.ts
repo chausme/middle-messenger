@@ -39,14 +39,12 @@ export default class PageHome extends Block {
                             console.log(formProps);
                         }
                     },
-                    // blur(e) {
-                    //     console.log('blur event');
-                    //     // console.log(e);
-                    // },
-                    // focus(e) {
-                    //     console.log('focus event');
-                    //     // console.log(e);
-                    // },
+                    blur(e) {
+                        validator(e);
+                    },
+                    focus(e) {
+                        validator(e);
+                    },
                 },
                 input_login: new InputWLabel({
                     title: 'Login',
@@ -87,6 +85,12 @@ export default class PageHome extends Block {
                         const formData = new FormData(e.target);
                         const formProps = Object.fromEntries(formData);
                         console.log(formProps);
+                    },
+                    blur(e) {
+                        validator(e);
+                    },
+                    focus(e) {
+                        validator(e);
                     },
                 },
                 input_email: new InputWLabel({
