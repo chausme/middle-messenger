@@ -12,6 +12,7 @@ export default class Router {
     init() {
         const path = this.getPath(window.location.href);
         this.load(path);
+        this.addLinksClickListener();
     }
 
     // Output respective template on page and optionally update path
@@ -42,11 +43,11 @@ export default class Router {
             : { name: template, component: this.routesData[template] };
     }
 
-    // Add link click event listeners on component load
+    // Add temporary nav link click event listeners for Sprint #1-2
     addLinksClickListener() {
         // @todo rafactor as needed
-        // @todo add support for browser history changes with window.onpopstate
-        const buttonLinks = document.querySelectorAll('.link');
+        // @todo add support for browser history changes with window.onpopstate - will do in Sprint #3
+        const buttonLinks = document.querySelectorAll('.nav-link');
         buttonLinks.forEach(el => {
             el.addEventListener('click', e => {
                 e.preventDefault();

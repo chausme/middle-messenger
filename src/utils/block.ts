@@ -208,8 +208,8 @@ export default class Block {
             set(target: PropsType, prop: string, value: string | number) {
                 target[prop] = value;
 
-                // Запускаем обновление компоненты
-                // Плохой cloneDeep, в следующей итерации нужно заставлять добавлять cloneDeep им самим
+                // Update component
+                // Bad cloneDeep, better to improve
                 self.#eventBus().emit(Block.EVENTS.FLOW_CDU, { ...target }, target);
                 return true;
             },
@@ -220,7 +220,7 @@ export default class Block {
 
     // Create a single element based on provided tagName
     private createDocumentElement(tagName: string): HTMLElement {
-        // Можно сделать метод, который через фрагменты в цикле создаёт сразу несколько блоков
+        // Possible to create a method which creates a few blocks in a loop using fragments
         const element = document.createElement(tagName);
         if (this.id) {
             element.setAttribute('data-id', this.id);
