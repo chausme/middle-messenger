@@ -29,6 +29,8 @@ export default class Block {
 
     children: Record<string, any> = {};
 
+    #events: Record<string, any> = {};
+
     private logging = false;
 
     constructor(propsAndChildren: PropsType, tagName = 'div') {
@@ -171,12 +173,20 @@ export default class Block {
         return new DocumentFragment();
     }
 
-    private removeEvents() {}
+    private removeEvents() {
+        if (!(this.#events && Object.keys(this.#events).length)) {
+            return;
+        }
+        Object.entries(this.#events).forEach(([eventName, event]) => {
+            this.#element.removeEventListener(eventName, event);
+        });
+    }
 
     private addEvents() {
         const { events = {} } = this.props;
 
         Object.keys(events).forEach((eventName: string) => {
+            this.#events[eventName] = events[eventName];
             if (this.#element) {
                 this.#element.addEventListener(eventName, events[eventName]);
             }
