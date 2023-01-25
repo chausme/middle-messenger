@@ -26,7 +26,7 @@ const validateInput = (inputName: string, value: string, form: HTMLFormElement) 
     }
 
     if (inputName === 'first_name' || inputName === 'second_name' || inputName === 'display_name') {
-        pattern = /^hello/;
+        pattern = /^([A-Z]){1}([A-Za-z-])+$/;
     }
 
     if (inputName === 'login') {
@@ -35,7 +35,7 @@ const validateInput = (inputName: string, value: string, form: HTMLFormElement) 
 
     /** @todo make domain name letters mandatory */
     if (inputName === 'email') {
-        pattern = /^([A-Za-z-_0-9])+@([A-Za-z-_0-9])+\.[A-Za-z-_0-9]+/;
+        pattern = /^([A-Za-z-_0-9])+@([A-Za-z-_0-9])+\.[A-Za-z-_0-9]+$/;
     }
 
     if (inputName === 'password' || inputName === 'password_2') {
@@ -43,11 +43,11 @@ const validateInput = (inputName: string, value: string, form: HTMLFormElement) 
     }
 
     if (inputName === 'phone') {
-        pattern = /^(\+)?(\d){10,15}/;
+        pattern = /^(\+)?(\d){10,15}$/;
     }
 
     if (inputName === 'message') {
-        pattern = /^.+/;
+        pattern = /^.+$/;
     }
 
     /** @todo add better validation messages */
