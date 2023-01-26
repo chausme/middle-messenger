@@ -19,9 +19,9 @@ export default class Block {
         return this.#element;
     }
 
-    private meta: PropsType = {};
+    #meta: PropsType = {};
 
-    private id!: string;
+    #id!: string;
 
     #eventBus: () => EventBus;
 
@@ -31,43 +31,43 @@ export default class Block {
 
     #events: Record<string, any> = {};
 
-    private logging = false;
+    #logging = false;
 
     constructor(propsAndChildren: PropsType, tagName = 'div') {
         // Create a new event bus
         const eventBus = new EventBus();
 
-        const { children, props } = this.getChildren(propsAndChildren);
+        const { children, props } = this.#getChildren(propsAndChildren);
 
         // Save children
         this.children = children;
 
         // Save provided tagName and props
-        this.meta = {
+        this.#meta = {
             tagName,
             props,
         };
 
         if (props?.settings?.withInternalID) {
             // Generate unique ID
-            this.id = makeUUID();
+            this.#id = makeUUID();
         }
 
         // Create proxy
-        this.props = this.makePropsProxy({ ...props, __id: this.id });
+        this.props = this.#makePropsProxy({ ...props, __id: this.#id });
 
         // Set link to the new event bus
         this.#eventBus = () => eventBus;
 
         // Register block events
-        this.registerEvents(eventBus);
+        this.#registerEvents(eventBus);
 
         // Emit "init" event
         eventBus.emit(Block.EVENTS.INIT);
     }
 
     // Register required events
-    private registerEvents(eventBus: EventBus) {
+    #registerEvents(eventBus: EventBus) {
         eventBus.on(Block.EVENTS.INIT, this.#init.bind(this));
         eventBus.on(Block.EVENTS.FLOW_CDM, this.#componentDidMount.bind(this));
         eventBus.on(Block.EVENTS.FLOW_CDU, this.#componentDidUpdate.bind(this));
@@ -75,21 +75,21 @@ export default class Block {
     }
 
     // Create resources, currently a single element, see createDocumentElement()
-    private createResources() {
-        const { tagName } = this.meta;
+    #createResources() {
+        const { tagName } = this.#meta;
         // Save created element i.e. tagName to use inside getContent() later
-        this.#element = this.createDocumentElement(tagName);
+        this.#element = this.#createDocumentElement(tagName);
     }
 
     // EVENT: "init" function
     #init() {
-        if (this.logging) {
+        if (this.#logging) {
             console.log('EVENT: INIT', this);
         }
         this.init();
 
         // Create resources, currently a single element, see createDocumentElement()
-        this.createResources();
+        this.#createResources();
         // Emit "render" event
         this.#eventBus().emit(Block.EVENTS.FLOW_RENDER, 'emit render');
     }
@@ -98,7 +98,7 @@ export default class Block {
 
     // EVENT: "componentDidMount" function
     #componentDidMount() {
-        if (this.logging) {
+        if (this.#logging) {
             console.log('EVENT: CDM', this);
         }
         this.componentDidMount();
@@ -118,7 +118,7 @@ export default class Block {
 
     // EVENT: "componentDidUpdate" function
     #componentDidUpdate(oldProps: PropsType, newProps: PropsType) {
-        if (this.logging) {
+        if (this.#logging) {
             console.log('EVENT: CDU', this);
         }
         const response = this.componentDidUpdate(oldProps, newProps);
@@ -145,7 +145,7 @@ export default class Block {
     // Heads up - renders not the entire element i.e. not the tagName
     // Could be overriden externally with render()
     #render() {
-        if (this.logging) {
+        if (this.#logging) {
             console.log('EVENT: RENDER', this);
         }
 
@@ -156,7 +156,7 @@ export default class Block {
         const block = this.render();
 
         // Remove events
-        this.removeEvents();
+        this.#removeEvents();
 
         // Clear element contents
         this.#element.innerHTML = '';
@@ -165,7 +165,7 @@ export default class Block {
         this.#element.append(block);
 
         // Add events here
-        this.addEvents();
+        this.#addEvents();
     }
 
     // Could be redeclared by user
@@ -173,16 +173,16 @@ export default class Block {
         return new DocumentFragment();
     }
 
-    private removeEvents() {
+    #removeEvents() {
         if (!(this.#events && Object.keys(this.#events).length)) {
             return;
         }
         Object.entries(this.#events).forEach(([eventName, event]) => {
-            this.#element.removeEventListener(eventName, event, this.meta.tagName === 'form');
+            this.#element.removeEventListener(eventName, event, this.#meta.tagName === 'form');
         });
     }
 
-    private addEvents() {
+    #addEvents() {
         const { events = {} } = this.props;
 
         Object.keys(events).forEach((eventName: string) => {
@@ -192,7 +192,7 @@ export default class Block {
                 this.#element.addEventListener(
                     eventName,
                     events[eventName],
-                    this.meta.tagName === 'form'
+                    this.#meta.tagName === 'form'
                 );
             }
         });
@@ -204,7 +204,7 @@ export default class Block {
     }
 
     // Create proxy
-    private makePropsProxy(props: PropsType) {
+    #makePropsProxy(props: PropsType) {
         // @todo Need to replace with a proper ES6 way
         const self = this;
 
@@ -234,17 +234,17 @@ export default class Block {
     }
 
     // Create a single element based on provided tagName
-    private createDocumentElement(tagName: string): HTMLElement {
+    #createDocumentElement(tagName: string): HTMLElement {
         // Possible to create a method which creates a few blocks in a loop using fragments
         const element = document.createElement(tagName);
-        if (this.id) {
-            element.setAttribute('data-id', this.id);
+        if (this.#id) {
+            element.setAttribute('data-id', this.#id);
         }
         return element;
     }
 
     // Filter props and children
-    private getChildren(propsAndChildren: PropsType) {
+    #getChildren(propsAndChildren: PropsType) {
         const children: PropsType = {};
         const props: PropsType = {};
 
@@ -264,7 +264,7 @@ export default class Block {
         const propsAndStubs = { ...context };
 
         Object.entries(this.children).forEach(([key, component]: [string, Block | any]) => {
-            propsAndStubs[key] = `<div data-id="${component.id}"></div>`;
+            propsAndStubs[key] = `<div data-id="${component.#id}"></div>`;
         });
 
         const html = template(propsAndStubs);
@@ -272,7 +272,7 @@ export default class Block {
         fragment.innerHTML = html;
 
         Object.values(this.children).forEach((component: Block) => {
-            const stub = fragment.content.querySelector(`[data-id="${component.id}"]`);
+            const stub = fragment.content.querySelector(`[data-id="${component.#id}"]`);
             if (!stub) {
                 return;
             }
