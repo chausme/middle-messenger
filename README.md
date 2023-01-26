@@ -15,7 +15,7 @@
 
 ## Sprint 2
 
-### Pull request - TBC
+### Pull request - https://github.com/chau5/middle.messenger.praktikum.yandex/pull/9
 
 #### Updates
 
