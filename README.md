@@ -9,6 +9,9 @@
 -   `npm run dev` - start Parcel dev server at `http://localhost:1234`
 -   `npm build` - create Parcel build at `./dist`
 -   `npm run start` - create Parcel build and start Express server at `http://localhost:3000`
+-   `npm run tswatch` - start TypeScript compiler with `--watch` parameter
+-   `npm run eslint` - run ESLint with `--quite` parameter
+-   `npm run stylelint` - run Stylelint
 
 ## Sprint 2
 
