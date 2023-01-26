@@ -334,7 +334,8 @@ h2 {
     &[disabled] {
         cursor: default;
         pointer-events: none;
-        &:before {
+
+        &::before {
             background-color: var(--c-gray);
         }
     }
