@@ -1,9 +1,17 @@
 import Block from '~/src/utils/block';
 import { FormProps } from '~/src/utils/prop-types';
+import { validateForm } from '~/src/utils/validator';
 import template from './form.hbs';
 
 export default class Form extends Block {
     constructor(props: FormProps) {
+        props.events = {
+            submit(e) {
+                e.preventDefault();
+                validateForm(e);
+            },
+        };
+
         super(props, 'form');
 
         if (!this.element) {

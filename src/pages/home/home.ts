@@ -27,18 +27,6 @@ export default class PageHome extends Block {
         if (this.props.type === 'signIn') {
             this.children.form = new Form({
                 id: 'sign-in',
-                events: {
-                    submit(e) {
-                        e.preventDefault();
-                        const isValid = validator(e);
-                        if (isValid) {
-                            const formData = new FormData(e.target);
-                            const formProps = Object.fromEntries(formData);
-                            console.log('submitting form');
-                            console.log(formProps);
-                        }
-                    },
-                },
                 inputs: [
                     new InputWLabel({
                         title: 'Login',

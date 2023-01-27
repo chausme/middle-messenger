@@ -1,16 +1,16 @@
 import Block from '~/src/utils/block';
 import { InputProps } from '~/src/utils/prop-types';
-import validator from '~/src/utils/validator';
+import validateInput from '~/src/utils/validator';
 import template from './input.hbs';
 
 export default class Input extends Block {
     constructor(props: InputProps) {
         props.events = {
             blur(e) {
-                validator(e);
+                validateInput(e);
             },
             focus(e) {
-                validator(e);
+                validateInput(e);
             },
         };
 

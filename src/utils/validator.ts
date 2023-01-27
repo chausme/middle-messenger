@@ -5,14 +5,10 @@ const getValidationMessage = (message: string) => {
     return validationMessage;
 };
 
-const validator = (e: Event) => {
-    if (!e.currentTarget) {
-        return false;
-    }
-
+const validateInput = (e: Event) => {
     const target = e.target as HTMLFormElement;
-
     const inputWrap = target.parentElement;
+
     let pattern;
     let message = 'Oops, something is wrong';
 
@@ -73,4 +69,10 @@ const validator = (e: Event) => {
     return false;
 };
 
-export default validator;
+const validateForm = (e: Event) => {
+    console.log('validate form');
+    console.log(e);
+};
+
+export default validateInput;
+export { validateForm };
