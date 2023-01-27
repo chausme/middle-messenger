@@ -15,6 +15,8 @@ type RequestMethodOptionsProps = RequestOptionsProps & {
     method: string;
 };
 
+type HTTPMethodProps = (url: string, options: RequestOptionsProps) => Promise<unknown>;
+
 function queryStringify(data: Record<string, any>) {
     if (!data) {
         return false;
@@ -27,20 +29,20 @@ function queryStringify(data: Record<string, any>) {
 }
 
 export default class HTTPTransport {
-    get = (url: string, options: RequestOptionsProps) =>
+    get: HTTPMethodProps = (url, options) =>
         this.request(
             options.data ? `${url}${queryStringify(options.data)}` : url,
             { ...options, data: {}, method: METHOD.GET },
             options.timeout
         );
 
-    post = (url: string, options: RequestOptionsProps) =>
+    post: HTTPMethodProps = (url, options) =>
         this.request(url, { ...options, method: METHOD.POST }, options.timeout);
 
-    put = (url: string, options: RequestOptionsProps) =>
+    put: HTTPMethodProps = (url, options) =>
         this.request(url, { ...options, method: METHOD.PUT }, options.timeout);
 
-    delete = (url: string, options: RequestOptionsProps) =>
+    delete: HTTPMethodProps = (url, options) =>
         this.request(url, { ...options, method: METHOD.DELETE }, options.timeout);
 
     request = (url: string, options: RequestMethodOptionsProps, timeout = 5000) => {
