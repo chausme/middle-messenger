@@ -1,18 +1,31 @@
 import Block from '~/src/utils/block';
+import { InputProps } from '~/src/utils/prop-types';
+import validateInput from '~/src/utils/validator';
 import template from './input-message.hbs';
 
-export default class Input extends Block {
-    constructor() {
-        super({}, 'div');
+export default class InputMessage extends Block {
+    constructor(props: InputProps) {
+        props.events = {
+            blur(e) {
+                validateInput(e.target);
+            },
+            focus(e) {
+                validateInput(e.target);
+            },
+        };
+
+        super(props, 'div');
 
         if (!this.element) {
             return;
         }
 
         this.element.classList.add('input-wrap', 'window', 'sm', 'bg-gray-light');
+
+        this.addTargetEvents('input');
     }
 
     render() {
-        return this.compile(template, {});
+        return this.compile(template, { ...this.props });
     }
 }

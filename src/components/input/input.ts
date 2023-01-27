@@ -21,6 +21,8 @@ export default class Input extends Block {
         }
 
         this.element.classList.add('input-wrap', 'window', 'p-0/5', 'sm', 'bg-gray-light');
+
+        this.addTargetEvents('input');
     }
 
     render() {
