@@ -269,14 +269,6 @@ export default class Block {
     compile(template: TemplateDelegate, context: PropsType) {
         const propsAndStubs = { ...context };
 
-        const replaceStub = (component: Block) => {
-            const stub = fragment.content.querySelector(`[data-id="${component.#id}"]`);
-            if (!stub) {
-                return;
-            }
-            stub.replaceWith(component.getContent());
-        };
-
         Object.entries(this.children).forEach(([key, component]: [string, Block | any]) => {
             if (Array.isArray(component)) {
                 propsAndStubs[key] = component.map(child => `<div data-id="${child.id}"></div>`);
@@ -288,6 +280,14 @@ export default class Block {
         const html = template(propsAndStubs);
         const fragment = document.createElement('template');
         fragment.innerHTML = html;
+
+        const replaceStub = (component: Block) => {
+            const stub = fragment.content.querySelector(`[data-id="${component.#id}"]`);
+            if (!stub) {
+                return;
+            }
+            stub.replaceWith(component.getContent());
+        };
 
         Object.values(this.children).forEach((component: Block) => {
             if (Array.isArray(component)) {

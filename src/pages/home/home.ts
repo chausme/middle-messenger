@@ -1,7 +1,6 @@
 import Block from '~/src/utils/block';
 import Button from '~/src/components/button';
-import FormSignIn from './modules/form-sign-in';
-import FormSignUp from './modules/form-sign-up';
+import Form from '~/src/components/form';
 import InputWLabel from '~/src/components/input-w-label';
 import { PageHomeProps } from '~/src/utils/prop-types';
 import router from '~/src/index';
@@ -26,7 +25,7 @@ export default class PageHome extends Block {
 
     init() {
         if (this.props.type === 'signIn') {
-            this.children.form = new FormSignIn({
+            this.children.form = new Form({
                 id: 'sign-in',
                 events: {
                     submit(e) {
@@ -58,28 +57,28 @@ export default class PageHome extends Block {
                         type: 'password',
                     }),
                 ],
-                button_sign_in: new Button({
-                    title: 'Sign In',
-                    id: 'sign_in',
-                    styles: ['bg-green'],
-                    settings: { withInternalID: true },
-                }),
-                button_sign_up: new Button({
-                    title: 'Sign Up',
-                    id: 'sign_up',
-                    styles: ['bg-orange'],
-                    settings: { withInternalID: true },
-                    link: 'signup',
-                    events: {
-                        click(e) {
-                            e.preventDefault();
-                            router.load('#signup', true);
+                buttons: [
+                    new Button({
+                        title: 'Sign In',
+                        id: 'sign_in',
+                        styles: ['bg-green'],
+                    }),
+                    new Button({
+                        title: 'Sign Up',
+                        id: 'sign_up',
+                        styles: ['bg-orange'],
+                        link: 'signup',
+                        events: {
+                            click(e) {
+                                e.preventDefault();
+                                router.load('#signup', true);
+                            },
                         },
-                    },
-                }),
+                    }),
+                ],
             });
         } else if (this.props.type === 'signUp') {
-            this.children.form = new FormSignUp({
+            this.children.form = new Form({
                 id: 'sign-in',
                 events: {
                     submit(e) {
@@ -99,60 +98,62 @@ export default class PageHome extends Block {
                         validator(e);
                     },
                 },
-                input_email: new InputWLabel({
-                    title: 'Email',
-                    id: 'email',
-                    type: 'email',
-                }),
-                input_login: new InputWLabel({
-                    title: 'Login',
-                    id: 'login',
-                    type: 'text',
-                }),
-                input_first_name: new InputWLabel({
-                    title: 'First Name',
-                    id: 'first_name',
-                    type: 'text',
-                }),
-                input_last_name: new InputWLabel({
-                    title: 'Last Name',
-                    id: 'second_name',
-                    type: 'text',
-                }),
-                input_phone: new InputWLabel({
-                    title: 'Phone',
-                    id: 'phone',
-                    type: 'tel',
-                }),
-                input_password: new InputWLabel({
-                    title: 'Password',
-                    id: 'password',
-                    type: 'password',
-                }),
-                input_password_2: new InputWLabel({
-                    title: 'Confirm password',
-                    id: 'password_2',
-                    type: 'password',
-                }),
-                button_sign_in: new Button({
-                    title: 'Sign In',
-                    id: 'sign_in',
-                    styles: ['bg-green'],
-                    settings: { withInternalID: true },
-                    link: '',
-                    events: {
-                        click(e) {
-                            e.preventDefault();
-                            router.load('', true);
+                inputs: [
+                    new InputWLabel({
+                        title: 'Email',
+                        id: 'email',
+                        type: 'email',
+                    }),
+                    new InputWLabel({
+                        title: 'Login',
+                        id: 'login',
+                        type: 'text',
+                    }),
+                    new InputWLabel({
+                        title: 'First Name',
+                        id: 'first_name',
+                        type: 'text',
+                    }),
+                    new InputWLabel({
+                        title: 'Last Name',
+                        id: 'second_name',
+                        type: 'text',
+                    }),
+                    new InputWLabel({
+                        title: 'Phone',
+                        id: 'phone',
+                        type: 'tel',
+                    }),
+                    new InputWLabel({
+                        title: 'Password',
+                        id: 'password',
+                        type: 'password',
+                    }),
+                    new InputWLabel({
+                        title: 'Confirm password',
+                        id: 'password_2',
+                        type: 'password',
+                    }),
+                ],
+                buttons: [
+                    new Button({
+                        title: 'Sign In',
+                        id: 'sign_in',
+                        styles: ['bg-green'],
+                        link: '',
+                        events: {
+                            click(e) {
+                                e.preventDefault();
+                                router.load('', true);
+                            },
                         },
-                    },
-                }),
-                button_sign_up: new Button({
-                    title: 'Sign Up',
-                    id: 'sign_up',
-                    styles: ['bg-orange'],
-                    settings: { withInternalID: true },
-                }),
+                    }),
+                    new Button({
+                        title: 'Sign Up',
+                        id: 'sign_up',
+                        styles: ['bg-orange'],
+                    }),
+                ],
             });
         }
     }

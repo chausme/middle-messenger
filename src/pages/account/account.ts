@@ -1,5 +1,5 @@
 import Block from '~/src/utils/block';
-import FormAccount from './modules/form-account';
+import Form from '~/src/components/form';
 import Avatar from '~/src/components/avatar';
 import imageAvatarLarge from '~/static/images/120.png';
 import ButtonIcon from '~/src/components/button-icon';
@@ -15,6 +15,8 @@ export default class PageAccount extends Block {
         super({}, 'div');
 
         this.element.classList.add('window', 'w-fixed', 'lg', 'account', 'bg-cyan');
+
+        this.props.displayName = 'Jack J';
     }
 
     init() {
@@ -31,7 +33,12 @@ export default class PageAccount extends Block {
                 },
             },
         });
-        this.children.form = new FormAccount({
+        this.children.avatar = new Avatar({
+            url: imageAvatarLarge,
+            size: 'lg',
+            styles: ['mb-2'],
+        });
+        this.children.form = new Form({
             id: 'account',
             events: {
                 submit(e) {
@@ -51,77 +58,75 @@ export default class PageAccount extends Block {
                     validator(e);
                 },
             },
-            displayName: 'Jack J',
-            avatar: new Avatar({
-                url: imageAvatarLarge,
-                size: 'lg',
-                styles: ['mb-2'],
-            }),
-            input_email: new InputWLabel({
-                title: 'Email',
-                id: 'email',
-                type: 'email',
-                value: 'user123@gmail.com',
-            }),
-            input_login: new InputWLabel({
-                title: 'Login',
-                id: 'login',
-                type: 'text',
-                value: 'user123',
-            }),
-            input_first_name: new InputWLabel({
-                title: 'First Name',
-                id: 'first_name',
-                type: 'text',
-                value: 'Jack',
-            }),
-            input_last_name: new InputWLabel({
-                title: 'Last Name',
-                id: 'second_name',
-                type: 'text',
-                value: 'Jackson',
-            }),
-            input_phone: new InputWLabel({
-                title: 'Phone',
-                id: 'phone',
-                type: 'tel',
-                value: '+84 123 123 123',
-            }),
-            input_display_name: new InputWLabel({
-                title: 'Display Name',
-                id: 'display_name',
-                type: 'text',
-                value: 'Jack J',
-            }),
-            button_update_details: new Button({
-                title: 'Update details',
-                id: 'update_details',
-                styles: ['bg-green'],
-            }),
-            button_change_password: new Button({
-                title: 'Change Password',
-                id: 'change_password',
-                styles: ['bg-pink'],
-                action: 'change-password',
-                events: {
-                    click(e) {
-                        e.preventDefault();
-                        console.log('change password');
+            inputs: [
+                new InputWLabel({
+                    title: 'Email',
+                    id: 'email',
+                    type: 'email',
+                    value: 'user123@gmail.com',
+                }),
+                new InputWLabel({
+                    title: 'Login',
+                    id: 'login',
+                    type: 'text',
+                    value: 'user123',
+                }),
+                new InputWLabel({
+                    title: 'First Name',
+                    id: 'first_name',
+                    type: 'text',
+                    value: 'Jack',
+                }),
+                new InputWLabel({
+                    title: 'Last Name',
+                    id: 'second_name',
+                    type: 'text',
+                    value: 'Jackson',
+                }),
+                new InputWLabel({
+                    title: 'Phone',
+                    id: 'phone',
+                    type: 'tel',
+                    value: '+84 123 123 123',
+                }),
+                new InputWLabel({
+                    title: 'Display Name',
+                    id: 'display_name',
+                    type: 'text',
+                    value: 'Jack J',
+                }),
+            ],
+            buttons: [
+                new Button({
+                    title: 'Update details',
+                    id: 'update_details',
+                    styles: ['bg-green'],
+                }),
+                new Button({
+                    title: 'Change Password',
+                    id: 'change_password',
+                    styles: ['bg-pink'],
+                    action: 'change-password',
+                    events: {
+                        click(e) {
+                            e.preventDefault();
+                            console.log('change password');
+                        },
                     },
-                },
-            }),
-            button_logout: new Button({
-                title: 'Log Out',
-                id: 'logout',
-                styles: ['bg-cyan'],
-                link: '/',
-                events: {
-                    click(e) {
-                        e.preventDefault();
-                        router.load('', true);
+                }),
+                new Button({
+                    title: 'Log Out',
+                    id: 'logout',
+                    styles: ['bg-cyan'],
+                    link: '/',
+                    events: {
+                        click(e) {
+                            e.preventDefault();
+                            router.load('', true);
+                        },
                     },
-                },
-            }),
+                }),
+            ],
         });
     }
 

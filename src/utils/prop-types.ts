@@ -1,4 +1,5 @@
 import { CallbackType } from '~/src/utils/event-bus';
+import Input from '~/src/components/input';
 import InputWLabel from '~/src/components/input-w-label';
 import Button from '~/src/components/button';
 import Avatar from '~src/components/avatar';
@@ -7,18 +8,13 @@ import InputMessage from '~/src/pages/chats/modules/single-chat/components/input
 
 export type FormProps = {
     id: string;
-    [key: `input_${string}`]: InputWLabel;
-    [key: `button_${string}`]: Button;
     styles?: string[];
-    settings?: { withInternalID?: boolean };
+    settings?: { withInternalID?: boolean; displayName?: string };
     events?: Record<string, CallbackType>;
+    [key: `input_${string}`]: InputWLabel | Input;
+    [key: `button_${string}`]: Button | ButtonIcon;
     inputs?: InputWLabel[];
-};
-
-export type FormAccountProps = FormProps & {
-    id: string;
-    displayName: string;
-    avatar: Avatar;
+    buttons?: Button[];
 };
 
 export type InputProps = {
