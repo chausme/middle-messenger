@@ -44,27 +44,11 @@ export default class PageHome extends Block {
                         title: 'Login',
                         id: 'login',
                         type: 'text',
-                        events: {
-                            blur(e) {
-                                validator(e);
-                            },
-                            focus(e) {
-                                validator(e);
-                            },
-                        },
                     }),
                     new InputWLabel({
                         title: 'Password',
                         id: 'password',
                         type: 'password',
-                        events: {
-                            blur(e) {
-                                validator(e);
-                            },
-                            focus(e) {
-                                validator(e);
-                            },
-                        },
                     }),
                 ],
                 buttons: [
@@ -100,12 +84,6 @@ export default class PageHome extends Block {
                             console.log('submitting form');
                             console.log(formProps);
                         }
-                    },
-                    blur(e) {
-                        validator(e);
-                    },
-                    focus(e) {
-                        validator(e);
                     },
                 },
                 inputs: [

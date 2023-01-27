@@ -206,6 +206,8 @@ export default class Block {
         });
     }
 
+    // Add events to provided child tagName
+    // Needed for components based on div wrappers e.g. input
     addTargetEvents(target: string) {
         this.#addEvents(target);
     }
