@@ -4,7 +4,6 @@ import Form from '~/src/components/form';
 import InputWLabel from '~/src/components/input-w-label';
 import { PageHomeProps } from '~/src/utils/prop-types';
 import router from '~/src/index';
-import validator from '~/src/utils/validator';
 import template from './home.hbs';
 import './home.css';
 
@@ -62,18 +61,6 @@ export default class PageHome extends Block {
         } else if (this.props.type === 'signUp') {
             this.children.form = new Form({
                 id: 'sign-in',
-                events: {
-                    submit(e) {
-                        e.preventDefault();
-                        const isValid = validator(e);
-                        if (isValid) {
-                            const formData = new FormData(e.target);
-                            const formProps = Object.fromEntries(formData);
-                            console.log('submitting form');
-                            console.log(formProps);
-                        }
-                    },
-                },
                 inputs: [
                     new InputWLabel({
                         title: 'Email',

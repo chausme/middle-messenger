@@ -8,10 +8,10 @@ export default class InputWLabel extends Block {
     constructor(props: InputProps) {
         props.events = {
             blur(e) {
-                validateInput(e);
+                validateInput(e.target);
             },
             focus(e) {
-                validateInput(e);
+                validateInput(e.target);
             },
         };
 

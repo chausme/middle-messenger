@@ -5,8 +5,7 @@ const getValidationMessage = (message: string) => {
     return validationMessage;
 };
 
-const validateInput = (e: Event) => {
-    const target = e.target as HTMLFormElement;
+const validateInput = (target: HTMLInputElement) => {
     const inputWrap = target.parentElement;
 
     let pattern;
@@ -69,9 +68,17 @@ const validateInput = (e: Event) => {
     return false;
 };
 
-const validateForm = (e: Event) => {
-    console.log('validate form');
-    console.log(e);
+const validateForm = (target: HTMLFormElement) => {
+    const inputs = target.querySelectorAll('input');
+    let isValid = true;
+
+    inputs.forEach((input: HTMLInputElement) => {
+        if (!validateInput(input) && isValid === true) {
+            isValid = false;
+        }
+    });
+
+    return isValid;
 };
 
 export default validateInput;

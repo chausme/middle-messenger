@@ -8,7 +8,13 @@ export default class Form extends Block {
         props.events = {
             submit(e) {
                 e.preventDefault();
-                validateForm(e);
+                if (!validateForm(e.target)) {
+                    return;
+                }
+                const formData = new FormData(e.target);
+                const formProps = Object.fromEntries(formData);
+                console.log('submitting form');
+                console.log(formProps);
             },
         };
 
