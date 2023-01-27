@@ -12,6 +12,7 @@ export type FormProps = {
     styles?: string[];
     settings?: { withInternalID?: boolean };
     events?: Record<string, CallbackType>;
+    inputs?: InputWLabel[];
 };
 
 export type FormAccountProps = FormProps & {

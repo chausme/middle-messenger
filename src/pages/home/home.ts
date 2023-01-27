@@ -46,16 +46,18 @@ export default class PageHome extends Block {
                         validator(e);
                     },
                 },
-                input_login: new InputWLabel({
-                    title: 'Login',
-                    id: 'login',
-                    type: 'text',
-                }),
-                input_password: new InputWLabel({
-                    title: 'Password',
-                    id: 'password',
-                    type: 'password',
-                }),
+                inputs: [
+                    new InputWLabel({
+                        title: 'Login',
+                        id: 'login',
+                        type: 'text',
+                    }),
+                    new InputWLabel({
+                        title: 'Password',
+                        id: 'password',
+                        type: 'password',
+                    }),
+                ],
                 button_sign_in: new Button({
                     title: 'Sign In',
                     id: 'sign_in',
