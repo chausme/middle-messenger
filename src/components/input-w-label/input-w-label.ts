@@ -12,6 +12,8 @@ export default class InputWLabel extends Block {
         }
 
         this.element.classList.add('input-w-label');
+
+        this.addTargetEvents('input');
     }
 
     render() {

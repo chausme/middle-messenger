@@ -38,23 +38,33 @@ export default class PageHome extends Block {
                             console.log(formProps);
                         }
                     },
-                    blur(e) {
-                        validator(e);
-                    },
-                    focus(e) {
-                        validator(e);
-                    },
                 },
                 inputs: [
                     new InputWLabel({
                         title: 'Login',
                         id: 'login',
                         type: 'text',
+                        events: {
+                            blur(e) {
+                                validator(e);
+                            },
+                            focus(e) {
+                                validator(e);
+                            },
+                        },
                     }),
                     new InputWLabel({
                         title: 'Password',
                         id: 'password',
                         type: 'password',
+                        events: {
+                            blur(e) {
+                                validator(e);
+                            },
+                            focus(e) {
+                                validator(e);
+                            },
+                        },
                     }),
                 ],
                 buttons: [

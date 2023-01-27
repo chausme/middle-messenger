@@ -186,20 +186,28 @@ export default class Block {
         });
     }
 
-    #addEvents() {
+    #addEvents(target?: string) {
         const { events = {} } = this.props;
 
         Object.keys(events).forEach((eventName: string) => {
             this.#events[eventName] = events[eventName];
             if (this.#element.tagName) {
+                let targetEl = this.#element;
+                if (target) {
+                    targetEl = this.#element.querySelector(target) as HTMLElement;
+                }
                 // Add useCapture() for form elements
-                this.#element.addEventListener(
+                targetEl.addEventListener(
                     eventName,
                     events[eventName],
                     this.#meta.tagName === 'form'
                 );
             }
         });
+    }
+
+    addTargetEvents(target: string) {
+        this.#addEvents(target);
     }
 
     // Helper to get element content for output
