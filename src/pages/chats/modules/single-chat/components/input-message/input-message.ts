@@ -21,8 +21,6 @@ export default class InputMessage extends Block {
         }
 
         this.element.classList.add('input-wrap', 'window', 'sm', 'bg-gray-light');
-
-        this.addTargetEvents('input');
     }
 
     render() {

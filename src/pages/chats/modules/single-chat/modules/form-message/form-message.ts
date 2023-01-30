@@ -37,8 +37,8 @@ export default class FormMessage extends Block {
         this.children.buttonAttach = new ButtonIcon({
             title: 'Attach',
             id: 'attach',
+            css: ['mr-1/5', 'bg-orange'],
             icon: 'attachment',
-            styles: ['mr-1/5', 'bg-orange'],
             events: {
                 click(e) {
                     e.preventDefault();
@@ -49,13 +49,14 @@ export default class FormMessage extends Block {
         this.children.inputMessage = new InputMessage({
             title: 'Your message goes here...',
             id: 'message',
+            css: ['ml-1/5', 'bg-pink'],
             type: 'text',
         });
         this.children.buttonSend = new ButtonIcon({
             title: 'Send',
             id: 'send',
             icon: 'arrow',
-            styles: ['ml-1/5', 'bg-pink'],
+            css: ['ml-1/5', 'bg-pink'],
         });
     }
 

@@ -168,6 +168,9 @@ export default class Block {
         // Add element contents
         this.#element.append(block);
 
+        // Add element attributes
+        this.#addClasses();
+
         // Add events here
         this.#addEvents();
     }
@@ -186,15 +189,17 @@ export default class Block {
         });
     }
 
-    #addEvents(target?: string) {
+    #addEvents() {
         const { events = {} } = this.props;
+        // Check if component has a child element which is the actual one e.g. input inside div wrapper
+        const { child } = this.props;
 
         Object.keys(events).forEach((eventName: string) => {
             this.#events[eventName] = events[eventName];
             if (this.#element.tagName) {
                 let targetEl = this.#element;
-                if (target) {
-                    targetEl = this.#element.querySelector(target) as HTMLElement;
+                if (child) {
+                    targetEl = this.#element.querySelector(child) as HTMLElement;
                 }
                 // Add useCapture() for form elements
                 targetEl.addEventListener(
@@ -206,10 +211,17 @@ export default class Block {
         });
     }
 
-    // Add events to provided child tagName
-    // Needed for components based on div wrappers e.g. input
-    addTargetEvents(target: string) {
-        this.#addEvents(target);
+    // Add CSS classes
+    #addClasses() {
+        const { css = [] } = this.props;
+
+        if (!css) {
+            return;
+        }
+
+        Object.entries(css).forEach(([_, cssClass]) => {
+            this.element.classList.add(cssClass as string);
+        });
     }
 
     // Helper to get element content for output

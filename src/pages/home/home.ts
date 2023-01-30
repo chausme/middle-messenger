@@ -31,23 +31,25 @@ export default class PageHome extends Block {
                         title: 'Login',
                         id: 'login',
                         type: 'text',
+                        child: 'input',
                     }),
                     new InputWLabel({
                         title: 'Password',
                         id: 'password',
                         type: 'password',
+                        child: 'input',
                     }),
                 ],
                 buttons: [
                     new Button({
                         title: 'Sign In',
                         id: 'sign_in',
-                        styles: ['bg-green'],
+                        css: ['bg-green'],
                     }),
                     new Button({
                         title: 'Sign Up',
                         id: 'sign_up',
-                        styles: ['bg-orange'],
+                        css: ['bg-orange'],
                         link: 'signup',
                         events: {
                             click(e) {
@@ -101,8 +103,8 @@ export default class PageHome extends Block {
                 buttons: [
                     new Button({
                         title: 'Sign In',
+                        css: ['bg-green'],
                         id: 'sign_in',
-                        styles: ['bg-green'],
                         link: '',
                         events: {
                             click(e) {
@@ -113,8 +115,8 @@ export default class PageHome extends Block {
                     }),
                     new Button({
                         title: 'Sign Up',
+                        css: ['bg-orange'],
                         id: 'sign_up',
-                        styles: ['bg-orange'],
                     }),
                 ],
             });
