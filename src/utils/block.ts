@@ -4,7 +4,7 @@ import { EventBus } from './event-bus';
 
 type PropsType = Record<string, any>;
 
-export default class Block {
+export default abstract class Block {
     static EVENTS = {
         INIT: 'init',
         FLOW_CDM: 'flow:component-did-mount',
@@ -176,9 +176,7 @@ export default class Block {
     }
 
     // Could be redeclared by user
-    render(): DocumentFragment {
-        return new DocumentFragment();
-    }
+    abstract render(): DocumentFragment;
 
     #removeEvents() {
         if (!(this.#events && Object.keys(this.#events).length)) {
