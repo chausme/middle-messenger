@@ -1,6 +1,6 @@
 import Block from '~/src/utils/block';
 import ButtonIcon from '~/src/components/button-icon';
-import InputMessage from '../../components/input-message';
+import InputMessage from './components/input-message';
 import { FormProps } from '~/src/utils/prop-types';
 import { validateForm } from '~/src/utils/validator';
 import template from './form-message.hbs';
