@@ -20,7 +20,7 @@ export default class ChatList extends Block {
             title: 'Account',
             id: 'account',
             icon: 'hamburger',
-            styles: ['mr-1/5', 'bg-green'],
+            css: ['mr-1/5', 'bg-green'],
             settings: {
                 withInternalID: true,
             },

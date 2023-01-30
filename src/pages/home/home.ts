@@ -31,13 +31,11 @@ export default class PageHome extends Block {
                         title: 'Login',
                         id: 'login',
                         type: 'text',
-                        child: 'input',
                     }),
                     new InputWLabel({
                         title: 'Password',
                         id: 'password',
                         type: 'password',
-                        child: 'input',
                     }),
                 ],
                 buttons: [

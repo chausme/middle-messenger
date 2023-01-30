@@ -13,6 +13,7 @@ export default class InputMessage extends Block {
                 validateInput(e.target);
             },
         };
+        props.child = 'input';
 
         super(props, 'div');
 

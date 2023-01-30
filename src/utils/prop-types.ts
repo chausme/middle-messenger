@@ -84,7 +84,6 @@ export type MessageStickerProps = BlockProps & {
     datetime: string;
     own?: boolean;
     sticker: string;
-    styles?: string[];
 };
 
 export type FooterProps = BlockProps & {

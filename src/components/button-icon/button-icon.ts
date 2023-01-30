@@ -38,15 +38,6 @@ export default class ButtonIcon extends Block {
         this.element.setAttribute('id', props.id);
         this.element.setAttribute('title', props.title);
 
-        // check for provided styles and add if any
-        if (props.styles) {
-            props.styles.forEach(style => {
-                if (this.element) {
-                    this.element.classList.add(style);
-                }
-            });
-        }
-
         // add optional link class
         if (props.link) {
             this.element.classList.add('link');

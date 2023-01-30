@@ -24,7 +24,7 @@ export default class PageAccount extends Block {
             title: 'Back to chats',
             id: 'chats',
             icon: 'back',
-            styles: ['bg-orange'],
+            css: ['bg-orange'],
             link: 'chats',
             events: {
                 click(e) {
@@ -36,7 +36,7 @@ export default class PageAccount extends Block {
         this.children.avatar = new Avatar({
             url: imageAvatarLarge,
             size: 'lg',
-            styles: ['mb-2'],
+            css: ['mb-2'],
         });
         this.children.form = new Form({
             id: 'account',
@@ -100,12 +100,12 @@ export default class PageAccount extends Block {
                 new Button({
                     title: 'Update details',
                     id: 'update_details',
-                    styles: ['bg-green'],
+                    css: ['bg-green'],
                 }),
                 new Button({
                     title: 'Change Password',
                     id: 'change_password',
-                    styles: ['bg-pink'],
+                    css: ['bg-pink'],
                     action: 'change-password',
                     events: {
                         click(e) {
@@ -117,7 +117,7 @@ export default class PageAccount extends Block {
                 new Button({
                     title: 'Log Out',
                     id: 'logout',
-                    styles: ['bg-cyan'],
+                    css: ['bg-cyan'],
                     link: '/',
                     events: {
                         click(e) {

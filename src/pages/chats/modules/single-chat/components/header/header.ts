@@ -20,7 +20,7 @@ export default class Header extends Block {
             title: 'Account',
             id: 'account',
             icon: 'hamburger',
-            styles: ['bg-green'],
+            css: ['bg-green'],
             events: {
                 click(e) {
                     e.preventDefault();

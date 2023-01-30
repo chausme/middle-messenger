@@ -14,6 +14,7 @@ export default class InputWLabel extends Block {
                 validateInput(e.target);
             },
         };
+        props.child = 'input';
 
         super(props, 'div');
 
