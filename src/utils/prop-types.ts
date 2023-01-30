@@ -4,7 +4,7 @@ import InputWLabel from '~/src/components/input-w-label';
 import Button from '~/src/components/button';
 import Avatar from '~src/components/avatar';
 import ButtonIcon from '~/src/components/button-icon';
-import InputMessage from '~/src/pages/chats/modules/single-chat/components/input-message';
+import InputMessage from '~/src/pages/chats/modules/single-chat/modules/form-message/components/input-message';
 
 export type BlockProps = {
     css?: string[];
