@@ -23,7 +23,7 @@ export default abstract class Block {
 
     #id!: string;
 
-    #eventBus: () => EventBus;
+    #eventBus: EventBus;
 
     props: PropsType;
 
@@ -57,7 +57,7 @@ export default abstract class Block {
         this.props = this.#makePropsProxy({ ...props, __id: this.#id });
 
         // Set link to the new event bus
-        this.#eventBus = () => eventBus;
+        this.#eventBus = eventBus;
 
         // Register block events
         this.#registerEvents(eventBus);
@@ -91,7 +91,7 @@ export default abstract class Block {
         // Create resources, currently a single element, see createDocumentElement()
         this.#createResources();
         // Emit "render" event
-        this.#eventBus().emit(Block.EVENTS.FLOW_RENDER, 'emit render');
+        this.#eventBus.emit(Block.EVENTS.FLOW_RENDER, 'emit render');
     }
 
     init() {}
@@ -117,7 +117,7 @@ export default abstract class Block {
 
     // Dispatch i.e. emit "componentDidMount" event
     dispatchComponentDidMount() {
-        this.#eventBus().emit(Block.EVENTS.FLOW_CDM, 'emit cdm');
+        this.#eventBus.emit(Block.EVENTS.FLOW_CDM, 'emit cdm');
     }
 
     // EVENT: "componentDidUpdate" function
@@ -127,7 +127,7 @@ export default abstract class Block {
         }
         const response = this.componentDidUpdate(oldProps, newProps);
         if (response) {
-            this.#eventBus().emit(Block.EVENTS.FLOW_RENDER, 'emit render');
+            this.#eventBus.emit(Block.EVENTS.FLOW_RENDER, 'emit render');
         }
     }
 
@@ -249,7 +249,7 @@ export default abstract class Block {
 
                 // Update component
                 // Bad cloneDeep, better to improve
-                self.#eventBus().emit(Block.EVENTS.FLOW_CDU, { ...target }, target);
+                self.#eventBus.emit(Block.EVENTS.FLOW_CDU, { ...target }, target);
                 return true;
             },
         });
