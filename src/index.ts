@@ -1,4 +1,4 @@
-import PageHome from './pages/home';
+import PageSignIn from './pages/sign-in';
 import PageChats from './pages/chats';
 import PageAccount from './pages/account';
 import Page404 from './pages/404';
@@ -9,8 +9,8 @@ import './reset.css';
 import './styles.css';
 
 const router = new Router({
-    signIn: new PageHome({ type: 'signIn' }),
-    signUp: new PageHome({ type: 'signUp' }),
+    signIn: new PageSignIn(),
+    // signUp: new PageSignUp(),
     chats: new PageChats(),
     account: new PageAccount(),
     page404: new Page404(),

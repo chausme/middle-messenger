@@ -92,11 +92,6 @@ export type FooterProps = BlockProps & {
     buttonSend: ButtonIcon;
 };
 
-export type PageHomeProps = BlockProps & {
-    title?: string;
-    type: string;
-};
-
 export type IconProps = {
     [key: string]: string;
 };
