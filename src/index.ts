@@ -12,8 +12,8 @@ import './styles.css';
 const router = new Router({
     ['sign-in']: new PageSignIn(),
     ['sign-up']: new PageSignUp(),
-    chats: new PageChats(),
-    account: new PageAccount(),
+    messenger: new PageChats(),
+    settings: new PageAccount(),
     ['page-404']: new Page404(),
     ['page-500']: new Page500(),
 });
