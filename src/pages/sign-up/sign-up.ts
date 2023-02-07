@@ -3,9 +3,9 @@ import Button from '~/src/components/button';
 import Form from '~/src/components/form';
 import InputWLabel from '~/src/components/input-w-label';
 import router from '~/src/index';
-import template from './sign-in.hbs';
+import template from './sign-up.hbs';
 
-export default class PageSignIn extends Block {
+export default class PageSignUp extends Block {
     constructor() {
         super({}, 'div');
 

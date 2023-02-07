@@ -305,6 +305,10 @@ h2 {
             background-color: var(--c-cyan);
         }
     }
+
+    &.auth {
+        padding: 60px 125px 20px;
+    }
 }
 
 .input {

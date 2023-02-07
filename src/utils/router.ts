@@ -32,14 +32,9 @@ export default class Router {
     // Get template data
     getTemplate(path: string) {
         const pathData = this.getPathData(path);
-        let template = pathData.path;
-        if (!template && !pathData.hash) {
-            template = 'signIn';
-        } else if (!template && pathData.hash && pathData.hash === 'signup') {
-            template = 'signUp';
-        }
+        const template = pathData.path ? pathData.path : 'sign-in';
         return !this.routesData[template]
-            ? { name: 'page404', component: this.routesData.page404 }
+            ? { name: 'page-404', component: this.routesData['page-404'] }
             : { name: template, component: this.routesData[template] };
     }
 
@@ -70,15 +65,14 @@ export default class Router {
     // Little helper to get path from provided location.href
     getPath(href: string) {
         const url = new URL(href);
-        return `${url.pathname ? url.pathname.replace('/', '') : ''}${url.hash ?? ''}`;
+        return `${url.pathname ? url.pathname.replace('/', '') : ''}`;
     }
 
-    // Little helper to get naked path and hash from provided full path
+    // Little helper to get naked path from provided full path
     getPathData(path: string) {
         const url = new URL(`${this.#baseUrl}/${path}`);
         return {
             path: url.pathname.replace('/', ''),
-            hash: url.hash.replace('#', ''),
         };
     }
 
@@ -92,10 +86,10 @@ export default class Router {
         if (templateName === 'chats') {
             color = 'orange';
         }
-        if (templateName === 'page404') {
+        if (templateName === 'page-404') {
             color = 'pink';
         }
-        if (templateName === 'page500') {
+        if (templateName === 'page-500') {
             color = 'red';
         }
         body.dataset.bgColor = color;
