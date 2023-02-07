@@ -16,7 +16,7 @@ export default class Router {
     }
 
     // Output respective template on page and optionally update path
-    load(path: string, updatePath = false) {
+    load(path: string) {
         const template = this.getTemplate(path);
         const root = document.getElementById('root');
         if (root) {
@@ -24,10 +24,12 @@ export default class Router {
             root.append(template.component?.getContent());
         }
         this.updateBgColor(template.name);
-        if (updatePath) {
-            window.history.pushState({}, '', `${this.#baseUrl}/${path}`);
-        }
+        window.history.pushState({}, '', `${this.#baseUrl}/${path}`);
     }
+
+    back() {}
+
+    forward() {}
 
     // Get template data
     getTemplate(path: string) {
@@ -57,7 +59,7 @@ export default class Router {
                 const linkPath =
                     isHome || !e.currentTarget.dataset.path ? '' : e.currentTarget.dataset.path;
 
-                this.load(linkPath, true);
+                this.load(linkPath);
             });
         });
     }

@@ -9,47 +9,64 @@ export default class PageSignUp extends Block {
     constructor() {
         super({}, 'div');
 
-        this.element.classList.add(
-            'window',
-            'lg',
-            'p-2/5',
-            'auth',
-            'w-fixed',
-            'signin',
-            'bg-orange'
-        );
+        this.element.classList.add('window', 'lg', 'p-2/5', 'auth', 'w-fixed', 'signup', 'bg-pink');
     }
 
     init() {
         this.children.form = new Form({
-            id: 'sign-in',
+            id: 'form-sign-up',
             inputs: [
+                new InputWLabel({
+                    title: 'Email',
+                    id: 'email',
+                    type: 'email',
+                }),
                 new InputWLabel({
                     title: 'Login',
                     id: 'login',
                     type: 'text',
                 }),
                 new InputWLabel({
+                    title: 'First Name',
+                    id: 'first_name',
+                    type: 'text',
+                }),
+                new InputWLabel({
+                    title: 'Last Name',
+                    id: 'second_name',
+                    type: 'text',
+                }),
+                new InputWLabel({
+                    title: 'Phone',
+                    id: 'phone',
+                    type: 'tel',
+                }),
+                new InputWLabel({
                     title: 'Password',
                     id: 'password',
+                    type: 'password',
+                }),
+                new InputWLabel({
+                    title: 'Confirm password',
+                    id: 'password_2',
                     type: 'password',
                 }),
             ],
             buttons: [
                 new Button({
-                    title: 'Sign In',
-                    id: 'sign_in',
-                    css: ['bg-green'],
+                    title: 'Sign Up',
+                    css: ['bg-orange'],
+                    id: 'sign-up',
                 }),
                 new Button({
-                    title: 'Sign Up',
-                    id: 'sign_up',
-                    css: ['bg-orange'],
-                    link: 'signup',
+                    title: 'Sign In',
+                    css: ['bg-green'],
+                    id: 'sign-in',
+                    link: '',
                     events: {
                         click(e) {
                             e.preventDefault();
-                            router.load('signup', true);
+                            router.load('');
                         },
                     },
                 }),

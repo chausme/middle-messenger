@@ -22,7 +22,7 @@ export default class PageSignIn extends Block {
 
     init() {
         this.children.form = new Form({
-            id: 'sign-in',
+            id: 'form-sign-in',
             inputs: [
                 new InputWLabel({
                     title: 'Login',
@@ -38,18 +38,18 @@ export default class PageSignIn extends Block {
             buttons: [
                 new Button({
                     title: 'Sign In',
-                    id: 'sign_in',
+                    id: 'sign-in',
                     css: ['bg-green'],
                 }),
                 new Button({
                     title: 'Sign Up',
-                    id: 'sign_up',
+                    id: 'sign-up',
                     css: ['bg-orange'],
                     link: 'signup',
                     events: {
                         click(e) {
                             e.preventDefault();
-                            router.load('signup', true);
+                            router.load('sign-up');
                         },
                     },
                 }),

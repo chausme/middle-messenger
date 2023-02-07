@@ -29,7 +29,7 @@ export default class PageAccount extends Block {
             events: {
                 click(e) {
                     e.preventDefault();
-                    router.load('chats', true);
+                    router.load('chats');
                 },
             },
         });
@@ -122,7 +122,7 @@ export default class PageAccount extends Block {
                     events: {
                         click(e) {
                             e.preventDefault();
-                            router.load('', true);
+                            router.load('');
                         },
                     },
                 }),

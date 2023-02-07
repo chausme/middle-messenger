@@ -27,7 +27,7 @@ export default class ChatList extends Block {
             events: {
                 click(e) {
                     e.preventDefault();
-                    router.load('account', true);
+                    router.load('account');
                 },
             },
         });
