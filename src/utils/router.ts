@@ -2,21 +2,28 @@ import Block from '~/src/utils/block';
 
 export default class Router {
     routesData;
+    #baseUrl = new URL(window.location.href).origin;
+    #history;
 
     constructor(routesData: Record<string, Block>) {
         this.routesData = routesData;
+        this.#history = window.history;
     }
-
-    #baseUrl = new URL(window.location.href).origin;
 
     init() {
         const path = this.getPath(window.location.href);
         this.load(path);
+        // load template on history change
+        window.onpopstate = (event: PopStateEvent) => {
+            const target = event.currentTarget as Window;
+            const path = target.location?.pathname.substring(1);
+            this.load(path, true);
+        };
         this.addLinksClickListener();
     }
 
-    // Output respective template on page and optionally update path
-    load(path: string) {
+    // Output respective template on page and optionally update history
+    load(path: string, skipHistoryUpdate?: boolean) {
         const template = this.getTemplate(path);
         const root = document.getElementById('root');
         if (root) {
@@ -24,12 +31,18 @@ export default class Router {
             root.append(template.component?.getContent());
         }
         this.updateBgColor(template.name);
-        window.history.pushState({}, '', `${this.#baseUrl}/${path}`);
+        if (!skipHistoryUpdate) {
+            window.history.pushState({ path }, '', `${this.#baseUrl}/${path}`);
+        }
     }
 
-    back() {}
+    back() {
+        this.#history.back();
+    }
 
-    forward() {}
+    forward() {
+        this.#history.forward();
+    }
 
     // Get template data
     getTemplate(path: string) {
