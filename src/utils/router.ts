@@ -32,6 +32,7 @@ export default class Router {
         }
         this.updateBgColor(template.name);
         if (!skipHistoryUpdate) {
+            console.log('override here');
             window.history.pushState({ path }, '', `${this.#baseUrl}/${path}`);
         }
     }
@@ -74,6 +75,19 @@ export default class Router {
 
                 this.load(linkPath);
             });
+        });
+
+        // add header test router back/forward links
+        const routerLinkBack = document.querySelector('.router-link.back');
+        routerLinkBack?.addEventListener('click', e => {
+            e.preventDefault();
+            this.back();
+        });
+
+        const routerLinkForward = document.querySelector('.router-link.forward');
+        routerLinkForward?.addEventListener('click', e => {
+            e.preventDefault();
+            this.forward();
         });
     }
 
