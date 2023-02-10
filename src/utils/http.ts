@@ -15,7 +15,7 @@ type RequestMethodOptionsProps = RequestOptionsProps & {
     method: string;
 };
 
-type HTTPMethodProps = (url: string, options: RequestOptionsProps) => Promise<unknown>;
+type HTTPMethodProps = (url: string, options?: RequestOptionsProps) => Promise<unknown>;
 
 function queryStringify(data: Record<string, any>) {
     if (!data) {
@@ -28,25 +28,25 @@ function queryStringify(data: Record<string, any>) {
     );
 }
 
-export default class HTTPTransport {
+export default class HTTP {
     get: HTTPMethodProps = (url, options) =>
         this.request(
-            options.data ? `${url}${queryStringify(options.data)}` : url,
+            options?.data ? `${url}${queryStringify(options.data)}` : url,
             { ...options, data: {}, method: METHOD.GET },
-            options.timeout
+            options?.timeout
         );
 
     post: HTTPMethodProps = (url, options) =>
-        this.request(url, { ...options, method: METHOD.POST }, options.timeout);
+        this.request(url, { ...options, method: METHOD.POST }, options?.timeout);
 
     put: HTTPMethodProps = (url, options) =>
-        this.request(url, { ...options, method: METHOD.PUT }, options.timeout);
+        this.request(url, { ...options, method: METHOD.PUT }, options?.timeout);
 
     delete: HTTPMethodProps = (url, options) =>
-        this.request(url, { ...options, method: METHOD.DELETE }, options.timeout);
+        this.request(url, { ...options, method: METHOD.DELETE }, options?.timeout);
 
     request = (url: string, options: RequestMethodOptionsProps, timeout = 5000) => {
-        const { method, data, headers } = options;
+        const { method, data, headers, withCredentials } = options;
 
         return new Promise((resolve, reject) => {
             if (!method) {
@@ -73,9 +73,14 @@ export default class HTTPTransport {
             xhr.onerror = reject;
             xhr.ontimeout = reject;
 
+            // if (withCredentials) {
+            xhr.withCredentials = true;
+            // }
+
             if (method === METHOD.GET || !data) {
                 xhr.send();
             } else {
+                console.log(JSON.stringify(data));
                 xhr.send(JSON.stringify(data));
             }
         });

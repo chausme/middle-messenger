@@ -32,7 +32,6 @@ export default class Router {
         }
         this.updateBgColor(template.name);
         if (!skipHistoryUpdate) {
-            console.log('override here');
             window.history.pushState({ path }, '', `${this.#baseUrl}/${path}`);
         }
     }

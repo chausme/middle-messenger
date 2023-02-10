@@ -2,6 +2,7 @@ import Block from '~/src/utils/block';
 import Button from '~/src/components/button';
 import Form from '~/src/components/form';
 import InputWLabel from '~/src/components/input-w-label';
+import { AuthController } from '~/src/controllers/auth-controller';
 import router from '~/src/index';
 import template from './sign-up.hbs';
 
@@ -64,9 +65,13 @@ export default class PageSignUp extends Block {
                     id: 'sign-in',
                     link: '',
                     events: {
-                        click(e) {
+                        async click(e) {
                             e.preventDefault();
-                            router.load('');
+                            console.log('test api here');
+                            const controller = new AuthController();
+                            await controller.signin();
+                            await controller.request();
+                            // router.load('');
                         },
                     },
                 }),
