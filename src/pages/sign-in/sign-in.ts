@@ -5,6 +5,7 @@ import InputWLabel from '~/src/components/input-w-label';
 import router from '~/src/index';
 import { AuthController } from '~/src/controllers/auth-controller';
 import template from './sign-in.hbs';
+import templateLogged from './sign-in-logged.hbs';
 import store, { StoreEvents } from '~/src/utils/store';
 
 export default class PageSignIn extends Block {
@@ -85,7 +86,7 @@ export default class PageSignIn extends Block {
     render() {
         this.dispatchComponentDidMount();
 
-        return this.compile(template, {
+        return this.compile(store.getState()?.logged ? templateLogged : template, {
             ...this.props,
         });
     }
