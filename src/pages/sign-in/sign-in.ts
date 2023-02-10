@@ -22,7 +22,6 @@ export default class PageSignIn extends Block {
     }
 
     init() {
-        const auth = new AuthController();
         this.children.form = new Form({
             id: 'form-sign-in',
             inputs: [
@@ -52,18 +51,6 @@ export default class PageSignIn extends Block {
                         click(e) {
                             e.preventDefault();
                             router.load('sign-up');
-                        },
-                    },
-                }),
-                new Button({
-                    title: 'Log Out',
-                    id: 'logout',
-                    css: ['bg-orange'],
-                    link: '',
-                    events: {
-                        async click(e) {
-                            e.preventDefault();
-                            await auth.logout();
                         },
                     },
                 }),
