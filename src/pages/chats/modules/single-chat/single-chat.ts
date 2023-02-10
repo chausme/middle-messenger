@@ -25,9 +25,6 @@ export default class SingleChat extends Block {
             'd-flex',
             'h-100'
         );
-
-        const state = store.getState();
-        console.log(state);
     }
 
     init() {

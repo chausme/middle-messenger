@@ -11,32 +11,31 @@ export default class Form extends Block {
     constructor(props: FormProps) {
         props.events = {
             async submit(e) {
-                // try {
-                e.preventDefault();
-                if (!validateForm(e.target)) {
-                    return;
-                }
-                const auth = new AuthController();
-                const formData = new FormData(e.target);
-                const formProps = Object.fromEntries(formData);
-                console.log('submitting form');
-                if (props.id === 'form-sign-in') {
-                    // sign in here
-                    console.log('form: sign in');
-                    await auth.signin(formProps as ApiAuthSignIn);
+                try {
+                    e.preventDefault();
+                    if (!validateForm(e.target)) {
+                        return;
+                    }
+                    const auth = new AuthController();
+                    const formData = new FormData(e.target);
+                    const formProps = Object.fromEntries(formData);
+                    console.log('submitting form');
+                    if (props.id === 'form-sign-in') {
+                        // sign in here
+                        console.log('form: sign in');
+                        await auth.signin(formProps as ApiAuthSignIn);
 
-                    // await auth.request();
-                } else if (props.id === 'form-sign-up') {
-                    // sign up here
-                    console.log('form:: sign up');
-                    // await auth.logout();
-                    // await auth.signup();
+                        // await auth.request();
+                    } else if (props.id === 'form-sign-up') {
+                        // sign up here
+                        console.log('form:: sign up');
+                        // await auth.logout();
+                        // await auth.signup();
+                    }
+                } catch (e: any) {
+                    alert(`Oops, something went wrong: ${e.message}`);
+                    console.error(e.message);
                 }
-                // }
-                // catch (e: any) {
-                //     alert(`Oops, something went wrong: ${e.message}`);
-                //     console.error(e.message);
-                // }
             },
         };
 
@@ -52,8 +51,6 @@ export default class Form extends Block {
     }
 
     render() {
-        const state = store.getState();
-        console.log(state);
         return this.compile(template, { ...this.props });
     }
 }
