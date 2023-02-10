@@ -14,7 +14,7 @@ export default class PageLogout extends Block {
             'auth',
             'w-fixed',
             'signin',
-            'bg-orange'
+            'bg-green-light'
         );
     }
 
@@ -23,7 +23,7 @@ export default class PageLogout extends Block {
         this.children.buttonLogout = new Button({
             title: 'Log Out',
             id: 'logout',
-            css: ['bg-orange'],
+            css: ['bg-green'],
             link: '',
             events: {
                 async click(e) {

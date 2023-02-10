@@ -1,4 +1,5 @@
 import Block from '~/src/utils/block';
+import store, { StoreEvents } from '~/src/utils/store';
 
 export default class Router {
     routesData;
@@ -44,10 +45,23 @@ export default class Router {
         this.#history.forward();
     }
 
+    // Apply auth state to provided path
+    #withAuth(path: string) {
+        const pagesPublic = ['sign-in', 'sign-up'];
+        const pagesPrivate = ['settings', 'messenger', 'logout'];
+        if (store.getState()?.logged && pagesPublic.includes(path)) {
+            return 'logout';
+        }
+        if (!store.getState()?.logged && pagesPrivate.includes(path)) {
+            return 'sign-in';
+        }
+        return path;
+    }
+
     // Get template data
     getTemplate(path: string) {
         const pathData = this.getPathData(path);
-        const template = pathData.path ? pathData.path : 'sign-in';
+        const template = this.#withAuth(pathData.path ? pathData.path : 'sign-in');
         return !this.routesData[template]
             ? { name: 'page-404', component: this.routesData['page-404'] }
             : { name: template, component: this.routesData[template] };
@@ -119,6 +133,9 @@ export default class Router {
         }
         if (templateName === 'page-500') {
             color = 'red';
+        }
+        if (templateName === 'logout') {
+            color = 'pink';
         }
         body.dataset.bgColor = color;
     }
