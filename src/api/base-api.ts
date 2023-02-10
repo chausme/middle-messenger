@@ -1,4 +1,6 @@
 export default abstract class BaseAPI {
+    static baseUrl = process.env.API_BASE_URL;
+
     create() {
         throw new Error('Not implemented');
     }

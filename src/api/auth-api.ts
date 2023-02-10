@@ -4,8 +4,22 @@ import BaseAPI from './base-api';
 const authAPIBase = new HTTP();
 
 export default class AuthAPI extends BaseAPI {
+    static basePath = `${BaseAPI.baseUrl}/auth`;
+
+    signup() {
+        return authAPIBase.post(`${AuthAPI.basePath}/signup/`, {
+            data: {
+                login: 'chausme11',
+                password: 'passchausme11',
+            },
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
+    }
+
     signin() {
-        return authAPIBase.post('https://ya-praktikum.tech/api/v2/auth/signin/', {
+        return authAPIBase.post(`${AuthAPI.basePath}/signin/`, {
             data: {
                 login: 'chausme11',
                 password: 'passchausme11',
@@ -17,12 +31,10 @@ export default class AuthAPI extends BaseAPI {
     }
 
     request() {
-        return authAPIBase.get('https://ya-praktikum.tech/api/v2/auth/user/', {
-            withCredentials: true,
-        });
+        return authAPIBase.get(`${AuthAPI.basePath}/user/`);
     }
 
     logout() {
-        return authAPIBase.post('https://ya-praktikum.tech/api/v2/auth/logout/');
+        return authAPIBase.post(`${AuthAPI.basePath}/logout/`);
     }
 }

@@ -46,7 +46,7 @@ export default class HTTP {
         this.request(url, { ...options, method: METHOD.DELETE }, options?.timeout);
 
     request = (url: string, options: RequestMethodOptionsProps, timeout = 5000) => {
-        const { method, data, headers, withCredentials } = options;
+        const { method, data, headers } = options;
 
         return new Promise((resolve, reject) => {
             if (!method) {
@@ -73,9 +73,7 @@ export default class HTTP {
             xhr.onerror = reject;
             xhr.ontimeout = reject;
 
-            // if (withCredentials) {
             xhr.withCredentials = true;
-            // }
 
             if (method === METHOD.GET || !data) {
                 xhr.send();

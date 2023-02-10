@@ -69,8 +69,10 @@ export default class PageSignUp extends Block {
                             e.preventDefault();
                             console.log('test api here');
                             const controller = new AuthController();
-                            await controller.signin();
-                            await controller.request();
+                            // await controller.logout();
+                            // await controller.signin();
+                            // await controller.request();
+                            // await controller.logout();
                             // router.load('');
                         },
                     },
