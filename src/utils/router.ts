@@ -125,7 +125,7 @@ export default class Router {
         if (templateName === 'signUp') {
             color = 'cyan';
         }
-        if (templateName === 'chats') {
+        if (templateName === 'messenger') {
             color = 'orange';
         }
         if (templateName === 'page-404') {

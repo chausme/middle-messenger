@@ -23,19 +23,14 @@ export class AuthController {
                     alert(`Oops, something went wrong: ${responseText.reason}`);
                     return;
                 }
-                console.log('debug 1');
                 await this.#api.request().then((data: unknown) => {
-                    console.log('debug 2');
                     const response = data as XMLHttpRequest;
                     const responseText = JSON.parse(response.responseText);
-                    console.log('debug 5');
                     if (response.status !== 200) {
-                        console.log('debug 4');
                         console.log(response.status);
                         alert(`Oops, something went wrong: ${responseText.reason}`);
                         return;
                     }
-                    console.log('debug 6');
                     console.log(responseText);
                     // store.set('user', responseText);
                     store.set('logged', true);
@@ -43,9 +38,7 @@ export class AuthController {
                 });
             });
         } catch (e: any) {
-            console.log('debug 3');
             alert(`Oops, something went wrong: ${e.message}`);
-            this.logout();
             console.error(e.message);
         }
     }

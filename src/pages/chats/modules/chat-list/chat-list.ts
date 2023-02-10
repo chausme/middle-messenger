@@ -18,7 +18,7 @@ export default class ChatList extends Block {
     init() {
         this.children.buttonIcon = new ButtonIcon({
             title: 'Account',
-            id: 'account',
+            id: 'settings',
             icon: 'hamburger',
             css: ['mr-1/5', 'bg-green'],
             settings: {
@@ -27,7 +27,7 @@ export default class ChatList extends Block {
             events: {
                 click(e) {
                     e.preventDefault();
-                    router.load('account');
+                    router.load('settings');
                 },
             },
         });

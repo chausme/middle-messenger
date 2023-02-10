@@ -7,6 +7,7 @@ import Button from '~/src/components/button';
 import InputWLabel from '~/src/components/input-w-label';
 import router from '~/src/index';
 import validator from '~/src/utils/validator';
+import { AuthController } from '~/src/controllers/auth-controller';
 import template from './account.hbs';
 import * as classes from './account.module.css';
 
@@ -20,16 +21,17 @@ export default class PageAccount extends Block {
     }
 
     init() {
+        const auth = new AuthController();
         this.children.buttonBack = new ButtonIcon({
             title: 'Back to chats',
-            id: 'chats',
+            id: 'messenger',
             icon: 'back',
             css: ['bg-orange'],
-            link: 'chats',
+            link: 'messenger',
             events: {
                 click(e) {
                     e.preventDefault();
-                    router.load('chats');
+                    router.load('messenger');
                 },
             },
         });
@@ -120,9 +122,9 @@ export default class PageAccount extends Block {
                     css: ['bg-cyan'],
                     link: '/',
                     events: {
-                        click(e) {
+                        async click(e) {
                             e.preventDefault();
-                            router.load('');
+                            await auth.logout();
                         },
                     },
                 }),

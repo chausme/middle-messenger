@@ -17,8 +17,8 @@ export default class Header extends Block {
 
     init() {
         this.children.buttonIcon = new ButtonIcon({
-            title: 'Account',
-            id: 'account',
+            title: 'Actions',
+            id: 'settings',
             icon: 'hamburger',
             css: ['bg-green'],
             events: {
