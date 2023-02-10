@@ -9,6 +9,7 @@ import Block from '~/src/utils/block';
 import template from './single-chat.hbs';
 import imageAvatar from '~/static/images/60.png';
 import imageMessage from '~/static/images/300x200.png';
+import store, { StoreEvents } from '~/src/utils/store';
 import './single-chat.css';
 
 export default class SingleChat extends Block {
@@ -24,6 +25,9 @@ export default class SingleChat extends Block {
             'd-flex',
             'h-100'
         );
+
+        const state = store.getState();
+        console.log(state);
     }
 
     init() {

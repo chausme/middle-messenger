@@ -3,6 +3,7 @@ import Button from '~/src/components/button';
 import Form from '~/src/components/form';
 import InputWLabel from '~/src/components/input-w-label';
 import router from '~/src/index';
+import { AuthController } from '~/src/controllers/auth-controller';
 import template from './sign-in.hbs';
 
 export default class PageSignIn extends Block {
@@ -21,6 +22,7 @@ export default class PageSignIn extends Block {
     }
 
     init() {
+        const auth = new AuthController();
         this.children.form = new Form({
             id: 'form-sign-in',
             inputs: [
@@ -50,6 +52,18 @@ export default class PageSignIn extends Block {
                         click(e) {
                             e.preventDefault();
                             router.load('sign-up');
+                        },
+                    },
+                }),
+                new Button({
+                    title: 'Log Out',
+                    id: 'logout',
+                    css: ['bg-orange'],
+                    link: '',
+                    events: {
+                        async click(e) {
+                            e.preventDefault();
+                            await auth.logout();
                         },
                     },
                 }),
