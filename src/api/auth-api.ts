@@ -1,5 +1,6 @@
 import HTTP from '../utils/http';
 import BaseAPI from './base-api';
+import { ApiAuthSignIn } from '~/src/utils/prop-types';
 
 const authAPIBase = new HTTP();
 
@@ -12,21 +13,12 @@ export default class AuthAPI extends BaseAPI {
                 login: 'chausme11',
                 password: 'passchausme11',
             },
-            headers: {
-                'Content-Type': 'application/json',
-            },
         });
     }
 
-    signin() {
+    signin(data: ApiAuthSignIn) {
         return authAPIBase.post(`${AuthAPI.basePath}/signin/`, {
-            data: {
-                login: 'chausme11',
-                password: 'passchausme11',
-            },
-            headers: {
-                'Content-Type': 'application/json',
-            },
+            data,
         });
     }
 

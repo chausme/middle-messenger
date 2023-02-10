@@ -99,3 +99,8 @@ export type IconProps = {
 export type StickersProps = {
     [key: string]: string;
 };
+
+export type ApiAuthSignIn = {
+    login: string;
+    password: string;
+};

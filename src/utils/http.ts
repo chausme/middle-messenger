@@ -73,12 +73,13 @@ export default class HTTP {
             xhr.onerror = reject;
             xhr.ontimeout = reject;
 
+            xhr.setRequestHeader('Content-Type', 'application/json');
+
             xhr.withCredentials = true;
 
             if (method === METHOD.GET || !data) {
                 xhr.send();
             } else {
-                console.log(JSON.stringify(data));
                 xhr.send(JSON.stringify(data));
             }
         });
