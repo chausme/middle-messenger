@@ -4,7 +4,9 @@ import { AuthController } from '~/src/controllers/auth-controller';
 
 export default class Router {
     routesData;
+
     #baseUrl = new URL(window.location.href).origin;
+
     #history;
 
     constructor(routesData: Record<string, Block>) {
@@ -20,8 +22,7 @@ export default class Router {
         // load template on history change
         window.onpopstate = (event: PopStateEvent) => {
             const target = event.currentTarget as Window;
-            const path = target.location?.pathname.substring(1);
-            this.load(path, true);
+            this.load(target.location?.pathname.substring(1), true);
         };
         this.addLinksClickListener();
     }

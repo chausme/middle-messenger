@@ -8,8 +8,11 @@ const isObject = (value: Indexed) =>
 const isString = (value: unknown) => typeof value === 'string' || value instanceof String;
 
 const merge = (lhs: Indexed, rhs: Indexed): Indexed => {
-    for (let j in rhs) {
+    // eslint-disable-next-line no-restricted-syntax
+    for (const j in rhs) {
+        // eslint-disable-next-line no-prototype-builtins
         if (!rhs.hasOwnProperty(j)) {
+            // eslint-disable-next-line no-continue
             continue;
         }
 
@@ -35,11 +38,12 @@ export const set = (object: Indexed | unknown, path: string, value: unknown): In
     }
 
     const keys = path.split('.');
-    const rhs = keys.reduceRight((prev, key) => {
-        return {
+    const rhs = keys.reduceRight(
+        (prev, key) => ({
             [key]: prev,
-        };
-    }, value);
+        }),
+        value
+    );
 
     return merge(object as Indexed, rhs as Indexed);
 };

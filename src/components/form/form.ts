@@ -23,9 +23,9 @@ export default class Form extends Block {
                     } else if (props.id === 'form-sign-up') {
                         console.log('form: sign up');
                     }
-                } catch (e: any) {
-                    alert(`Oops, something went wrong: ${e.message}`);
-                    console.error(e.message);
+                } catch (error: any) {
+                    alert(`Oops, something went wrong: ${error.message}`);
+                    console.error(error.message);
                 }
             },
         };

@@ -3,7 +3,7 @@ import { ApiAuthSignIn } from '~/src/utils/prop-types';
 import store from '~/src/utils/store';
 import router from '~/src/index';
 
-export default class AuthController {
+export class AuthController {
     #api = new AuthAPI();
 
     /** @todo */
@@ -45,13 +45,14 @@ export default class AuthController {
             }
             const user = JSON.parse(userResponse.response);
             if (!user) {
-                return;
+                return false;
             }
             store.set('user', user);
             return user;
         } catch (e: any) {
             alert(`Oops, something went wrong: ${e.message}`);
             console.error(e.message);
+            return false;
         }
     }
 
