@@ -66,43 +66,73 @@ export default class PageAccount extends Block {
                     id: 'email',
                     type: 'email',
                     value: 'user123@gmail.com',
+                    settings: {
+                        disabled: true,
+                    },
                 }),
                 new InputWLabel({
                     title: 'Login',
                     id: 'login',
                     type: 'text',
                     value: 'user123',
+                    settings: {
+                        disabled: true,
+                    },
                 }),
                 new InputWLabel({
                     title: 'First Name',
                     id: 'first_name',
                     type: 'text',
                     value: 'Jack',
+                    settings: {
+                        disabled: true,
+                    },
                 }),
                 new InputWLabel({
                     title: 'Last Name',
                     id: 'second_name',
                     type: 'text',
                     value: 'Jackson',
+                    settings: {
+                        disabled: true,
+                    },
                 }),
                 new InputWLabel({
                     title: 'Phone',
                     id: 'phone',
                     type: 'tel',
                     value: '+84 123 123 123',
+                    settings: {
+                        disabled: true,
+                    },
                 }),
                 new InputWLabel({
                     title: 'Display Name',
                     id: 'display_name',
                     type: 'text',
                     value: 'Jack J',
+                    settings: {
+                        disabled: true,
+                    },
                 }),
             ],
             buttons: [
                 new Button({
                     title: 'Update details',
                     id: 'update_details',
+                    action: 'update-details',
                     css: ['bg-green'],
+                    events: {
+                        click(e) {
+                            e.preventDefault();
+                            const form = this.closest('form');
+                            const inputs = form.querySelectorAll('input');
+                            inputs.forEach((el: HTMLInputElement) => {
+                                el.removeAttribute('disabled');
+                            });
+                            console.log('update details');
+                        },
+                    },
                 }),
                 new Button({
                     title: 'Change Password',

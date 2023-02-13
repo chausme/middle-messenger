@@ -1,5 +1,5 @@
 import Block from '~/src/utils/block';
-import store, { StoreEvents } from '~/src/utils/store';
+import store from '~/src/utils/store';
 import { AuthController } from '~/src/controllers/auth-controller';
 
 export default class Router {
