@@ -1,7 +1,6 @@
 import Block from '~/src/utils/block';
 import Form from '~/src/components/form';
 import Avatar from '~/src/components/avatar';
-import imageAvatarLarge from '~/static/images/120.png';
 import ButtonIcon from '~/src/components/button-icon';
 import Button from '~/src/components/button';
 import InputWLabel from '~/src/components/input-w-label';
@@ -21,11 +20,11 @@ export default class PageAccount extends Block {
         store.on(StoreEvents.Updated, () => {
             const displayName = store.getState()?.user?.display_name;
             this.setProps({ displayName });
+            /** @todo how to update this.children components loaded with init() */
         });
     }
 
     init() {
-        const auth = new AuthController();
         this.children.buttonBack = new ButtonIcon({
             title: 'Back to chats',
             id: 'messenger',
@@ -39,11 +38,24 @@ export default class PageAccount extends Block {
                 },
             },
         });
+        // Add element placeholder to update later with componentDidUpdate()
         this.children.avatar = new Avatar({
-            url: imageAvatarLarge,
+            url: '',
             size: 'lg',
             css: ['mb-2'],
         });
+        // Add element placeholder to update later with componentDidUpdate()
+        this.children.form = new Form({
+            id: 'account',
+            events: {},
+            inputs: [],
+            buttons: [],
+        });
+    }
+
+    componentDidUpdate(): boolean {
+        const auth = new AuthController();
+        const state = store?.getState();
         this.children.form = new Form({
             id: 'account',
             events: {
@@ -69,7 +81,7 @@ export default class PageAccount extends Block {
                     title: 'Email',
                     id: 'email',
                     type: 'email',
-                    value: 'user123@gmail.com',
+                    value: state?.user?.email,
                     settings: {
                         disabled: true,
                     },
@@ -78,7 +90,7 @@ export default class PageAccount extends Block {
                     title: 'Login',
                     id: 'login',
                     type: 'text',
-                    value: 'user123',
+                    value: '{value}',
                     settings: {
                         disabled: true,
                     },
@@ -87,7 +99,7 @@ export default class PageAccount extends Block {
                     title: 'First Name',
                     id: 'first_name',
                     type: 'text',
-                    value: 'Jack',
+                    value: '{value}',
                     settings: {
                         disabled: true,
                     },
@@ -96,7 +108,7 @@ export default class PageAccount extends Block {
                     title: 'Last Name',
                     id: 'second_name',
                     type: 'text',
-                    value: 'Jackson',
+                    value: '{value}',
                     settings: {
                         disabled: true,
                     },
@@ -105,7 +117,7 @@ export default class PageAccount extends Block {
                     title: 'Phone',
                     id: 'phone',
                     type: 'tel',
-                    value: '+84 123 123 123',
+                    value: '{value}',
                     settings: {
                         disabled: true,
                     },
@@ -114,7 +126,7 @@ export default class PageAccount extends Block {
                     title: 'Display Name',
                     id: 'display_name',
                     type: 'text',
-                    value: 'Jack J',
+                    value: '{value}',
                     settings: {
                         disabled: true,
                     },
@@ -164,6 +176,8 @@ export default class PageAccount extends Block {
                 }),
             ],
         });
+
+        return true;
     }
 
     render() {
