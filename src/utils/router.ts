@@ -25,7 +25,8 @@ export default class Router {
 
     // Output respective template on page and optionally update history
     load(path: string, skipHistoryUpdate?: boolean) {
-        const template = this.getTemplate(path);
+        const pathReal = this.#withAuth(path);
+        const template = this.getTemplate(pathReal);
         const root = document.getElementById('root');
         if (root) {
             root.innerHTML = '';
@@ -33,7 +34,7 @@ export default class Router {
         }
         this.updateBgColor(template.name);
         if (!skipHistoryUpdate) {
-            window.history.pushState({ path }, '', `${this.#baseUrl}/${path}`);
+            window.history.pushState({ pathReal }, '', `${this.#baseUrl}/${pathReal}`);
         }
     }
 
@@ -47,13 +48,13 @@ export default class Router {
 
     // Apply auth state to provided path
     #withAuth(path: string) {
-        const pagesPublic = ['sign-in', 'sign-up'];
+        const pagesPublic = ['', 'sign-up'];
         const pagesPrivate = ['settings', 'messenger', 'logout'];
         if (store.getState()?.logged && pagesPublic.includes(path)) {
             return 'logout';
         }
         if (!store.getState()?.logged && pagesPrivate.includes(path)) {
-            return 'sign-in';
+            return '';
         }
         return path;
     }
@@ -61,7 +62,7 @@ export default class Router {
     // Get template data
     getTemplate(path: string) {
         const pathData = this.getPathData(path);
-        const template = this.#withAuth(pathData.path ? pathData.path : 'sign-in');
+        const template = pathData.path ? pathData.path : 'sign-in';
         return !this.routesData[template]
             ? { name: 'page-404', component: this.routesData['page-404'] }
             : { name: template, component: this.routesData[template] };
