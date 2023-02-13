@@ -12,9 +12,9 @@ export default class Router {
         this.#history = window.history;
     }
 
-    init() {
+    async init() {
         // check if user is logged in on page reload
-        this.#isLoggedIn();
+        await this.#isLoggedIn();
         const path = this.getPath(window.location.href);
         this.load(path);
         // load template on history change
@@ -52,10 +52,7 @@ export default class Router {
     // Check if user is logged in
     async #isLoggedIn() {
         const auth = new AuthController();
-        const user = await auth.getUser();
-        if (user) {
-            store.set('logged', true);
-        }
+        await auth.getUser();
     }
 
     // Apply auth state to provided path
@@ -146,9 +143,6 @@ export default class Router {
         }
         if (templateName === 'page-500') {
             color = 'red';
-        }
-        if (templateName === 'logout') {
-            color = 'pink';
         }
         body.dataset.bgColor = color;
     }

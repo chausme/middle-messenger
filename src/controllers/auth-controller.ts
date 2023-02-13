@@ -1,11 +1,12 @@
 import AuthAPI from '../api/auth-api';
 import { ApiAuthSignIn } from '~/src/utils/prop-types';
-import store, { StoreEvents } from '~/src/utils/store';
+import store from '~/src/utils/store';
 import router from '~/src/index';
 
 export class AuthController {
     #api = new AuthAPI();
 
+    /** @todo */
     async signup() {
         try {
             await this.#api.signup().then((data: unknown) => console.log(data));
@@ -16,27 +17,17 @@ export class AuthController {
 
     async signin(data: ApiAuthSignIn) {
         try {
-            await this.#api.signin(data).then(async data => {
-                const response = data as XMLHttpRequest;
-                if (response.status !== 200) {
-                    const responseText = JSON.parse(response.responseText);
-                    alert(`Oops, something went wrong: ${responseText.reason}`);
-                    return;
-                }
-                await this.#api.request().then((data: unknown) => {
-                    const response = data as XMLHttpRequest;
-                    const responseText = JSON.parse(response.responseText);
-                    if (response.status !== 200) {
-                        console.log(response.status);
-                        alert(`Oops, something went wrong: ${responseText.reason}`);
-                        return;
-                    }
-                    console.log(responseText);
-                    // store.set('user', responseText);
-                    store.set('logged', true);
-                    router.load('messenger');
-                });
-            });
+            const loginResponse = (await this.#api.signin(data)) as XMLHttpRequest;
+            if (loginResponse.status !== 200) {
+                const responseText = JSON.parse(loginResponse.response);
+                const reason = responseText.reason;
+                console.warn(`Oops, something went wrong: ${reason}`);
+                alert(`Oops, something went wrong: ${reason}`);
+                return;
+            }
+            // set user data and redirect to /messenger
+            await this.getUser();
+            router.load('messenger');
         } catch (e: any) {
             alert(`Oops, something went wrong: ${e.message}`);
             console.error(e.message);
@@ -47,19 +38,26 @@ export class AuthController {
         try {
             const userResponse = (await this.#api.request()) as XMLHttpRequest;
             if (userResponse.status !== 200) {
-                console.error(userResponse.status);
-                console.error(`Oops, something went wrong with fetching user`);
+                console.warn(
+                    `Oops, something went wrong with fetching user\nAre you logged out?\nCode: ${userResponse.status}`
+                );
                 return false;
             }
-            return JSON.parse(userResponse.response);
+            const user = JSON.parse(userResponse.response);
+            if (!user) {
+                return;
+            }
+            store.set('logged', true);
+            return user;
         } catch (e: any) {
+            alert(`Oops, something went wrong: ${e.message}`);
             console.error(e.message);
         }
     }
 
     async logout() {
         try {
-            await this.#api.logout().then((data: unknown) => console.log(data));
+            await this.#api.logout();
             store.set('logged', false);
             router.load('');
         } catch (e: any) {

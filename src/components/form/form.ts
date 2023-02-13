@@ -3,7 +3,6 @@ import { FormProps } from '~/src/utils/prop-types';
 import { validateForm } from '~/src/utils/validator';
 import { AuthController } from '~/src/controllers/auth-controller';
 import { ApiAuthSignIn } from '~/src/utils/prop-types';
-import store, { StoreEvents } from '~/src/utils/store';
 
 import template from './form.hbs';
 
@@ -21,16 +20,9 @@ export default class Form extends Block {
                     const formProps = Object.fromEntries(formData);
                     console.log('submitting form');
                     if (props.id === 'form-sign-in') {
-                        // sign in here
-                        console.log('form: sign in');
                         await auth.signin(formProps as ApiAuthSignIn);
-
-                        // await auth.request();
                     } else if (props.id === 'form-sign-up') {
-                        // sign up here
-                        console.log('form:: sign up');
-                        // await auth.logout();
-                        // await auth.signup();
+                        console.log('form: sign up');
                     }
                 } catch (e: any) {
                     alert(`Oops, something went wrong: ${e.message}`);
