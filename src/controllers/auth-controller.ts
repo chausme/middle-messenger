@@ -47,7 +47,7 @@ export class AuthController {
             if (!user) {
                 return;
             }
-            store.set('logged', true);
+            store.set('user', user);
             return user;
         } catch (e: any) {
             alert(`Oops, something went wrong: ${e.message}`);
@@ -58,7 +58,7 @@ export class AuthController {
     async logout() {
         try {
             await this.#api.logout();
-            store.set('logged', false);
+            store.set('user', null);
             router.load('');
         } catch (e: any) {
             alert(`Oops, something went wrong: ${e.message}`);

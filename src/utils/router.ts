@@ -59,10 +59,10 @@ export default class Router {
     #withAuth(path: string) {
         const pagesPublic = ['', 'sign-up'];
         const pagesPrivate = ['settings', 'messenger', 'logout'];
-        if (store.getState()?.logged && pagesPublic.includes(path)) {
+        if (store.getState()?.user && pagesPublic.includes(path)) {
             return 'logout';
         }
-        if (!store.getState()?.logged && pagesPrivate.includes(path)) {
+        if (!store.getState()?.user && pagesPrivate.includes(path)) {
             return '';
         }
         return path;
