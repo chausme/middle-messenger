@@ -1,10 +1,10 @@
 import HTTP from '../utils/http';
 import BaseAPI from './base-api';
-import { ApiAuthSignIn } from '~/src/utils/prop-types';
+import { UserSignInProps } from '~/src/utils/prop-types';
 
 const authAPIBase = new HTTP();
 
-export default class AuthAPI extends BaseAPI {
+export class AuthAPI extends BaseAPI {
     static basePath = `${BaseAPI.baseUrl}/auth`;
 
     signup() {
@@ -16,7 +16,7 @@ export default class AuthAPI extends BaseAPI {
         });
     }
 
-    signin(data: ApiAuthSignIn) {
+    signin(data: UserSignInProps) {
         return authAPIBase.post(`${AuthAPI.basePath}/signin/`, {
             data,
         });

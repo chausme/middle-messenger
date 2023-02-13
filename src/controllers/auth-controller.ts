@@ -1,5 +1,5 @@
-import AuthAPI from '../api/auth-api';
-import { ApiAuthSignIn } from '~/src/utils/prop-types';
+import { AuthAPI } from '../api/auth-api';
+import { UserSignInProps } from '~/src/utils/prop-types';
 import store from '~/src/utils/store';
 import router from '~/src/index';
 
@@ -15,7 +15,7 @@ export class AuthController {
         }
     }
 
-    async signin(data: ApiAuthSignIn) {
+    async signin(data: UserSignInProps) {
         try {
             const loginResponse = (await this.#api.signin(data)) as XMLHttpRequest;
             if (loginResponse.status !== 200) {

@@ -1,19 +1,19 @@
 export default abstract class BaseAPI {
     static baseUrl = process.env.API_BASE_URL;
 
-    create() {
+    create(): Promise<unknown> {
         throw new Error('Not implemented');
     }
 
-    request() {
+    request(): Promise<unknown> {
         throw new Error('Not implemented');
     }
 
-    update() {
+    update(data: Record<string, any>): Promise<unknown> {
         throw new Error('Not implemented');
     }
 
-    delete() {
+    delete(): Promise<unknown> {
         throw new Error('Not implemented');
     }
 }

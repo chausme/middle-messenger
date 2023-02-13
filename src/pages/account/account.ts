@@ -147,11 +147,11 @@ export default class PageAccount extends Block {
                                 el.removeAttribute('disabled');
                             });
                             e.currentTarget.classList.add('d-none');
-                            document.querySelector('#update_details_2')?.classList.remove('d-none');
-                            document.querySelector('#cancel')?.classList.remove('d-none');
+                            form.querySelector('#update_details_2')?.classList.remove('d-none');
+                            form.querySelector('#cancel')?.classList.remove('d-none');
 
-                            document.querySelector('#change_password')?.classList.add('d-none');
-                            document.querySelector('#logout')?.classList.add('d-none');
+                            form.querySelector('#change_password')?.classList.add('d-none');
+                            form.querySelector('#logout')?.classList.add('d-none');
                         },
                     },
                 }),
@@ -174,12 +174,12 @@ export default class PageAccount extends Block {
                                 el.setAttribute('disabled', 'disabled');
                             });
                             e.currentTarget.classList.add('d-none');
-                            document.querySelector('#cancel')?.classList.add('d-none');
-                            document.querySelector('#update_details_2')?.classList.add('d-none');
+                            form.querySelector('#cancel')?.classList.add('d-none');
+                            form.querySelector('#update_details_2')?.classList.add('d-none');
 
-                            document.querySelector('#update_details')?.classList.remove('d-none');
-                            document.querySelector('#change_password')?.classList.remove('d-none');
-                            document.querySelector('#logout')?.classList.remove('d-none');
+                            form.querySelector('#update_details')?.classList.remove('d-none');
+                            form.querySelector('#change_password')?.classList.remove('d-none');
+                            form.querySelector('#logout')?.classList.remove('d-none');
                         },
                     },
                 }),

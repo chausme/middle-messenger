@@ -100,7 +100,17 @@ export type StickersProps = {
     [key: string]: string;
 };
 
-export type ApiAuthSignIn = {
+export type UserSignInProps = {
     login: string;
     password: string;
+};
+
+export type UserProps = UserSignInProps & {
+    login: string;
+    password: string;
+    email: string;
+    phone: string;
+    first_name?: string;
+    second_name?: string;
+    display_name?: string;
 };
