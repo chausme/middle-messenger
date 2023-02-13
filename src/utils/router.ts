@@ -1,5 +1,6 @@
 import Block from '~/src/utils/block';
 import store, { StoreEvents } from '~/src/utils/store';
+import { AuthController } from '~/src/controllers/auth-controller';
 
 export default class Router {
     routesData;
@@ -12,6 +13,8 @@ export default class Router {
     }
 
     init() {
+        // check if user is logged in on page reload
+        this.#isLoggedIn();
         const path = this.getPath(window.location.href);
         this.load(path);
         // load template on history change
@@ -44,6 +47,15 @@ export default class Router {
 
     forward() {
         this.#history.forward();
+    }
+
+    // Check if user is logged in
+    async #isLoggedIn() {
+        const auth = new AuthController();
+        const user = await auth.getUser();
+        if (user) {
+            store.set('logged', true);
+        }
     }
 
     // Apply auth state to provided path

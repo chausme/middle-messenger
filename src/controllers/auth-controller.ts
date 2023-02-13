@@ -43,9 +43,15 @@ export class AuthController {
         }
     }
 
-    async request() {
+    async getUser() {
         try {
-            await this.#api.request().then((data: unknown) => console.log(data));
+            const userResponse = (await this.#api.request()) as XMLHttpRequest;
+            if (userResponse.status !== 200) {
+                console.error(userResponse.status);
+                console.error(`Oops, something went wrong with fetching user`);
+                return false;
+            }
+            return JSON.parse(userResponse.response);
         } catch (e: any) {
             console.error(e.message);
         }
