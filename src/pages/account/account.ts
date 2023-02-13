@@ -90,7 +90,7 @@ export default class PageAccount extends Block {
                     title: 'Login',
                     id: 'login',
                     type: 'text',
-                    value: '{value}',
+                    value: state?.user?.login,
                     settings: {
                         disabled: true,
                     },
@@ -99,7 +99,7 @@ export default class PageAccount extends Block {
                     title: 'First Name',
                     id: 'first_name',
                     type: 'text',
-                    value: '{value}',
+                    value: state?.user?.first_name,
                     settings: {
                         disabled: true,
                     },
@@ -108,7 +108,7 @@ export default class PageAccount extends Block {
                     title: 'Last Name',
                     id: 'second_name',
                     type: 'text',
-                    value: '{value}',
+                    value: state?.user?.second_name,
                     settings: {
                         disabled: true,
                     },
@@ -117,7 +117,7 @@ export default class PageAccount extends Block {
                     title: 'Phone',
                     id: 'phone',
                     type: 'tel',
-                    value: '{value}',
+                    value: state?.user?.phone,
                     settings: {
                         disabled: true,
                     },
@@ -126,7 +126,7 @@ export default class PageAccount extends Block {
                     title: 'Display Name',
                     id: 'display_name',
                     type: 'text',
-                    value: '{value}',
+                    value: state?.user?.display_name,
                     settings: {
                         disabled: true,
                     },
@@ -137,7 +137,7 @@ export default class PageAccount extends Block {
                     title: 'Update details',
                     id: 'update_details',
                     action: 'update-details',
-                    css: ['bg-green'],
+                    css: ['bg-green', 'mb-2'],
                     events: {
                         click(e) {
                             e.preventDefault();
@@ -146,14 +146,47 @@ export default class PageAccount extends Block {
                             inputs.forEach((el: HTMLInputElement) => {
                                 el.removeAttribute('disabled');
                             });
-                            console.log('update details');
+                            e.currentTarget.classList.add('d-none');
+                            document.querySelector('#update_details_2')?.classList.remove('d-none');
+                            document.querySelector('#cancel')?.classList.remove('d-none');
+
+                            document.querySelector('#change_password')?.classList.add('d-none');
+                            document.querySelector('#logout')?.classList.add('d-none');
+                        },
+                    },
+                }),
+                new Button({
+                    title: 'Confirm the update',
+                    id: 'update_details_2',
+                    css: ['bg-green', 'mb-2', 'd-none'],
+                }),
+                new Button({
+                    title: 'Cancel',
+                    id: 'cancel',
+                    action: 'cancel-update',
+                    css: ['bg-pink', 'mb-2', 'd-none'],
+                    events: {
+                        click(e) {
+                            e.preventDefault();
+                            const form = this.closest('form');
+                            const inputs = form.querySelectorAll('input');
+                            inputs.forEach((el: HTMLInputElement) => {
+                                el.setAttribute('disabled', 'disabled');
+                            });
+                            e.currentTarget.classList.add('d-none');
+                            document.querySelector('#cancel')?.classList.add('d-none');
+                            document.querySelector('#update_details_2')?.classList.add('d-none');
+
+                            document.querySelector('#update_details')?.classList.remove('d-none');
+                            document.querySelector('#change_password')?.classList.remove('d-none');
+                            document.querySelector('#logout')?.classList.remove('d-none');
                         },
                     },
                 }),
                 new Button({
                     title: 'Change Password',
                     id: 'change_password',
-                    css: ['bg-pink'],
+                    css: ['bg-pink', 'mb-2'],
                     action: 'change-password',
                     events: {
                         click(e) {
@@ -165,7 +198,7 @@ export default class PageAccount extends Block {
                 new Button({
                     title: 'Log Out',
                     id: 'logout',
-                    css: ['bg-cyan'],
+                    css: ['bg-cyan', 'mb-2'],
                     link: '/',
                     events: {
                         async click(e) {
