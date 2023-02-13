@@ -3,7 +3,7 @@ import { ApiAuthSignIn } from '~/src/utils/prop-types';
 import store from '~/src/utils/store';
 import router from '~/src/index';
 
-export class AuthController {
+export default class AuthController {
     #api = new AuthAPI();
 
     /** @todo */
@@ -20,7 +20,7 @@ export class AuthController {
             const loginResponse = (await this.#api.signin(data)) as XMLHttpRequest;
             if (loginResponse.status !== 200) {
                 const responseText = JSON.parse(loginResponse.response);
-                const reason = responseText.reason;
+                const { reason } = responseText;
                 console.warn(`Oops, something went wrong: ${reason}`);
                 alert(`Oops, something went wrong: ${reason}`);
                 return;

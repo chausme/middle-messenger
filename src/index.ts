@@ -11,12 +11,16 @@ import './reset.css';
 import './styles.css';
 
 const router = new Router({
-    ['logout']: new PageLogout(),
+    logout: new PageLogout(),
+    // eslint-disable-next-line no-useless-computed-key
     ['sign-in']: new PageSignIn(),
+    // eslint-disable-next-line no-useless-computed-key
     ['sign-up']: new PageSignUp(),
     messenger: new PageChats(),
     settings: new PageAccount(),
+    // eslint-disable-next-line no-useless-computed-key
     ['page-404']: new Page404(),
+    // eslint-disable-next-line no-useless-computed-key
     ['page-500']: new Page500(),
 });
 router.init();

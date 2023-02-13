@@ -1,8 +1,7 @@
 import Block from '~/src/utils/block';
-import { FormProps } from '~/src/utils/prop-types';
+import { FormProps, ApiAuthSignIn } from '~/src/utils/prop-types';
 import { validateForm } from '~/src/utils/validator';
 import { AuthController } from '~/src/controllers/auth-controller';
-import { ApiAuthSignIn } from '~/src/utils/prop-types';
 
 import template from './form.hbs';
 
