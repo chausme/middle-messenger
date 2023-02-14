@@ -1,4 +1,5 @@
 import { AuthAPI } from '../api/auth-api';
+import { ChatsController } from './chats-controller';
 import { UserSignInProps } from '~/src/utils/prop-types';
 import store from '~/src/utils/store';
 import router from '~/src/index';
@@ -27,6 +28,8 @@ export class AuthController {
             }
             // set user data and redirect to /messenger
             await this.getUser();
+            const chats = new ChatsController();
+            await chats.request();
             router.load('messenger');
         } catch (e: any) {
             alert(`Oops, something went wrong: ${e.message}`);
