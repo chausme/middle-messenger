@@ -48,17 +48,6 @@ export type AvatarProps = BlockProps & {
     url?: string;
 };
 
-export type ChatProps = BlockProps & {
-    title: string;
-    avatar?: Avatar;
-    lastMessage?: string;
-    datetime: string;
-    unread?: number;
-    lastMessageImage?: boolean;
-    lastMessageSticker?: boolean;
-    own?: boolean;
-};
-
 export type HeaderProps = BlockProps & {
     title: string;
     avatar?: Avatar;
@@ -113,4 +102,18 @@ export type UserProps = UserSignInProps & {
     first_name?: string;
     second_name?: string;
     display_name?: string;
+};
+
+export type ChatProps = {
+    avatar: Avatar;
+    created_by: number;
+    id: number;
+    last_message: string | null;
+    title: string;
+    unread_count: number;
+    datetime?: string;
+    unread?: number;
+    lastMessageImage?: boolean;
+    lastMessageSticker?: boolean;
+    own?: boolean;
 };

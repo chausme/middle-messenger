@@ -7,7 +7,6 @@ import MessageSticker from './components/message-sticker';
 import FormMessage from './modules/form-message';
 import Block from '~/src/utils/block';
 import template from './single-chat.hbs';
-import imageAvatar from '~/static/images/60.png';
 import imageMessage from '~/static/images/300x200.png';
 import './single-chat.css';
 
@@ -29,7 +28,6 @@ export default class SingleChat extends Block {
     init() {
         this.children.header = new Header({
             avatar: new Avatar({
-                url: imageAvatar,
                 size: 'sm',
             }),
             title: 'Jerry',

@@ -5,8 +5,8 @@ import InputSearch from './components/input-search';
 import ButtonIcon from '~/src/components/button-icon';
 import router from '~/src/index';
 import template from './chat-list.hbs';
+import { ChatProps } from '~/src/utils/prop-types';
 import store, { StoreEvents } from '~src/utils/store';
-import imageAvatar from '~/static/images/60.png';
 import './chat-list.css';
 
 export default class ChatList extends Block {
@@ -49,7 +49,7 @@ export default class ChatList extends Block {
             events: {
                 click(e) {
                     e.preventDefault();
-                    router.load('add chat');
+                    console.log('add chat');
                 },
             },
         });
@@ -61,14 +61,17 @@ export default class ChatList extends Block {
         if (!chats) {
             return false;
         }
-        chats.forEach(chat => {
-            console.log(chat);
+        chats.forEach((chat: ChatProps) => {
             this.children.chats.push(
                 new Chat({
-                    title: 'Mike',
+                    created_by: chat.created_by,
+                    id: chat.id,
+                    title: chat.title,
                     avatar: new Avatar({
                         size: 'md',
                     }),
+                    unread_count: chat.unread_count,
+                    last_message: chat.last_message,
                     lastMessageImage: true,
                     datetime: 'Dec 2021',
                     own: true,

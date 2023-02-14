@@ -100,28 +100,22 @@ export default class Router {
         buttonLinks.forEach(el => {
             el.addEventListener('click', e => {
                 e.preventDefault();
-
                 if (!(e.currentTarget instanceof HTMLElement)) {
                     return;
                 }
-
                 const isHome =
                     !e.currentTarget.dataset.path || e.currentTarget.dataset.path === '/';
-
                 const linkPath =
                     isHome || !e.currentTarget.dataset.path ? '' : e.currentTarget.dataset.path;
-
                 this.load(linkPath);
             });
         });
-
         // add header test router back/forward links
         const routerLinkBack = document.querySelector('.router-link.back');
         routerLinkBack?.addEventListener('click', e => {
             e.preventDefault();
             this.back();
         });
-
         const routerLinkForward = document.querySelector('.router-link.forward');
         routerLinkForward?.addEventListener('click', e => {
             e.preventDefault();

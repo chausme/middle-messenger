@@ -42,7 +42,13 @@ export default class ButtonIcon extends Block {
         if (props.link) {
             this.element.classList.add('link');
             this.element.dataset.path = props.link;
+        }
+
+        // keep button as type="button" to avoid form submission
+        if (props.link || props.action) {
             this.element.setAttribute('type', 'button');
+        } else {
+            this.element.setAttribute('type', 'submit');
         }
 
         this.props.icon_url = this.#icons[props.icon];

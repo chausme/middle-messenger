@@ -1,5 +1,4 @@
 import { ChatsAPI } from '../api/chats-api';
-import { UserProps } from '~/src/utils/prop-types';
 import store from '~/src/utils/store';
 
 export class ChatsController {
