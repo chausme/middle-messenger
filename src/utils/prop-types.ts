@@ -107,7 +107,7 @@ export type UserProps = UserSignInProps & {
 export type ChatProps = {
     avatar: Avatar;
     title: string;
-    datetime?: string;
+    datetime?: string | null;
     unread?: number;
     lastMessage?: string | null;
     lastMessageImage?: boolean;

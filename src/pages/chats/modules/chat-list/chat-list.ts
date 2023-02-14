@@ -7,7 +7,7 @@ import router from '~/src/index';
 import template from './chat-list.hbs';
 import { ChatApiProps } from '~/src/utils/prop-types';
 import store, { StoreEvents } from '~/src/utils/store';
-import { getDate } from '~/src/utils/helpers';
+import { getDate, trimMessage } from '~/src/utils/helpers';
 import './chat-list.css';
 
 export default class ChatList extends Block {
@@ -63,18 +63,22 @@ export default class ChatList extends Block {
             return false;
         }
         chats.forEach((chat: ChatApiProps) => {
-            const datetimeRaw = chat?.last_message?.time ?? Date.parse(chat?.last_message?.time);
-            // const date = datetimeRaw ?? getDate(datetimeRaw);
-            // console.log(date);
-            const lastMessage = chat?.last_message?.content;
+            const datetimeRaw = chat?.last_message?.time
+                ? Date.parse(chat?.last_message?.time)
+                : null;
+            const date = datetimeRaw ? getDate(datetimeRaw) : null;
+            console.log(date);
+            const lastMessage = chat?.last_message?.content
+                ? trimMessage(chat.last_message.content)
+                : null;
             this.children.chats.push(
                 new Chat({
                     title: chat.title,
                     avatar: new Avatar({
                         size: 'md',
                     }),
-                    unread: 2, //chat.unread_count,
-                    // datetime: date,
+                    unread: chat.unread_count ? chat.unread_count : 99, // keep for demoing purposes
+                    datetime: date,
                     lastMessage,
                 })
             );

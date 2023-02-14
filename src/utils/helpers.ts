@@ -48,6 +48,19 @@ export const set = (object: Indexed | unknown, path: string, value: unknown): In
     return merge(object as Indexed, rhs as Indexed);
 };
 
-export const getDate = (timestamp: number): number => {
-    return timestamp;
+export const getDate = (timestamp: number): string => {
+    const date = new Date(timestamp * 1000);
+    const hoursRaw = date.getHours();
+    const hours = hoursRaw ? hoursRaw % 12 : 12;
+    const minutes = date.getMinutes();
+    const ampm = hours % 12 >= 12 ? 'pm' : 'am';
+    return `${hours}:${minutes < 10 ? `0${minutes}` : minutes}${ampm}`;
+};
+
+export const trimMessage = (message: string): string => {
+    const maxLength = 75;
+    if (message.length <= maxLength) {
+        return message;
+    }
+    return message.substring(0, 75) + '...';
 };
