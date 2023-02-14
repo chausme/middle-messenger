@@ -67,6 +67,7 @@ export default class ChatList extends Block {
             this.children.chats.push(
                 new Chat({
                     ...chatDetails,
+                    id: chat.id,
                     title: chat.title,
                     unread: chat.unread_count ? chat.unread_count : 99, // keep for demoing purposes
                     avatar: new Avatar({
@@ -75,7 +76,8 @@ export default class ChatList extends Block {
                     events: {
                         click(e) {
                             e.preventDefault();
-                            console.log('load chat id??');
+                            console.log(e.currentTarget);
+                            console.log(`load chat ID:`);
                         },
                     },
                 })

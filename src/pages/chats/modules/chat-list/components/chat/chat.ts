@@ -22,6 +22,8 @@ export default class Chat extends Block {
             'mb-2',
             'p-2'
         );
+
+        // @todo add id attr
     }
 
     render() {
