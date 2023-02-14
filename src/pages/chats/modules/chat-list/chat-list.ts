@@ -67,7 +67,6 @@ export default class ChatList extends Block {
                 ? Date.parse(chat?.last_message?.time)
                 : null;
             const date = datetimeRaw ? getDate(datetimeRaw) : null;
-            console.log(date);
             const lastMessage = chat?.last_message?.content
                 ? trimMessage(chat.last_message.content)
                 : null;

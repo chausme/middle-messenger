@@ -49,11 +49,11 @@ export const set = (object: Indexed | unknown, path: string, value: unknown): In
 };
 
 export const getDate = (timestamp: number): string => {
-    const date = new Date(timestamp * 1000);
+    const date = new Date(timestamp);
     const hoursRaw = date.getHours();
     const hours = hoursRaw ? hoursRaw % 12 : 12;
     const minutes = date.getMinutes();
-    const ampm = hours % 12 >= 12 ? 'pm' : 'am';
+    const ampm = hoursRaw >= 12 ? 'pm' : 'am';
     return `${hours}:${minutes < 10 ? `0${minutes}` : minutes}${ampm}`;
 };
 
