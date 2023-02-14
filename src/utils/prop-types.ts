@@ -57,12 +57,6 @@ export type DatetimeProps = BlockProps & {
     date: string;
 };
 
-export type MessageProps = BlockProps & {
-    content: string;
-    datetime: string;
-    own?: boolean;
-};
-
 export type MessageImageProps = BlockProps & {
     datetime: string;
     own?: boolean;
@@ -113,9 +107,10 @@ export type ChatProps = {
     lastMessageImage?: boolean;
     lastMessageSticker?: boolean;
     own?: boolean;
+    events?: Record<string, CallbackType>;
 };
 
-export type Message = {
+export type MessageProps = {
     user: UserProps;
     time: string;
     content: string | any;
@@ -127,6 +122,12 @@ export type ChatApiProps = {
     title: string;
     avatar: string | null;
     created_by: number;
-    last_message: Message;
+    last_message: MessageProps;
     unread_count: number;
+};
+
+export type ChatDetailsProps = {
+    datetime: string | null;
+    lastMessage: string | null;
+    own: boolean;
 };

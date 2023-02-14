@@ -1,3 +1,6 @@
+import { ChatApiProps, ChatDetailsProps } from '~/src/utils/prop-types';
+import store from './store';
+
 type Indexed<T = unknown> = {
     [key in string]: T;
 };
@@ -48,7 +51,7 @@ export const set = (object: Indexed | unknown, path: string, value: unknown): In
     return merge(object as Indexed, rhs as Indexed);
 };
 
-export const getDate = (timestamp: number): string => {
+const getDate = (timestamp: number): string => {
     const date = new Date(timestamp);
     const hoursRaw = date.getHours();
     const hours = hoursRaw ? hoursRaw % 12 : 12;
@@ -57,10 +60,27 @@ export const getDate = (timestamp: number): string => {
     return `${hours}:${minutes < 10 ? `0${minutes}` : minutes}${ampm}`;
 };
 
-export const trimMessage = (message: string): string => {
+const trimMessage = (message: string): string => {
     const maxLength = 75;
     if (message.length <= maxLength) {
         return message;
     }
     return message.substring(0, 75) + '...';
+};
+
+export const getChatDetails = (chat: ChatApiProps): ChatDetailsProps => {
+    const datetimeRaw = chat?.last_message?.time ? Date.parse(chat?.last_message?.time) : null;
+    const date = datetimeRaw ? getDate(datetimeRaw) : null;
+    const lastMessage = chat?.last_message?.content ? trimMessage(chat.last_message.content) : null;
+
+    // check last message owner
+    const messageOwnerLogin = chat?.last_message?.user?.login;
+    const currentUserLogin = store?.getState()?.user?.login;
+    const own = messageOwnerLogin && messageOwnerLogin === currentUserLogin ? true : false;
+
+    return {
+        datetime: date,
+        lastMessage,
+        own,
+    };
 };
