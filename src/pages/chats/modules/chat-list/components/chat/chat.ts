@@ -13,6 +13,7 @@ export default class Chat extends Block {
 
         // add default classes
         this.element.classList.add(
+            'chat',
             'window',
             'pad',
             'sm',
@@ -23,7 +24,7 @@ export default class Chat extends Block {
             'p-2'
         );
 
-        // @todo add id attr
+        this.element.setAttribute('data-id', this.props.id);
     }
 
     render() {

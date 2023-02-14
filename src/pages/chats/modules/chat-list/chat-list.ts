@@ -1,7 +1,6 @@
 import Block from '~/src/utils/block';
 import Chat from './components/chat';
 import Avatar from '~/src/components/avatar';
-import InputSearch from './components/input-search';
 import ButtonIcon from '~/src/components/button-icon';
 import router from '~/src/index';
 import template from './chat-list.hbs';
@@ -17,7 +16,7 @@ export default class ChatList extends Block {
         this.element.classList.add('window', 'lg', 'p-2/5', 'chats', 'bg-pink', 'd-flex', 'h-100');
         store.on(StoreEvents.Updated, () => {
             const chats = store.getState()?.chats;
-            this.setProps({ chats: chats });
+            this.setProps({ chats });
         });
     }
 
@@ -76,8 +75,7 @@ export default class ChatList extends Block {
                     events: {
                         click(e) {
                             e.preventDefault();
-                            console.log(e.currentTarget);
-                            console.log(`load chat ID:`);
+                            console.log(`load chat ID: ${e.currentTarget?.dataset?.id}`);
                         },
                     },
                 })

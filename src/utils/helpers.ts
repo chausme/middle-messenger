@@ -65,7 +65,7 @@ const trimMessage = (message: string): string => {
     if (message.length <= maxLength) {
         return message;
     }
-    return message.substring(0, 75) + '...';
+    return `${message.substring(0, 75)}...`;
 };
 
 export const getChatDetails = (chat: ChatApiProps): ChatDetailsProps => {
@@ -76,7 +76,7 @@ export const getChatDetails = (chat: ChatApiProps): ChatDetailsProps => {
     // check last message owner
     const messageOwnerLogin = chat?.last_message?.user?.login;
     const currentUserLogin = store?.getState()?.user?.login;
-    const own = messageOwnerLogin && messageOwnerLogin === currentUserLogin ? true : false;
+    const own = messageOwnerLogin && messageOwnerLogin === currentUserLogin;
 
     return {
         datetime: date,
