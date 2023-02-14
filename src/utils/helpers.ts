@@ -76,7 +76,9 @@ export const getChatDetails = (chat: ChatApiProps): ChatDetailsProps => {
     // check last message owner
     const messageOwnerLogin = chat?.last_message?.user?.login;
     const currentUserLogin = store?.getState()?.user?.login;
-    const own = messageOwnerLogin && messageOwnerLogin === currentUserLogin;
+    // required by TS
+    // eslint-disable-next-line no-unneeded-ternary
+    const own = messageOwnerLogin && messageOwnerLogin === currentUserLogin ? true : false;
 
     return {
         datetime: date,

@@ -136,5 +136,5 @@ export type ChatApiProps = {
 export type ChatDetailsProps = {
     datetime: string | null;
     lastMessage: string | null;
-    own: boolean | string;
+    own: boolean;
 };
