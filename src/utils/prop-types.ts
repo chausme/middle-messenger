@@ -106,14 +106,27 @@ export type UserProps = UserSignInProps & {
 
 export type ChatProps = {
     avatar: Avatar;
-    created_by: number;
-    id: number;
-    last_message: string | null;
     title: string;
-    unread_count: number;
     datetime?: string;
     unread?: number;
+    lastMessage?: string | null;
     lastMessageImage?: boolean;
     lastMessageSticker?: boolean;
     own?: boolean;
+};
+
+export type Message = {
+    user: UserProps;
+    time: string;
+    content: string | any;
+    id: number;
+};
+
+export type ChatApiProps = {
+    id: number;
+    title: string;
+    avatar: string | null;
+    created_by: number;
+    last_message: Message;
+    unread_count: number;
 };

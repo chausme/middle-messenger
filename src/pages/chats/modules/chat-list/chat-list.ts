@@ -5,8 +5,9 @@ import InputSearch from './components/input-search';
 import ButtonIcon from '~/src/components/button-icon';
 import router from '~/src/index';
 import template from './chat-list.hbs';
-import { ChatProps } from '~/src/utils/prop-types';
-import store, { StoreEvents } from '~src/utils/store';
+import { ChatApiProps } from '~/src/utils/prop-types';
+import store, { StoreEvents } from '~/src/utils/store';
+import { getDate } from '~/src/utils/helpers';
 import './chat-list.css';
 
 export default class ChatList extends Block {
@@ -61,20 +62,20 @@ export default class ChatList extends Block {
         if (!chats) {
             return false;
         }
-        chats.forEach((chat: ChatProps) => {
+        chats.forEach((chat: ChatApiProps) => {
+            const datetimeRaw = chat?.last_message?.time ?? Date.parse(chat?.last_message?.time);
+            // const date = datetimeRaw ?? getDate(datetimeRaw);
+            // console.log(date);
+            const lastMessage = chat?.last_message?.content;
             this.children.chats.push(
                 new Chat({
-                    created_by: chat.created_by,
-                    id: chat.id,
                     title: chat.title,
                     avatar: new Avatar({
                         size: 'md',
                     }),
-                    unread_count: chat.unread_count,
-                    last_message: chat.last_message,
-                    lastMessageImage: true,
-                    datetime: 'Dec 2021',
-                    own: true,
+                    unread: 2, //chat.unread_count,
+                    // datetime: date,
+                    lastMessage,
                 })
             );
         });

@@ -47,3 +47,7 @@ export const set = (object: Indexed | unknown, path: string, value: unknown): In
 
     return merge(object as Indexed, rhs as Indexed);
 };
+
+export const getDate = (timestamp: number): number => {
+    return timestamp;
+};
