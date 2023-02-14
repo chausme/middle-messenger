@@ -34,18 +34,6 @@ export default class FormMessage extends Block {
     }
 
     init() {
-        this.children.buttonAttach = new ButtonIcon({
-            title: 'Attach',
-            id: 'attach',
-            css: ['mr-1/5', 'bg-orange'],
-            icon: 'attachment',
-            events: {
-                click(e) {
-                    e.preventDefault();
-                    console.log('attach something');
-                },
-            },
-        });
         this.children.inputMessage = new InputMessage({
             title: 'Your message goes here...',
             id: 'message',

@@ -541,6 +541,14 @@ h2 {
     padding-right: 16px;
 }
 
+.pt-1\/5 {
+    padding-top: 10px;
+}
+
+.pt-2 {
+    padding-top: 16px;
+}
+
 .d-none {
     display: none;
 }

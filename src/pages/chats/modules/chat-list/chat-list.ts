@@ -37,7 +37,6 @@ export default class ChatList extends Block {
                 },
             },
         });
-        this.children.inputSearch = new InputSearch();
         this.children.buttonAddChat = new ButtonIcon({
             title: 'Add Chat',
             id: 'add-chat',
