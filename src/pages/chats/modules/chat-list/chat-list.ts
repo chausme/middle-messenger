@@ -7,6 +7,7 @@ import template from './chat-list.hbs';
 import { ChatApiProps } from '~/src/utils/prop-types';
 import store, { StoreEvents } from '~/src/utils/store';
 import { getChatDetails } from '~/src/utils/helpers';
+import { MessagesController } from '~/src/controllers/messages-controller';
 import './chat-list.css';
 
 export default class ChatList extends Block {
@@ -73,8 +74,10 @@ export default class ChatList extends Block {
                         size: 'md',
                     }),
                     events: {
-                        click(e) {
+                        async click(e) {
                             e.preventDefault();
+                            const messages = new MessagesController();
+                            await messages.loadMessages();
                             console.log(`load chat ID: ${e.currentTarget?.dataset?.id}`);
                         },
                     },
