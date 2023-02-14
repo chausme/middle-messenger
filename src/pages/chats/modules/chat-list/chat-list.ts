@@ -5,6 +5,7 @@ import InputSearch from './components/input-search';
 import ButtonIcon from '~/src/components/button-icon';
 import router from '~/src/index';
 import template from './chat-list.hbs';
+import store, { StoreEvents } from '~src/utils/store';
 import imageAvatar from '~/static/images/60.png';
 import './chat-list.css';
 
@@ -13,6 +14,10 @@ export default class ChatList extends Block {
         super({}, 'div');
 
         this.element.classList.add('window', 'lg', 'p-2/5', 'chats', 'bg-pink', 'd-flex', 'h-100');
+        store.on(StoreEvents.Updated, () => {
+            const chats = store.getState()?.chats;
+            this.setProps({ chats: chats });
+        });
     }
 
     init() {
@@ -48,86 +53,28 @@ export default class ChatList extends Block {
                 },
             },
         });
-        this.children.chats = [
-            new Chat({
-                avatar: new Avatar({
-                    url: imageAvatar,
-                    size: 'md',
-                }),
-                title: 'Jake',
-                lastMessage:
-                    'Lorem ipsum dolor sit amet, consectetur adipiscingelit. Nam mollis efficitur commodo. Cras venenatis...',
-                datetime: '2:14pm',
-                unread: 2,
-            }),
-            new Chat({
-                title: 'Kate',
-                avatar: new Avatar({
-                    size: 'md',
-                }),
-                lastMessage: 'Curabitur posuere ipsum nec orc!',
-                own: true,
-                datetime: '10:10am',
-                unread: 1,
-            }),
-            new Chat({
-                title: 'English Club',
-                avatar: new Avatar({
-                    url: imageAvatar,
-                    size: 'md',
-                }),
-                lastMessageSticker: true,
-                datetime: 'Sun',
-            }),
-            new Chat({
-                title: 'Jerry',
-                avatar: new Avatar({
-                    size: 'md',
-                }),
-                lastMessage:
-                    'Donec porta massa vel scelerisque vulputate. Aenean lectus orci, cursus ut ornare sit amet, aliquam non u',
-                datetime: 'Fri',
-            }),
-            new Chat({
-                title: "Designer's Club",
-                avatar: new Avatar({
-                    size: 'md',
-                }),
-                lastMessageImage: true,
-                datetime: 'Wed',
-            }),
-            new Chat({
-                title: 'Mary',
-                avatar: new Avatar({
-                    size: 'md',
-                }),
-                lastMessageSticker: true,
-                own: true,
-                datetime: 'Mon',
-            }),
-            new Chat({
-                title: 'Friends Group',
-                avatar: new Avatar({
-                    size: 'md',
-                }),
-                lastMessage: 'Etiam tincidunt ex ut eros fringilla, ut laoreet quis!',
-                datetime: '9 Sep',
-            }),
-            new Chat({
-                title: 'Mike',
-                avatar: new Avatar({
-                    size: 'md',
-                }),
-                lastMessageImage: true,
-                datetime: 'Dec 2021',
-                own: true,
-            }),
-        ];
+        this.children.chats = [];
     }
 
     componentDidUpdate(): boolean {
-        console.log('chat list updated');
-        this.children.chats = [];
+        const chats = store?.getState()?.chats;
+        if (!chats) {
+            return false;
+        }
+        chats.forEach(chat => {
+            console.log(chat);
+            this.children.chats.push(
+                new Chat({
+                    title: 'Mike',
+                    avatar: new Avatar({
+                        size: 'md',
+                    }),
+                    lastMessageImage: true,
+                    datetime: 'Dec 2021',
+                    own: true,
+                })
+            );
+        });
         return true;
     }
 

@@ -20,7 +20,6 @@ export default class PageAccount extends Block {
         store.on(StoreEvents.Updated, () => {
             const displayName = store.getState()?.user?.display_name;
             this.setProps({ displayName });
-            /** @todo how to update this.children components loaded with init() */
         });
     }
 
