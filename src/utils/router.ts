@@ -58,14 +58,16 @@ export default class Router {
 
     // Check if user is logged in
     async #isLoggedIn() {
-        const auth = new AuthController();
-        return await auth.getUser();
+        const authC = new AuthController();
+        const user = await authC.getUser();
+        return user;
     }
 
     // Get chats
     async #getChats() {
-        const chats = new ChatsController();
-        return await chats.request();
+        const chatsC = new ChatsController();
+        const chats = await chatsC.request();
+        return chats;
     }
 
     // Apply auth state to provided path

@@ -10,6 +10,7 @@ export default abstract class BaseAPI {
     }
 
     update(data: Record<string, any>): Promise<unknown> {
+        console.log(data);
         throw new Error('Not implemented');
     }
 

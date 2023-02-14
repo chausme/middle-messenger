@@ -16,7 +16,7 @@ export default class ChatList extends Block {
     }
 
     init() {
-        this.children.buttonIcon = new ButtonIcon({
+        this.children.buttonAccount = new ButtonIcon({
             title: 'Account',
             id: 'settings',
             icon: 'hamburger',
@@ -32,83 +32,102 @@ export default class ChatList extends Block {
             },
         });
         this.children.inputSearch = new InputSearch();
-        this.children.chat_1 = new Chat({
-            avatar: new Avatar({
-                url: imageAvatar,
-                size: 'md',
-            }),
-            title: 'Jake',
-            lastMessage:
-                'Lorem ipsum dolor sit amet, consectetur adipiscingelit. Nam mollis efficitur commodo. Cras venenatis...',
-            datetime: '2:14pm',
-            unread: 2,
+        this.children.buttonAddChat = new ButtonIcon({
+            title: 'Add Chat',
+            id: 'add-chat',
+            icon: 'hamburger',
+            css: ['ml-1/5', 'bg-orange'],
+            action: 'add-chat',
+            settings: {
+                withInternalID: true,
+            },
+            events: {
+                click(e) {
+                    e.preventDefault();
+                    router.load('add chat');
+                },
+            },
         });
-        this.children.chat_2 = new Chat({
-            title: 'Kate',
-            avatar: new Avatar({
-                size: 'md',
+        this.children.chats = [
+            new Chat({
+                avatar: new Avatar({
+                    url: imageAvatar,
+                    size: 'md',
+                }),
+                title: 'Jake',
+                lastMessage:
+                    'Lorem ipsum dolor sit amet, consectetur adipiscingelit. Nam mollis efficitur commodo. Cras venenatis...',
+                datetime: '2:14pm',
+                unread: 2,
             }),
-            lastMessage: 'Curabitur posuere ipsum nec orc!',
-            own: true,
-            datetime: '10:10am',
-            unread: 1,
-        });
-        this.children.chat_3 = new Chat({
-            title: 'English Club',
-            avatar: new Avatar({
-                url: imageAvatar,
-                size: 'md',
+            new Chat({
+                title: 'Kate',
+                avatar: new Avatar({
+                    size: 'md',
+                }),
+                lastMessage: 'Curabitur posuere ipsum nec orc!',
+                own: true,
+                datetime: '10:10am',
+                unread: 1,
             }),
-            lastMessageSticker: true,
-            datetime: 'Sun',
-        });
-        this.children.chat_4 = new Chat({
-            title: 'Jerry',
-            avatar: new Avatar({
-                size: 'md',
+            new Chat({
+                title: 'English Club',
+                avatar: new Avatar({
+                    url: imageAvatar,
+                    size: 'md',
+                }),
+                lastMessageSticker: true,
+                datetime: 'Sun',
             }),
-            lastMessage:
-                'Donec porta massa vel scelerisque vulputate. Aenean lectus orci, cursus ut ornare sit amet, aliquam non u',
-            datetime: 'Fri',
-        });
-        this.children.chat_5 = new Chat({
-            title: "Designer's Club",
-            avatar: new Avatar({
-                size: 'md',
+            new Chat({
+                title: 'Jerry',
+                avatar: new Avatar({
+                    size: 'md',
+                }),
+                lastMessage:
+                    'Donec porta massa vel scelerisque vulputate. Aenean lectus orci, cursus ut ornare sit amet, aliquam non u',
+                datetime: 'Fri',
             }),
-            lastMessageImage: true,
-            datetime: 'Wed',
-        });
-        this.children.chat_6 = new Chat({
-            title: 'Mary',
-            avatar: new Avatar({
-                size: 'md',
+            new Chat({
+                title: "Designer's Club",
+                avatar: new Avatar({
+                    size: 'md',
+                }),
+                lastMessageImage: true,
+                datetime: 'Wed',
             }),
-            lastMessageSticker: true,
-            own: true,
-            datetime: 'Mon',
-        });
-        this.children.chat_7 = new Chat({
-            title: 'Friends Group',
-            avatar: new Avatar({
-                size: 'md',
+            new Chat({
+                title: 'Mary',
+                avatar: new Avatar({
+                    size: 'md',
+                }),
+                lastMessageSticker: true,
+                own: true,
+                datetime: 'Mon',
             }),
-            lastMessage: 'Etiam tincidunt ex ut eros fringilla, ut laoreet quis!',
-            datetime: '9 Sep',
-        });
-        this.children.chat_8 = new Chat({
-            title: 'Mike',
-            avatar: new Avatar({
-                size: 'md',
+            new Chat({
+                title: 'Friends Group',
+                avatar: new Avatar({
+                    size: 'md',
+                }),
+                lastMessage: 'Etiam tincidunt ex ut eros fringilla, ut laoreet quis!',
+                datetime: '9 Sep',
             }),
-            lastMessageImage: true,
-            datetime: 'Dec 2021',
-            own: true,
-        });
+            new Chat({
+                title: 'Mike',
+                avatar: new Avatar({
+                    size: 'md',
+                }),
+                lastMessageImage: true,
+                datetime: 'Dec 2021',
+                own: true,
+            }),
+        ];
     }
 
     componentDidUpdate(): boolean {
         console.log('chat list updated');
+        this.children.chats = [];
         return true;
     }
 
