@@ -1,7 +1,6 @@
 import { SettingsAPI } from '../api/settings-api';
 import { UserProps } from '~/src/utils/prop-types';
 import store from '~/src/utils/store';
-import router from '~/src/index';
 
 export class SettingsController {
     #api = new SettingsAPI();

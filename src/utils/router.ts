@@ -1,6 +1,7 @@
 import Block from '~/src/utils/block';
 import store from '~/src/utils/store';
 import { AuthController } from '~/src/controllers/auth-controller';
+import { ChatsController } from '~/src/controllers/chats-controller';
 
 export default class Router {
     routesData;
@@ -16,7 +17,11 @@ export default class Router {
 
     async init() {
         // check if user is logged in on page reload
-        await this.#isLoggedIn();
+        const isLoggedIn = await this.#isLoggedIn();
+        if (isLoggedIn) {
+            // fetch chats
+            await this.#getChats();
+        }
         const path = this.getPath(window.location.href);
         this.load(path);
         // load template on history change
@@ -25,6 +30,7 @@ export default class Router {
             this.load(target.location?.pathname.substring(1), true);
         };
         this.addLinksClickListener();
+        console.log(store?.getState());
     }
 
     // Output respective template on page and optionally update history
@@ -53,7 +59,13 @@ export default class Router {
     // Check if user is logged in
     async #isLoggedIn() {
         const auth = new AuthController();
-        await auth.getUser();
+        return await auth.getUser();
+    }
+
+    // Get chats
+    async #getChats() {
+        const chats = new ChatsController();
+        return await chats.request();
     }
 
     // Apply auth state to provided path

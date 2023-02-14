@@ -39,12 +39,12 @@ export default class PageSignIn extends Block {
                 new Button({
                     title: 'Sign In',
                     id: 'sign-in',
-                    css: ['bg-green'],
+                    css: ['bg-green', 'mb-2'],
                 }),
                 new Button({
                     title: 'Sign Up',
                     id: 'sign-up',
-                    css: ['bg-orange'],
+                    css: ['bg-orange', 'mb-2'],
                     link: 'signup',
                     events: {
                         click(e) {

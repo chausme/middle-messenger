@@ -107,6 +107,11 @@ export default class ChatList extends Block {
         });
     }
 
+    componentDidUpdate(): boolean {
+        console.log('chat list updated');
+        return true;
+    }
+
     render() {
         this.dispatchComponentDidMount();
 
