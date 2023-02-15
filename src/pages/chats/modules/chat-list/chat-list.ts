@@ -59,7 +59,7 @@ export default class ChatList extends Block {
     componentDidUpdate(): boolean {
         const state = store?.getState();
         const chats = state?.chats;
-        const chatId = state?.chatId;
+        const currentChatId = state?.chatId;
         if (!chats) {
             return false;
         }
@@ -75,7 +75,7 @@ export default class ChatList extends Block {
                     avatar: new Avatar({
                         size: 'md',
                     }),
-                    active: chatId && chatId === chat.id,
+                    active: currentChatId && currentChatId === chat.id,
                     events: {
                         async click(e) {
                             e.preventDefault();

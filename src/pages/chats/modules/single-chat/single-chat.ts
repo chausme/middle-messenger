@@ -50,14 +50,14 @@ export default class SingleChat extends Block {
             title: 'TBC',
         });
         delete this.children.placeholder;
-        this.children.messages = messages.map((message: MessageApiProps) => {
-            console.log('user id curre: ' + userId);
-            return new Message({
-                content: message.content,
-                datetime: getDatetime(message.time),
-                own: message.user_id === userId,
-            });
-        });
+        this.children.messages = messages.map(
+            (message: MessageApiProps) =>
+                new Message({
+                    content: message.content,
+                    datetime: getDatetime(message.time),
+                    own: message.user_id === userId,
+                })
+        );
         this.children.form = new FormMessage({
             id: 'send-message',
         });

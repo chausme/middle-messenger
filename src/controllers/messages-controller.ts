@@ -3,6 +3,7 @@ import { ChatsAPI } from '../api/chats-api';
 
 export class MessagesController {
     #ws = new WS();
+
     #chatsApi = new ChatsAPI();
 
     async #getChatToken(chatId: number) {
@@ -13,12 +14,12 @@ export class MessagesController {
             const { reason } = responseText;
             console.warn(`Oops, something went wrong: ${reason}`);
             alert(`Oops, something went wrong: ${reason}`);
-            return;
+            return false;
         }
         if (!responseText.token) {
             console.warn(`Oops, there is no chat token`);
             alert(`Oops, there is no chat token`);
-            return;
+            return false;
         }
         return responseText.token;
     }

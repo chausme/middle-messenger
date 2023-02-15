@@ -52,9 +52,7 @@ export const set = (object: Indexed | unknown, path: string, value: unknown): In
 };
 
 /** Check provided date is today */
-const isToday = (date: Date): boolean => {
-    return new Date().toDateString() === date.toDateString();
-};
+const isToday = (date: Date): boolean => new Date().toDateString() === date.toDateString();
 
 /** Get chat datetime based on the last message date */
 const getChatDatetime = (timestamp: number): string => {
@@ -71,15 +69,10 @@ const getChatDatetime = (timestamp: number): string => {
 };
 
 /** Get a timestamp from the provided string */
-const getTimestamp = (date: string): number => {
-    return Date.parse(date);
-};
+const getTimestamp = (date: string): number => Date.parse(date);
 
 /** Get datetime from the provided timestamp */
-export const getDatetime = (timestamp: number): string => {
-    const date = new Date(timestamp);
-    return date.toLocaleString();
-};
+export const getDatetime = (timestamp: number): string => new Date(timestamp).toLocaleString();
 
 const trimMessage = (message: string): string => {
     const maxLength = 75;
