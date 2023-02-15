@@ -47,7 +47,7 @@ export class WS {
 
         const userId = store?.getState()?.user?.id;
         this.#socket = new WebSocket(`${WS.basePath}/${userId}/${chatId}/${token}`);
-        this.#chatId = chatId;
+        this.#chatId = Number(chatId);
 
         this.#socket.addEventListener('open', () => {
             console.log('Websocket connection has been established');

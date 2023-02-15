@@ -102,6 +102,7 @@ export type ChatProps = {
     avatar: Avatar;
     title: string;
     id: number;
+    active: boolean;
     datetime?: string | null;
     unread?: number;
     lastMessage?: string | null;

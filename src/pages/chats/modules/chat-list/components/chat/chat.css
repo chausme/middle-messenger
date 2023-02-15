@@ -13,7 +13,7 @@
         &:active,
         &.active {
             &::before {
-                background-color: var(--c-cyan-light-alt);
+                background-color: var(--c-white);
             }
         }
 

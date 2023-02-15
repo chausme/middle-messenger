@@ -57,7 +57,9 @@ export default class ChatList extends Block {
     }
 
     componentDidUpdate(): boolean {
-        const chats = store?.getState()?.chats;
+        const state = store?.getState();
+        const chats = state?.chats;
+        const chatId = state?.chatId;
         if (!chats) {
             return false;
         }
@@ -73,16 +75,19 @@ export default class ChatList extends Block {
                     avatar: new Avatar({
                         size: 'md',
                     }),
+                    active: chatId && chatId === chat.id,
                     events: {
                         async click(e) {
                             e.preventDefault();
                             const messages = new MessagesController();
-                            const chatId = e.currentTarget?.dataset?.id;
+                            const chatEl = e.currentTarget;
+                            const chatId = chatEl?.dataset?.id;
                             if (!chatId) {
                                 alert('Oops, there is no chat ID found');
                                 return;
                             }
                             await messages.connect(chatId);
+                            chatEl.classList.add('active');
                         },
                     },
                 })
