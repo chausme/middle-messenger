@@ -77,8 +77,12 @@ export default class ChatList extends Block {
                         async click(e) {
                             e.preventDefault();
                             const messages = new MessagesController();
-                            await messages.loadMessages();
-                            console.log(`load chat ID: ${e.currentTarget?.dataset?.id}`);
+                            const chatId = e.currentTarget?.dataset?.id;
+                            if (!chatId) {
+                                alert('Oops, there is no chat ID found');
+                                return;
+                            }
+                            await messages.loadMessages(chatId);
                         },
                     },
                 })
