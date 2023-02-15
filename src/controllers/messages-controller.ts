@@ -26,8 +26,15 @@ export class MessagesController {
 
     async connect(chatId: number, token: string) {
         try {
-            const data = (await this.#api.connect(chatId, token)) as XMLHttpRequest;
-            return data;
+            // remove WS connection timer if exists to avoid pinging multiples chats
+            const currentConnectionTimer = store?.getState()?.connectionTimer;
+            if (currentConnectionTimer) {
+                clearInterval(currentConnectionTimer);
+            }
+            // establish WS connection and store the timer
+            const connectionTimer = this.#api.connect(chatId, token) as NodeJS.Timer;
+            store.set('connectionTimer', connectionTimer);
+            return connectionTimer;
         } catch (e: any) {
             alert(`Oops, something went wrong: ${e.message}`);
             console.error(e.message);
