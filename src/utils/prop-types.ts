@@ -118,11 +118,23 @@ export type MessageProps = {
     own?: boolean;
 };
 
-export type MessageApiProps = {
+export type LastMessageApiProps = {
     user: UserProps;
     time: string;
     content: string | any;
     id: number;
+};
+
+export type MessageApiProps = {
+    user: UserProps;
+    time: string;
+    id: number;
+    chat_id: number;
+    content: string;
+    file: null;
+    is_read: boolean;
+    type: string;
+    user_id: number;
 };
 
 export type ChatApiProps = {
@@ -130,7 +142,7 @@ export type ChatApiProps = {
     title: string;
     avatar: string | null;
     created_by: number;
-    last_message: MessageApiProps;
+    last_message: LastMessageApiProps;
     unread_count: number;
 };
 

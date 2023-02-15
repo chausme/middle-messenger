@@ -1,6 +1,5 @@
 import { WS } from '../utils/ws';
 import { ChatsAPI } from '../api/chats-api';
-import store from '~/src/utils/store';
 
 export class MessagesController {
     #ws = new WS();
@@ -36,9 +35,7 @@ export class MessagesController {
             }
 
             // establish WS connection and load messages with a store update
-            const connection = this.#ws.connect(chatId, token);
-            console.log(connection);
-            return;
+            this.#ws.connect(chatId, token);
         } catch (e: any) {
             alert(`Oops, something went wrong: ${e.message}`);
             console.error(e.message);

@@ -6,6 +6,7 @@ import Empty from './components/empty';
 import store, { StoreEvents } from '~/src/utils/store';
 import Block from '~/src/utils/block';
 import { getDatetime } from '~/src/utils/helpers';
+import { MessageApiProps } from '~/src/utils/prop-types';
 import template from './single-chat.hbs';
 import './single-chat.css';
 
@@ -37,14 +38,10 @@ export default class SingleChat extends Block {
         const state = store?.getState();
         const userId = state?.user?.id;
         const messages = state?.messages;
-        const chatId = state?.chatId;
-        const chats = state?.chats;
         if (!messages) {
             return false;
         }
         console.log('showing messages...');
-        // get selected chat title
-        // const currentChat = chats ? chats.filter(chat => chat.id === chatId));
 
         this.children.header = new Header({
             avatar: new Avatar({
@@ -53,7 +50,7 @@ export default class SingleChat extends Block {
             title: 'TBC',
         });
         delete this.children.placeholder;
-        this.children.messages = messages.map(message => {
+        this.children.messages = messages.map((message: MessageApiProps) => {
             console.log('user id curre: ' + userId);
             return new Message({
                 content: message.content,

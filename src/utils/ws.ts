@@ -78,7 +78,7 @@ export class WS {
         });
 
         this.#socket.addEventListener('error', event => {
-            console.log('Error', event.message);
+            console.log('Error', event);
         });
 
         this.#setTimer();
