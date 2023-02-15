@@ -4,6 +4,7 @@ import hamburger from '~/static/icons/hamburger.svg';
 import attachment from '~/static/icons/attachment.svg';
 import arrow from '~/static/icons/arrow.svg';
 import back from '~/static/icons/back.svg';
+import star from '~/static/icons/star.svg';
 import template from './button-icon.hbs';
 
 export default class ButtonIcon extends Block {
@@ -12,6 +13,7 @@ export default class ButtonIcon extends Block {
         attachment,
         arrow,
         back,
+        star,
     };
 
     constructor(props: ButtonIconProps) {

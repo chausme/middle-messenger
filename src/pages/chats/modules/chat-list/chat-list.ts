@@ -40,7 +40,7 @@ export default class ChatList extends Block {
         this.children.buttonAddChat = new ButtonIcon({
             title: 'Add Chat',
             id: 'add-chat',
-            icon: 'hamburger',
+            icon: 'star',
             css: ['ml-1/5', 'bg-orange'],
             action: 'add-chat',
             settings: {
