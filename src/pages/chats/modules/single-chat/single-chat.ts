@@ -5,6 +5,7 @@ import FormMessage from './modules/form-message';
 import Empty from './components/empty';
 import store, { StoreEvents } from '~/src/utils/store';
 import Block from '~/src/utils/block';
+import { getDatetime } from '~/src/utils/helpers';
 import template from './single-chat.hbs';
 import './single-chat.css';
 
@@ -34,6 +35,7 @@ export default class SingleChat extends Block {
 
     componentDidUpdate(): boolean {
         const state = store?.getState();
+        const userId = state?.user?.id;
         const messages = state?.messages;
         const chatId = state?.chatId;
         const chats = state?.chats;
@@ -50,11 +52,18 @@ export default class SingleChat extends Block {
             }),
             title: 'TBC',
         });
+        delete this.children.placeholder;
+        this.children.messages = messages.map(message => {
+            console.log('user id curre: ' + userId);
+            return new Message({
+                content: message.content,
+                datetime: getDatetime(message.time),
+                own: message.user_id === userId,
+            });
+        });
         this.children.form = new FormMessage({
             id: 'send-message',
         });
-        delete this.children.placeholder;
-
         return true;
     }
 

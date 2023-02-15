@@ -51,13 +51,34 @@ export const set = (object: Indexed | unknown, path: string, value: unknown): In
     return merge(object as Indexed, rhs as Indexed);
 };
 
-const getDate = (timestamp: number): string => {
+/** Check provided date is today */
+const isToday = (date: Date): boolean => {
+    return new Date().toDateString() === date.toDateString();
+};
+
+/** Get chat datetime based on the last message date */
+const getChatDatetime = (timestamp: number): string => {
     const date = new Date(timestamp);
     const hoursRaw = date.getHours();
     const hours = hoursRaw ? hoursRaw % 12 : 12;
     const minutes = date.getMinutes();
     const ampm = hoursRaw >= 12 ? 'pm' : 'am';
-    return `${hours}:${minutes < 10 ? `0${minutes}` : minutes}${ampm}`;
+    if (isToday(date)) {
+        return `${hours}:${minutes < 10 ? `0${minutes}` : minutes}${ampm}`;
+    } else {
+        return 'another day?';
+    }
+};
+
+/** Get a timestamp from the provided string */
+const getTimestamp = (date: string): number => {
+    return Date.parse(date);
+};
+
+/** Get datetime from the provided timestamp */
+export const getDatetime = (timestamp: number): string => {
+    const date = new Date(timestamp);
+    return date.toLocaleString();
 };
 
 const trimMessage = (message: string): string => {
@@ -69,8 +90,8 @@ const trimMessage = (message: string): string => {
 };
 
 export const getChatDetails = (chat: ChatApiProps): ChatDetailsProps => {
-    const datetimeRaw = chat?.last_message?.time ? Date.parse(chat?.last_message?.time) : null;
-    const date = datetimeRaw ? getDate(datetimeRaw) : null;
+    const timestamp = getTimestamp(chat?.last_message?.time);
+    const date = timestamp ? getChatDatetime(timestamp) : null;
     const lastMessage = chat?.last_message?.content ? trimMessage(chat.last_message.content) : null;
 
     // check last message owner

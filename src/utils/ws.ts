@@ -59,7 +59,7 @@ export class WS {
             if (event.wasClean) {
                 console.log('Websocket connection has been closed without issues');
             } else {
-                console.warn('Websocket connection has been close with issues');
+                console.warn('Websocket connection has been closed with issues');
             }
 
             console.log(`Code: ${event.code} | Reason: ${event.reason}`);
@@ -73,7 +73,7 @@ export class WS {
                 return;
             }
             console.log('Received data', data);
-            store.set('messages', data);
+            store.set('messages', data.reverse());
             store.set('chatId', this.#chatId);
         });
 
