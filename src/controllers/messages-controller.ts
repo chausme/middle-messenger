@@ -1,9 +1,9 @@
-import { MessagesAPI } from '../api/messages-api';
+import { WS } from '../utils/ws';
 import { ChatsAPI } from '../api/chats-api';
 import store from '~/src/utils/store';
 
 export class MessagesController {
-    #api = new MessagesAPI();
+    #ws = new WS();
     #chatsApi = new ChatsAPI();
 
     async #getChatToken(chatId: number) {
@@ -26,15 +26,8 @@ export class MessagesController {
 
     async connect(chatId: number, token: string) {
         try {
-            // remove WS connection timer if exists to avoid pinging multiples chats
-            const currentConnectionTimer = store?.getState()?.connectionTimer;
-            if (currentConnectionTimer) {
-                clearInterval(currentConnectionTimer);
-            }
             // establish WS connection and store the timer
-            const connectionTimer = this.#api.connect(chatId, token) as NodeJS.Timer;
-            store.set('connectionTimer', connectionTimer);
-            return connectionTimer;
+            this.#ws.connect(chatId, token);
         } catch (e: any) {
             alert(`Oops, something went wrong: ${e.message}`);
             console.error(e.message);
