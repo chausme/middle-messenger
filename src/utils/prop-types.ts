@@ -2,7 +2,7 @@ import { CallbackType } from '~/src/utils/event-bus';
 import Input from '~/src/components/input';
 import InputWLabel from '~/src/components/input-w-label';
 import Button from '~/src/components/button';
-import Avatar from '~src/components/avatar';
+import Avatar from '~/src/components/avatar';
 import ButtonIcon from '~/src/components/button-icon';
 import InputMessage from '~/src/pages/chats/modules/single-chat/modules/form-message/components/input-message';
 

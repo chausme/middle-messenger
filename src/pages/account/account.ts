@@ -7,7 +7,7 @@ import InputWLabel from '~/src/components/input-w-label';
 import router from '~/src/index';
 import validator from '~/src/utils/validator';
 import { AuthController } from '~/src/controllers/auth-controller';
-import store, { StoreEvents } from '~src/utils/store';
+import store, { StoreEvents } from '~/src/utils/store';
 import template from './account.hbs';
 import * as classes from './account.module.css';
 

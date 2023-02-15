@@ -24,17 +24,7 @@ export class MessagesController {
         return responseText.token;
     }
 
-    async connect(chatId: number, token: string) {
-        try {
-            // establish WS connection and store the timer
-            this.#ws.connect(chatId, token);
-        } catch (e: any) {
-            alert(`Oops, something went wrong: ${e.message}`);
-            console.error(e.message);
-        }
-    }
-
-    async loadMessages(chatId: number) {
+    async connect(chatId: number) {
         try {
             // get chat token
             const token = await this.#getChatToken(chatId);
@@ -44,17 +34,11 @@ export class MessagesController {
                 alert(`Oops, there is no chat token`);
                 return;
             }
-            // establish connection
-            const connection = await this.connect(chatId, token);
+
+            // establish WS connection and load messages with a store update
+            const connection = this.#ws.connect(chatId, token);
             console.log(connection);
             return;
-
-            /** @todo replace with state management to avoid oldschool frontend override */
-            const messagesWrap = document.querySelector('.messages');
-            if (!messagesWrap) {
-                return;
-            }
-            messagesWrap.innerHTML = '';
         } catch (e: any) {
             alert(`Oops, something went wrong: ${e.message}`);
             console.error(e.message);

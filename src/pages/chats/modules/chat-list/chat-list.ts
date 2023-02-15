@@ -82,7 +82,7 @@ export default class ChatList extends Block {
                                 alert('Oops, there is no chat ID found');
                                 return;
                             }
-                            await messages.loadMessages(chatId);
+                            await messages.connect(chatId);
                         },
                     },
                 })

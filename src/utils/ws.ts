@@ -3,7 +3,7 @@ import store from '~/src/utils/store';
 export class WS {
     static basePath = 'wss://ya-praktikum.tech/ws/chats';
 
-    static connTimerDelay = 5000;
+    static connTimerDelay = 10000;
 
     #connTimer;
 
@@ -34,6 +34,10 @@ export class WS {
 
     #getMessages() {
         console.log(`get old messages for ${this.#chatId}`);
+        if (!this.#socket) {
+            return;
+        }
+        this.#socket.send(JSON.stringify({ type: 'get old', content: '0' }));
     }
 
     connect(chatId: number, token: string) {
@@ -63,7 +67,14 @@ export class WS {
         });
 
         this.#socket.addEventListener('message', event => {
-            console.log('Received data', event.data);
+            const data = JSON.parse(event.data);
+            if (data.type === 'pong') {
+                console.log(`pong: ${this.#chatId}`);
+                return;
+            }
+            console.log('Received data', data);
+            store.set('messages', data);
+            store.set('chatId', this.#chatId);
         });
 
         this.#socket.addEventListener('error', event => {
