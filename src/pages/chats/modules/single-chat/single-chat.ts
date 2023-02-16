@@ -38,9 +38,19 @@ export default class SingleChat extends Block {
         const state = store?.getState();
         const userId = state?.user?.id;
         const messages = state?.messages;
+
+        if (messages === null) {
+            this.children.placeholder = new Empty();
+            delete this.children.messages;
+            delete this.children.header;
+            delete this.children.form;
+            return true;
+        }
+
         if (!messages) {
             return false;
         }
+
         console.log('showing messages...');
 
         this.children.header = new Header({

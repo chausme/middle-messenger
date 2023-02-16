@@ -1,6 +1,7 @@
 import Block from '~/src/utils/block';
 import ButtonIcon from '~/src/components/button-icon';
 import Button from '~/src/components/button';
+import { ChatsController } from '~/src/controllers/chats-controller';
 import { closePopUp } from '~/src/utils/helpers';
 import template from './pop-up-chat-actions.hbs';
 
@@ -30,11 +31,15 @@ export default class PopUpChatActions extends Block {
                 css: ['bg-red'],
                 action: 'delete',
                 events: {
-                    click(e) {
+                    async click(e) {
                         e.preventDefault();
-                        if (confirm('Are you sure?')) {
-                            console.log('delete chat');
+                        if (!confirm('Are you sure?')) {
+                            return;
                         }
+                        /** @todo group similar new ChatsController() */
+                        const chats = new ChatsController();
+                        await chats.delete();
+                        closePopUp();
                     },
                 },
             }),

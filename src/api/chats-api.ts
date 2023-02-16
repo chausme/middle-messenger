@@ -17,4 +17,8 @@ export class ChatsAPI extends BaseAPI {
     create(title: string) {
         return chatsAPIBase.post(`${ChatsAPI.basePath}/`, { data: { title } });
     }
+
+    delete(chatId: number) {
+        return chatsAPIBase.delete(`${ChatsAPI.basePath}/`, { data: { chatId } });
+    }
 }

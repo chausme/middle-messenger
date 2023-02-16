@@ -40,4 +40,27 @@ export class ChatsController {
             console.error(e.message);
         }
     }
+
+    async delete() {
+        try {
+            const chatId = store?.getState()?.chatId;
+            if (!chatId) {
+                return;
+            }
+            const response = (await this.#api.delete(chatId)) as XMLHttpRequest;
+            /** @todo add common function */
+            const responseText = JSON.parse(response.response);
+            if (response.status !== 200) {
+                const { reason } = responseText;
+                console.warn(`Oops, something went wrong: ${reason}`);
+                alert(`Oops, something went wrong: ${reason}`);
+                return;
+            }
+            await this.request();
+            store.set('messages', null);
+        } catch (e: any) {
+            alert(`Oops, something went wrong: ${e.message}`);
+            console.error(e.message);
+        }
+    }
 }
