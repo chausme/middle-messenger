@@ -44,4 +44,5 @@
 ## Credits
 
 -   Icons by [Gene](https://cogentgene1.gumroad.com/) from [256 Brutalist Element Mega Pack](https://cogentgene1.gumroad.com/l/brutalist)
--   Sticker placeholder image by [@louishansel](https://unsplash.com/@louishansel)
+-   Pineapple image by [Fernando Andrade](https://unsplash.com/@thisisnando)
+-   Lemonade image by [Pixzolo Photography](https://unsplash.com/@pixzolo)
