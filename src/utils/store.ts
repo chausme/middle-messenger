@@ -23,9 +23,7 @@ export class Store extends EventBus {
         this.emit(StoreEvents.Updated);
     }
 
-    unset(keypath: string) {
-        /** @todo implement unset function */
-    }
+    /** @todo implement unset function */
 
     getState() {
         return this.#state;

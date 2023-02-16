@@ -1,4 +1,5 @@
 import { ChatApiProps, ChatDetailsProps } from '~/src/utils/prop-types';
+import Block from './block';
 import store from './store';
 
 type Indexed<T = unknown> = {
@@ -69,7 +70,7 @@ const getChatDatetime = (timestamp: number): string => {
 };
 
 /** Get a timestamp from the provided string */
-const getTimestamp = (date: string): number => Date.parse(date);
+export const getTimestamp = (date: string): number => Date.parse(date);
 
 /** Get datetime from the provided timestamp */
 export const getDatetime = (timestamp: number): string => new Date(timestamp).toLocaleString();
@@ -101,7 +102,7 @@ export const getChatDetails = (chat: ChatApiProps): ChatDetailsProps => {
     };
 };
 
-export const appendPopUp = popUp => {
+export const appendPopUp = (popUp: Block) => {
     const wrapper = document.createElement('div');
     wrapper.classList.add('pop-up');
     wrapper.innerHTML = '';

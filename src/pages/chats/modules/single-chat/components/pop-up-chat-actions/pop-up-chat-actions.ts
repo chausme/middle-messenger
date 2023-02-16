@@ -33,7 +33,7 @@ export default class PopUpChatActions extends Block {
                 events: {
                     async click(e) {
                         e.preventDefault();
-                        if (!confirm('Are you sure?')) {
+                        if (!window.confirm('Are you sure?')) {
                             return;
                         }
                         /** @todo group similar new ChatsController() */

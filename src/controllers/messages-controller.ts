@@ -1,6 +1,5 @@
 import WS from '../utils/ws';
 import { ChatsAPI } from '../api/chats-api';
-import { ChatsController } from './chats-controller';
 
 export class MessagesController {
     #chatsApi = new ChatsAPI();
