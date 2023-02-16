@@ -1,4 +1,5 @@
 import store from '~/src/utils/store';
+import { ChatsController } from '~src/controllers/chats-controller';
 
 export class WS {
     static basePath = 'wss://ya-praktikum.tech/ws/chats';
@@ -40,7 +41,7 @@ export class WS {
         this.#socket.send(JSON.stringify({ type: 'get old', content: '0' }));
     }
 
-    sendMessage(message: string) {
+    async sendMessage(message: string) {
         if (!this.#socket) {
             return;
         }
@@ -73,7 +74,7 @@ export class WS {
             // remove WS connection timer if exists to avoid pinging multiples chats
         });
 
-        this.#socket.addEventListener('message', event => {
+        this.#socket.addEventListener('message', async event => {
             const data = JSON.parse(event.data);
             if (data.type === 'pong') {
                 console.log(`pong: ${this.#chatId}`);
@@ -89,8 +90,10 @@ export class WS {
                 store.set('messages', messages);
             }
             store.set('chatId', this.#chatId);
-
-            // scroll to the bottoom of messages
+            // fetch chats to update the list view
+            const chats = new ChatsController();
+            await chats.request();
+            // scroll to the bottom of messages
             const messagesWrap = document.querySelector('.messages');
             if (!messagesWrap) {
                 return;

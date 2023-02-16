@@ -71,7 +71,7 @@ export default class ChatList extends Block {
                     ...chatDetails,
                     id: chat.id,
                     title: chat.title,
-                    unread: chat.unread_count ? chat.unread_count : 99, // keep for demoing purposes
+                    unread: chat.unread_count ? chat.unread_count : 0,
                     avatar: new Avatar({
                         size: 'md',
                     }),

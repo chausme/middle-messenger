@@ -1,5 +1,6 @@
 import WS from '../utils/ws';
 import { ChatsAPI } from '../api/chats-api';
+import { ChatsController } from './chats-controller';
 
 export class MessagesController {
     #chatsApi = new ChatsAPI();
@@ -30,7 +31,7 @@ export class MessagesController {
 
     async sendMessage(message: string) {
         try {
-            WS.sendMessage(message);
+            await WS.sendMessage(message);
         } catch (e: any) {
             alert(`Oops, something went wrong: ${e.message}`);
             console.error(e.message);
