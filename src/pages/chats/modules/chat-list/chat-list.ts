@@ -2,6 +2,7 @@ import Block from '~/src/utils/block';
 import Chat from './components/chat';
 import Avatar from '~/src/components/avatar';
 import ButtonIcon from '~/src/components/button-icon';
+import PopUp from '~/src/components/pop-up';
 import router from '~/src/index';
 import template from './chat-list.hbs';
 import { ChatApiProps } from '~/src/utils/prop-types';
@@ -22,6 +23,7 @@ export default class ChatList extends Block {
     }
 
     init() {
+        const self = this.children;
         this.children.buttonAccount = new ButtonIcon({
             title: 'Account',
             id: 'settings',
@@ -49,7 +51,32 @@ export default class ChatList extends Block {
             events: {
                 click(e) {
                     e.preventDefault();
-                    console.log('add chat');
+                    console.log('add chat - open pop-up');
+                    const test = new PopUp({
+                        test: 'vaue',
+                        buttonTest: new ButtonIcon({
+                            title: 'Add Chat',
+                            id: 'add-chat',
+                            icon: 'star',
+                            css: ['ml-1/5', 'bg-orange'],
+                            action: 'add-chat',
+                            settings: {
+                                withInternalID: true,
+                            },
+                            events: {
+                                click(e) {
+                                    e.preventDefault();
+                                    console.log('close open pop-up 22');
+                                },
+                            },
+                        }),
+                    });
+                    let wrapper = document.createElement('div');
+                    wrapper.classList.add('pop-up');
+                    wrapper.innerHTML = '';
+                    console.log(test.render());
+                    wrapper.appendChild(test.render());
+                    document.body.appendChild(wrapper);
                 },
             },
         });
