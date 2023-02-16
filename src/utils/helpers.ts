@@ -100,3 +100,11 @@ export const getChatDetails = (chat: ChatApiProps): ChatDetailsProps => {
         own,
     };
 };
+
+export const appendPopUp = popUp => {
+    const wrapper = document.createElement('div');
+    wrapper.classList.add('pop-up');
+    wrapper.innerHTML = '';
+    wrapper.appendChild(popUp.render());
+    document.body.appendChild(wrapper);
+};

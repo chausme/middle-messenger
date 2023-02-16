@@ -5,6 +5,7 @@ import attachment from '~/static/icons/attachment.svg';
 import arrow from '~/static/icons/arrow.svg';
 import back from '~/static/icons/back.svg';
 import star from '~/static/icons/star.svg';
+import close from '~/static/icons/close.svg';
 import template from './button-icon.hbs';
 
 export default class ButtonIcon extends Block {
@@ -14,6 +15,7 @@ export default class ButtonIcon extends Block {
         arrow,
         back,
         star,
+        close,
     };
 
     constructor(props: ButtonIconProps) {
@@ -34,7 +36,8 @@ export default class ButtonIcon extends Block {
             'd-flex',
             'align-items-center',
             'text-center',
-            'shrink-0'
+            'shrink-0',
+            'z-2'
         );
 
         this.element.setAttribute('id', props.id);

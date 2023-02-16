@@ -119,6 +119,12 @@ h2 {
         background-color: var(--c-black);
     }
 
+    &.pop-up-inner {
+        &::after {
+            background-color: var(--c-gray-dark);
+        }
+    }
+
     &.lg {
         &::after {
             top: 10px;
@@ -330,6 +336,22 @@ h2 {
 
 .absolute {
     position: absolute;
+}
+
+.top {
+    top: 0;
+}
+
+.right {
+    right: 0;
+}
+
+.top-20 {
+    top: 15px;
+}
+
+.right-20 {
+    right: 15px;
 }
 
 .button {
@@ -577,6 +599,10 @@ h2 {
     justify-content: space-between;
 }
 
+.justify-content-end {
+    justify-content: end;
+}
+
 .align-items-center {
     align-items: center;
 }
@@ -642,4 +668,7 @@ h2 {
     z-index: 9999;
     top: 0;
     left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
