@@ -31,24 +31,6 @@ export default class PopUpAddChat extends Block {
         });
         this.children.form = new Form({
             id: 'form-add-chat',
-            events: {
-                submit(e) {
-                    e.preventDefault();
-                    const isValid = validator(e);
-                    if (isValid) {
-                        const formData = new FormData(e.target);
-                        const formProps = Object.fromEntries(formData);
-                        console.log('submitting form');
-                        console.log(formProps);
-                    }
-                },
-                blur(e) {
-                    validator(e);
-                },
-                focus(e) {
-                    validator(e);
-                },
-            },
             inputs: [
                 new InputWLabel({
                     title: 'Chat name',
@@ -59,15 +41,8 @@ export default class PopUpAddChat extends Block {
             buttons: [
                 new Button({
                     title: 'Add chat',
-                    id: 'add_chat',
-                    action: 'add-chat',
+                    id: 'add-chat',
                     css: ['bg-green', 'mb-2'],
-                    events: {
-                        click(e) {
-                            e.preventDefault();
-                            console.log('add chat');
-                        },
-                    },
                 }),
             ],
         });
