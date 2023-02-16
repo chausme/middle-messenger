@@ -13,4 +13,8 @@ export class ChatsAPI extends BaseAPI {
     getChatToken(chatId: number) {
         return chatsAPIBase.post(`${ChatsAPI.basePath}/token/${chatId}`);
     }
+
+    create(title: string) {
+        return chatsAPIBase.post(`${ChatsAPI.basePath}/`, { data: { title } });
+    }
 }

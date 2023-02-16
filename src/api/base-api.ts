@@ -1,7 +1,8 @@
 export default abstract class BaseAPI {
     static baseUrl = process.env.API_BASE_URL;
 
-    create(): Promise<unknown> {
+    create(title?: string): Promise<unknown> {
+        console.log(title);
         throw new Error('Not implemented');
     }
 

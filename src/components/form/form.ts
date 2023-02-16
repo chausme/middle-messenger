@@ -2,6 +2,7 @@ import Block from '~/src/utils/block';
 import { FormProps, UserProps, UserSignInProps } from '~/src/utils/prop-types';
 import { validateForm } from '~/src/utils/validator';
 import { AuthController } from '~/src/controllers/auth-controller';
+import { ChatsController } from '~/src/controllers/chats-controller';
 import { SettingsController } from '~/src/controllers/settings-controller';
 
 import template from './form.hbs';
@@ -10,6 +11,7 @@ export default class Form extends Block {
     constructor(props: FormProps) {
         const auth = new AuthController();
         const settings = new SettingsController();
+        const chats = new ChatsController();
 
         props.events = {
             async submit(e) {
@@ -28,6 +30,10 @@ export default class Form extends Block {
                     } else if (props.id === 'account') {
                         console.log('form: update account');
                         await settings.update(formProps as UserProps);
+                    } else if (props.id === 'form-add-chat') {
+                        await chats.create(formProps.chat_name as string);
+                        const popUp = document.querySelector('.pop-up');
+                        popUp?.remove();
                     }
                 } catch (error: any) {
                     alert(`Oops, something went wrong: ${error.message}`);

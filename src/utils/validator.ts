@@ -28,8 +28,12 @@ const validateInput = (target: HTMLInputElement) => {
         pattern = /^([A-Z]){1}([A-Za-z-])+$/;
     }
 
-    if (target.name === 'login' || target.name === 'chat_name') {
+    if (target.name === 'login') {
         pattern = /^(?=.*[A-Za-z])([A-Za-z0-9-_]{3,20})$/;
+    }
+
+    if (target.name === 'chat_name') {
+        pattern = /^([A-Za-z0-9-_\s]{3,20})$/;
     }
 
     if (target.name === 'email') {

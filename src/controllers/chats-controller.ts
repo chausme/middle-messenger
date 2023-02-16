@@ -22,4 +22,22 @@ export class ChatsController {
             console.error(e.message);
         }
     }
+
+    async create(title: string) {
+        try {
+            const response = (await this.#api.create(title)) as XMLHttpRequest;
+            /** @todo add common function */
+            const responseText = JSON.parse(response.response);
+            if (response.status !== 200) {
+                const { reason } = responseText;
+                console.warn(`Oops, something went wrong: ${reason}`);
+                alert(`Oops, something went wrong: ${reason}`);
+                return;
+            }
+            await this.request();
+        } catch (e: any) {
+            alert(`Oops, something went wrong: ${e.message}`);
+            console.error(e.message);
+        }
+    }
 }
