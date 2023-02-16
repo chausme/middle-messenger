@@ -1,5 +1,7 @@
 import Block from '~/src/utils/block';
 import ButtonIcon from '~/src/components/button-icon';
+import Button from '~/src/components/button';
+import { closePopUp } from '~/src/utils/helpers';
 import template from './pop-up-chat-actions.hbs';
 
 export default class PopUpChatActions extends Block {
@@ -17,14 +19,26 @@ export default class PopUpChatActions extends Block {
             events: {
                 click(e) {
                     e.preventDefault();
-                    // close pop-up
-                    const popUpWrap = document.querySelector('.pop-up');
-                    if (popUpWrap) {
-                        popUpWrap.remove();
-                    }
+                    closePopUp();
                 },
             },
         });
+        this.children.buttons = [
+            new Button({
+                title: 'Delete chat',
+                id: 'delete',
+                css: ['bg-red'],
+                action: 'delete',
+                events: {
+                    click(e) {
+                        e.preventDefault();
+                        if (confirm('Are you sure?')) {
+                            console.log('delete chat');
+                        }
+                    },
+                },
+            }),
+        ];
     }
 
     render() {

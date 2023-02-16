@@ -108,3 +108,11 @@ export const appendPopUp = popUp => {
     wrapper.appendChild(popUp.render());
     document.body.appendChild(wrapper);
 };
+
+export const closePopUp = () => {
+    const popUpWrap = document.querySelector('.pop-up');
+    if (!popUpWrap) {
+        return;
+    }
+    popUpWrap.remove();
+};
