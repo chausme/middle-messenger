@@ -40,6 +40,13 @@ export class WS {
         this.#socket.send(JSON.stringify({ type: 'get old', content: '0' }));
     }
 
+    sendMessage(message: string) {
+        if (!this.#socket) {
+            return;
+        }
+        this.#socket.send(JSON.stringify({ type: 'message', content: message }));
+    }
+
     connect(chatId: number, token: string) {
         if (this.#connTimer) {
             clearInterval(this.#connTimer);
@@ -73,8 +80,22 @@ export class WS {
                 return;
             }
             console.log('Received data', data);
-            store.set('messages', data.reverse());
+            if (Array.isArray(data)) {
+                store.set('messages', data.reverse());
+            } else {
+                console.log(data);
+                const messages = store?.getState()?.messages;
+                messages.push({ ...data, chat_id: this.#chatId });
+                store.set('messages', messages);
+            }
             store.set('chatId', this.#chatId);
+
+            // scroll to the bottoom of messages
+            const messagesWrap = document.querySelector('.messages');
+            if (!messagesWrap) {
+                return;
+            }
+            messagesWrap.scrollTop = messagesWrap.scrollHeight;
         });
 
         this.#socket.addEventListener('error', event => {
@@ -84,3 +105,5 @@ export class WS {
         this.#setTimer();
     }
 }
+
+export default new WS();
