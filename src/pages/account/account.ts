@@ -5,10 +5,12 @@ import ButtonIcon from '~/src/components/button-icon';
 import Button from '~/src/components/button';
 import InputWLabel from '~/src/components/input-w-label';
 import FormAvatar from './modules/form-avatar';
+import PopUpPassword from './components/pop-up-password';
 import router from '~/src/index';
 import validator from '~/src/utils/validator';
 import { AuthController } from '~/src/controllers/auth-controller';
 import store, { StoreEvents } from '~/src/utils/store';
+import { appendPopUp } from '~/src/utils/helpers';
 import template from './account.hbs';
 import * as classes from './account.module.css';
 
@@ -244,7 +246,7 @@ export default class PageAccount extends Block {
                     events: {
                         click(e) {
                             e.preventDefault();
-                            console.log('change password');
+                            appendPopUp(new PopUpPassword());
                         },
                     },
                 }),

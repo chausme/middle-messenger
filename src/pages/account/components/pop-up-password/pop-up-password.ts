@@ -3,7 +3,7 @@ import Form from '~/src/components/form';
 import ButtonIcon from '~/src/components/button-icon';
 import Button from '~/src/components/button';
 import InputWLabel from '~/src/components/input-w-label';
-import template from './pop-up-add-chat.hbs';
+import template from './pop-up-password.hbs';
 
 export default class PopUpPassword extends Block {
     constructor() {
@@ -29,7 +29,7 @@ export default class PopUpPassword extends Block {
             },
         });
         this.children.form = new Form({
-            id: 'form-change-password',
+            id: 'form-password',
             inputs: [
                 new InputWLabel({
                     title: 'Current password',
@@ -49,7 +49,7 @@ export default class PopUpPassword extends Block {
             ],
             buttons: [
                 new Button({
-                    title: '',
+                    title: 'Update password',
                     id: 'update-password',
                     css: ['bg-green', 'mb-2'],
                 }),

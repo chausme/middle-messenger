@@ -41,6 +41,15 @@ export class SettingsController {
         }
     }
 
+    async updatePassword(data) {
+        try {
+            return ['update password c', data];
+        } catch (e: any) {
+            alert(`Oops, something went wrong: ${e.message}`);
+            console.error(e.message);
+        }
+    }
+
     async updateAvatar(formData: FormData) {
         try {
             const response = (await this.#api.updateAvatar(formData)) as XMLHttpRequest;
