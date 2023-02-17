@@ -30,13 +30,34 @@ export default class PopUpChatActions extends Block {
                 title: 'Chat user ID',
                 id: 'chat_user_id',
                 type: 'text',
+                css: ['d-none'],
             }),
         ];
         this.children.buttons = [
             new Button({
                 title: 'Add chat user',
-                id: 'add-chat-user',
+                id: 'add-chat-user-init',
                 css: ['bg-green', 'mb-2'],
+                action: 'add-chat-user-init',
+                events: {
+                    async click(e) {
+                        e.preventDefault();
+                        document.querySelector('#remove-chat-user-init')?.classList.add('d-none');
+                        document.querySelector('#delete')?.classList.add('d-none');
+                        const chatUserIdInput = document.querySelector(
+                            '#chat_user_id'
+                        ) as HTMLInputElement;
+                        chatUserIdInput.closest('.input-w-label')?.classList.remove('d-none');
+                        document.querySelector('#cancel')?.classList.remove('d-none');
+                        document.querySelector('#add-chat-user')?.classList.remove('d-none');
+                        e.currentTarget.classList.add('d-none');
+                    },
+                },
+            }),
+            new Button({
+                title: 'Add chat user',
+                id: 'add-chat-user',
+                css: ['bg-green', 'mb-2', 'd-none'],
                 action: 'add-chat-user',
                 events: {
                     async click(e) {
@@ -47,13 +68,34 @@ export default class PopUpChatActions extends Block {
             }),
             new Button({
                 title: 'Remove chat user',
-                id: 'remove-chat-user',
+                id: 'remove-chat-user-init',
                 css: ['bg-orange', 'mb-2'],
+                action: 'remove-chat-user-init',
+                events: {
+                    async click(e) {
+                        e.preventDefault();
+                        e.preventDefault();
+                        document.querySelector('#add-chat-user-init')?.classList.add('d-none');
+                        document.querySelector('#delete')?.classList.add('d-none');
+                        const chatUserIdInput = document.querySelector(
+                            '#chat_user_id'
+                        ) as HTMLInputElement;
+                        chatUserIdInput.closest('.input-w-label')?.classList.remove('d-none');
+                        document.querySelector('#cancel')?.classList.remove('d-none');
+                        document.querySelector('#remove-chat-user')?.classList.remove('d-none');
+                        e.currentTarget.classList.add('d-none');
+                    },
+                },
+            }),
+            new Button({
+                title: 'Remove chat user',
+                id: 'remove-chat-user',
+                css: ['bg-orange', 'mb-2', 'd-none'],
                 action: 'remove-chat-user',
                 events: {
                     async click(e) {
                         e.preventDefault();
-                        console.log('remove chat user here');
+                        console.log('remove user from chat');
                     },
                 },
             }),
@@ -72,6 +114,29 @@ export default class PopUpChatActions extends Block {
                         const chats = new ChatsController();
                         await chats.delete();
                         closePopUp();
+                    },
+                },
+            }),
+            new Button({
+                title: 'Cancel',
+                id: 'cancel',
+                css: ['bg-red', 'mb-2', 'd-none'],
+                action: 'cancel',
+                events: {
+                    async click(e) {
+                        e.preventDefault();
+                        document.querySelector('#add-chat-user')?.classList.add('d-none');
+                        document.querySelector('#remove-chat-user')?.classList.add('d-none');
+                        document.querySelector('#add-chat-user-init')?.classList.remove('d-none');
+                        document
+                            .querySelector('#remove-chat-user-init')
+                            ?.classList.remove('d-none');
+                        document.querySelector('#delete')?.classList.remove('d-none');
+                        e.currentTarget.classList.add('d-none');
+                        const chatUserIdInput = document.querySelector(
+                            '#chat_user_id'
+                        ) as HTMLInputElement;
+                        chatUserIdInput.closest('.input-w-label')?.classList.add('d-none');
                     },
                 },
             }),
