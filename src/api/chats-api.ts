@@ -21,4 +21,8 @@ export class ChatsAPI extends BaseAPI {
     delete(chatId: number) {
         return chatsAPIBase.delete(`${ChatsAPI.basePath}/`, { data: { chatId } });
     }
+
+    addChatUser(userId: number, chatId: number) {
+        return chatsAPIBase.delete(`${ChatsAPI.basePath}/`, { data: { users: [userId], chatId } });
+    }
 }

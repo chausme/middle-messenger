@@ -63,4 +63,17 @@ export class ChatsController {
             console.error(e.message);
         }
     }
+
+    async addChatUser(userId: number) {
+        try {
+            const chatId = store?.getState()?.chatId;
+            if (!chatId) {
+                return;
+            }
+            console.log('add chat user c ' + Number(userId));
+        } catch (e: any) {
+            alert(`Oops, something went wrong: ${e.message}`);
+            console.error(e.message);
+        }
+    }
 }

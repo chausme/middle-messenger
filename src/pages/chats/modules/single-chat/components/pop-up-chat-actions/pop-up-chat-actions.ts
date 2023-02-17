@@ -42,6 +42,7 @@ export default class PopUpChatActions extends Block {
                 events: {
                     async click(e) {
                         e.preventDefault();
+                        /** @todo could be some refactoring here */
                         document.querySelector('#remove-chat-user-init')?.classList.add('d-none');
                         document.querySelector('#delete')?.classList.add('d-none');
                         const chatUserIdInput = document.querySelector(
@@ -62,7 +63,23 @@ export default class PopUpChatActions extends Block {
                 events: {
                     async click(e) {
                         e.preventDefault();
-                        console.log('add chat user here');
+                        /** @todo some refactoring here too please */
+                        const chatUserIdInput = document.querySelector(
+                            '#chat_user_id'
+                        ) as HTMLInputElement;
+                        const chatUserId = chatUserIdInput.value;
+                        if (!chatUserId) {
+                            alert('Oops, you need to provide a user id to add them');
+                            return;
+                        }
+                        const pattern = /^(\d){1,10}$/;
+                        if (!pattern.test(chatUserId)) {
+                            alert('Oops, user ID needs to be a number');
+                            return;
+                        }
+                        const chats = new ChatsController();
+                        await chats.addChatUser(Number(chatUserId));
+                        closePopUp();
                     },
                 },
             }),
@@ -74,7 +91,7 @@ export default class PopUpChatActions extends Block {
                 events: {
                     async click(e) {
                         e.preventDefault();
-                        e.preventDefault();
+                        /** @todo could be some refactoring here */
                         document.querySelector('#add-chat-user-init')?.classList.add('d-none');
                         document.querySelector('#delete')?.classList.add('d-none');
                         const chatUserIdInput = document.querySelector(
@@ -95,7 +112,23 @@ export default class PopUpChatActions extends Block {
                 events: {
                     async click(e) {
                         e.preventDefault();
-                        console.log('remove user from chat');
+                        /** @todo some refactoring here too please */
+                        const chatUserIdInput = document.querySelector(
+                            '#chat_user_id'
+                        ) as HTMLInputElement;
+                        const chatUserId = chatUserIdInput.value;
+                        if (!chatUserId) {
+                            alert('Oops, you need to provide a user id to add them');
+                            return;
+                        }
+                        const pattern = /^(\d){1,10}$/;
+                        if (!pattern.test(chatUserId)) {
+                            alert('Oops, user ID needs to be a number');
+                            return;
+                        }
+                        const chats = new ChatsController();
+                        await chats.removeChatUser();
+                        closePopUp();
                     },
                 },
             }),
@@ -125,6 +158,7 @@ export default class PopUpChatActions extends Block {
                 events: {
                     async click(e) {
                         e.preventDefault();
+                        /** @todo could be some refactoring here */
                         document.querySelector('#add-chat-user')?.classList.add('d-none');
                         document.querySelector('#remove-chat-user')?.classList.add('d-none');
                         document.querySelector('#add-chat-user-init')?.classList.remove('d-none');
