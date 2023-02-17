@@ -1,4 +1,5 @@
 import Block from '~/src/utils/block';
+import ButtonAvatar from './components/button-avatar';
 import { FormProps } from '~/src/utils/prop-types';
 import { AuthController } from '~/src/controllers/auth-controller';
 import { ChatsController } from '~/src/controllers/chats-controller';
@@ -32,6 +33,21 @@ export default class FormAvatar extends Block {
 
         this.element.setAttribute('id', props.id);
         this.element.setAttribute('action', '#');
+    }
+
+    init() {
+        this.children.buttonSubmit = new ButtonAvatar({
+            title: 'Upload',
+            id: 'upload',
+            action: 'upload',
+            css: ['d-none'],
+            events: {
+                click(e) {
+                    e.preventDefault();
+                    console.log('upload');
+                },
+            },
+        });
     }
 
     render() {

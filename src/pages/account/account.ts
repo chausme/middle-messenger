@@ -4,7 +4,7 @@ import Avatar from '~/src/components/avatar';
 import ButtonIcon from '~/src/components/button-icon';
 import Button from '~/src/components/button';
 import InputWLabel from '~/src/components/input-w-label';
-import FormAvatar from './components/form-avatar';
+import FormAvatar from './modules/form-avatar';
 import router from '~/src/index';
 import validator from '~/src/utils/validator';
 import { AuthController } from '~/src/controllers/auth-controller';
@@ -48,18 +48,8 @@ export default class PageAccount extends Block {
         });
         this.children.formAvatar = new FormAvatar({
             id: 'form_update_avatar',
-            events: {
-                submit(e) {
-                    e.preventDefault();
-                },
-            },
-            inputs: [
-                new InputWLabel({
-                    title: 'Avatar',
-                    id: 'avatar-test',
-                    type: 'text',
-                }),
-            ],
+            events: {},
+            inputs: [],
             buttons: [],
         });
         // Add element placeholder to update later with componentDidUpdate()
@@ -171,7 +161,10 @@ export default class PageAccount extends Block {
                                 .querySelector('#cancel_avatar_update')
                                 ?.classList.remove('d-none');
                             e.currentTarget.classList.add('d-none');
-                            // @todo scroll to the avatar form
+                            // scroll to the top
+                            document
+                                .querySelector('html')
+                                ?.scrollIntoView({ behavior: 'smooth', block: 'start' });
                         },
                     },
                 }),

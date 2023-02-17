@@ -695,4 +695,22 @@ h2 {
     background-position: 50% 50%;
     background-repeat: no-repeat;
     position: absolute;
+
+    form {
+        overflow: hidden;
+        button {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: red;
+            z-index: 4;
+        }
+        input[type="file"] {
+            font-size: 10rem;
+            opacity: 0;
+            z-index: 3;
+        }
+    }
 }
