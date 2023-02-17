@@ -40,9 +40,9 @@ export class SettingsController {
         }
     }
 
-    async updateAvatar(data) {
+    async updateAvatar(formData) {
         try {
-            const response = (await this.#api.updateAvatar(data)) as XMLHttpRequest;
+            const response = (await this.#api.updateAvatar(formData)) as XMLHttpRequest;
             console.log(response);
             return;
         } catch (e: any) {

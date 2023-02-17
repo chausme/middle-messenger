@@ -13,7 +13,10 @@ export class SettingsAPI extends BaseAPI {
         });
     }
 
-    updateAvatar(data) {
-        return 'update avatar api call' + data;
+    updateAvatar(formData) {
+        return settingsAPIBase.put(`${SettingsAPI.basePath}/profile/avatar`, {
+            data: formData,
+            contentType: 'form',
+        });
     }
 }

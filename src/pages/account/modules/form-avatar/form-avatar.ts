@@ -1,23 +1,21 @@
 import Block from '~/src/utils/block';
 import ButtonAvatar from './components/button-avatar';
 import { FormProps } from '~/src/utils/prop-types';
-import { AuthController } from '~/src/controllers/auth-controller';
-import { ChatsController } from '~/src/controllers/chats-controller';
 import { SettingsController } from '~/src/controllers/settings-controller';
 
 import template from './form-avatar.hbs';
 
 export default class FormAvatar extends Block {
     constructor(props: FormProps) {
-        const auth = new AuthController();
         const settings = new SettingsController();
-        const chats = new ChatsController();
 
         props.events = {
             async submit(e) {
                 try {
                     e.preventDefault();
                     console.log('uploading avatar');
+                    const formData = new FormData(this as HTMLFormElement);
+                    await settings.updateAvatar(formData);
                 } catch (error: any) {
                     alert(`Oops, something went wrong: ${error.message}`);
                     console.error(error.message);
@@ -37,16 +35,9 @@ export default class FormAvatar extends Block {
 
     init() {
         this.children.buttonSubmit = new ButtonAvatar({
-            title: 'Upload',
+            title: 'Upload 🛰️',
             id: 'upload',
-            action: 'upload',
             css: ['d-none'],
-            events: {
-                click(e) {
-                    e.preventDefault();
-                    console.log('upload');
-                },
-            },
         });
     }
 

@@ -73,7 +73,11 @@ export default class HTTP {
             xhr.onerror = reject;
             xhr.ontimeout = reject;
 
-            xhr.setRequestHeader('Content-Type', 'application/json');
+            if (options?.contentType && options?.contentType === 'form') {
+                xhr.setRequestHeader('Content-Type', 'application/json');
+            } else {
+                xhr.setRequestHeader('Content-Type', 'multipart/form-data');
+            }
 
             xhr.withCredentials = true;
 

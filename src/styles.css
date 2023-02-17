@@ -704,7 +704,7 @@ h2 {
             position: absolute;
             top: 0;
             left: 0;
-            background-color: red;
+            background-color: var(--c-gray-dark);
             z-index: 4;
         }
         input[type="file"] {
