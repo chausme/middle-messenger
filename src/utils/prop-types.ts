@@ -46,7 +46,6 @@ export type ButtonIconProps = ButtonProps & {
 export type AvatarProps = BlockProps & {
     size: string;
     url?: string;
-    profile?: boolean;
 };
 
 export type HeaderProps = BlockProps & {

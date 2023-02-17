@@ -4,6 +4,7 @@ import Avatar from '~/src/components/avatar';
 import ButtonIcon from '~/src/components/button-icon';
 import Button from '~/src/components/button';
 import InputWLabel from '~/src/components/input-w-label';
+import FormAvatar from './components/form-avatar';
 import router from '~/src/index';
 import validator from '~/src/utils/validator';
 import { AuthController } from '~/src/controllers/auth-controller';
@@ -44,16 +45,8 @@ export default class PageAccount extends Block {
             url: '',
             size: 'lg',
             css: ['mb-2'],
-            profile: true,
         });
-        // Add element placeholder to update later with componentDidUpdate()
-        this.children.form = new Form({
-            id: 'account',
-            events: {},
-            inputs: [],
-            buttons: [],
-        });
-        this.children.formAvatar = new Form({
+        this.children.formAvatar = new FormAvatar({
             id: 'form_update_avatar',
             events: {
                 submit(e) {
@@ -69,6 +62,13 @@ export default class PageAccount extends Block {
             ],
             buttons: [],
         });
+        // Add element placeholder to update later with componentDidUpdate()
+        this.children.form = new Form({
+            id: 'account',
+            events: {},
+            inputs: [],
+            buttons: [],
+        });
     }
 
     componentDidUpdate(): boolean {
@@ -79,7 +79,6 @@ export default class PageAccount extends Block {
                 url: `${PageAccount.resourcesBase}/${state?.user?.avatar}`,
                 size: 'lg',
                 css: ['mb-2'],
-                profile: true,
             });
         }
         this.children.form = new Form({
@@ -167,7 +166,28 @@ export default class PageAccount extends Block {
                     events: {
                         click(e) {
                             e.preventDefault();
-                            console.log('enable avatar update');
+                            document.querySelector('.avatar-form-wrap')?.classList.remove('d-none');
+                            this.closest('form')
+                                .querySelector('#cancel_avatar_update')
+                                ?.classList.remove('d-none');
+                            e.currentTarget.classList.add('d-none');
+                            // @todo scroll to the avatar form
+                        },
+                    },
+                }),
+                new Button({
+                    title: 'Cancel avatar update',
+                    id: 'cancel_avatar_update',
+                    action: 'cancel-avatar-update',
+                    css: ['bg-orange', 'mb-2', 'd-none'],
+                    events: {
+                        click(e) {
+                            e.preventDefault();
+                            document.querySelector('.avatar-form-wrap')?.classList.add('d-none');
+                            this.closest('form')
+                                .querySelector('#update_avatar')
+                                ?.classList.remove('d-none');
+                            e.currentTarget.classList.add('d-none');
                         },
                     },
                 }),
