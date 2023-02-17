@@ -71,6 +71,21 @@ export class ChatsController {
                 return;
             }
             console.log('add chat user c ' + Number(userId));
+            // check that current user can't be added/removed
+        } catch (e: any) {
+            alert(`Oops, something went wrong: ${e.message}`);
+            console.error(e.message);
+        }
+    }
+
+    async removeChatUser(userId: number) {
+        try {
+            const chatId = store?.getState()?.chatId;
+            if (!chatId) {
+                return;
+            }
+            console.log('remove chat user c ' + Number(userId));
+            // check that current user can't be added/removed
         } catch (e: any) {
             alert(`Oops, something went wrong: ${e.message}`);
             console.error(e.message);

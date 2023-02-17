@@ -127,7 +127,7 @@ export default class PopUpChatActions extends Block {
                             return;
                         }
                         const chats = new ChatsController();
-                        await chats.removeChatUser();
+                        await chats.removeChatUser(Number(chatUserId));
                         closePopUp();
                     },
                 },
