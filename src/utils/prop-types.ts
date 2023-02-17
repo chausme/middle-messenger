@@ -151,3 +151,8 @@ export type ChatDetailsProps = {
     lastMessage: string | null;
     own: boolean;
 };
+
+export type PasswordProps = {
+    oldPassword: string;
+    newPassword: string;
+};

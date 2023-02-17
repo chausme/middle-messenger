@@ -1,7 +1,6 @@
 import { SettingsAPI } from '../api/settings-api';
 import { UserProps } from '~/src/utils/prop-types';
 import store from '~/src/utils/store';
-import Input from '~src/components/input';
 
 export class SettingsController {
     #api = new SettingsAPI();
@@ -41,9 +40,18 @@ export class SettingsController {
         }
     }
 
-    async updatePassword(data) {
+    async updatePassword(data: Record<string, any>) {
         try {
-            return ['update password c', data];
+            const response = (await this.#api.updatePassword({
+                oldPassword: data?.['password_0'],
+                newPassword: data.password,
+            })) as XMLHttpRequest;
+            if (response.status !== 200) {
+                console.warn(`Oops, something went wrong`);
+                alert(`Oops, something went wrong`);
+                return;
+            }
+            return true;
         } catch (e: any) {
             alert(`Oops, something went wrong: ${e.message}`);
             console.error(e.message);

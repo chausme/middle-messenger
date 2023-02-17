@@ -44,10 +44,17 @@ export default class Form extends Block {
                         ) {
                             return;
                         }
-                        console.log('submit');
-                        // await settings.updatePassword(formProps as UserProps);
-                        // await auth.logout();
+                        const passwordUpdated = await settings.updatePassword(
+                            formProps as UserProps
+                        );
+                        if (!passwordUpdated) {
+                            return;
+                        }
+                        await auth.logout();
+                        const popUp = document.querySelector('.pop-up');
+                        popUp?.remove();
                     }
+                    2;
                 } catch (error: any) {
                     alert(`Oops, something went wrong: ${error.message}`);
                     console.error(error.message);

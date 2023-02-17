@@ -19,4 +19,10 @@ export class SettingsAPI extends BaseAPI {
             type: 'form',
         });
     }
+
+    updatePassword(data: Record<string, any>) {
+        return settingsAPIBase.put(`${SettingsAPI.basePath}/password`, {
+            data,
+        });
+    }
 }
