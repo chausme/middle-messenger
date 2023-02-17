@@ -88,6 +88,15 @@ export type UserSignInProps = {
     password: string;
 };
 
+export type UserSignUpProps = {
+    first_name: string;
+    second_name: string;
+    login: string;
+    email: string;
+    password: string;
+    phone: string;
+};
+
 export type UserProps = UserSignInProps & {
     login: string;
     password: string;
