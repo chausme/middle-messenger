@@ -39,4 +39,15 @@ export class SettingsController {
             console.error(e.message);
         }
     }
+
+    async updateAvatar(data) {
+        try {
+            const response = (await this.#api.updateAvatar(data)) as XMLHttpRequest;
+            console.log(response);
+            return;
+        } catch (e: any) {
+            alert(`Oops, something went wrong: ${e.message}`);
+            console.error(e.message);
+        }
+    }
 }

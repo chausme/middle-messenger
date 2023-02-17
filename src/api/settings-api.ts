@@ -12,4 +12,8 @@ export class SettingsAPI extends BaseAPI {
             data,
         });
     }
+
+    updateAvatar(data) {
+        return 'update avatar api call' + data;
+    }
 }

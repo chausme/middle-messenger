@@ -12,6 +12,8 @@ import template from './account.hbs';
 import * as classes from './account.module.css';
 
 export default class PageAccount extends Block {
+    static resourcesBase = 'https://ya-praktikum.tech/api/v2/resources';
+
     constructor() {
         super({}, 'div');
 
@@ -42,6 +44,7 @@ export default class PageAccount extends Block {
             url: '',
             size: 'lg',
             css: ['mb-2'],
+            profile: true,
         });
         // Add element placeholder to update later with componentDidUpdate()
         this.children.form = new Form({
@@ -50,11 +53,35 @@ export default class PageAccount extends Block {
             inputs: [],
             buttons: [],
         });
+        this.children.formAvatar = new Form({
+            id: 'form_update_avatar',
+            events: {
+                submit(e) {
+                    e.preventDefault();
+                },
+            },
+            inputs: [
+                new InputWLabel({
+                    title: 'Avatar',
+                    id: 'avatar-test',
+                    type: 'text',
+                }),
+            ],
+            buttons: [],
+        });
     }
 
     componentDidUpdate(): boolean {
         const auth = new AuthController();
         const state = store?.getState();
+        if (state?.user?.avatar) {
+            this.children.avatar = new Avatar({
+                url: `${PageAccount.resourcesBase}/${state?.user?.avatar}`,
+                size: 'lg',
+                css: ['mb-2'],
+                profile: true,
+            });
+        }
         this.children.form = new Form({
             id: 'account',
             events: {
@@ -133,6 +160,18 @@ export default class PageAccount extends Block {
             ],
             buttons: [
                 new Button({
+                    title: 'Update avatar',
+                    id: 'update_avatar',
+                    action: 'update-avatar',
+                    css: ['bg-orange', 'mb-2'],
+                    events: {
+                        click(e) {
+                            e.preventDefault();
+                            console.log('enable avatar update');
+                        },
+                    },
+                }),
+                new Button({
                     title: 'Update details',
                     id: 'update_details',
                     action: 'update-details',
@@ -151,6 +190,7 @@ export default class PageAccount extends Block {
 
                             form.querySelector('#change_password')?.classList.add('d-none');
                             form.querySelector('#logout')?.classList.add('d-none');
+                            form.querySelector('#update_avatar')?.classList.add('d-none');
                         },
                     },
                 }),
@@ -179,6 +219,7 @@ export default class PageAccount extends Block {
                             form.querySelector('#update_details')?.classList.remove('d-none');
                             form.querySelector('#change_password')?.classList.remove('d-none');
                             form.querySelector('#logout')?.classList.remove('d-none');
+                            form.querySelector('#update_avatar')?.classList.remove('d-none');
                         },
                     },
                 }),
