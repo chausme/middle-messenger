@@ -1,6 +1,7 @@
 import Block from '~/src/utils/block';
 import ButtonIcon from '~/src/components/button-icon';
 import Button from '~/src/components/button';
+import InputWLabel from '~/src/components/input-w-label';
 import { ChatsController } from '~/src/controllers/chats-controller';
 import { closePopUp } from '~/src/utils/helpers';
 import template from './pop-up-chat-actions.hbs';
@@ -24,11 +25,42 @@ export default class PopUpChatActions extends Block {
                 },
             },
         });
+        this.children.inputs = [
+            new InputWLabel({
+                title: 'Chat user ID',
+                id: 'chat_user_id',
+                type: 'text',
+            }),
+        ];
         this.children.buttons = [
+            new Button({
+                title: 'Add chat user',
+                id: 'add-chat-user',
+                css: ['bg-green', 'mb-2'],
+                action: 'add-chat-user',
+                events: {
+                    async click(e) {
+                        e.preventDefault();
+                        console.log('add chat user here');
+                    },
+                },
+            }),
+            new Button({
+                title: 'Remove chat user',
+                id: 'remove-chat-user',
+                css: ['bg-orange', 'mb-2'],
+                action: 'remove-chat-user',
+                events: {
+                    async click(e) {
+                        e.preventDefault();
+                        console.log('remove chat user here');
+                    },
+                },
+            }),
             new Button({
                 title: 'Delete chat',
                 id: 'delete',
-                css: ['bg-red'],
+                css: ['bg-red', 'mb-2'],
                 action: 'delete',
                 events: {
                     async click(e) {
