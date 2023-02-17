@@ -25,7 +25,13 @@ export default class Form extends Block {
                     if (props.id === 'form-sign-in') {
                         await auth.signin(formProps as UserSignInProps);
                     } else if (props.id === 'form-sign-up') {
-                        console.log('form: sign up');
+                        if (!validatePassword(e.target)) {
+                            alert(
+                                'Oops, something is wrong with your password values, please ensure the values match'
+                            );
+                            return;
+                        }
+                        console.log('sign up processing');
                     } else if (props.id === 'account') {
                         await settings.update(formProps as UserProps);
                     } else if (props.id === 'form-add-chat') {
@@ -35,7 +41,7 @@ export default class Form extends Block {
                     } else if (props.id === 'form-password') {
                         if (!validatePassword(e.target)) {
                             alert(
-                                'Oops, something is wrong with your password values, please ensure new values match and the old one is correct'
+                                'Oops, something is wrong with your password values, please ensure the new values match'
                             );
                             return;
                         }
@@ -54,7 +60,6 @@ export default class Form extends Block {
                         const popUp = document.querySelector('.pop-up');
                         popUp?.remove();
                     }
-                    2;
                 } catch (error: any) {
                     alert(`Oops, something went wrong: ${error.message}`);
                     console.error(error.message);
