@@ -1,6 +1,7 @@
 import { SettingsAPI } from '../api/settings-api';
 import { UserProps } from '~/src/utils/prop-types';
 import store from '~/src/utils/store';
+import Input from '~src/components/input';
 
 export class SettingsController {
     #api = new SettingsAPI();
@@ -40,11 +41,30 @@ export class SettingsController {
         }
     }
 
-    async updateAvatar(formData) {
+    async updateAvatar(formData: FormData) {
         try {
             const response = (await this.#api.updateAvatar(formData)) as XMLHttpRequest;
-            console.log(response);
-            return;
+            /** @todo add common function */
+            const responseText = JSON.parse(response.response);
+            if (response.status !== 200) {
+                const { reason } = responseText;
+                console.warn(`Oops, something went wrong: ${reason}`);
+                alert(`Oops, something went wrong: ${reason}`);
+                return;
+            }
+            /** @todo refactor to centralized update */
+            store.set('user', responseText);
+            // reset the form
+            document.querySelector('.avatar-form-wrap')?.classList.add('d-none');
+            document.querySelector('.avatar-form-wrap')?.classList.add('d-none');
+            document.querySelector('#form_update_avatar')?.classList.remove('d-none');
+            document.querySelector('#cancel_avatar_update')?.classList.add('d-none');
+            document.querySelector('#upload')?.classList.add('d-none');
+            const avatarInput = document.querySelector('#avatar') as HTMLInputElement;
+            if (avatarInput) {
+                avatarInput.value = '';
+            }
+            document.querySelector('#update_avatar')?.classList.remove('d-none');
         } catch (e: any) {
             alert(`Oops, something went wrong: ${e.message}`);
             console.error(e.message);

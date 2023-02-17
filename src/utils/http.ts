@@ -9,10 +9,12 @@ type RequestOptionsProps = {
     data?: Record<string, any>;
     headers?: Record<string, string>;
     timeout?: number;
+    type?: string;
 };
 
 type RequestMethodOptionsProps = RequestOptionsProps & {
     method: string;
+    type?: string;
 };
 
 type HTTPMethodProps = (url: string, options?: RequestOptionsProps) => Promise<unknown>;
@@ -73,10 +75,10 @@ export default class HTTP {
             xhr.onerror = reject;
             xhr.ontimeout = reject;
 
-            if (options?.contentType && options?.contentType === 'form') {
-                xhr.setRequestHeader('Content-Type', 'application/json');
+            if (options?.type === 'form') {
+                console.log('nothing to see');
             } else {
-                xhr.setRequestHeader('Content-Type', 'multipart/form-data');
+                xhr.setRequestHeader('Content-Type', 'application/json');
             }
 
             xhr.withCredentials = true;
@@ -84,7 +86,12 @@ export default class HTTP {
             if (method === METHOD.GET || !data) {
                 xhr.send();
             } else {
-                xhr.send(JSON.stringify(data));
+                if (options?.type === 'form') {
+                    console.log('here');
+                    xhr.send(data as FormData);
+                } else {
+                    xhr.send(JSON.stringify(data));
+                }
             }
         });
     };
