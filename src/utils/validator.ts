@@ -93,7 +93,7 @@ const validateForm = (target: HTMLFormElement) => {
 
 // validate passsword values
 // don't check old password since we don't store it anywhere and API doesn't return one
-export const validatePassword = (target: HTMLFormElement, oldPassword?: string) => {
+export const validatePassword = (target: HTMLFormElement) => {
     // compare two password values
     const password = target.querySelector('input[name="password"]') as HTMLInputElement;
     const password2 = target.querySelector('input[name="password_2"]') as HTMLInputElement;
