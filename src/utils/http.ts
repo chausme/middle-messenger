@@ -83,12 +83,10 @@ export default class HTTP {
 
             if (method === METHOD.GET || !data) {
                 xhr.send();
+            } else if (options?.type === 'form') {
+                xhr.send(data as FormData);
             } else {
-                if (options?.type === 'form') {
-                    xhr.send(data as FormData);
-                } else {
-                    xhr.send(JSON.stringify(data));
-                }
+                xhr.send(JSON.stringify(data));
             }
         });
     };

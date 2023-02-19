@@ -8,10 +8,6 @@ export enum StoreEvents {
 export class Store extends EventBus {
     #state: any = {};
 
-    constructor() {
-        super();
-    }
-
     set(keypath: string, data: unknown) {
         set(this.#state, keypath, data);
         this.emit(StoreEvents.Updated);

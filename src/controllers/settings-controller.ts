@@ -43,18 +43,19 @@ export class SettingsController {
     async updatePassword(data: Record<string, any>) {
         try {
             const response = (await this.#api.updatePassword({
-                oldPassword: data?.['password_0'],
+                oldPassword: data?.password_0,
                 newPassword: data.password,
             })) as XMLHttpRequest;
             if (response.status !== 200) {
                 console.warn(`Oops, something went wrong`);
                 alert(`Oops, something went wrong`);
-                return;
+                return false;
             }
             return true;
         } catch (e: any) {
             alert(`Oops, something went wrong: ${e.message}`);
             console.error(e.message);
+            return false;
         }
     }
 
