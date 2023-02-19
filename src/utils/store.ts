@@ -10,16 +10,10 @@ export class Store extends EventBus {
 
     constructor() {
         super();
-        this.on(StoreEvents.Updated, () => {
-            console.log('updated store');
-        });
     }
 
     set(keypath: string, data: unknown) {
         set(this.#state, keypath, data);
-
-        console.log(this);
-
         this.emit(StoreEvents.Updated);
     }
 

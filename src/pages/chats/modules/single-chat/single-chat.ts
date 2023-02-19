@@ -51,8 +51,6 @@ export default class SingleChat extends Block {
             return false;
         }
 
-        console.log('showing messages...');
-
         this.children.header = new Header({
             avatar: new Avatar({
                 size: 'sm',

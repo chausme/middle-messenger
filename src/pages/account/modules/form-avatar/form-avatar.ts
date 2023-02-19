@@ -13,7 +13,6 @@ export default class FormAvatar extends Block {
             async submit(e) {
                 try {
                     e.preventDefault();
-                    console.log('uploading avatar');
                     const formData = new FormData(this as HTMLFormElement);
                     await settings.updateAvatar(formData);
                 } catch (error: any) {

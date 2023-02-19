@@ -30,7 +30,6 @@ export default class Router {
             this.load(target.location?.pathname.substring(1), true);
         };
         this.addLinksClickListener();
-        console.log(store?.getState());
     }
 
     // Output respective template on page and optionally update history

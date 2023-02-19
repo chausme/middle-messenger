@@ -82,8 +82,6 @@ export default class PageAccount extends Block {
                     if (isValid) {
                         const formData = new FormData(e.target);
                         const formProps = Object.fromEntries(formData);
-                        console.log('submitting form');
-                        console.log(formProps);
                     }
                 },
                 blur(e) {

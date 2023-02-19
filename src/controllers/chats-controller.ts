@@ -70,7 +70,6 @@ export class ChatsController {
             if (!chatId) {
                 return;
             }
-            console.log(['add user to chat', userId, chatId]);
             await this.#api.addChatUser(userId, chatId);
         } catch (e: any) {
             alert(`Oops, something went wrong: ${e.message}`);
@@ -84,7 +83,6 @@ export class ChatsController {
             if (!chatId) {
                 return;
             }
-            console.log(['remove user from chat', userId, chatId]);
             await this.#api.removeChatUser(userId, chatId);
         } catch (e: any) {
             alert(`Oops, something went wrong: ${e.message}`);

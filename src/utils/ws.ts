@@ -34,7 +34,6 @@ export class WS {
     }
 
     #getMessages() {
-        console.log(`get old messages for ${this.#chatId}`);
         if (!this.#socket) {
             return;
         }
@@ -80,11 +79,13 @@ export class WS {
                 console.log(`pong: ${this.#chatId}`);
                 return;
             }
-            console.log('Received data', data);
+            if (data.type === 'user connected') {
+                console.log(`user connected: ${data.content}`);
+                return;
+            }
             if (Array.isArray(data)) {
                 store.set('messages', data.reverse());
             } else {
-                console.log(data);
                 const messages = store?.getState()?.messages;
                 messages.push({ ...data, chat_id: this.#chatId });
                 store.set('messages', messages);

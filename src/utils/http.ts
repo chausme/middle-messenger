@@ -75,9 +75,7 @@ export default class HTTP {
             xhr.onerror = reject;
             xhr.ontimeout = reject;
 
-            if (options?.type === 'form') {
-                console.log('nothing to see');
-            } else {
+            if (options?.type !== 'form') {
                 xhr.setRequestHeader('Content-Type', 'application/json');
             }
 
@@ -87,7 +85,6 @@ export default class HTTP {
                 xhr.send();
             } else {
                 if (options?.type === 'form') {
-                    console.log('here');
                     xhr.send(data as FormData);
                 } else {
                     xhr.send(JSON.stringify(data));
