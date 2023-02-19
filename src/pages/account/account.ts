@@ -15,7 +15,7 @@ import template from './account.hbs';
 import * as classes from './account.module.css';
 
 export default class PageAccount extends Block {
-    static resourcesBase = 'https://ya-praktikum.tech/api/v2/resources';
+    static resourcesBase = `${process.env.API_BASE_URL}/resources`;
 
     constructor() {
         super({}, 'div');
@@ -76,14 +76,6 @@ export default class PageAccount extends Block {
         this.children.form = new Form({
             id: 'account',
             events: {
-                submit(e) {
-                    e.preventDefault();
-                    const isValid = validator(e);
-                    if (isValid) {
-                        const formData = new FormData(e.target);
-                        const formProps = Object.fromEntries(formData);
-                    }
-                },
                 blur(e) {
                     validator(e);
                 },

@@ -23,6 +23,6 @@ export default class ButtonAvatar extends Block {
     }
 
     render() {
-        return this.compile(template, {});
+        return this.compile(template, { ...this.props });
     }
 }
