@@ -13,7 +13,7 @@ body {
         padding: 20px;
         border-bottom: 10px var(--c-black) solid;
         top: 0;
-        z-index: 100;
+        z-index: 9999;
     }
 
     &[data-bg-color="red"] {
@@ -72,6 +72,20 @@ main {
     max-width: 1440px;
     margin: 100px auto 40px;
     min-height: calc(100vh - 70px - 100px);
+    position: relative;
+
+    &.is-loading {
+        &::after {
+            content: "";
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: rgba(255 255 255 / 90%);
+            z-index: 9998;
+        }
+    }
 }
 
 h1,

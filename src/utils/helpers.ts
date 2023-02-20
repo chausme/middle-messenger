@@ -77,7 +77,6 @@ const getMonthName = (monthNumber: number): string => {
 /** Get chat datetime based on the last message date */
 const getChatDatetime = (timestamp: number): string => {
     const date = new Date(timestamp);
-    console.log(date);
     const hoursRaw = date.getHours();
     const hours = hoursRaw ? hoursRaw % 12 : 12;
     const minutes = date.getMinutes();
