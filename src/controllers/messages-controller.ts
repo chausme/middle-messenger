@@ -1,8 +1,18 @@
 import WS from '../utils/ws';
 import { ChatsAPI } from '../api/chats-api';
+import store from '~/src/utils/store';
+import { ChatApiProps } from '~/src/utils/prop-types';
 
 export class MessagesController {
     #chatsApi = new ChatsAPI();
+
+    #setCurrentChatTitle(chatId: number) {
+        const chats = store?.getState()?.chats;
+        const currentChat = chats.filter((chat: ChatApiProps) => {
+            return Number(chat.id) === Number(chatId);
+        });
+        store.set('chatTitle', currentChat[0].title);
+    }
 
     async #getChatToken(chatId: number) {
         try {
@@ -50,6 +60,7 @@ export class MessagesController {
 
             // establish WS connection and load messages with a store update
             WS.connect(chatId, token);
+            this.#setCurrentChatTitle(chatId);
         } catch (e: any) {
             alert(`Oops, something went wrong: ${e.message}`);
             console.error(e.message);

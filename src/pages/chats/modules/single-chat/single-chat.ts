@@ -55,7 +55,7 @@ export default class SingleChat extends Block {
             avatar: new Avatar({
                 size: 'sm',
             }),
-            title: 'TBC',
+            title: state?.chatTitle,
         });
         delete this.children.placeholder;
         this.children.messages = messages.map(
