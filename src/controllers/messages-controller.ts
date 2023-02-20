@@ -2,6 +2,7 @@ import WS from '../utils/ws';
 import { ChatsAPI } from '../api/chats-api';
 import store from '~/src/utils/store';
 import { ChatApiProps } from '~/src/utils/prop-types';
+import { processResponse } from '~/src/utils/helpers';
 
 export class MessagesController {
     #chatsApi = new ChatsAPI();
@@ -17,14 +18,7 @@ export class MessagesController {
     async #getChatToken(chatId: number) {
         try {
             const response = (await this.#chatsApi.getChatToken(chatId)) as XMLHttpRequest;
-            /** @todo add common function */
-            const responseText = JSON.parse(response.response);
-            if (response.status !== 200) {
-                const { reason } = responseText;
-                console.warn(`Oops, something went wrong: ${reason}`);
-                alert(`Oops, something went wrong: ${reason}`);
-                return false;
-            }
+            const responseText = processResponse(response);
             if (!responseText.token) {
                 console.warn(`Oops, there is no chat token`);
                 alert(`Oops, there is no chat token`);

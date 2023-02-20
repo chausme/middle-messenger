@@ -135,3 +135,14 @@ export const closePopUp = () => {
     }
     popUpWrap.remove();
 };
+
+export const processResponse = (response: XMLHttpRequest) => {
+    const responseText = JSON.parse(response.response);
+    if (response.status !== 200) {
+        const { reason } = responseText;
+        console.warn(`Oops, something went wrong: ${reason}`);
+        alert(`Oops, something went wrong: ${reason}`);
+        return false;
+    }
+    return responseText;
+};

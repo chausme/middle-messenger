@@ -1,5 +1,6 @@
 import { SettingsAPI } from '../api/settings-api';
 import { UserProps } from '~/src/utils/prop-types';
+import { processResponse } from '~/src/utils/helpers';
 import store from '~/src/utils/store';
 
 export class SettingsController {
@@ -8,14 +9,7 @@ export class SettingsController {
     async update(data: UserProps) {
         try {
             const response = (await this.#api.update(data)) as XMLHttpRequest;
-            /** @todo add common function */
-            const responseText = JSON.parse(response.response);
-            if (response.status !== 200) {
-                const { reason } = responseText;
-                console.warn(`Oops, something went wrong: ${reason}`);
-                alert(`Oops, something went wrong: ${reason}`);
-                return;
-            }
+            const responseText = processResponse(response);
             /** @todo refactor to centralized update */
             store.set('user', responseText);
             const form = document.querySelector('#account');
@@ -62,14 +56,7 @@ export class SettingsController {
     async updateAvatar(formData: FormData) {
         try {
             const response = (await this.#api.updateAvatar(formData)) as XMLHttpRequest;
-            /** @todo add common function */
-            const responseText = JSON.parse(response.response);
-            if (response.status !== 200) {
-                const { reason } = responseText;
-                console.warn(`Oops, something went wrong: ${reason}`);
-                alert(`Oops, something went wrong: ${reason}`);
-                return;
-            }
+            const responseText = processResponse(response);
             /** @todo refactor to centralized update */
             store.set('user', responseText);
             // reset the form

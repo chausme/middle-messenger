@@ -1,5 +1,6 @@
 import { ChatsAPI } from '../api/chats-api';
 import store from '~/src/utils/store';
+import { processResponse } from '~/src/utils/helpers';
 
 export class ChatsController {
     #api = new ChatsAPI();
@@ -7,14 +8,7 @@ export class ChatsController {
     async request() {
         try {
             const response = (await this.#api.request()) as XMLHttpRequest;
-            /** @todo add common function */
-            const responseText = JSON.parse(response.response);
-            if (response.status !== 200) {
-                const { reason } = responseText;
-                console.warn(`Oops, something went wrong: ${reason}`);
-                alert(`Oops, something went wrong: ${reason}`);
-                return;
-            }
+            const responseText = processResponse(response);
             /** @todo refactor to centralized update */
             store.set('chats', responseText);
         } catch (e: any) {
@@ -26,14 +20,7 @@ export class ChatsController {
     async create(title: string) {
         try {
             const response = (await this.#api.create(title)) as XMLHttpRequest;
-            /** @todo add common function */
-            const responseText = JSON.parse(response.response);
-            if (response.status !== 200) {
-                const { reason } = responseText;
-                console.warn(`Oops, something went wrong: ${reason}`);
-                alert(`Oops, something went wrong: ${reason}`);
-                return;
-            }
+            processResponse(response);
             await this.request();
         } catch (e: any) {
             alert(`Oops, something went wrong: ${e.message}`);
@@ -48,14 +35,7 @@ export class ChatsController {
                 return;
             }
             const response = (await this.#api.delete(chatId)) as XMLHttpRequest;
-            /** @todo add common function */
-            const responseText = JSON.parse(response.response);
-            if (response.status !== 200) {
-                const { reason } = responseText;
-                console.warn(`Oops, something went wrong: ${reason}`);
-                alert(`Oops, something went wrong: ${reason}`);
-                return;
-            }
+            processResponse(response);
             await this.request();
             store.set('messages', null);
         } catch (e: any) {
