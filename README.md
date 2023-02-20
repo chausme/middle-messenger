@@ -17,6 +17,20 @@
 
 ### Pull request - TBC
 
+#### Updates
+
+-   Refactored form validation to be input based
+-   Added Block general CSS classes support to avoid optional properties on some components
+-   Refactored components to support required routes e.g. `/messenger`
+-   Updated previously implemented router with browser history support
+-   Implemented Sign In functionality
+-   Updated router with auth check
+-   Added store for state manipulation
+-   Implemented HTTP APIs for Settings, Chats and Auth
+-   Refactored components to support API data
+-   Added WebSocket support with a singleton class for chat real-time messages
+-   Implemented custom pop-up components following original mockups
+
 ## Sprint 2
 
 ### Pull request - https://github.com/chau5/middle.messenger.praktikum.yandex/pull/9
