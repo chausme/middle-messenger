@@ -8,9 +8,9 @@ export class MessagesController {
 
     #setCurrentChatTitle(chatId: number) {
         const chats = store?.getState()?.chats;
-        const currentChat = chats.filter((chat: ChatApiProps) => {
-            return Number(chat.id) === Number(chatId);
-        });
+        const currentChat = chats.filter(
+            (chat: ChatApiProps) => Number(chat.id) === Number(chatId)
+        );
         store.set('chatTitle', currentChat[0].title);
     }
 
@@ -65,5 +65,9 @@ export class MessagesController {
             alert(`Oops, something went wrong: ${e.message}`);
             console.error(e.message);
         }
+    }
+
+    async disconnect() {
+        await WS.disconnect();
     }
 }

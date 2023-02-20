@@ -83,9 +83,8 @@ const getChatDatetime = (timestamp: number): string => {
     const ampm = hoursRaw >= 12 ? 'pm' : 'am';
     if (isToday(date)) {
         return `${hours}:${minutes < 10 ? `0${minutes}` : minutes}${ampm}`;
-    } else {
-        return `${getMonthName(date.getMonth())} ${date.getDate() + 1}, ${date.getFullYear()}`;
     }
+    return `${getMonthName(date.getMonth())} ${date.getDate() + 1}, ${date.getFullYear()}`;
 };
 
 /** Get a timestamp from the provided string */

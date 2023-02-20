@@ -20,8 +20,10 @@ export class WS {
 
     #setTimer(): void {
         const connTimer = setInterval(() => {
-            console.log(`sending ping message for ${this.#chatId}`);
             if (!this.#socket) {
+                return;
+            }
+            if (this.#socket.readyState !== 1) {
                 return;
             }
             this.#socket.send(
@@ -47,9 +49,9 @@ export class WS {
         this.#socket.send(JSON.stringify({ type: 'message', content: message }));
     }
 
-    connect(chatId: number, token: string) {
-        if (this.#connTimer) {
-            clearInterval(this.#connTimer);
+    async connect(chatId: number, token: string) {
+        if (this.#socket) {
+            await this.disconnect();
         }
 
         const userId = store?.getState()?.user?.id;
@@ -69,14 +71,15 @@ export class WS {
                 console.warn('Websocket connection has been closed with issues');
             }
 
-            console.log(`Code: ${event.code} | Reason: ${event.reason}`);
+            console.log(`Code: ${event.code}`);
             // remove WS connection timer if exists to avoid pinging multiples chats
+            clearInterval(this.#connTimer);
+            store.set('connTimer', null);
         });
 
         this.#socket.addEventListener('message', async event => {
             const data = JSON.parse(event.data);
             if (data.type === 'pong') {
-                console.log(`pong: ${this.#chatId}`);
                 return;
             }
             if (data.type === 'user connected') {
@@ -107,6 +110,17 @@ export class WS {
         });
 
         this.#setTimer();
+    }
+
+    async disconnect() {
+        if (!this.#socket) {
+            return false;
+        }
+        if (this.#socket.readyState !== 1) {
+            return false;
+        }
+        this.#socket.close();
+        return true;
     }
 }
 
