@@ -55,9 +55,29 @@ export const set = (object: Indexed | unknown, path: string, value: unknown): In
 /** Check provided date is today */
 const isToday = (date: Date): boolean => new Date().toDateString() === date.toDateString();
 
+/** Get month name */
+const getMonthName = (monthNumber: number): string => {
+    const months = [
+        'Jan',
+        'Feb',
+        'Mar',
+        'Apr',
+        'May',
+        'Jun',
+        'Jul',
+        'Aug',
+        'Sep',
+        'Oct',
+        'Nov',
+        'Dec',
+    ];
+    return months[monthNumber];
+};
+
 /** Get chat datetime based on the last message date */
 const getChatDatetime = (timestamp: number): string => {
     const date = new Date(timestamp);
+    console.log(date);
     const hoursRaw = date.getHours();
     const hours = hoursRaw ? hoursRaw % 12 : 12;
     const minutes = date.getMinutes();
@@ -65,7 +85,7 @@ const getChatDatetime = (timestamp: number): string => {
     if (isToday(date)) {
         return `${hours}:${minutes < 10 ? `0${minutes}` : minutes}${ampm}`;
     } else {
-        return 'another day?';
+        return `${getMonthName(date.getMonth())} ${date.getDate() + 1}, ${date.getFullYear()}`;
     }
 };
 
