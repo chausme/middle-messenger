@@ -1,12 +1,10 @@
 <div class="inner d-flex flex-column">
     {{{header}}}
     <div class="messages d-flex flex-column overflow-y-scroll h-100 mb-3 pr-2">
-        {{{datetime}}}
-        {{{message_1}}}
-        {{{message_2}}}
-        {{{message_3}}}
-        {{{message_4}}}
-        {{{message_5}}}
+        {{{placeholder}}}
+        {{#each messages}}
+            {{{this}}}
+        {{/each}}
     </div>
     {{{form}}}
 </div>
