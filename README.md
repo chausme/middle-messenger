@@ -13,6 +13,24 @@
 -   `npm run eslint` - run ESLint with `--quite` parameter
 -   `npm run stylelint` - run Stylelint
 
+## Sprint 3
+
+### Pull request - https://github.com/chau5/middle.messenger.praktikum.yandex/pull/13
+
+#### Updates
+
+-   Refactored form validation to be input based
+-   Added Block general CSS classes support to avoid optional properties on some components
+-   Refactored components to support required routes e.g. `/messenger`
+-   Updated previously implemented router with browser history support
+-   Implemented Sign In functionality
+-   Updated router with auth check
+-   Added store for state manipulation
+-   Implemented HTTP APIs for Settings, Chats and Auth
+-   Refactored components to support API data
+-   Added WebSocket support with a singleton class for chat real-time messages
+-   Implemented custom pop-up components following original mockups
+
 ## Sprint 2
 
 ### Pull request - https://github.com/chau5/middle.messenger.praktikum.yandex/pull/9
@@ -40,4 +58,5 @@
 ## Credits
 
 -   Icons by [Gene](https://cogentgene1.gumroad.com/) from [256 Brutalist Element Mega Pack](https://cogentgene1.gumroad.com/l/brutalist)
--   Sticker placeholder image by [@louishansel](https://unsplash.com/@louishansel)
+-   Pineapple image by [Fernando Andrade](https://unsplash.com/@thisisnando)
+-   Lemonade image by [Pixzolo Photography](https://unsplash.com/@pixzolo)
