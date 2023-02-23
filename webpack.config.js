@@ -32,6 +32,9 @@ export default {
             process: 'process/browser',
         },
     },
+    historyApiFallback: {
+        rewrites: [{ from: /favicon.ico/, to: '[src/favicon.ico]' }],
+    },
     module: {
         rules: [
             {
