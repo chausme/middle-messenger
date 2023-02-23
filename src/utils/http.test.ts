@@ -2,7 +2,6 @@ import HTTP from './http';
 
 describe('HTTP module', () => {
     const testApi = new HTTP();
-    console.log(testApi);
     test('should return correct functions', () => {
         expect(testApi).toMatchObject({
             get: expect.any(Function),
