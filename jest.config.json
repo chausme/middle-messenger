@@ -9,5 +9,6 @@
     },
     "modulePathIgnorePatterns": ["index.ts"],
     "moduleFileExtensions": ["ts", "js"],
-    "transformIgnorePatterns": ["node_modules/"]
+    "transformIgnorePatterns": ["node_modules/"],
+    "testPathIgnorePatterns": ["<rootDir>/src/index.ts"]
 }
