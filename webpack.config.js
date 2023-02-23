@@ -9,6 +9,11 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import { CleanWebpackPlugin } from 'clean-webpack-plugin';
 
 import webpack from 'webpack';
+import dotenv from 'dotenv';
+
+const env = dotenv.config({
+    path: path.join(__dirname, '.env'),
+});
 
 export default {
     mode: 'development',
@@ -29,12 +34,11 @@ export default {
         extensions: ['.ts', '.js', '.json'],
         alias: {
             '~': path.resolve(__dirname, './'),
-            process: 'process/browser',
         },
     },
-    historyApiFallback: {
-        rewrites: [{ from: /favicon.ico/, to: '[src/favicon.ico]' }],
-    },
+    // historyApiFallback: {
+    //     rewrites: [{ from: /favicon.ico/, to: '[src/favicon.ico]' }],
+    // },
     module: {
         rules: [
             {
@@ -68,9 +72,7 @@ export default {
         ],
     },
     plugins: [
-        new webpack.ProvidePlugin({
-            process: 'process/browser',
-        }),
+        new webpack.EnvironmentPlugin(Object.keys(env.parsed || {})),
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
             template: './static/index.html',
