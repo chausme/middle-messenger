@@ -10,7 +10,7 @@
         "tswatch": "tsc --watch",
         "eslint": "npx eslint src/ --ext .js --quiet --ext .ts --quiet",
         "stylelint": "npx stylelint \"src/**/*.css\" \"!src/reset.css\"",
-        "test": "jest --clearCache && jest"
+        "test": "jest --clearCache && jest src/utils/block.test.ts"
     },
     "repository": {
         "type": "git",

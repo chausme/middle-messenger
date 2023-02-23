@@ -1,4 +1,4 @@
-import HTTP from '../utils/http';
+import HTTP from './http';
 
 describe('HTTP module', () => {
     const testApi = new HTTP();
