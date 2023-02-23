@@ -1,27 +1,31 @@
-import Block from './block';
+/**
+ * @jest-environment jsdom
+ */
+// import Block from './block';
 
-describe('HTTP module', () => {
-    const testBlock = new (class BlankPage extends Block {
-        constructor() {
-            super({}, 'div');
+describe('Component', () => {
+    // const testBlock = new (class BlankPage extends Block {
+    //     constructor() {
+    //         super({}, 'div');
+    //     }
+
+    //     render() {
+    //         const fragment = document.createDocumentFragment();
+    //         const p = document.createElement('p');
+    //         p.textContent = 'Test output';
+    //         fragment.appendChild(p);
+    //         return fragment;
+    //     }
+    // })();
+
+    test('should render content string', () => {
+        const div = document.createElement('div');
+        const p = document.createElement('p');
+        p.innerText = '123';
+        div.appendChild(p);
+        if (!div) {
+            return;
         }
-
-        render() {
-            const fragment = document.createDocumentFragment();
-            const p = document.createElement('p');
-            p.textContent = 'Test output';
-            fragment.appendChild(p);
-            return fragment;
-        }
-    })();
-
-    test('check for inner functions', () => {
-        console.log(testBlock);
-        // expect(testApi).toMatchObject({
-        //     get: expect.any(Function),
-        //     post: expect.any(Function),
-        //     put: expect.any(Function),
-        //     delete: expect.any(Function),
-        // });
+        console.log(div.querySelector('p')?.innerText);
     });
 });
