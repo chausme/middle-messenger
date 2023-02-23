@@ -3,5 +3,11 @@
     "transform": {
         "^.+\\.ts?$": "ts-jest"
     },
-    "moduleFileExtensions": ["ts", "js"]
+    "moduleNameMapper": {
+        "~/(.*)": "<rootDir>/src/",
+        "^.+\\.(css|less|hbs)$": "<rootDir>/src/utils/assetMock.ts"
+    },
+    "modulePathIgnorePatterns": ["index.ts"],
+    "moduleFileExtensions": ["ts", "js"],
+    "transformIgnorePatterns": ["node_modules/"]
 }

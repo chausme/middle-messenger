@@ -1,9 +1,8 @@
-const sum = (n1: number, n2: number): number => {
-    return n1 + n2;
-};
+import Router from './router';
 
-describe('sum module', () => {
-    test('adds 1 + 2 to equal 3', () => {
-        expect(sum(1, 2)).toBe(3);
+describe('Router', () => {
+    it('use() should return Router instance', () => {
+        const routerTest = new Router({});
+        console.log(routerTest);
     });
 });

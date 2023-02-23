@@ -2,7 +2,7 @@ import Block from '~/src/utils/block';
 import store from '~/src/utils/store';
 import { AuthController } from '~/src/controllers/auth-controller';
 import { ChatsController } from '~/src/controllers/chats-controller';
-import { MessagesController } from '~src/controllers/messages-controller';
+import { MessagesController } from '~/src/controllers/messages-controller';
 
 export default class Router {
     routesData;
