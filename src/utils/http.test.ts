@@ -11,5 +11,8 @@ describe('HTTP module', () => {
         });
     });
 
-    test('something', async () => {});
+    test('should contain xhr.withCredentials inside request function', async () => {
+        const testApi = new HTTP();
+        expect(testApi.request.toString().indexOf('xhr.withCredentials = true')).toBeGreaterThan(0);
+    });
 });
