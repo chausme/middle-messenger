@@ -11,7 +11,6 @@
         "tswatch": "tsc --watch",
         "eslint": "npx eslint src/ --ext .js --quiet --ext .ts --quiet",
         "stylelint": "npx stylelint \"src/**/*.css\" \"!src/reset.css\"",
-        "tcache": "jest --clearCache",
         "test": "jest src/utils/router.test.ts"
     },
     "repository": {

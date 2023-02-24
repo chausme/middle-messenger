@@ -36,9 +36,6 @@ export default {
             '~': path.resolve(__dirname, './'),
         },
     },
-    // historyApiFallback: {
-    //     rewrites: [{ from: /favicon.ico/, to: '[src/favicon.ico]' }],
-    // },
     module: {
         rules: [
             {
