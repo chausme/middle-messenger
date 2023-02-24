@@ -16,8 +16,9 @@ Messenger app built on top of [existing API](https://ya-praktikum.tech/api/v2/sw
 -   `npm run start` - create build and start Express server at `http://localhost:3000`
 -   `npm run serve` - start Express server at `http://localhost:3000` with an existing build
 -   `npm run tswatch` - start TypeScript compiler with `--watch` parameter
--   `npm run eslint` - run ESLint with `--quite` parameter
--   `npm run stylelint` - run Stylelint
+-   `npm run lint` - run ESLint with `--quite` parameter and Stylelint
+-   `npm run lint:scripts` - run ESLint with `--quite` parameter
+-   `npm run slint:styles` - run Stylelint
 -   `npm test` - run basic tests
 
 ## Sprint 4

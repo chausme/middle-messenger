@@ -9,10 +9,12 @@
         "start": "npm run build && node server.js",
         "serve": "node server.js",
         "tswatch": "tsc --watch",
-        "lint:eslint": "npx eslint src/ --ext .js --quiet --ext .ts --quiet",
-        "lint:stylelint": "npx stylelint \"src/**/*.css\" \"!src/reset.css\"",
-        "lint": "npm-run-all lint:eslint lint:stylelint",
-        "test": "jest src/utils/router.test.ts"
+        "lint:scripts": "npx eslint src/ --ext .js --quiet --ext .ts --quiet",
+        "lint:styles": "npx stylelint \"src/**/*.css\" \"!src/reset.css\"",
+        "lint": "npm-run-all lint:scripts lint:styles",
+        "test": "jest src/utils/router.test.ts",
+        "precommit": "npm-run-all test lint",
+        "prepare": "husky install"
     },
     "repository": {
         "type": "git",
@@ -62,10 +64,5 @@
         "express": "4.18.2",
         "handlebars": "4.7.7",
         "uuid": "9.0.0"
-    },
-    "husky": {
-        "hooks": {
-            "pre-commit": "npm-run-all test lint"
-        }
     }
 }
