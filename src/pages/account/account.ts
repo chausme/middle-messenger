@@ -248,6 +248,7 @@ export default class PageAccount extends Block {
                         async click(e) {
                             e.preventDefault();
                             await auth.logout();
+                            router.load('');
                         },
                     },
                 }),
