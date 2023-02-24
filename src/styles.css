@@ -243,6 +243,7 @@ h2 {
 
     &.input-search {
         padding-left: 30px;
+
         &::before {
             background-image: url("~/static/icons/search.svg");
             background-repeat: no-repeat;
