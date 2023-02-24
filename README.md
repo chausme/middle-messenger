@@ -7,11 +7,11 @@ Messenger app built on top of [existing API](https://ya-praktikum.tech/api/v2/sw
 ## Demo
 
 -   [Render + Webpack](https://middle-messenger.onrender.com)
--   [Netlify + Parcel](https://middle-messenger-chausme.netlify.app)(discontinued)
+-   [Netlify + Parcel](https://middle-messenger-chausme.netlify.app) (discontinued)
 
 ## Usage
 
--   `npm run dev` - start dev server at `http://localhost:1234`
+-   `npm run dev` - start dev server at `http://localhost:3000`
 -   `npm run build` - create build at `./dist`
 -   `npm run start` - create build and start Express server at `http://localhost:3000`
 -   `npm run serve` - start Express server at `http://localhost:3000` with an existing build

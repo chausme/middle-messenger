@@ -1,19 +1,11 @@
-/**
- * @jest-environment jsdom
- */
 // @ts-nocheck
-
 import Block from '~/src/utils/block';
-import store from '~/src/utils/store';
+import store from './store';
 // import { AuthController } from '~/src/controllers/auth-controller';
 // import { ChatsController } from '~/src/controllers/chats-controller';
 // import { MessagesController } from '~/src/controllers/messages-controller';
 
 export default class Router {
-    areWeTestingWithJest() {
-        return process.env.JEST_WORKER_ID !== undefined;
-    }
-
     routesData;
 
     #baseUrl = new URL(window.location.href).origin;
@@ -56,8 +48,8 @@ export default class Router {
             window.history.pushState({ pathReal }, '', `${this.#baseUrl}/${pathReal}`);
         }
         // close ws connection on page change/reload
-        const messages = new MessagesController();
-        await messages.disconnect();
+        // const messages = new MessagesController();
+        // await messages.disconnect();
     }
 
     back() {
@@ -70,17 +62,16 @@ export default class Router {
 
     // Check if user is logged in
     async #isLoggedIn() {
-        const authC = new AuthController();
-        const user = await authC.getUser();
-        return user;
+        // const authC = new AuthController();
+        // const user = await authC.getUser();
+        return 'user';
     }
 
     // Get chats
     async #getChats() {
-        const chatsC = new ChatsController();
+        // const chatsC = new ChatsController();
         // const chats = await chatsC.request();
-        // return chats;
-        return 123;
+        return 'chats';
     }
 
     // Apply auth state to provided path
