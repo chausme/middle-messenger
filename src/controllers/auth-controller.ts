@@ -1,7 +1,7 @@
 import { AuthAPI } from '../api/auth-api';
 import { ChatsController } from './chats-controller';
-import { UserSignInProps, UserSignUpProps } from '~/src/utils/prop-types';
-import store from '~/src/utils/store';
+import { UserSignInProps, UserSignUpProps } from '@utils/prop-types';
+import store from '@utils/store';
 import router from '~/src/index';
 
 export class AuthController {

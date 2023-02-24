@@ -1,9 +1,9 @@
-import Block from '~/src/utils/block';
-import { FormProps, UserProps, UserSignInProps, UserSignUpProps } from '~/src/utils/prop-types';
-import { validateForm, validatePassword } from '~/src/utils/validator';
-import { AuthController } from '~/src/controllers/auth-controller';
-import { ChatsController } from '~/src/controllers/chats-controller';
-import { SettingsController } from '~/src/controllers/settings-controller';
+import Block from '@utils/block';
+import { FormProps, UserProps, UserSignInProps, UserSignUpProps } from '@utils/prop-types';
+import { validateForm, validatePassword } from '@utils/validator';
+import { AuthController } from '@controllers/auth-controller';
+import { ChatsController } from '@controllers/chats-controller';
+import { SettingsController } from '@controllers/settings-controller';
 
 import template from './form.hbs';
 

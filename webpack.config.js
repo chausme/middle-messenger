@@ -34,6 +34,11 @@ export default {
         extensions: ['.ts', '.js', '.json'],
         alias: {
             '~': path.resolve(__dirname, './'),
+            '@api': path.resolve(__dirname, './src/api'),
+            '@components': path.resolve(__dirname, './src/components'),
+            '@controllers': path.resolve(__dirname, './src/controllers'),
+            '@pages': path.resolve(__dirname, './src/pages'),
+            '@utils': path.resolve(__dirname, './src/utils'),
         },
     },
     module: {

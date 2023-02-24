@@ -1,14 +1,11 @@
 {
-    "roots": ["src"],
     "transform": {
         "^.+\\.ts?$": "ts-jest"
     },
     "moduleNameMapper": {
-        "~/(.*)": "<rootDir>/src/",
+        "^@controllers(.*)$": "<rootDir>/src/controllers$1",
         "^.+\\.(css|less|hbs)$": "<rootDir>/src/utils/assetMock.ts"
     },
-    "modulePathIgnorePatterns": ["index.ts"],
     "moduleFileExtensions": ["ts", "js"],
-    "transformIgnorePatterns": ["node_modules/"],
-    "testPathIgnorePatterns": ["<rootDir>/src/index.ts"]
+    "transformIgnorePatterns": ["node_modules/"]
 }

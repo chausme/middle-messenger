@@ -1,6 +1,6 @@
-import Block from '~/src/utils/block';
-import Button from '~/src/components/button';
-import { AuthController } from '~/src/controllers/auth-controller';
+import Block from '@utils/block';
+import Button from '@components/button';
+import { AuthController } from '@controllers/auth-controller';
 import template from './logout.hbs';
 
 export default class PageLogout extends Block {

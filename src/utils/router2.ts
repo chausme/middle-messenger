@@ -1,9 +1,9 @@
 // @ts-nocheck
-import Block from '~/src/utils/block';
+import Block from '@utils/block';
 import store from './store';
-// import { AuthController } from '~/src/controllers/auth-controller';
-// import { ChatsController } from '~/src/controllers/chats-controller';
-// import { MessagesController } from '~/src/controllers/messages-controller';
+import { AuthController } from '@controllers/auth-controller';
+import { ChatsController } from '@controllers/chats-controller';
+import { MessagesController } from '@controllers/messages-controller';
 
 export default class Router {
     routesData;
@@ -62,9 +62,9 @@ export default class Router {
 
     // Check if user is logged in
     async #isLoggedIn() {
-        // const authC = new AuthController();
+        const authC = new AuthController();
         // const user = await authC.getUser();
-        return 'user';
+        // return 'user';
     }
 
     // Get chats
