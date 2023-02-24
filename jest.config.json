@@ -9,8 +9,9 @@
         "^@controllers(.*)$": "<rootDir>/src/controllers$1",
         "^@pages(.*)$": "<rootDir>/src/pages$1",
         "^@utils(.*)$": "<rootDir>/src/utils$1",
-        "^.+\\.(css|less|hbs)$": "<rootDir>/src/utils/assetMock.ts"
+        "^.+\\.(css|less|hbs)$": "<rootDir>/src/utils/mock-asset.ts"
     },
     "moduleFileExtensions": ["ts", "js"],
-    "transformIgnorePatterns": ["node_modules/"]
+    "transformIgnorePatterns": ["node_modules/"],
+    "testEnvironment": "jsdom"
 }

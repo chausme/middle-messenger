@@ -1,6 +1,3 @@
-/**
- * @jest-environment jsdom
- */
 import Router from './router';
 import BlankPage from '@pages/blank';
 

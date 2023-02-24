@@ -12,7 +12,7 @@
         "lint:scripts": "npx eslint src/ --ext .js --quiet --ext .ts --quiet",
         "lint:styles": "npx stylelint \"src/**/*.css\" \"!src/reset.css\"",
         "lint": "npm-run-all lint:scripts lint:styles",
-        "test": "jest src/utils/block.test.ts",
+        "test": "jest src/utils/http.test.ts",
         "precommit": "npm-run-all test lint",
         "prepare": "husky install"
     },

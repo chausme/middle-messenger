@@ -1,8 +1,8 @@
 import HTTP from './http';
 
 describe('HTTP module', () => {
-    const testApi = new HTTP();
-    test('should return correct functions', () => {
+    test('should return HTTP module with correct functions', () => {
+        const testApi = new HTTP();
         expect(testApi).toMatchObject({
             get: expect.any(Function),
             post: expect.any(Function),
@@ -10,4 +10,6 @@ describe('HTTP module', () => {
             delete: expect.any(Function),
         });
     });
+
+    test('something', async () => {});
 });
