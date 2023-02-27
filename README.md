@@ -21,9 +21,31 @@ Messenger app built on top of [existing API](https://ya-praktikum.tech/api/v2/sw
 -   `npm run slint:styles` - run Stylelint
 -   `npm test` - run basic tests
 
+## Stack/Tools
+
+-   [Typescript](https://www.typescriptlang.org)
+-   [PostCSS](https://postcss.org)
+-   [Handlebars](https://handlebarsjs.com)
+-   [Webpack](https://webpack.js.org)
+-   [ESLint](https://eslint.org) with [airbnb-base config](https://www.npmjs.com/package/eslint-config-airbnb-base)
+-   [Prettier](https://prettier.io)
+-   [Stylelint](https://stylelint.io) with [stylelint-config-standard](https://github.com/stylelint/stylelint-config-standard)
+-   [Jest](https://jestjs.io)
+-   [Husky](https://github.com/typicode/husky)
+-   [Render](https://render.com)
+-   [Docker](https://www.docker.com)
+
 ## Sprint 4
 
 ### Pull request - TBC
+
+#### Updates
+
+-   Added basic tests for block component, a custom router and HTTP class
+-   Converted from Parcel to Webpack including some required refactoring
+-   Added Dockerfile and deployed the app to Render at [https://middle-messenger.onrender.com](https://middle-messenger.onrender.com)
+-   Added precommit check with Husky
+-   Checked npm packages and confirmed there are no vulnerabilities
 
 ## Sprint 3
 
