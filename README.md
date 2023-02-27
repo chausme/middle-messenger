@@ -6,7 +6,7 @@ Messenger app built on top of [existing API](https://ya-praktikum.tech/api/v2/sw
 
 ## Demo
 
--   [Render + Webpack](https://middle-messenger.onrender.com)
+-   [Render + Webpack](https://middle-messenger.onrender.com) - could start with ~30 seconds delay due to free plan specifics
 -   [Netlify + Parcel](https://middle-messenger-chausme.netlify.app) (discontinued)
 
 ## Usage
@@ -37,13 +37,13 @@ Messenger app built on top of [existing API](https://ya-praktikum.tech/api/v2/sw
 
 ## Sprint 4
 
-### Pull request - TBC
+### Pull request - https://github.com/chau5/middle.messenger.praktikum.yandex/pull/17
 
 #### Updates
 
 -   Added basic tests for block component, a custom router and HTTP class
 -   Converted from Parcel to Webpack including some required refactoring
--   Added Dockerfile and deployed the app to Render at [https://middle-messenger.onrender.com](https://middle-messenger.onrender.com)
+-   Added Dockerfile and deployed the app to Render at [https://middle-messenger.onrender.com](https://middle-messenger.onrender.com), it could start with ~30 seconds delay due to free plan specifics
 -   Added precommit check with Husky
 -   Checked npm packages and confirmed there are no vulnerabilities
 
