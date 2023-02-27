@@ -9,8 +9,14 @@ Messenger app built on top of [existing API](https://ya-praktikum.tech/api/v2/sw
 -   [Render + Webpack](https://middle-messenger.onrender.com) - could start with ~30 seconds delay due to free plan specifics
 -   [Netlify + Parcel](https://middle-messenger-chausme.netlify.app) (discontinued)
 
+## Installation
+
+-   Add .env file with `API_BASE_URL` variable, default value is `https://ya-praktikum.tech/api/v2`
+-   Run `npm install`
+
 ## Usage
 
+-   `npm run prepare`
 -   `npm run dev` - start dev server at `http://localhost:3000`
 -   `npm run build` - create build at `./dist`
 -   `npm run start` - create build and start Express server at `http://localhost:3000`
