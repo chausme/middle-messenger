@@ -14,7 +14,7 @@
         "lint": "npm-run-all lint:scripts lint:styles",
         "test": "jest",
         "precommit": "npm-run-all test lint",
-        "prepare": "husky install && npx husky add .husky/pre-commit \"npm run precommit\""
+        "prepare": "husky install"
     },
     "repository": {
         "type": "git",
