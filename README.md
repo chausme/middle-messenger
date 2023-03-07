@@ -1,6 +1,12 @@
 # Middle Messenger
 
-📟 Messenger app built from scratch in 4 x biweekly sprints which included a few development stages from structure planning and creation of [Figma mockups](https://www.figma.com/file/sBhmIq6yUZIqBLoANYJkTh/Middle-Front-end-Chat-App) to building custom Event Bus driven general component with basic lifecycle and state management, simple router and HTTP transport class implementations with [Auth/User/Chat APIs](https://ya-praktikum.tech/api/v2/swagger) support and adding WebSocket based messaging system
+📟 Messenger app built from scratch in 4 x biweekly sprints including these development stages:
+
+-   Structure planning
+-   Creation of [Figma mockups](https://www.figma.com/file/sBhmIq6yUZIqBLoANYJkTh/Middle-Front-end-Chat-App)
+-   Building custom Event Bus driven general component with basic lifecycle and state management
+-   Simple router and HTTP transport class implementation with [Auth/User/Chat APIs](https://ya-praktikum.tech/api/v2/swagger) support
+-   Building WebSocket based messaging system
 
 ## Demo
 
