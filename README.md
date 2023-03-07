@@ -1,6 +1,6 @@
 # Middle Messenger
 
-📟 Messenger app built from scratch in 4 x biweekly sprints including these development stages:
+📟 Messenger app made from scratch in 4 x biweekly sprints including these development stages:
 
 -   Structure planning
 -   Creation of [Figma mockups](https://www.figma.com/file/sBhmIq6yUZIqBLoANYJkTh/Middle-Front-end-Chat-App)

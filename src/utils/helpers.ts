@@ -137,7 +137,9 @@ export const closePopUp = () => {
 };
 
 export const processResponse = (response: XMLHttpRequest) => {
-    const responseText = JSON.parse(response.response);
+    const responseText = isJsonString(response.response)
+        ? JSON.parse(response.response)
+        : response.response;
     if (response.status !== 200) {
         const { reason } = responseText;
         console.warn(`Oops, something went wrong: ${reason}`);
@@ -145,4 +147,13 @@ export const processResponse = (response: XMLHttpRequest) => {
         return false;
     }
     return responseText;
+};
+
+export const isJsonString = (str: string) => {
+    try {
+        JSON.parse(str);
+    } catch (e) {
+        return false;
+    }
+    return true;
 };
