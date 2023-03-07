@@ -1,14 +1,13 @@
-import Block from '~/src/utils/block';
+import Block from '@utils/block';
 import ChatList from './modules/chat-list';
 import SingleChat from './modules/single-chat';
 import template from './chats.hbs';
-import * as classes from './chats.module.css';
 
 export default class PageChats extends Block {
     constructor() {
         super({}, 'div');
 
-        this.element.classList.add('d-flex', classes.chats);
+        this.element.classList.add('d-flex', 'page', 'chats');
     }
 
     init() {
