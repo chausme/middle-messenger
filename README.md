@@ -2,16 +2,56 @@
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/14597e20-a13a-4e12-9baa-9de5a05bd954/deploy-status)](https://app.netlify.com/sites/middle-messenger-chausme/deploys)
 
-[Messenger app](https://middle-messenger-chausme.netlify.app) built on top of [existing API](https://ya-praktikum.tech/api/v2/swagger) as per [Figma mockups](https://www.figma.com/file/sBhmIq6yUZIqBLoANYJkTh/Middle-Front-end-Chat-App)
+Messenger app built on top of [existing API](https://ya-praktikum.tech/api/v2/swagger) as per [Figma mockups](https://www.figma.com/file/sBhmIq6yUZIqBLoANYJkTh/Middle-Front-end-Chat-App)
+
+## Demo
+
+-   [Render + Webpack](https://middle-messenger.onrender.com) - could start with ~30 seconds delay due to free plan specifics
+-   [Netlify + Parcel](https://middle-messenger-chausme.netlify.app) (discontinued)
+
+## Installation
+
+-   Add .env file with `API_BASE_URL` variable, default value is `https://ya-praktikum.tech/api/v2`
+-   Run `npm install`
 
 ## Usage
 
--   `npm run dev` - start Parcel dev server at `http://localhost:1234`
--   `npm build` - create Parcel build at `./dist`
--   `npm run start` - create Parcel build and start Express server at `http://localhost:3000`
+-   `npm run prepare`
+-   `npm run dev` - start dev server at `http://localhost:3000`
+-   `npm run build` - create build at `./dist`
+-   `npm run start` - create build and start Express server at `http://localhost:3000`
+-   `npm run serve` - start Express server at `http://localhost:3000` with an existing build
 -   `npm run tswatch` - start TypeScript compiler with `--watch` parameter
--   `npm run eslint` - run ESLint with `--quite` parameter
--   `npm run stylelint` - run Stylelint
+-   `npm run lint` - run ESLint with `--quite` parameter and Stylelint
+-   `npm run lint:scripts` - run ESLint with `--quite` parameter
+-   `npm run slint:styles` - run Stylelint
+-   `npm test` - run basic tests
+
+## Stack/Tools
+
+-   [Typescript](https://www.typescriptlang.org)
+-   [PostCSS](https://postcss.org)
+-   [Handlebars](https://handlebarsjs.com)
+-   [Webpack](https://webpack.js.org)
+-   [ESLint](https://eslint.org) with [airbnb-base config](https://www.npmjs.com/package/eslint-config-airbnb-base)
+-   [Prettier](https://prettier.io)
+-   [Stylelint](https://stylelint.io) with [stylelint-config-standard](https://github.com/stylelint/stylelint-config-standard)
+-   [Jest](https://jestjs.io)
+-   [Husky](https://github.com/typicode/husky)
+-   [Render](https://render.com)
+-   [Docker](https://www.docker.com)
+
+## Sprint 4
+
+### Pull request - https://github.com/chau5/middle.messenger.praktikum.yandex/pull/17
+
+#### Updates
+
+-   Added basic tests for block component, a custom router and HTTP class
+-   Converted from Parcel to Webpack including some required refactoring
+-   Added Dockerfile and deployed the app to Render at [https://middle-messenger.onrender.com](https://middle-messenger.onrender.com), it could start with ~30 seconds delay due to free plan specifics
+-   Added precommit check with Husky
+-   Checked npm packages and confirmed there are no vulnerabilities
 
 ## Sprint 3
 

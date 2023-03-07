@@ -20,6 +20,7 @@
         "@typescript-eslint/no-empty-function": "warn",
         "no-shadow": "off", // see https://stackoverflow.com/a/63961972
         "@typescript-eslint/no-shadow": ["error"],
-        "import/prefer-default-export": "warn"
+        "import/prefer-default-export": "warn",
+        "import/order": "warn"
     }
 }
