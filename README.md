@@ -1,6 +1,6 @@
 # Middle Messenger
 
-Messenger app built on top of [existing API](https://ya-praktikum.tech/api/v2/swagger) as per [Figma mockups](https://www.figma.com/file/sBhmIq6yUZIqBLoANYJkTh/Middle-Front-end-Chat-App)
+📟 Messenger app built from scratch in 4 x biweekly sprints which included a few development stages from structure planning and creation of [Figma mockups](https://www.figma.com/file/sBhmIq6yUZIqBLoANYJkTh/Middle-Front-end-Chat-App) to building custom Event Bus driven general component with basic lifecycle and state management, simple router and HTTP transport class implementations with [Auth/User/Chat APIs](https://ya-praktikum.tech/api/v2/swagger) support and adding WebSocket based messaging system
 
 ## Demo
 
@@ -36,10 +36,6 @@ Messenger app built on top of [existing API](https://ya-praktikum.tech/api/v2/sw
 -   [Husky](https://github.com/typicode/husky)
 -   [Render](https://render.com)
 -   [Docker](https://www.docker.com)
-
-## Description
-
--   TBC
 
 ## Credits
 
