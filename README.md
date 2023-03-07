@@ -12,6 +12,8 @@
 
 -   TBC
 
+![chrome_iM5y2hWKMa](https://user-images.githubusercontent.com/8984203/223350079-98644854-ec41-4036-9c19-74fd73fafb25.gif)
+
 ## Installation
 
 -   Add `.env` file based on `.env.local` file
