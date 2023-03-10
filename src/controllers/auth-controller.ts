@@ -44,14 +44,13 @@ export class AuthController {
     async getUser() {
         try {
             const response = (await this.#api.request()) as XMLHttpRequest;
-            const responseText = processResponse(response);
+            const responseText = processResponse(response, false);
             if (!responseText) {
                 return false;
             }
             store.set('user', responseText);
             return responseText;
         } catch (e: any) {
-            alert(`Oops, something went wrong: ${e.message}`);
             console.error(e.message);
             return false;
         }
