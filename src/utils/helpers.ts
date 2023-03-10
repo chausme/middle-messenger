@@ -136,6 +136,15 @@ export const closePopUp = () => {
     popUpWrap.remove();
 };
 
+export const isJsonString = (str: string) => {
+    try {
+        JSON.parse(str);
+    } catch (e) {
+        return false;
+    }
+    return true;
+};
+
 export const processResponse = (response: XMLHttpRequest) => {
     const responseText = isJsonString(response.response)
         ? JSON.parse(response.response)
@@ -147,13 +156,4 @@ export const processResponse = (response: XMLHttpRequest) => {
         return false;
     }
     return responseText;
-};
-
-export const isJsonString = (str: string) => {
-    try {
-        JSON.parse(str);
-    } catch (e) {
-        return false;
-    }
-    return true;
 };
