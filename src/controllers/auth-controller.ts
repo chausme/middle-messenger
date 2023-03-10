@@ -1,6 +1,7 @@
 import { AuthAPI } from '../api/auth-api';
 import { ChatsController } from './chats-controller';
 import { UserSignInProps, UserSignUpProps } from '@utils/prop-types';
+import { processResponse } from '@utils/helpers';
 import store from '@utils/store';
 
 export class AuthController {
@@ -9,31 +10,26 @@ export class AuthController {
     async signup(data: UserSignUpProps) {
         try {
             const response = (await this.#api.signup(data)) as XMLHttpRequest;
-            if (response.status !== 200) {
-                const responseText = JSON.parse(response.response);
-                const { reason } = responseText;
-                console.warn(`Oops, something went wrong: ${reason}`);
-                alert(`Oops, something went wrong: ${reason}`);
-                return;
+            const responseText = processResponse(response);
+            if (!responseText) {
+                return false;
             }
             // set user data and redirect to /messenger
             await this.getUser();
             const chats = new ChatsController();
             await chats.request();
         } catch (e: any) {
+            alert(`Oops, something went wrong: ${e.message}`);
             console.error(e.message);
         }
     }
 
     async signin(data: UserSignInProps) {
         try {
-            const loginResponse = (await this.#api.signin(data)) as XMLHttpRequest;
-            if (loginResponse.status !== 200) {
-                const responseText = JSON.parse(loginResponse.response);
-                const { reason } = responseText;
-                console.warn(`Oops, something went wrong: ${reason}`);
-                alert(`Oops, something went wrong: ${reason}`);
-                return;
+            const response = (await this.#api.signin(data)) as XMLHttpRequest;
+            const responseText = processResponse(response);
+            if (!responseText) {
+                return false;
             }
             // set user data and redirect to /messenger
             await this.getUser();
@@ -47,19 +43,13 @@ export class AuthController {
 
     async getUser() {
         try {
-            const userResponse = (await this.#api.request()) as XMLHttpRequest;
-            if (userResponse.status !== 200) {
-                console.warn(
-                    `Oops, something went wrong with fetching user\nAre you logged out?\nCode: ${userResponse.status}`
-                );
+            const response = (await this.#api.request()) as XMLHttpRequest;
+            const responseText = processResponse(response);
+            if (!responseText) {
                 return false;
             }
-            const user = JSON.parse(userResponse.response);
-            if (!user) {
-                return false;
-            }
-            store.set('user', user);
-            return user;
+            store.set('user', responseText);
+            return responseText;
         } catch (e: any) {
             alert(`Oops, something went wrong: ${e.message}`);
             console.error(e.message);
