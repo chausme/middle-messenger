@@ -10,7 +10,7 @@ const __dirname = path.dirname(__filename);
 
 app.use(express.static('./dist'));
 
-app.use('/*', (req, res) => {
+app.use('/*', (_, res) => {
     res.sendFile(path.join(__dirname, 'dist/index.html'));
 });
 

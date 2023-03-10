@@ -10,6 +10,12 @@ import { CleanWebpackPlugin } from 'clean-webpack-plugin';
 
 import webpack from 'webpack';
 
+import dotenv from 'dotenv';
+
+const env = dotenv.config({
+    path: path.join(__dirname, '.env'),
+});
+
 export { path, __filename, __dirname };
 
 export default {
@@ -62,6 +68,9 @@ export default {
         ],
     },
     plugins: [
+        new webpack.EnvironmentPlugin(
+            Object.keys(env.parsed || { API_BASE_URL: process.env?.API_BASE_URL })
+        ),
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
             template: './static/index.html',

@@ -9,6 +9,9 @@ export class ChatsController {
         try {
             const response = (await this.#api.request()) as XMLHttpRequest;
             const responseText = processResponse(response);
+            if (!responseText) {
+                return false;
+            }
             /** @todo refactor to centralized update */
             store.set('chats', responseText);
         } catch (e: any) {

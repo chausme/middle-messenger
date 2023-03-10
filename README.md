@@ -25,6 +25,7 @@ Messenger app made from scratch in 4 x biweekly sprints including these developm
 -   `npm run build` - create build at `./dist`
 -   `npm run start` - create build and start Express server at `http://localhost:3000`
 -   `npm run serve` - start Express server at `http://localhost:3000` with an existing build
+-   `npm run netlify` - create Netlify build and start Express server at `http://localhost:3000`
 -   `npm run tswatch` - start TypeScript compiler with `--watch` parameter
 -   `npm run lint` - run ESLint with `--quite` parameter and Stylelint
 -   `npm run lint:scripts` - run ESLint with `--quite` parameter

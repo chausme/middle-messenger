@@ -2,7 +2,8 @@
     "compilerOptions": {
         "outDir": "dist",
         "target": "es2019",
-        "module": "commonjs",
+        "module": "es2020",
+        "moduleResolution": "node",
         "declaration": false,
         "sourceMap": true,
         "strict": true,
