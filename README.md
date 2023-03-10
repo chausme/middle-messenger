@@ -16,7 +16,7 @@
 
 ## Installation
 
--   Add `.env` file based on `.env.local` file
+-   Add `.env` file based on `.env.local` file or set `API_BASE_URL` env variable manually e.g. on Netlify
 -   Run `npm install`
 
 ## Usage

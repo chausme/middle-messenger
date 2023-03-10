@@ -9,23 +9,11 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import { CleanWebpackPlugin } from 'clean-webpack-plugin';
 
 import webpack from 'webpack';
-import dotenv from 'dotenv';
 
-const env = dotenv.config({
-    path: path.join(__dirname, '.env'),
-});
+export { path, __filename, __dirname };
 
 export default {
-    mode: 'development',
     entry: './src/index.ts',
-    devServer: {
-        static: {
-            directory: path.join(__dirname, 'static'),
-        },
-        compress: true,
-        port: 3000,
-        historyApiFallback: true,
-    },
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: 'bundle.js',
@@ -74,7 +62,6 @@ export default {
         ],
     },
     plugins: [
-        new webpack.EnvironmentPlugin(Object.keys(env.parsed || {})),
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
             template: './static/index.html',
