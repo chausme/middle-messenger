@@ -1,6 +1,8 @@
 # Middle Messenger
 
-📟 Messenger app made from scratch in 4 x biweekly sprints including these development stages:
+[![Netlify Status](https://api.netlify.com/api/v1/badges/06863d0f-aea7-4ee5-9a60-8c1950ee39cd/deploy-status)](https://app.netlify.com/sites/middle-messenger-chausme/deploys)
+
+Messenger app made from scratch in 4 x biweekly sprints including these development stages:
 
 -   Structure planning
 -   Creation of [Figma mockups](https://www.figma.com/file/sBhmIq6yUZIqBLoANYJkTh/Middle-Front-end-Chat-App)
@@ -8,9 +10,7 @@
 -   Simple router and HTTP transport class implementation with [Auth/User/Chat APIs](https://ya-praktikum.tech/api/v2/swagger) support
 -   Building WebSocket based messaging system
 
-## Demo
-
--   TBC
+## 📟 [Demo](https://middle-messenger-chausme.netlify.app)
 
 ![chrome_iM5y2hWKMa](https://user-images.githubusercontent.com/8984203/223350079-98644854-ec41-4036-9c19-74fd73fafb25.gif)
 
