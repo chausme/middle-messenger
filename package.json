@@ -8,6 +8,7 @@
         "build": "node ./node_modules/.bin/webpack --config webpack.prod.js",
         "start": "npm run build && node server.js",
         "serve": "node server.js",
+        "netlify": "netlify build && npm run serve",
         "tswatch": "tsc --watch",
         "lint:scripts": "npx eslint src/ --ext .js --quiet --ext .ts --quiet",
         "lint:styles": "npx stylelint \"src/**/*.css\" \"!src/reset.css\"",
