@@ -12,7 +12,7 @@ export class AuthController {
             const response = (await this.#api.signup(data)) as XMLHttpRequest;
             const responseText = processResponse(response);
             if (!responseText) {
-                return false;
+                return;
             }
             // set user data and redirect to /messenger
             await this.getUser();
@@ -29,7 +29,7 @@ export class AuthController {
             const response = (await this.#api.signin(data)) as XMLHttpRequest;
             const responseText = processResponse(response);
             if (!responseText) {
-                return false;
+                return;
             }
             // set user data and redirect to /messenger
             await this.getUser();
