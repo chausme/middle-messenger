@@ -145,14 +145,16 @@ export const isJsonString = (str: string) => {
     return true;
 };
 
-export const processResponse = (response: XMLHttpRequest) => {
+export const processResponse = (response: XMLHttpRequest, showAlert: boolean = true) => {
     const responseText = isJsonString(response.response)
         ? JSON.parse(response.response)
         : response.response;
     if (response.status !== 200) {
         const { reason } = responseText;
         console.warn(`Oops, something went wrong: ${reason}`);
-        alert(`Oops, something went wrong: ${reason}`);
+        if (showAlert) {
+            alert(`Oops, something went wrong: ${reason}`);
+        }
         return false;
     }
     return responseText;
