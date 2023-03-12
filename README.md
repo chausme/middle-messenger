@@ -43,7 +43,6 @@ Messenger app made from scratch in 4 x biweekly sprints including these developm
 -   [Stylelint](https://stylelint.io) with [stylelint-config-standard](https://github.com/stylelint/stylelint-config-standard)
 -   [Jest](https://jestjs.io)
 -   [Husky](https://github.com/typicode/husky)
--   [Render](https://render.com)
 -   [Docker](https://www.docker.com)
 
 ## Credits
