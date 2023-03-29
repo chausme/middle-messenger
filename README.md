@@ -16,7 +16,7 @@ Messenger app made from scratch in 4 x biweekly sprints including these developm
 
 ## Installation
 
--   Add `.env` file based on `.env.local` file or set `API_BASE_URL` env variable manually e.g. on Netlify
+-   Add `.env` file based on `.env.example` file or set `API_BASE_URL` env variable manually e.g. on Netlify
 -   Run `npm install`
 
 ## Usage
